@@ -47,6 +47,7 @@ not-silent.patch
 disable-cc_version_check.patch
 use-nv-kernel-ARCH.o_binary.patch
 avoid-ld.gold.patch
+conftest-include-guard.patch
 
 # armhf support
 ignore_xen_on_arm.patch

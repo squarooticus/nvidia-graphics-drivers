@@ -1,6 +1,6 @@
 # If needed, set to the major part of the upstream version number.
 #NVIDIA_LEGACY		 =
-#NVIDIA_TESLA		 =
+NVIDIA_TESLA		 = 418.87
 WATCH_VERSION		 = 418
 NVIDIA_SETTINGS		 = nvidia-settings (>= $(version_major))
 

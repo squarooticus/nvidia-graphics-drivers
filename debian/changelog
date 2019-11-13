@@ -5,6 +5,7 @@ nvidia-graphics-drivers (418.87.01-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Backport fixes for Linux 5.2/5.3 from 418.88.
+  * Bump glx-alternative-nvidia dependency for ppc64el support.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 26 Oct 2019 19:36:41 +0200
 

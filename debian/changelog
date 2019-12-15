@@ -1,14 +1,3 @@
-nvidia-graphics-drivers (418.87.01-1~git) UNRELEASED; urgency=medium
-
-  * New upstream Tesla release 418.87.01 (2019-10-03).
-  * New upstream Tesla release 418.87.00 (2019-08-13).
-
-  [ Andreas Beckmann ]
-  * Backport fixes for Linux 5.2/5.3 from 418.88.
-  * Bump glx-alternative-nvidia dependency for ppc64el support.
-
- -- Andreas Beckmann <anbe@debian.org>  Sat, 26 Oct 2019 19:36:41 +0200
-
 nvidia-graphics-drivers (418.113-1~git) UNRELEASED; urgency=medium
 
   * debian/gen-control.pl: Support substitutions in the Architecture field and
@@ -53,6 +42,17 @@ nvidia-graphics-drivers (418.113-1) UNRELEASED; urgency=medium
   * Refresh patches.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 12 Nov 2019 05:46:46 +0100
+
+nvidia-graphics-drivers (418.87.01-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 418.87.01 (2019-10-03).
+  * New upstream Tesla release 418.87.00 (2019-08-13).
+
+  [ Andreas Beckmann ]
+  * Backport fixes for Linux 5.2/5.3 from 418.88.
+  * Bump glx-alternative-nvidia dependency for ppc64el support.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 26 Oct 2019 19:36:41 +0200
 
 nvidia-graphics-drivers (418.88-1) unstable; urgency=medium
 

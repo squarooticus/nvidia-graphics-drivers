@@ -1,5 +1,4 @@
 # kernel support
-418.88.patch
 
 # build system updates
 use-kbuild-compiler.patch

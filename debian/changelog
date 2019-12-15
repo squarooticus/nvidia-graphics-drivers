@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (418.113-1~git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.116.00-1~git) UNRELEASED; urgency=medium
 
   * debian/gen-control.pl: Support substitutions in the Architecture field and
     skip packages with empty or commented Architecture field (430.50-2).
@@ -21,7 +21,13 @@ nvidia-graphics-drivers (418.113-1~git) UNRELEASED; urgency=medium
       symbols file.
   * Bump Standards-Version to 4.4.1. No changes needed.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 12 Nov 2019 05:46:46 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 14 Dec 2019 14:29:50 +0100
+
+nvidia-graphics-drivers (418.116.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 418.116.00 (2019-12-09).
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 14 Dec 2019 14:29:50 +0100
 
 nvidia-graphics-drivers (418.113-1) UNRELEASED; urgency=medium
 

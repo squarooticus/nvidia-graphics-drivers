@@ -50,7 +50,7 @@ Breaks:
  nvidia-glx${nvidia:Legacy},
 Replaces:
  nvidia-glx${nvidia:Legacy},
-Description: NVIDIA metapackage${nvidia:LegacyDesc}
+Description: NVIDIA metapackage${nvidia:VariantDesc}
  This metapackage depends on the NVIDIA binary driver and libraries
  that provide optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server.
@@ -90,7 +90,7 @@ Breaks:
  libnvcuvid1 (<< 340.46-2~),
  libnvidia-ml1 (<< 340.46-2~),
  nvidia-smi (<< 340.46-2~),
-Description: allows the selection of NVIDIA as GLX provider${nvidia:LegacyDesc}
+Description: allows the selection of NVIDIA as GLX provider${nvidia:VariantDesc}
  In setups with several NVIDIA driver versions installed (e.g. current and
  legacy) this metapackage registers an alternative to allow easy switching
  between the different versions.
@@ -119,7 +119,7 @@ Breaks:
  glx-alternative-nvidia (<< 0.6.91),
 Replaces:
  glx-alternative-nvidia (<< 0.6.91),
-Description: NVIDIA binary kernel module support files${nvidia:LegacyDesc}
+Description: NVIDIA binary kernel module support files${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
@@ -140,7 +140,7 @@ Recommends:
  ${nvidia}-driver (>= ${nvidia:Version}) | ${libcuda1} (>= ${nvidia:Version}),
 Provides:
  ${nvidia}-kernel-${nvidia:Version},
-Description: NVIDIA binary kernel module DKMS source${nvidia:LegacyDesc}
+Description: NVIDIA binary kernel module DKMS source${nvidia:VariantDesc}
  This package builds the NVIDIA binary kernel modules needed by
  ${nvidia}-driver, using DKMS.
  Provided that you have the kernel header packages installed, the kernel
@@ -175,7 +175,7 @@ Suggests:
  ${nvidia}-driver (>= ${nvidia:Version}),
 Breaks:
  module-assistant (<< 0.11.6~),
-Description: NVIDIA binary kernel module source${nvidia:LegacyDesc}
+Description: NVIDIA binary kernel module source${nvidia:VariantDesc}
  This package provides the source for the NVIDIA binary kernel modules
  needed by ${nvidia}-driver in a form suitable
  for use by module-assistant.
@@ -224,7 +224,7 @@ Breaks:
  glx-alternative-nvidia (<< 0.6.91),
 Replaces:
  glx-alternative-nvidia (<< 0.6.91),
-Description: NVIDIA binary Xorg driver${nvidia:LegacyDesc}
+Description: NVIDIA binary Xorg driver${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
@@ -271,7 +271,7 @@ Breaks:
 Replaces:
  ${nvidia}-driver (<< 340.46-4~),
  nvidia-glx${nvidia:Legacy} (<< 319),
-Description: NVIDIA driver support binaries${nvidia:LegacyDesc}
+Description: NVIDIA driver support binaries${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
@@ -294,7 +294,7 @@ Breaks:
  libgl1-${nvidia}-glx (<< ${nvidia:Deb-Version-After:jessie}),
 Replaces:
  libgl1-${nvidia}-glx (<< ${nvidia:Deb-Version-After:jessie}),
-Description: NVIDIA binary OpenGL/GLX configuration library${nvidia:LegacyDesc}
+Description: NVIDIA binary OpenGL/GLX configuration library${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
@@ -317,7 +317,7 @@ Recommends:
  lib${nvidia}-cfg1 (= ${binary:Version}),
 Provides:
  nvidia-driver-libs-any,
-Description: NVIDIA metapackage (OpenGL/GLX/EGL/GLES libraries)${nvidia:LegacyDesc}
+Description: NVIDIA metapackage (OpenGL/GLX/EGL/GLES libraries)${nvidia:VariantDesc}
  This metapackage depends on the NVIDIA binary libraries
  that provide optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server.
@@ -331,7 +331,7 @@ Depends:
  ${misc:Depends}
 Conflicts:
  libgl1-${nvidia}-glx-i386,
-Description: NVIDIA metapackage (OpenGL/GLX/EGL/GLES 32-bit libraries)${nvidia:LegacyDescShort}
+Description: NVIDIA metapackage (OpenGL/GLX/EGL/GLES 32-bit libraries)${nvidia:VariantDescShort}
  This metapackage helps the automatic installation of the 32-bit NVIDIA
  OpenGL/GLX/EGL/GLES libraries when installing ${nvidia}-driver-libs
  on amd64 with foreign architecture i386 enabled.
@@ -356,7 +356,7 @@ Suggests:
  ${nvidia:kmod:source},
 Provides:
  libgl1-nvidia-glx-any,
-Description: NVIDIA binary OpenGL/GLX library${nvidia:LegacyDesc}
+Description: NVIDIA binary OpenGL/GLX library${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
@@ -385,7 +385,7 @@ Breaks:
  libgl1-${nvidia}-glx (<< ${nvidia:Deb-Version-After:jessie}),
 Replaces:
  libgl1-${nvidia}-glx (<< ${nvidia:Deb-Version-After:jessie}),
-Description: NVIDIA binary OpenGL/GLX core libraries${nvidia:LegacyDesc}
+Description: NVIDIA binary OpenGL/GLX core libraries${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
@@ -403,7 +403,7 @@ Depends:
  ${nvidia}-alternative (= ${binary:Version}),
  lib${nvidia}-eglcore (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
-Description: NVIDIA binary EGL library${nvidia:LegacyDesc}
+Description: NVIDIA binary EGL library${nvidia:VariantDesc}
  EGL provides a platform-agnostic mechanism for creating rendering surfaces
  for use with other graphics libraries, such as OpenGL|ES.
  .
@@ -424,7 +424,7 @@ Depends:
  ${nvidia}-alternative (= ${binary:Version}),
  lib${nvidia}-eglcore (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
-Description: NVIDIA binary OpenGL|ES 1.x library${nvidia:LegacyDesc}
+Description: NVIDIA binary OpenGL|ES 1.x library${nvidia:VariantDesc}
  OpenGL|ES is a cross-platform API for full-function 2D and 3D graphics on
  embedded systems - including consoles, phones, appliances and vehicles.
  It contains a subset of OpenGL plus a number of extensions for the
@@ -446,7 +446,7 @@ Depends:
  ${nvidia}-alternative (= ${binary:Version}),
  lib${nvidia}-eglcore (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
-Description: NVIDIA binary OpenGL|ES 2.x library${nvidia:LegacyDesc}
+Description: NVIDIA binary OpenGL|ES 2.x library${nvidia:VariantDesc}
  OpenGL|ES is a cross-platform API for full-function 2D and 3D graphics on
  embedded systems - including consoles, phones, appliances and vehicles.
  It contains a subset of OpenGL plus a number of extensions for the
@@ -471,7 +471,7 @@ Provides:
  libnvidia-eglcore-${nvidia:Version},
 Conflicts:
  libnvidia-eglcore-${nvidia:Version},
-Description: NVIDIA binary EGL core libraries${nvidia:LegacyDesc}
+Description: NVIDIA binary EGL core libraries${nvidia:VariantDesc}
  EGL provides a platform-agnostic mechanism for creating rendering surfaces
  for use with other graphics libraries, such as OpenGL|ES.
  .
@@ -504,7 +504,7 @@ Enhances:
  libvdpau1,
 Provides:
  vdpau-driver,
-Description: Video Decode and Presentation API for Unix - NVIDIA driver${nvidia:LegacyDescShort}
+Description: Video Decode and Presentation API for Unix - NVIDIA driver${nvidia:VariantDescShort}
  These libraries provide the Video Decode and Presentation API for Unix.
  They provide accelerated video playback (incl. H.264) for the supported
  graphics cards.
@@ -528,7 +528,7 @@ Recommends:
  ${nvidia:kmod:binary},
 Suggests:
  ${nvidia:kmod:source},
-Description: NVIDIA System Management Interface${nvidia:LegacyDesc}
+Description: NVIDIA System Management Interface${nvidia:VariantDesc}
  The NVIDIA Management Library (NVML) provides a monitoring and management API.
  The application "nvidia-smi" is the NVIDIA System Management Interface (NVSMI)
  and provides a command line interface to this functionality.
@@ -550,7 +550,7 @@ Breaks:
 Provides:
  libnvidia-ml.so.1 (= ${nvidia:Version}),
 Homepage: https://developer.nvidia.com/nvidia-management-library-NVML
-Description: NVIDIA Management Library (NVML) runtime library${nvidia:LegacyDesc}
+Description: NVIDIA Management Library (NVML) runtime library${nvidia:VariantDesc}
  The NVIDIA Management Library (NVML) provides a monitoring and management API.
  It provides a direct access to the queries and commands exposed via nvidia-smi.
  .
@@ -604,7 +604,7 @@ Provides:
  libcuda-6.5-1,
  libcuda-6.5-1-i386 [i386],
 Homepage: https://www.nvidia.com/CUDA
-Description: NVIDIA CUDA Driver Library${nvidia:LegacyDesc}
+Description: NVIDIA CUDA Driver Library${nvidia:VariantDesc}
  The Compute Unified Device Architecture (CUDA) enables NVIDIA
  graphics processing units (GPUs) to be used for massively parallel
  general purpose computation.
@@ -624,7 +624,7 @@ Multi-Arch: foreign
 Depends:
  ${libcuda1},
  ${misc:Depends}
-Description: NVIDIA CUDA 32-bit runtime library${nvidia:LegacyDesc}
+Description: NVIDIA CUDA 32-bit runtime library${nvidia:VariantDesc}
  This metapackage helps the automatic installation of the 32-bit NVIDIA CUDA
  library when installing ${libcuda1} on amd64 with foreign
  architecture i386 enabled.
@@ -641,7 +641,7 @@ Provides:
  libnvidia-compiler-${nvidia:Version},
 Conflicts:
  libnvidia-compiler-${nvidia:Version},
-Description: NVIDIA runtime compiler library${nvidia:LegacyDesc}
+Description: NVIDIA runtime compiler library${nvidia:VariantDesc}
  The Compute Unified Device Architecture (CUDA) enables NVIDIA
  graphics processing units (GPUs) to be used for massively parallel
  general purpose computation.
@@ -657,7 +657,7 @@ Pre-Depends:
 Depends:
  ${libcuda1} (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
-Description: NVIDIA CUDA Video Decoder runtime library${nvidia:LegacyDesc}
+Description: NVIDIA CUDA Video Decoder runtime library${nvidia:VariantDesc}
  The Compute Unified Device Architecture (CUDA) enables NVIDIA
  graphics processing units (GPUs) to be used for massively parallel
  general purpose computation.
@@ -676,7 +676,7 @@ Pre-Depends:
 Depends:
  ${libcuda1} (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
-Description: NVENC Video Encoding runtime library${nvidia:LegacyDesc}
+Description: NVENC Video Encoding runtime library${nvidia:VariantDesc}
  The NVENC Video Encoding library provides an interface to video encoder
  hardware on supported NVIDIA GPUs.
  .
@@ -691,7 +691,7 @@ Pre-Depends:
 Depends:
  ${libcuda1} (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
-Description: NVIDIA OpenGL-based Inband Frame Readback runtime library${nvidia:LegacyDescShort}
+Description: NVIDIA OpenGL-based Inband Frame Readback runtime library${nvidia:VariantDescShort}
  The NVIDIA OpenGL-based Inband Frame Readback (NvIFROpenGL) library provides
  a high performance, low latency interface to capture and optionally encode an
  OpenGL framebuffer. NvIFROpenGL is a private API that is only available to
@@ -708,7 +708,7 @@ Pre-Depends:
 Depends:
  ${libcuda1} (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
-Description: NVIDIA OpenGL-based Framebuffer Capture runtime library${nvidia:LegacyDesc}
+Description: NVIDIA OpenGL-based Framebuffer Capture runtime library${nvidia:VariantDesc}
  The NVIDIA OpenGL-based Framebuffer Capture (NvFBCOpenGL) library provides
  a high performance, low latency interface to capture and optionally encode an
  OpenGL framebuffer. NvFBCOpenGL is a private API that is only available to
@@ -748,7 +748,7 @@ Enhances:
  libopencl1,
 Provides:
  opencl-icd,
-Description: NVIDIA OpenCL installable client driver (ICD)${nvidia:LegacyDesc}
+Description: NVIDIA OpenCL installable client driver (ICD)${nvidia:VariantDesc}
  OpenCL (Open Computing Language) is a multivendor open standard for
  general-purpose parallel programming of heterogeneous systems that include
  CPUs, GPUs and other processors.

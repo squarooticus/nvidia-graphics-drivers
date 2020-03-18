@@ -2,6 +2,9 @@ nvidia-graphics-drivers (440.64.00-1~git) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 440.64.00 (2020-03-10).
 
+  [ Andreas Beckmann ]
+  * Update lintian overrides.
+
  -- Andreas Beckmann <anbe@debian.org>  Wed, 18 Mar 2020 21:10:14 +0100
 
 nvidia-graphics-drivers (440.64-2) unstable; urgency=medium

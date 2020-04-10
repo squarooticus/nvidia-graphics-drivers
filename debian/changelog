@@ -28,6 +28,7 @@ nvidia-graphics-drivers (418.126.02-1~git) UNRELEASED; urgency=medium
     for amd64 (including some i386 libs) and ppc64el) (440.64-2).
   * Bump Standards-Version to 4.5.0. No changes needed.
   * Update lintian overrides.
+  * Refresh drmP.patch for the Tesla 418 driver.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 14 Mar 2020 23:08:06 +0100
 

@@ -1,4 +1,4 @@
-From 5fa23fd8df9648348fde84beafeae99a1f6cebde Mon Sep 17 00:00:00 2001
+From e2a517fa3c5a96c41b1974c6da143c767368497a Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sat, 25 Apr 2020 11:40:44 +0200
 Subject: [PATCH 3/4] backport nv_timeval changes from 440.82
@@ -43,10 +43,10 @@ index 968b873..b4fe2b7 100644
          .tv_usec = now.tv_nsec/1000,
      };
 diff --git a/conftest.sh b/conftest.sh
-index 9a0cc67..b1db112 100755
+index 7a3abb5..30db59e 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -1992,6 +1992,21 @@ compile_test() {
+@@ -2008,6 +2008,21 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_DRIVER_HAS_LEGACY_DEV_LIST" "" "types"
          ;;
  
@@ -68,7 +68,7 @@ index 9a0cc67..b1db112 100755
          drm_init_function_args)
              #
              # Determine if these functions:
-@@ -3513,6 +3528,53 @@ compile_test() {
+@@ -3546,6 +3561,53 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_PROC_OPS_PRESENT" "" "types"
          ;;
  
@@ -172,7 +172,7 @@ index e4381b5..7089747 100644
  
  void
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index d6f62eb..97a1c0c 100644
+index 879f5ac..b5852fe 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
 @@ -156,6 +156,9 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += compound_order

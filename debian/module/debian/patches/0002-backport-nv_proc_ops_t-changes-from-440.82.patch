@@ -1,4 +1,4 @@
-From d653b9de9596c886721ca75306982fe3eb993e23 Mon Sep 17 00:00:00 2001
+From 5e2086ecfa68a625f9de1861b2c61ca215843610 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sat, 25 Apr 2020 11:40:05 +0200
 Subject: [PATCH 2/4] backport nv_proc_ops_t changes from 440.82
@@ -74,11 +74,11 @@ index 3c812ea..217ce46 100644
  
  #endif  /* CONFIG_PROC_FS */
 diff --git a/conftest.sh b/conftest.sh
-index f8eb958..9a0cc67 100755
+index f06fece..7a3abb5 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -3497,6 +3497,22 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_DRM_GEM_OBJECT_HAS_RESV" "" "types"
+@@ -3530,6 +3530,22 @@ compile_test() {
+             fi
          ;;
  
 +        proc_ops)
@@ -199,7 +199,7 @@ index 220eeef..30fc2c4 100644
  
  static int
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index d079e5d..d6f62eb 100644
+index bd0fbd2..879f5ac 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
 @@ -187,6 +187,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += backlight_properties_type

@@ -1,4 +1,4 @@
-From 7d7270c82d42b55d28c0ead553f22f3ec17e2049 Mon Sep 17 00:00:00 2001
+From 1c2dfb5f03664fa5b8399504bd2632fd9ebd758e Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sat, 25 Apr 2020 11:42:24 +0200
 Subject: [PATCH 4/4] backport nv_timeval changes from 440.82 (uvm part)
@@ -9,7 +9,7 @@ Subject: [PATCH 4/4] backport nv_timeval changes from 440.82 (uvm part)
  2 files changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/nvidia-uvm/nvidia-uvm.Kbuild b/nvidia-uvm/nvidia-uvm.Kbuild
-index ebc19ab..100ab6c 100644
+index dd4ac81..c97043b 100644
 --- a/nvidia-uvm/nvidia-uvm.Kbuild
 +++ b/nvidia-uvm/nvidia-uvm.Kbuild
 @@ -102,6 +102,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_bus_address
@@ -20,8 +20,8 @@ index ebc19ab..100ab6c 100644
  
  NV_CONFTEST_TYPE_COMPILE_TESTS += proc_dir_entry
  NV_CONFTEST_TYPE_COMPILE_TESTS += irq_handler_t
-@@ -123,3 +124,5 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_ops_fault_removed_vma_arg
- NV_CONFTEST_TYPE_COMPILE_TESTS += node_states_n_memory
+@@ -124,3 +125,5 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += node_states_n_memory
+ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_t
  NV_CONFTEST_TYPE_COMPILE_TESTS += kmem_cache_has_kobj_remove_work
  NV_CONFTEST_TYPE_COMPILE_TESTS += sysfs_slab_unlink
 +NV_CONFTEST_TYPE_COMPILE_TESTS += proc_ops

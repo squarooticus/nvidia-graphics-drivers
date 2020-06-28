@@ -1,12 +1,37 @@
-nvidia-graphics-drivers (390.132-1+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (390.138-1) UNRELEASED; urgency=medium
 
-  * Backport nv_ioremap_nocache changes from 440.64 and nv_proc_ops_t and
-    nv_timeval changes from 440.82 to fix kernel module build for Linux 5.6.
-    (Closes: #956458)
+  * New upstream legacy branch release 390.138 (2020-06-24).
+    - Fixed a driver installation failure on Linux kernel 5.6 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "implicit declaration of function 'timespec_to_ns'".
+    - Fixed a driver installation failure on Linux kernel 5.6 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "implicit declaration of function 'getrawmonotonic'".
+    - Fixed a driver installation failure on Linux kernel 5.6 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "implicit declaration of function 'getnstimeofday'".
+    - Fixed a driver installation failure on Linux kernel 5.6 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "dereferencing pointer to incomplete type 'struct timeval'".
+    - Fixed a driver installation failure on Linux kernel 5.6 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "implicit declaration of function 'jiffies_to_timespec'".
+    - Fixed driver installation failure on Linux kernel 5.6 release candidates,
+      where the NVIDIA kernel module failed to build with error "passing
+      argument 4 of 'proc_create_data' from incompatible pointer type".
+    - Fixed driver installation failure on Linux kernel 5.6 release candidates,
+      where the NVIDIA kernel module failed to build with error "implicit
+      declaration of function 'ioremap_nocache'".  (Closes: #956458)
+    - Fixed driver installation failure on Oracle Linux 7.7 systems, where the
+      NVIDIA kernel module failed to build with error "unknown type name
+      'vm_fault_t'".
+    - Add PRIME Synchronization support for Linux kernel 5.4 and newer.
+
+  [ Andreas Beckmann ]
   * Fix #includes in conftest.sh to fix kernel module build for Linux 5.7,
     thanks to Jiri Palecek.  (Closes: #960735)
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 25 Apr 2020 21:05:06 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 28 Jun 2020 17:27:49 +0200
 
 nvidia-graphics-drivers (390.132-1) stretch; urgency=medium
 

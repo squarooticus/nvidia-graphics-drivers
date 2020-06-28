@@ -33,6 +33,7 @@ nvidia-graphics-drivers (390.138-1) UNRELEASED; urgency=medium
   * Fix #includes in conftest.sh to fix kernel module build for Linux 5.7,
     thanks to Jiri Palecek.  (Closes: #960735)
   * Refresh patches.
+  * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 28 Jun 2020 17:27:49 +0200
 

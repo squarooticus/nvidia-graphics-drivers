@@ -1,6 +1,8 @@
 nvidia-graphics-drivers (390.138-1) UNRELEASED; urgency=medium
 
   * New upstream legacy branch release 390.138 (2020-06-24).
+    * Fixed CVE-2020-5963, CVE-2020-5967.  (Closes: #963766)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5031
     - Fixed a driver installation failure on Linux kernel 5.6 release
       candidates, where the NVIDIA kernel module failed to build with error
       "implicit declaration of function 'timespec_to_ns'".

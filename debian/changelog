@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (390.138-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (390.138-1) stretch; urgency=medium
 
   * New upstream legacy branch release 390.138 (2020-06-24).
     * Fixed CVE-2020-5963, CVE-2020-5967.  (Closes: #963766)
@@ -35,7 +35,7 @@ nvidia-graphics-drivers (390.138-1) UNRELEASED; urgency=medium
   * Refresh patches.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Sun, 28 Jun 2020 17:27:49 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 28 Jun 2020 22:35:52 +0200
 
 nvidia-graphics-drivers (390.132-1) stretch; urgency=medium
 

@@ -6,6 +6,7 @@ nvidia-graphics-drivers (418.152.00-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Refresh patches.
+  * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 29 Jun 2020 17:55:10 +0200
 

@@ -16,6 +16,7 @@ nvidia-graphics-drivers (440.95.01-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
   * Refresh patches.
+  * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 29 Jun 2020 21:42:12 +0200
 

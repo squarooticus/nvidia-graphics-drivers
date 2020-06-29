@@ -13,6 +13,9 @@ nvidia-graphics-drivers (440.95.01-1) UNRELEASED; urgency=medium
       connectors are available.  See the "Display Device Names" appendix
       in the README for details.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Mon, 29 Jun 2020 21:42:12 +0200
 
 nvidia-graphics-drivers (440.82-2) unstable; urgency=medium

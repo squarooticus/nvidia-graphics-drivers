@@ -1,3 +1,13 @@
+nvidia-graphics-drivers (440.100-1) UNRELEASED; urgency=medium
+
+  * New upstream long lived branch release 440.100 (2020-06-24).
+    * Fixed CVE-2020-5963, CVE-2020-5967.  (Closes: #963766)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5031
+    - Added a workaround for some Pascal based notebooks, where the GPU
+      could fall off the bus when idle.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 29 Jun 2020 23:35:52 +0200
+
 nvidia-graphics-drivers (440.95.01-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 440.95.01 (2020-06-24).

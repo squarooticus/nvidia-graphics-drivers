@@ -4,6 +4,9 @@ nvidia-graphics-drivers (418.152.00-1) UNRELEASED; urgency=medium
     * Fixed CVE-2020-5963, CVE-2020-5967.  (Closes: #963766)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5031
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Mon, 29 Jun 2020 17:55:10 +0200
 
 nvidia-graphics-drivers (418.126.02-1) UNRELEASED; urgency=medium

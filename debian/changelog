@@ -95,7 +95,7 @@ nvidia-graphics-drivers (450.51-1) UNRELEASED; urgency=medium
   * libcuda1: Add Provides: libcuda-11.0-1{,-i386}.
   * Replace *-i386 helper packages with *:i386 recomendations.
   * Update lintian overrides.
-  * Build the nvidia-*-common packages for arm64.
+  * Build the nvidia-*-common and nvidia-detect packages for arm64.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 30 Jun 2020 10:28:49 +0200
 

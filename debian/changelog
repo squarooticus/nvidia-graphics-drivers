@@ -90,6 +90,7 @@ nvidia-graphics-drivers (450.51-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Refresh patches.
   * Update symbols files.
+  * Remove libnvidia-fatbinaryloader package.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 30 Jun 2020 10:28:49 +0200
 

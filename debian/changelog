@@ -96,6 +96,7 @@ nvidia-graphics-drivers (450.51-1) UNRELEASED; urgency=medium
   * Replace *-i386 helper packages with *:i386 recomendations.
   * Update lintian overrides.
   * Build the nvidia-*-common and nvidia-detect packages for arm64.
+  * Bump glx-alternative-nvidia dependency for arm64 support.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 30 Jun 2020 10:28:49 +0200
 

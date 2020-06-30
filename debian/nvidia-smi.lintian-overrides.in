@@ -4,7 +4,6 @@
 [!i386 !armhf]: hardening-no-bindnow
 [!i386 !armhf]: hardening-no-fortify-functions
 [!i386 !armhf]: hardening-no-pie
-[!i386 !armhf]: hardening-no-relro
 hardening-no-stackprotector
 
 # The current setup involving multiple chained alternatives would be very

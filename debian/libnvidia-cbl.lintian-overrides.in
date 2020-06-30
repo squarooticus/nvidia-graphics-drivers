@@ -4,6 +4,9 @@ hardening-no-bindnow
 hardening-no-fortify-functions
 hardening-no-relro
 
+# Use wildcard instead of exact path substitution, this is a M-A: same package.
+embedded-library usr/lib*/libnvidia-cbl.so.#VERSION#: zlib
+
 # The libnvidia-cbl.so.* SONAME changes with every upstream
 # release.
 # These private libraries are only used (and usable) as plugins

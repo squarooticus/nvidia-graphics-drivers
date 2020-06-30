@@ -56,13 +56,13 @@ nvidia-graphics-drivers (450.51-1) UNRELEASED; urgency=medium
       in the README for more information.
     - Added HEVC 10/12 bit "decode only" support to the NVIDIA VDPAU driver.
       Note that VDPAU's presentation pipeline and OpenGL-VDPAU interop
-      does not support 10- and 12-bit video surfaces yet. See the "VDPAU Support"
-      appendix in the README for supported HEVC decoder profiles.
+      does not support 10- and 12-bit video surfaces yet. See the "VDPAU
+      Support" appendix in the README for supported HEVC decoder profiles.
     - Added support for Image Sharpening for OpenGL and Vulkan applications
     - Added new VdpYCbCrFormats VDP_YCBCR_FORMAT_Y_U_V_444_16,
       VDP_YCBCR_FORMAT_P010 and VDP_YCBCR_FORMAT_P016 for accessing 16-bit
-      surfaces via VdpVideoSurfaceGetBitsYCbCr() and VdpVideoSurfacePutBitsYCbCr()
-      in the NVIDIA VDPAU driver.
+      surfaces via VdpVideoSurfaceGetBitsYCbCr() and
+      VdpVideoSurfacePutBitsYCbCr() in the NVIDIA VDPAU driver.
     - Added support to create 16-bit video surfaces in the NVIDIA VDPAU driver.
     - Modified nvidia-persistenced and libnvidia-ml (NVML) to use libtirpc for
       communication instead of relying on the deprecated glibc RPC
@@ -92,6 +92,7 @@ nvidia-graphics-drivers (450.51-1) UNRELEASED; urgency=medium
   * Update symbols files.
   * Remove libnvidia-fatbinaryloader package.
   * libnvidia-ngx1: New package for the NVIDIA NGX runtime library.
+  * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 30 Jun 2020 10:28:49 +0200
 

@@ -216,7 +216,6 @@ install-into-tmp:
 	cp -al NVIDIA-Linux/ debian/tmp
 	$(RM) -r debian/tmp/32
 	$(RM) -r debian/tmp/libglvnd_install_checker
-	$(RM) debian/tmp/NVIDIA_Changelog
 	gzip -9fn debian/tmp/nvidia-smi.1
 
 build-kernel-source-tree: install-into-tmp

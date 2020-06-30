@@ -88,6 +88,7 @@ nvidia-graphics-drivers (450.51-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Add support for arm64 driver releases.
   * Update nv-readme.ids.
+  * Refresh patches.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 30 Jun 2020 10:28:49 +0200
 

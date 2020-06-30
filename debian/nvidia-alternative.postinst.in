@@ -2,7 +2,7 @@
 set -e
 
 
-TRIPLETS="/ /i386-linux-gnu/ /x86_64-linux-gnu/ /powerpc64le-linux-gnu/"
+TRIPLETS="/ /i386-linux-gnu/ /x86_64-linux-gnu/ /aarch64-linux-gnu/ /powerpc64le-linux-gnu/"
 
 add_slave()
 {

@@ -85,6 +85,9 @@ nvidia-graphics-drivers (450.51-1) UNRELEASED; urgency=medium
       the application's request for VK_PRESENT_MODE_FIFO_KHR. This was
       particularly prevalent on DXVK titles.
 
+  [ Andreas Beckmann ]
+  * Add support for arm64 driver releases.
+
  -- Andreas Beckmann <anbe@debian.org>  Tue, 30 Jun 2020 10:28:49 +0200
 
 nvidia-graphics-drivers (440.100-1) unstable; urgency=medium

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (450.51-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
 
   * New upstream beta 450.51 (2020-06-24).
     - Added support for Vulkan direct-to-display on DisplayPort displays which
@@ -97,8 +97,9 @@ nvidia-graphics-drivers (450.51-1) UNRELEASED; urgency=medium
   * Update lintian overrides.
   * Build the nvidia-*-common and nvidia-detect packages for arm64.
   * Bump glx-alternative-nvidia dependency for arm64 support.
+  * Upload to experimental.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 30 Jun 2020 10:28:49 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 01 Jul 2020 00:02:18 +0200
 
 nvidia-graphics-drivers (440.100-1) unstable; urgency=medium
 

@@ -62,18 +62,19 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuDeviceTotalMem@Base 169
  cuDeviceTotalMem_v2@Base 260
  cuDriverGetVersion@Base 185
- (arch=amd64)cuEGLApiInit@Base 390
-#MISSING: 390# (arch=amd64)cuEGLInit@Base 346
- (arch=amd64)cuEGLStreamConsumerAcquireFrame@Base 346
- (arch=amd64)cuEGLStreamConsumerConnect@Base 346
- (arch=amd64)cuEGLStreamConsumerConnectWithFlags@Base 367.44
- (arch=amd64)cuEGLStreamConsumerDisconnect@Base 346
- (arch=amd64)cuEGLStreamConsumerReleaseFrame@Base 346
- (arch=amd64)cuEGLStreamProducerConnect@Base 346
- (arch=amd64)cuEGLStreamProducerDisconnect@Base 346
- (arch=amd64)cuEGLStreamProducerPresentFrame@Base 349
- (arch=amd64)cuEGLStreamProducerReturnFrame@Base 349
+ (arch=!i386 !ppc64el)cuEGLApiInit@Base 390
+#MISSING: 390# (arch=!i386 !ppc64el)cuEGLInit@Base 346
+ (arch=!i386 !ppc64el)cuEGLStreamConsumerAcquireFrame@Base 346
+ (arch=!i386 !ppc64el)cuEGLStreamConsumerConnect@Base 346
+ (arch=!i386 !ppc64el)cuEGLStreamConsumerConnectWithFlags@Base 367.44
+ (arch=!i386 !ppc64el)cuEGLStreamConsumerDisconnect@Base 346
+ (arch=!i386 !ppc64el)cuEGLStreamConsumerReleaseFrame@Base 346
+ (arch=!i386 !ppc64el)cuEGLStreamProducerConnect@Base 346
+ (arch=!i386 !ppc64el)cuEGLStreamProducerDisconnect@Base 346
+ (arch=!i386 !ppc64el)cuEGLStreamProducerPresentFrame@Base 349
+ (arch=!i386 !ppc64el)cuEGLStreamProducerReturnFrame@Base 349
  cuEventCreate@Base 169
+ (arch=arm64)cuEventCreateFromEGLSync@Base 450
  cuEventDestroy@Base 169
  cuEventDestroy_v2@Base 270
  cuEventElapsedTime@Base 169
@@ -150,12 +151,12 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGraphNodeGetDependentNodes@Base 410
  cuGraphNodeGetType@Base 410
  cuGraphRemoveDependencies@Base 410
- (arch=amd64)cuGraphicsEGLRegisterImage@Base 346
+ (arch=!i386 !ppc64el)cuGraphicsEGLRegisterImage@Base 346
  cuGraphicsGLRegisterBuffer@Base 195
  cuGraphicsGLRegisterImage@Base 195
  cuGraphicsMapResources@Base 195
  cuGraphicsMapResources_ptsz@Base 346
- (arch=amd64)cuGraphicsResourceGetMappedEglFrame@Base 349
+ (arch=!i386 !ppc64el)cuGraphicsResourceGetMappedEglFrame@Base 349
  cuGraphicsResourceGetMappedMipmappedArray@Base 304
  cuGraphicsResourceGetMappedPointer@Base 195
  cuGraphicsResourceGetMappedPointer_v2@Base 260

@@ -2,7 +2,7 @@
 [!i386 !armhf]: spelling-error-in-binary
 [!i386 !armhf]: hardening-no-bindnow
 [!i386 !armhf]: hardening-no-fortify-functions
-[!i386 !armhf]: hardening-no-relro
+[!i386 !armhf !arm64]: hardening-no-relro
 hardening-no-stackprotector
 
 # On architectures no longer supported by the current driver,

@@ -2,7 +2,7 @@
 [i386]: binary-file-built-without-LFS-support
 hardening-no-bindnow
 hardening-no-fortify-functions
-hardening-no-relro
+[!arm64]: hardening-no-relro
 hardening-no-stackprotector
 
 # Packages built against the NVIDIA libEGL should declare dependencies on

@@ -293,6 +293,7 @@ override_dh_shlibdeps:
 override_dh_gencontrol:
 	dh_gencontrol -- \
 		-V'nvidia:Version=$(version)' \
+		-V'nvidia:Version:major=$(version_major)' \
 		-V'nvidia:xorgDepends=$(xorg_depends)' \
 		-V'nvidia:xorgProvides=$(xorg_provides)' \
 		-V'nvidia=$(nvidia)' \

@@ -163,7 +163,7 @@ Recommends:
  module-assistant | kernel-package,
  ${nvidia}-kernel-support,
 Suggests:
- ${nvidia}-driver (>= ${nvidia:Version}) [!ppc64el],
+ ${nvidia}-driver (>= ${nvidia:Version}),
 Description: NVIDIA binary kernel module source${nvidia:VariantDesc}
  This package provides the source for the NVIDIA Xorg binary kernel module
  needed by ${nvidia}-driver in a form suitable
@@ -287,7 +287,7 @@ Recommends:
  libgles-${nvidia-}1 (= ${binary:Version}),
  libgles-${nvidia-}2 (= ${binary:Version}),
  lib${nvidia}-cfg1 (= ${binary:Version}) [${nvidia:arch:has-driver}],
- ${nvidia}-vulkan-icd (= ${binary:Version}) [amd64 i386],
+ ${nvidia}-vulkan-icd (= ${binary:Version}),
 Provides:
  nvidia-driver-libs-any,
 Conflicts:
@@ -322,7 +322,7 @@ Recommends:
  libgles-${nvidia-}1 (= ${binary:Version}),
  libgles-${nvidia-}2 (= ${binary:Version}),
  lib${nvidia}-cfg1 (= ${binary:Version}) [${nvidia:arch:has-driver}],
- ${nvidia}-nonglvnd-vulkan-icd (= ${binary:Version}) [amd64 i386],
+ ${nvidia}-nonglvnd-vulkan-icd (= ${binary:Version}),
 Provides:
  nvidia-driver-libs-any,
 Conflicts:
@@ -809,8 +809,8 @@ Depends:
  lib${nvidia}-glvkspirv (= ${binary:Version}),
  ${misc:Depends}
 Recommends:
- lib${nvidia}-cbl (= ${binary:Version}) [amd64],
- lib${nvidia}-rtcore (= ${binary:Version}) [amd64],
+ lib${nvidia}-cbl (= ${binary:Version}) [!i386 !ppc64el],
+ lib${nvidia}-rtcore (= ${binary:Version}) [!i386 !ppc64el],
 Suggests:
  vulkan-utils,
 Enhances:
@@ -857,8 +857,8 @@ Depends:
  lib${nvidia}-glvkspirv (= ${binary:Version}),
  ${misc:Depends}
 Recommends:
- lib${nvidia}-cbl (= ${binary:Version}) [amd64],
- lib${nvidia}-rtcore (= ${binary:Version}) [amd64],
+ lib${nvidia}-cbl (= ${binary:Version}) [!i386 !ppc64el],
+ lib${nvidia}-rtcore (= ${binary:Version}) [!i386 !ppc64el],
  nvidia-legacy-390xx-driver-libs-nonglvnd [i386],
 Suggests:
  vulkan-utils,

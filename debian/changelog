@@ -6,6 +6,7 @@ nvidia-graphics-drivers (418.152.00-1+git) UNRELEASED; urgency=medium
   * Drop versioned constraints that are satisfied in stretch (440.64-2).
   * Replace *-i386 helper packages with *:i386 recommendations (440.100-2).
   * [i386 armhf]: Remove transitional packages (440.100-2).
+  * nvidia-detect.install: Use dh-exec for arch restrictions (440.100-2).
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 29 Jun 2020 18:01:24 +0200
 

@@ -3,6 +3,7 @@
 spelling-error-in-binary
 hardening-no-bindnow
 hardening-no-fortify-functions
+[ppc64el]: hardening-no-relro
 hardening-no-stackprotector
 
 # Lintian and debhelper disagree w.r.t. a library in a private directory.

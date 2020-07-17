@@ -1,10 +1,11 @@
-nvidia-graphics-drivers (450.51-2) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.51-2) experimental; urgency=medium
 
   * Prepare infrastructure for packaging Tesla 450 driver releases (available
     for amd64 (including some i386 libs), arm64 and ppc64el).
   * nvidia-detect: Add support for Tesla 450 drivers.
+  * Merge changes from 440.100-2.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Jul 2020 14:43:37 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Jul 2020 16:34:04 +0200
 
 nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
 

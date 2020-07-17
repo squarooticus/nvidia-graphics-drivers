@@ -491,6 +491,7 @@ Depends:
  ${misc:Depends}
 Suggests:
  libegl-${nvidia-}0 [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
+ | libegl-nvidia-tesla-450-0 [i386 amd64 arm64 ppc64el]
  | libegl-nvidia-tesla-440-0 [i386 amd64 ppc64el]
  | libegl-nvidia-tesla-418-0 [i386 amd64 ppc64el]
  | libegl-nvidia-legacy-390xx0 [i386 amd64 armhf],
@@ -560,6 +561,7 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-vulkan-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
+ | nvidia-tesla-450-vulkan-icd [i386 amd64 arm64 ppc64el]
  | nvidia-tesla-440-vulkan-icd [i386 amd64 ppc64el]
  | nvidia-tesla-418-vulkan-icd [i386 amd64 ppc64el]
  | nvidia-legacy-390xx-vulkan-icd [i386 amd64],
@@ -612,6 +614,7 @@ Suggests:
  | nvidia-legacy-390xx-nonglvnd-vulkan-icd [i386 amd64],
 Conflicts:
  libgl1-${nvidia}-glvnd-glx,
+ libgl1-nvidia-tesla-450-glvnd-glx,
  libgl1-nvidia-tesla-440-glvnd-glx,
  libgl1-nvidia-tesla-418-glvnd-glx,
  libgl1-nvidia-legacy-390xx-glvnd-glx,
@@ -643,7 +646,7 @@ Description: NVIDIA binary Vulkan Spir-V compiler library${nvidia:VariantDesc}
  NVIDIA implementation of Vulkan.
 
 Package: libnvidia-cbl
-Architecture: amd64
+Architecture: amd64 arm64
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
@@ -663,7 +666,7 @@ Description: NVIDIA binary Vulkan ray tracing (cbl) library${nvidia:VariantDesc}
  implementation of Vulkan.
 
 Package: libnvidia-rtcore
-Architecture: amd64
+Architecture: amd64 arm64
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
@@ -897,7 +900,7 @@ Description: NVIDIA OpenGL-based Framebuffer Capture runtime library${nvidia:Var
  This package contains the NvFBCOpenGL runtime library.
 
 Package: libnvoptix1
-Architecture: amd64
+Architecture: amd64 arm64
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
@@ -964,6 +967,7 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-opencl-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
+ | nvidia-tesla-450-opencl-icd [i386 amd64 arm64 ppc64el]
  | nvidia-tesla-440-opencl-icd [i386 amd64 ppc64el]
  | nvidia-tesla-418-opencl-icd [i386 amd64 ppc64el]
  | nvidia-legacy-390xx-opencl-icd [i386 amd64],
@@ -1039,5 +1043,5 @@ Depends:
 Description: NVIDIA GPU detection utility
  The 'nvidia-detect' script in this package checks for an NVIDIA GPU in the
  system and recommends one of the non-free accelerated driver meta-packages
- (nvidia-driver, nvidia-legacy-390xx-driver, nvidia-tesla-440-driver, or
- nvidia-tesla-418-driver) for installation.
+ (nvidia-driver, nvidia-legacy-390xx-driver, nvidia-tesla-450-driver,
+ nvidia-tesla-440-driver, or nvidia-tesla-418-driver) for installation.

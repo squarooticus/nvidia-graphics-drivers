@@ -1,3 +1,23 @@
+nvidia-graphics-drivers (450.57-1) UNRELEASED; urgency=medium
+
+  * New upstream long lived branch release 450.57 (2020-07-09).
+    - Fixed a bug that caused a brief orange flash on some platforms when a
+      display mode is being set.
+  * New upstream release 440 series.
+    - Fixed a bug that could cause the X server to crash when using large
+      cursor images with PRIME display offloading.
+    - Fixed an interaction problem with 5.4 and newer Linux kernels that caused
+      a performance regression when allocating system memory.
+  * New upstream release 390 series.
+    - Fixed a driver installation failure on Linux kernel 5.8 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "'struct mm_struct' has no member named 'mmap_sem'".
+    - Fixed a driver installation failure on Linux kernel 5.8 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "too many arguments to function '__vmalloc'".
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Jul 2020 19:13:28 +0200
+
 nvidia-graphics-drivers (450.51-2) experimental; urgency=medium
 
   * Prepare infrastructure for packaging Tesla 450 driver releases (available

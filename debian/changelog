@@ -1,6 +1,9 @@
 nvidia-graphics-drivers (440.100-2) UNRELEASED; urgency=medium
 
   * Restrict watch file to releases from the 440.xx long lived branch.
+  * Replace *-i386 helper packages with *:i386 recommendations.
+  * [i386 armhf]: Remove transitional packages.
+  * nvidia-detect.install: Use dh-exec for arch restrictions.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 14 Jul 2020 01:05:44 +0200
 

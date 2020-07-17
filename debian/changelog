@@ -3,6 +3,10 @@ nvidia-graphics-drivers (418.152.00-1+git) UNRELEASED; urgency=medium
   * Build the nvidia-*-common packages for ppc64el (430.50-2).
   * nvidia-detect: Build for ppc64el (430.64-2).
   * Switch to debhelper-compat (= 13).
+  * Drop versioned constraints that are satisfied in stretch (440.64-2).
+  * Replace *-i386 helper packages with *:i386 recommendations (440.100-2).
+  * [i386 armhf]: Remove transitional packages (440.100-2).
+  * nvidia-detect.install: Use dh-exec for arch restrictions (440.100-2).
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 29 Jun 2020 18:01:24 +0200
 
@@ -576,6 +580,7 @@ nvidia-graphics-drivers (390.138-1) stretch; urgency=medium
       NVIDIA kernel module failed to build with error "unknown type name
       'vm_fault_t'".
     - Add PRIME Synchronization support for Linux kernel 5.4 and newer.
+      (Closes: #948568)
 
   [ Andreas Beckmann ]
   * Fix #includes in conftest.sh to fix kernel module build for Linux 5.7,

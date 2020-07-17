@@ -93,13 +93,21 @@ nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
   * Remove libnvidia-fatbinaryloader package.
   * libnvidia-ngx1: New package for the NVIDIA NGX runtime library.
   * libcuda1: Add Provides: libcuda-11.0-1{,-i386}.
-  * Replace *-i386 helper packages with *:i386 recomendations.
   * Update lintian overrides.
   * Build the nvidia-*-common and nvidia-detect packages for arm64.
   * Bump glx-alternative-nvidia dependency for arm64 support.
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 01 Jul 2020 00:02:18 +0200
+
+nvidia-graphics-drivers (440.100-2) unstable; urgency=medium
+
+  * Restrict watch file to releases from the 440.xx long lived branch.
+  * Replace *-i386 helper packages with *:i386 recommendations.
+  * [i386 armhf]: Remove transitional packages.
+  * nvidia-detect.install: Use dh-exec for arch restrictions.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Jul 2020 13:30:24 +0200
 
 nvidia-graphics-drivers (440.100-1) unstable; urgency=medium
 

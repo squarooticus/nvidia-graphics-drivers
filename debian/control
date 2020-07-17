@@ -12,7 +12,7 @@ Vcs-Browser: https://salsa.debian.org/nvidia-team/nvidia-graphics-drivers
 Vcs-Git: https://salsa.debian.org/nvidia-team/nvidia-graphics-drivers.git
 Build-Depends:
  debhelper-compat (= 13),
- dpkg-dev (>= 1.18.8),
+ dh-exec,
  xz-utils,
  dkms,
  libvulkan1 (>= 1.0.42),
@@ -27,31 +27,30 @@ XS-Autobuild: yes
 
 Package: nvidia-driver
 Section: non-free/x11
-Architecture: amd64 arm64 i386 armhf
+Architecture: amd64 arm64
 Pre-Depends:
- nvidia-installer-cleanup [${nvidia:arch:has-driver}],
+ nvidia-installer-cleanup,
  ${nvidia:legacy-check},
 Depends:
- nvidia-legacy-390xx-driver [${nvidia:arch:has-no-driver}],
- ${nvidia}-driver-libs (= ${binary:Version}) [${nvidia:arch:has-driver}],
- ${nvidia}-driver-bin (= ${binary:Version}) [${nvidia:arch:has-driver}],
- xserver-xorg-video-${nvidia} (= ${binary:Version}) [${nvidia:arch:has-driver}],
- ${nvidia}-vdpau-driver (= ${binary:Version}) [${nvidia:arch:has-driver}],
- ${nvidia}-alternative (= ${binary:Version}) [${nvidia:arch:has-driver}],
+ ${nvidia}-driver-libs (= ${binary:Version}),
+ ${nvidia}-driver-bin (= ${binary:Version}),
+ xserver-xorg-video-${nvidia} (= ${binary:Version}),
+ ${nvidia}-vdpau-driver (= ${binary:Version}),
+ ${nvidia}-alternative (= ${binary:Version}),
  ${nvidia:kmod:binary},
- nvidia-support [${nvidia:arch:has-driver}],
+ nvidia-support,
  ${misc:Depends}
 Recommends:
- ${nvidia-settings} [${nvidia:arch:has-driver}],
- lib${nvidia}-cfg1 (= ${binary:Version}) [${nvidia:arch:has-driver}],
- nvidia-persistenced [${nvidia:arch:has-driver}],
+ ${nvidia-settings},
+ lib${nvidia}-cfg1 (= ${binary:Version}),
+ nvidia-persistenced,
 Suggests:
  ${nvidia:kmod:source},
 Provides:
- nvidia-driver-any [${nvidia:arch:has-driver}],
- nvidia-glx-any [${nvidia:arch:has-driver}],
+ nvidia-driver-any,
+ nvidia-glx-any,
 Description: NVIDIA metapackage${nvidia:VariantDesc}
- ${nvidia:no-driver-notice}This metapackage depends on the NVIDIA binary driver and libraries
+ This metapackage depends on the NVIDIA binary driver and libraries
  that provide optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES/Vulkan applications via a direct-rendering X Server.
  .
@@ -104,7 +103,7 @@ Depends:
  ${nvidia}-alternative (= ${binary:Version}),
  ${nvidia}-alternative--kmod-alias,
  nvidia-kernel-common (>= 20151021),
- nvidia-modprobe (>= 352),
+ nvidia-modprobe (>= ${nvidia:Version:major}),
  ${misc:Depends}
 Provides:
  nvidia-kernel-support-any,
@@ -127,7 +126,7 @@ Depends:
  ${nvidia}-kernel-support--v1,
  ${misc:Depends}
 Recommends:
- ${nvidia}-driver (>= ${nvidia:Version}) [${nvidia:arch:has-driver}]
+ ${nvidia}-driver (>= ${nvidia:Version})
  | ${libcuda1} (>= ${nvidia:Version}),
 Provides:
  ${nvidia}-kernel-${nvidia:Version},
@@ -164,7 +163,7 @@ Recommends:
  module-assistant | kernel-package,
  ${nvidia}-kernel-support,
 Suggests:
- ${nvidia}-driver (>= ${nvidia:Version}) [!ppc64el],
+ ${nvidia}-driver (>= ${nvidia:Version}),
 Description: NVIDIA binary kernel module source${nvidia:VariantDesc}
  This package provides the source for the NVIDIA Xorg binary kernel module
  needed by ${nvidia}-driver in a form suitable
@@ -189,29 +188,28 @@ Description: NVIDIA binary kernel module source${nvidia:VariantDesc}
 
 Package: xserver-xorg-video-nvidia
 Section: non-free/x11
-Architecture: amd64 arm64 i386 armhf
+Architecture: amd64 arm64
 Pre-Depends:
- nvidia-installer-cleanup [${nvidia:arch:has-driver}],
+ nvidia-installer-cleanup,
  ${nvidia:legacy-check},
 Depends:
- xserver-xorg-video-nvidia-legacy-390xx [${nvidia:arch:has-no-driver}],
- lib${nvidia}-glcore (= ${binary:Version}) [${nvidia:arch:has-driver}],
- ${nvidia}-alternative (= ${binary:Version}) [${nvidia:arch:has-driver}],
- nvidia-support [${nvidia:arch:has-driver}],
+ lib${nvidia}-glcore (= ${binary:Version}),
+ ${nvidia}-alternative (= ${binary:Version}),
+ nvidia-support,
  ${nvidia:xorgDepends},
  ${shlibs:Depends}, ${misc:Depends}
 Recommends:
- ${nvidia}-driver (>= ${nvidia:Version}) [${nvidia:arch:has-driver}],
- ${nvidia}-vdpau-driver (>= ${nvidia:Version}) [${nvidia:arch:has-driver}],
+ ${nvidia}-driver (>= ${nvidia:Version}),
+ ${nvidia}-vdpau-driver (>= ${nvidia:Version}),
  ${nvidia:kmod:binary},
- ${nvidia-settings} [${nvidia:arch:has-driver}],
+ ${nvidia-settings},
 Suggests:
  ${nvidia:kmod:source},
 Provides:
- xserver-xorg-video-nvidia-any [${nvidia:arch:has-driver}],
+ xserver-xorg-video-nvidia-any,
  ${nvidia:xorgProvides},
 Description: NVIDIA binary Xorg driver${nvidia:VariantDesc}
- ${nvidia:no-driver-notice}The NVIDIA binary driver provides optimized hardware acceleration of
+ The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
  .
@@ -288,7 +286,7 @@ Recommends:
  libgles-${nvidia-}1 (= ${binary:Version}),
  libgles-${nvidia-}2 (= ${binary:Version}),
  lib${nvidia}-cfg1 (= ${binary:Version}) [${nvidia:arch:has-driver}],
- ${nvidia}-vulkan-icd (= ${binary:Version}) [amd64 i386 ${arch:arm64}],
+ ${nvidia}-vulkan-icd (= ${binary:Version}),
 Provides:
  nvidia-driver-libs-any,
 Conflicts:
@@ -493,9 +491,9 @@ Depends:
  ${misc:Depends}
 Suggests:
  libegl-${nvidia-}0 [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
- | libegl-nvidia-tesla-440-0 [!i386 !armhf !arm64]
- | libegl-nvidia-tesla-418-0 [!i386 !armhf !arm64]
- | libegl-nvidia-legacy-390xx0 [!arm64 !ppc64el],
+ | libegl-nvidia-tesla-440-0 [i386 amd64 ppc64el]
+ | libegl-nvidia-tesla-418-0 [i386 amd64 ppc64el]
+ | libegl-nvidia-legacy-390xx0 [i386 amd64 armhf],
 Description: NVIDIA binary EGL driver - common files
  EGL provides a platform-agnostic mechanism for creating rendering surfaces
  for use with other graphics libraries, such as OpenGL|ES.
@@ -562,9 +560,9 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-vulkan-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
- | nvidia-tesla-440-vulkan-icd [!i386 !arm64]
- | nvidia-tesla-418-vulkan-icd [!i386 !arm64]
- | nvidia-legacy-390xx-vulkan-icd [!arm64 !ppc64el],
+ | nvidia-tesla-440-vulkan-icd [i386 amd64 ppc64el]
+ | nvidia-tesla-418-vulkan-icd [i386 amd64 ppc64el]
+ | nvidia-legacy-390xx-vulkan-icd [i386 amd64],
 Conflicts:
  libgl1-${nvidia}-glx,
  libgl1-nvidia-tesla-418-glx,
@@ -586,8 +584,8 @@ Depends:
  lib${nvidia}-glvkspirv (= ${binary:Version}),
  ${misc:Depends}
 Recommends:
- lib${nvidia}-cbl (= ${binary:Version}) [amd64],
- lib${nvidia}-rtcore (= ${binary:Version}) [amd64],
+ lib${nvidia}-cbl (= ${binary:Version}) [!i386 !ppc64el],
+ lib${nvidia}-rtcore (= ${binary:Version}) [!i386 !ppc64el],
 Suggests:
  vulkan-utils,
 Enhances:
@@ -610,8 +608,8 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-nonglvnd-vulkan-icd [none]
- | nvidia-tesla-418-nonglvnd-vulkan-icd [!i386]
- | nvidia-legacy-390xx-nonglvnd-vulkan-icd [!ppc64el],
+ | nvidia-tesla-418-nonglvnd-vulkan-icd [i386 amd64 ppc64el]
+ | nvidia-legacy-390xx-nonglvnd-vulkan-icd [i386 amd64],
 Conflicts:
  libgl1-${nvidia}-glvnd-glx,
  libgl1-nvidia-tesla-440-glvnd-glx,
@@ -686,18 +684,17 @@ Description: NVIDIA binary Vulkan ray tracing (rtcore) library${nvidia:VariantDe
 
 Package: nvidia-smi
 Section: non-free/utils
-Architecture: amd64 arm64 i386 armhf
+Architecture: amd64 arm64
 Depends:
- nvidia-legacy-390xx-smi [${nvidia:arch:has-no-driver}],
- ${nvidia}-alternative (= ${binary:Version}) [${nvidia:arch:has-driver}],
- lib${nvidia}-ml1 (= ${binary:Version}) [${nvidia:arch:has-driver}],
+ ${nvidia}-alternative (= ${binary:Version}),
+ lib${nvidia}-ml1 (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Recommends:
  ${nvidia:kmod:binary},
 Suggests:
  ${nvidia:kmod:source},
 Description: NVIDIA System Management Interface${nvidia:VariantDesc}
- ${nvidia:no-driver-notice}The NVIDIA Management Library (NVML) provides a monitoring and management API.
+ The NVIDIA Management Library (NVML) provides a monitoring and management API.
  The application "nvidia-smi" is the NVIDIA System Management Interface (NVSMI)
  and provides a command line interface to this functionality.
  .
@@ -753,7 +750,7 @@ Recommends:
  ${nvidia:kmod:binary},
  ${nvidia}-smi [${nvidia:arch:has-driver}],
  lib${nvidia}-cfg1 (= ${binary:Version}) [${nvidia:arch:has-driver}],
- nvidia-persistenced,
+ nvidia-persistenced [${nvidia:arch:has-driver}],
  ${libcuda1}:i386 (= ${binary:Version}) [amd64],
 Suggests:
  nvidia-cuda-mps [${nvidia:arch:has-driver}],
@@ -967,9 +964,9 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-opencl-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
- | nvidia-tesla-440-opencl-icd [!i386 !arm64]
- | nvidia-tesla-418-opencl-icd [!i386 !arm64]
- | nvidia-legacy-390xx-opencl-icd [!arm64 !ppc64el],
+ | nvidia-tesla-440-opencl-icd [i386 amd64 ppc64el]
+ | nvidia-tesla-418-opencl-icd [i386 amd64 ppc64el]
+ | nvidia-legacy-390xx-opencl-icd [i386 amd64],
 Description: NVIDIA OpenCL driver - common files
  OpenCL (Open Computing Language) is a multivendor open standard for
  general-purpose parallel programming of heterogeneous systems that include

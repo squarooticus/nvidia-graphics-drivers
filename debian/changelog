@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (450.51.05-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.51.05 (2020-07-07).
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Jul 2020 16:45:37 +0200
+
 nvidia-graphics-drivers (450.51-2) experimental; urgency=medium
 
   * Prepare infrastructure for packaging Tesla 450 driver releases (available
@@ -9,7 +15,6 @@ nvidia-graphics-drivers (450.51-2) experimental; urgency=medium
 
 nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
 
-  * New upstream Tesla release 450.51.05 (2020-07-07).
   * New upstream beta 450.51 (2020-06-24).
     - Added support for Vulkan direct-to-display on DisplayPort displays which
       are connected via DisplayPort Multi-Stream Transport (DP-MST).

@@ -646,6 +646,7 @@ Depends:
  ${misc:Depends}
 Suggests:
  libegl-${nvidia-}0 [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
+ | libegl-nvidia-tesla-450-0 [i386 amd64 arm64 ppc64el]
  | libegl-nvidia-tesla-440-0 [i386 amd64 ppc64el]
  | libegl-nvidia-tesla-418-0 [i386 amd64 ppc64el]
  | libegl-nvidia-legacy-390xx0 [i386 amd64 armhf],
@@ -715,6 +716,7 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-vulkan-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
+ | nvidia-tesla-450-vulkan-icd [i386 amd64 arm64 ppc64el]
  | nvidia-tesla-440-vulkan-icd [i386 amd64 ppc64el]
  | nvidia-tesla-418-vulkan-icd [i386 amd64 ppc64el]
  | nvidia-legacy-390xx-vulkan-icd [i386 amd64],
@@ -767,6 +769,7 @@ Suggests:
  | nvidia-legacy-390xx-nonglvnd-vulkan-icd [i386 amd64],
 Conflicts:
  libgl1-${nvidia}-glvnd-glx,
+ libgl1-nvidia-tesla-450-glvnd-glx,
  libgl1-nvidia-tesla-440-glvnd-glx,
  libgl1-nvidia-tesla-418-glvnd-glx,
  libgl1-nvidia-legacy-390xx-glvnd-glx,
@@ -1120,6 +1123,7 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-opencl-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
+ | nvidia-tesla-450-opencl-icd [i386 amd64 arm64 ppc64el]
  | nvidia-tesla-440-opencl-icd [i386 amd64 ppc64el]
  | nvidia-tesla-418-opencl-icd [i386 amd64 ppc64el]
  | nvidia-legacy-390xx-opencl-icd [i386 amd64],

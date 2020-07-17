@@ -798,7 +798,7 @@ Description: NVIDIA binary Vulkan Spir-V compiler library${nvidia:VariantDesc}
  NVIDIA implementation of Vulkan.
 
 Package: lib${nvidia}-cbl
-Architecture: amd64
+Architecture: amd64 ${arch:arm64}
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
@@ -818,7 +818,7 @@ Description: NVIDIA binary Vulkan ray tracing (cbl) library${nvidia:VariantDesc}
  implementation of Vulkan.
 
 Package: lib${nvidia}-rtcore
-Architecture: amd64
+Architecture: amd64 ${arch:arm64}
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
@@ -1053,7 +1053,7 @@ Description: NVIDIA OpenGL-based Framebuffer Capture runtime library${nvidia:Var
  This package contains the NvFBCOpenGL runtime library.
 
 Package: lib${nvidia-if-variant}nvoptix1
-Architecture: amd64
+Architecture: amd64 ${arch:arm64}
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
@@ -1099,7 +1099,7 @@ Description: NVIDIA allocator runtime library${nvidia:VariantDesc}
  This package contains the private nvidia-allocator runtime library.
 
 Package: lib${nvidia}-ngx1
-Architecture: amd64 ${arch:ppc64el}
+Architecture: amd64
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}

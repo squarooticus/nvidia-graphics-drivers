@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (450.57-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.57-1) experimental; urgency=medium
 
   * New upstream long lived branch release 450.57 (2020-07-09).
     - Fixed a bug that caused a brief orange flash on some platforms when a
@@ -16,7 +16,7 @@ nvidia-graphics-drivers (450.57-1) UNRELEASED; urgency=medium
       candidates, where the NVIDIA kernel module failed to build with error
       "too many arguments to function '__vmalloc'".
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Jul 2020 19:13:28 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 22 Jul 2020 16:33:11 +0200
 
 nvidia-graphics-drivers (450.51-2) experimental; urgency=medium
 

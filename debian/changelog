@@ -1,12 +1,13 @@
-nvidia-graphics-drivers (450.57-2) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.57-2) unstable; urgency=medium
 
   * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
     libnvidia-cfg1 in third-party packages.
     - Add Provides: libnvidia-cfg.so.1 (= ${nvidia:Version}).
     - Generate alternative versioned dependency on libnvidia-cfg.so.1 through
       the symbols file.
+  * Upload to unstable.
 
- -- Andreas Beckmann <anbe@debian.org>  Sun, 09 Aug 2020 23:10:23 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 09 Aug 2020 23:55:49 +0200
 
 nvidia-graphics-drivers (450.57-1) experimental; urgency=medium
 

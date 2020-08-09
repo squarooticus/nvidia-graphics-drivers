@@ -1,3 +1,13 @@
+nvidia-graphics-drivers (450.57-2) UNRELEASED; urgency=medium
+
+  * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
+    libnvidia-cfg1 in third-party packages.
+    - Add Provides: libnvidia-cfg.so.1 (= ${nvidia:Version}).
+    - Generate alternative versioned dependency on libnvidia-cfg.so.1 through
+      the symbols file.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 09 Aug 2020 23:10:23 +0200
+
 nvidia-graphics-drivers (450.57-1) experimental; urgency=medium
 
   * New upstream long lived branch release 450.57 (2020-07-09).
@@ -1179,12 +1189,12 @@ nvidia-graphics-drivers (390.132-1) stretch; urgency=medium
   * debian/gen-control.pl: Support substitutions in the Architecture field and
     skip packages with empty or commented Architecture field (430.50-2).
   * Create and commit tarball symlinks for legacy branches (430.64-1).
-  * Allow alternative libnvidia-{tesla,legacy-*}-ml1 packages to substitute
+  * Allow alternative libnvidia-{tesla,legacy}-*-ml1 packages to substitute
     libnvidia-ml1 (430.64-2).
     - Add Provides: libnvidia-ml.so.1 (= ${nvidia:Version}).
     - Generate alternative versioned dependency on libnvidia-ml.so.1 through
       the symbols file.
-  * Allow alternative libnvidia-{tesla,legacy-*}-cuda1 packages to substitute
+  * Allow alternative libnvidia-{tesla,legacy}-*-cuda1 packages to substitute
     libcuda1 in third-party packages (430.64-3).
     - Add Provides: libcuda.so.1 (= ${nvidia:Version}).
     - Generate alternative versioned dependency on libcuda.so.1 through the

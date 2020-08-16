@@ -1,8 +1,8 @@
-nvidia-graphics-drivers (450.57-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.57-3) unstable; urgency=medium
 
   * There is no libnvidia-compiler on arm64.
 
- -- Andreas Beckmann <anbe@debian.org>  Sun, 16 Aug 2020 14:51:18 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 16 Aug 2020 14:53:30 +0200
 
 nvidia-graphics-drivers (450.57-2) unstable; urgency=medium
 

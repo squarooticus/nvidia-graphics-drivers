@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (450.57-3) UNRELEASED; urgency=medium
+
+  * There is no libnvidia-compiler on arm64.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 16 Aug 2020 14:51:18 +0200
+
 nvidia-graphics-drivers (450.57-2) unstable; urgency=medium
 
   * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute

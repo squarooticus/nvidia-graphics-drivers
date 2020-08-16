@@ -990,7 +990,7 @@ Depends:
  ocl-icd-libopencl1 | nvidia-libopencl1 | libopencl1,
  ${nvidia}-alternative (= ${binary:Version}),
  ${libcuda1} (= ${binary:Version}),
- lib${nvidia}-compiler (= ${binary:Version}) [!ppc64el],
+ lib${nvidia}-compiler (= ${binary:Version}) [!arm64 !ppc64el],
  ${shlibs:Depends}, ${misc:Depends}
 Enhances:
  libopencl1,

@@ -1,3 +1,46 @@
+nvidia-graphics-drivers (450.51.06-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.51.06 (2020-07-28).
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 18 Aug 2020 22:14:06 +0200
+
+nvidia-graphics-drivers (450.57-3) unstable; urgency=medium
+
+  * There is no libnvidia-compiler on arm64.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 16 Aug 2020 14:53:30 +0200
+
+nvidia-graphics-drivers (450.57-2) unstable; urgency=medium
+
+  * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
+    libnvidia-cfg1 in third-party packages.
+    - Add Provides: libnvidia-cfg.so.1 (= ${nvidia:Version}).
+    - Generate alternative versioned dependency on libnvidia-cfg.so.1 through
+      the symbols file.
+  * Upload to unstable.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 09 Aug 2020 23:55:49 +0200
+
+nvidia-graphics-drivers (450.57-1) experimental; urgency=medium
+
+  * New upstream long lived branch release 450.57 (2020-07-09).
+    - Fixed a bug that caused a brief orange flash on some platforms when a
+      display mode is being set.
+  * New upstream release 440 series.
+    - Fixed a bug that could cause the X server to crash when using large
+      cursor images with PRIME display offloading.
+    - Fixed an interaction problem with 5.4 and newer Linux kernels that caused
+      a performance regression when allocating system memory.
+  * New upstream release 390 series.
+    - Fixed a driver installation failure on Linux kernel 5.8 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "'struct mm_struct' has no member named 'mmap_sem'".
+    - Fixed a driver installation failure on Linux kernel 5.8 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "too many arguments to function '__vmalloc'".
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 22 Jul 2020 16:33:11 +0200
+
 nvidia-graphics-drivers (450.51.05-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.51.05 (2020-07-07).
@@ -1164,12 +1207,12 @@ nvidia-graphics-drivers (390.132-1) stretch; urgency=medium
   * debian/gen-control.pl: Support substitutions in the Architecture field and
     skip packages with empty or commented Architecture field (430.50-2).
   * Create and commit tarball symlinks for legacy branches (430.64-1).
-  * Allow alternative libnvidia-{tesla,legacy-*}-ml1 packages to substitute
+  * Allow alternative libnvidia-{tesla,legacy}-*-ml1 packages to substitute
     libnvidia-ml1 (430.64-2).
     - Add Provides: libnvidia-ml.so.1 (= ${nvidia:Version}).
     - Generate alternative versioned dependency on libnvidia-ml.so.1 through
       the symbols file.
-  * Allow alternative libnvidia-{tesla,legacy-*}-cuda1 packages to substitute
+  * Allow alternative libnvidia-{tesla,legacy}-*-cuda1 packages to substitute
     libcuda1 in third-party packages (430.64-3).
     - Add Provides: libcuda.so.1 (= ${nvidia:Version}).
     - Generate alternative versioned dependency on libcuda.so.1 through the

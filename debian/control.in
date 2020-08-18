@@ -263,6 +263,7 @@ Depends:
  ${nvidia}-alternative (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Provides:
+ libnvidia-cfg.so.1 (= ${nvidia:Version}),
  libnvidia-cfg1-any,
 Description: NVIDIA binary OpenGL/GLX configuration library${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
@@ -1145,7 +1146,7 @@ Depends:
  ocl-icd-libopencl1 | nvidia-libopencl1 | libopencl1,
  ${nvidia}-alternative (= ${binary:Version}),
  ${libcuda1} (= ${binary:Version}),
- lib${nvidia}-compiler (= ${binary:Version}) [!ppc64el],
+ lib${nvidia}-compiler (= ${binary:Version}) [!arm64 !ppc64el],
  ${shlibs:Depends}, ${misc:Depends}
 Enhances:
  libopencl1,

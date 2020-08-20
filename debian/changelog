@@ -1,4 +1,13 @@
-nvidia-graphics-drivers (450.57-4) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.66-1) UNRELEASED; urgency=medium
+
+  * New upstream long lived branch release 450.66 (2020-08-18).
+    - Added support for the following GPUs: EIZO Quadro MED-XN31LP,
+      EIZO Quadro MED-XN50LP, EIZO Quadro MED-XN51LP, EIZO Quadro MED-XN70,
+      EIZO Quadro MED-XN71, EIZO Quadro MED-XN72, EIZO Quadro MED-XN90,
+      EIZO Quadro MED-XN91, EIZO Quadro MED-XN92, Matrox D-Series D1450,
+      Matrox D-Series D1480
+    - Fixed triple buffering support of Vulkan X11 swapchains when applications
+      are syncing to vblank.
 
   [ Andreas Beckmann ]
   * Test that the patches can be applied to the module source.
@@ -9,7 +18,7 @@ nvidia-graphics-drivers (450.57-4) UNRELEASED; urgency=medium
   [ Vincent Cheng ]
   * Remove myself from Uploaders.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 31 Aug 2020 13:50:18 +0200
+ -- Luca Boccassi <bluca@debian.org>  Thu, 20 Aug 2020 13:08:07 +0100
 
 nvidia-graphics-drivers (450.57-3) unstable; urgency=medium
 
@@ -73,9 +82,6 @@ nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
       under Wayland.
     - Fixed a bug that could cause some Swap Group configurations to present
       at half of the display refresh rate.
-    - Added a new Connector-N display connector name alias type, with a unique
-      alias assigned to each physical display connector on a GPU. See the
-      README for more information.
     - Fixed a bug that prevented X11 EGL displays from being reinitialized.
     - The 450 driver series is the last that supports NvFBC's
       NVFBC_CAPTURE_TO_HW_ENCODER capture interface, which has been deprecated

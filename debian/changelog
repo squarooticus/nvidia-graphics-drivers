@@ -11,6 +11,7 @@ nvidia-graphics-drivers (450.66-1) UNRELEASED; urgency=medium
 
   [ Luca Boccassi ]
   * Update nv-readme.ids.
+  * Update symbols files.
 
   [ Andreas Beckmann ]
   * Test that the patches can be applied to the module source.

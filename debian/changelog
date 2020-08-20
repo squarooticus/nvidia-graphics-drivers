@@ -9,6 +9,9 @@ nvidia-graphics-drivers (450.66-1) UNRELEASED; urgency=medium
     - Fixed triple buffering support of Vulkan X11 swapchains when applications
       are syncing to vblank.
 
+  [ Luca Boccassi ]
+  * Update nv-readme.ids.
+
   [ Andreas Beckmann ]
   * Test that the patches can be applied to the module source.
   * nvidia-kernel-dkms: Ship with unapplied patches and apply the patches

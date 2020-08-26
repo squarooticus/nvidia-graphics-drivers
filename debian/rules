@@ -73,6 +73,7 @@ RENAMED_CONTROL	 = $(foreach f,$(RENAME_CONTROL),$(call applyprefixrenamelist,$f
 TEMPLATES	:= $(wildcard debian/*.in debian/module/debian/*.in debian/module/debian/patches/*.in debian/detect/*.in)
 AUTOGEN		+= $(patsubst %.in,%,$(TEMPLATES))
 AUTOGEN		+= debian/module/debian/changelog
+AUTOGEN		+= debian/module/debian/bug-control
 AUTOGEN		+= $(patsubst %.in,%,$(RENAMED_CONTROL))
 AUTOGEN		+= debian/bug-control
 AUTOGEN		+= debian/substvars
@@ -200,9 +201,6 @@ endif
 	cp -a debian/module/debian $(module_source)/
 	cp -a debian/copyright $(module_source)/debian/
 	cp -a debian/bug-script $(module_source)/debian/
-	cp -a debian/bug-control $(module_source)/debian/
-	echo "" >> $(module_source)/debian/bug-control
-	echo "Submit-As: $(nvidia)-kernel-source" >> $(module_source)/debian/bug-control
 
 	# Fix permissions.
 	chmod -R a-sx,u=rwX,go=rX $(module_source)/../..
@@ -314,6 +312,11 @@ override_dh_strip_nondeterminism:
 
 debian/module/debian/changelog: debian/changelog
 	sed '1s/^nvidia-graphics-drivers$(legacy)/$(nvidia)-kernel/g' $< > $@
+
+debian/module/debian/bug-control: debian/bug-control
+	cp $< $@
+	echo "" >> $@
+	echo "Submit-As: $(nvidia)-kernel-source" >> $@
 
 
 # Renaming control files for legacy packaging

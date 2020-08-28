@@ -82,7 +82,6 @@ AUTOCLEAN	 = $(filter-out $(AUTOKEEP),$(AUTOGEN))
 
 module_source	 = debian/$(nvidia)-kernel-source/usr/src/modules/$(nvidia)-kernel
 module_txz	 = $(subst /modules/,/,$(module_source)).tar.xz
-dkms_source	 = debian/$(nvidia)-kernel-dkms/usr/src/$(module)-$(version)
 
 empty		 =
 space		 = $(empty) $(empty)
@@ -192,10 +191,9 @@ override_dh_auto_build: build-stamp
 
 # Build two kernel module source tarballs for use with
 #  - module-assistant and make-kpkg
-#  - dkms
-.PHONY: install-into-tmp build-kernel-source-tree build-kernel-dkms-tree
+.PHONY: install-into-tmp build-kernel-source-tree
 override_dh_auto_install: install-into-tmp
-override_dh_auto_install: build-kernel-source-tree build-kernel-dkms-tree
+override_dh_auto_install: build-kernel-source-tree
 
 install-into-tmp: build-stamp
 	# "Install" into debian/tmp.
@@ -206,7 +204,7 @@ build-kernel-source-tree: install-into-tmp
 	# Build the nvidia-kernel-source tree.
 	$(RM) -r $(module_source)
 	mkdir -p $(module_source)
-	mv debian/tmp/kernel/* $(module_source)/
+	cp -al debian/tmp/kernel/* $(module_source)/
 
 	# Install a debian/ tree.
 	cp -a debian/module/debian $(module_source)/
@@ -229,17 +227,6 @@ override_dh_install:
 	    --no-recursion --null -T -
 	tar tfvJ $(module_txz)
 	$(RM) -r $(module_source)/../../modules
-
-build-kernel-dkms-tree: build-kernel-source-tree
-	# Use the nvidia-kernel-source source to create the DKMS tree.
-	$(RM) -r $(dir $(dkms_source))
-	mkdir -p $(dir $(dkms_source))
-	cp -a $(module_source) $(dkms_source)
-	cd $(dkms_source) \
-	    && mkdir patches \
-	    && mv debian/patches/*.patch debian/patches/series patches/ \
-	    && $(RM) -r debian
-	ls -la $(dkms_source)
 
 kernel-source-tree: build-stamp $(AUTOGEN)
 	$(RM) -r $@

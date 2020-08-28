@@ -152,6 +152,7 @@ override_dh_auto_clean:
 	$(RM) -r .pc
 	$(RM) NVIDIA-Linux
 	$(RM) -r $(foreach a,$(ARCH_LIST),NVIDIA-Linux-$a $(NVIDIA_DIRNAME_$a))
+	$(RM) -r build
 	$(RM) -r kernel-source-tree
 	$(RM) nvidia.ids nv-kernel.ids nv-readme.ids pci.ids.nvidia*
 	$(RM) LICENSE.txt LICENSE.tmp copyright.tmp
@@ -164,6 +165,15 @@ override_dh_clean:
 
 override_dh_auto_configure: prepare
 
+build-stamp: unpack-stamp
+	$(RM) -r build
+	cp -al NVIDIA-Linux/ build
+	$(RM) -r build/32
+	gzip -9fn build/nvidia-smi.1
+	touch $@
+
+override_dh_auto_build: build-stamp
+
 # Build two kernel module source tarballs for use with
 #  - module-assistant and make-kpkg
 #  - dkms
@@ -171,13 +181,11 @@ override_dh_auto_configure: prepare
 override_dh_auto_install: install-into-tmp
 override_dh_auto_install: build-kernel-source-tree build-kernel-dkms-tree
 
-install-into-tmp:
+install-into-tmp: build-stamp
 	# "Install" into debian/tmp.
 	$(RM) -r debian/tmp
-	cp -al NVIDIA-Linux/ debian/tmp
-	$(RM) -r debian/tmp/32
+	cp -al build/ debian/tmp
 	$(RM) debian/tmp/NVIDIA_Changelog
-	gzip -9fn debian/tmp/nvidia-smi.1
 
 build-kernel-source-tree: install-into-tmp
 	# Build the nvidia-kernel-source tree.

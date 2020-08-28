@@ -213,6 +213,9 @@ build-kernel-source-tree: install-into-tmp
 	cp -a debian/copyright $(module_source)/debian/
 	cp -a debian/bug-script $(module_source)/debian/
 
+override_dh_install:
+	dh_install
+
 	chmod a+x $(module_source)/debian/rules
 	find '$(module_source)/../../modules' -depth -newermt '@$(SOURCE_DATE_EPOCH)' -print0 | \
 		xargs -0r touch --no-dereference --date='@$(SOURCE_DATE_EPOCH)'
@@ -225,13 +228,13 @@ build-kernel-source-tree: install-into-tmp
 	    --exclude '*.in' \
 	    --no-recursion --null -T -
 	tar tfvJ $(module_txz)
+	$(RM) -r $(module_source)/../../modules
 
 build-kernel-dkms-tree: build-kernel-source-tree
 	# Use the nvidia-kernel-source source to create the DKMS tree.
 	$(RM) -r $(dir $(dkms_source))
 	mkdir -p $(dir $(dkms_source))
-	mv $(module_source) $(dkms_source)
-	rmdir $(dir $(module_source))
+	cp -a $(module_source) $(dkms_source)
 	cd $(dkms_source) \
 	    && QUILT_PATCHES=debian/patches quilt --quiltrc /dev/null push -a || test $$? = 2 \
 	    && $(RM) -r .pc debian

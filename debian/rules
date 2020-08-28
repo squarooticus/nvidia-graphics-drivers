@@ -80,9 +80,6 @@ AUTOGEN		+= debian/substvars
 AUTOKEEP	 = debian/watch
 AUTOCLEAN	 = $(filter-out $(AUTOKEEP),$(AUTOGEN))
 
-module_source	 = debian/$(nvidia)-kernel-source/usr/src/modules/$(nvidia)-kernel
-module_txz	 = $(subst /modules/,/,$(module_source)).tar.xz
-
 empty		 =
 space		 = $(empty) $(empty)
 comma		 = ,
@@ -189,44 +186,30 @@ endif
 
 override_dh_auto_build: build-stamp
 
-# Build two kernel module source tarballs for use with
-#  - module-assistant and make-kpkg
-.PHONY: install-into-tmp build-kernel-source-tree
-override_dh_auto_install: install-into-tmp
-override_dh_auto_install: build-kernel-source-tree
-
-install-into-tmp: build-stamp
+override_dh_auto_install:
 	# "Install" into debian/tmp.
 	$(RM) -r debian/tmp
 	cp -al build/ debian/tmp
 
-build-kernel-source-tree: install-into-tmp
-	# Build the nvidia-kernel-source tree.
-	$(RM) -r $(module_source)
-	mkdir -p $(module_source)
-	cp -al debian/tmp/kernel/* $(module_source)/
-
-	# Install a debian/ tree.
-	cp -a debian/module/debian $(module_source)/
-	cp -a debian/copyright $(module_source)/debian/
-	cp -a debian/bug-script $(module_source)/debian/
+module_source_pkg	 = debian/$(nvidia)-kernel-source
+module_source_txz	 = $(module_source_pkg)/usr/src/$(nvidia)-kernel.tar.xz
 
 override_dh_install:
 	dh_install
 
-	chmod a+x $(module_source)/debian/rules
-	find '$(module_source)/../../modules' -depth -newermt '@$(SOURCE_DATE_EPOCH)' -print0 | \
+	chmod a+x $(module_source_pkg)/usr/src/modules/$(nvidia)-kernel/debian/rules
+	find $(module_source_pkg)/usr/src/modules -name '*.in' -delete
+	find $(module_source_pkg)/usr/src/modules -depth -newermt '@$(SOURCE_DATE_EPOCH)' -print0 | \
 		xargs -0r touch --no-dereference --date='@$(SOURCE_DATE_EPOCH)'
 
 	# Build the tarball.
-	(cd $(module_source)/../.. && find modules -print0) | \
+	(cd $(module_source_pkg)/usr/src && find modules -print0) | \
 	  LC_ALL=C sort -z | \
-	  tar cfJ $(module_txz) \
-	    --owner=root --group=src -C $(module_source)/../.. \
-	    --exclude '*.in' \
+	  tar cfJ $(module_source_txz) \
+	    --owner=root --group=src -C $(module_source_pkg)/usr/src \
 	    --no-recursion --null -T -
-	tar tfvJ $(module_txz)
-	$(RM) -r $(module_source)/../../modules
+	tar tfvJ $(module_source_txz)
+	$(RM) -r $(module_source_pkg)/usr/src/modules
 
 kernel-source-tree: build-stamp $(AUTOGEN)
 	$(RM) -r $@

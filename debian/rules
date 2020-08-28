@@ -169,6 +169,23 @@ build-stamp: unpack-stamp
 	cp -al NVIDIA-Linux-amd64/NVIDIA_Changelog build/
 	$(RM) -r build/32
 	gzip -9fn build/nvidia-smi.1
+
+	# This copy of the changelog is going to be installed into the module
+	# binary packages.
+	cp -al build/NVIDIA_Changelog build/kernel/
+
+ifneq (,$(has_uvm))
+	ln -sf ../conftest.sh build/kernel/uvm
+endif
+
+	# We may need nv-kernel.o for several architectures to accomodate
+	# all kernel flavors. Use Kbuild-compatible names.
+	$(RM) build/kernel/nv-kernel.o
+	$(foreach a,$(BLOB_ARCH_LIST),cp -al NVIDIA-Linux-$a/kernel/nv-kernel.o build/kernel/nv-kernel-$a.o_shipped ;)
+
+	# Fix permissions.
+	chmod -R a-sx,u=rwX,go=rX build/kernel
+
 	touch $@
 
 override_dh_auto_build: build-stamp
@@ -190,26 +207,12 @@ build-kernel-source-tree: install-into-tmp
 	$(RM) -r $(module_source)
 	mkdir -p $(module_source)
 	mv debian/tmp/kernel/* $(module_source)/
-	# This copy of the changelog is going to be installed into the module
-	# binary packages.
-	cp -a debian/tmp/NVIDIA_Changelog $(module_source)/
-
-ifneq (,$(has_uvm))
-	ln -sf ../conftest.sh $(module_source)/uvm
-endif
-
-	# We may need nv-kernel.o for several architectures to accomodate
-	# all kernel flavors. Use Kbuild-compatible names.
-	$(RM) $(module_source)/nv-kernel.o
-	$(foreach a,$(BLOB_ARCH_LIST),cp -al NVIDIA-Linux-$a/kernel/nv-kernel.o $(module_source)/nv-kernel-$a.o_shipped ;)
 
 	# Install a debian/ tree.
 	cp -a debian/module/debian $(module_source)/
 	cp -a debian/copyright $(module_source)/debian/
 	cp -a debian/bug-script $(module_source)/debian/
 
-	# Fix permissions.
-	chmod -R a-sx,u=rwX,go=rX $(module_source)/../..
 	chmod a+x $(module_source)/debian/rules
 	find '$(module_source)/../../modules' -depth -newermt '@$(SOURCE_DATE_EPOCH)' -print0 | \
 		xargs -0r touch --no-dereference --date='@$(SOURCE_DATE_EPOCH)'

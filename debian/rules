@@ -91,9 +91,6 @@ xorg_depends	 = $(foreach abi, $(XORG_ABI_LIST), xorg-video-abi-$(abi) |)
 xorg_depends	+= $(comma) xserver-xorg-core $(XORG_BOUND)
 xorg_provides	 = xorg-driver-video
 
-# Use the amd64 changelog for all architectures to be M-A:same safe.
-upstream_changelog	 = NVIDIA-Linux-amd64/NVIDIA_Changelog
-
 
 .PHONY: autogen prepare patch
 autogen: $(AUTOGEN)
@@ -168,6 +165,8 @@ override_dh_auto_configure: prepare
 build-stamp: unpack-stamp
 	$(RM) -r build
 	cp -al NVIDIA-Linux/ build
+	# Use the amd64 changelog for all architectures to be M-A:same safe.
+	cp -al NVIDIA-Linux-amd64/NVIDIA_Changelog build/
 	$(RM) -r build/32
 	gzip -9fn build/nvidia-smi.1
 	touch $@
@@ -185,7 +184,6 @@ install-into-tmp: build-stamp
 	# "Install" into debian/tmp.
 	$(RM) -r debian/tmp
 	cp -al build/ debian/tmp
-	$(RM) debian/tmp/NVIDIA_Changelog
 
 build-kernel-source-tree: install-into-tmp
 	# Build the nvidia-kernel-source tree.
@@ -194,7 +192,7 @@ build-kernel-source-tree: install-into-tmp
 	mv debian/tmp/kernel/* $(module_source)/
 	# This copy of the changelog is going to be installed into the module
 	# binary packages.
-	cp -al $(upstream_changelog) $(module_source)/
+	cp -a debian/tmp/NVIDIA_Changelog $(module_source)/
 
 ifneq (,$(has_uvm))
 	ln -sf ../conftest.sh $(module_source)/uvm
@@ -244,7 +242,7 @@ kernel-source-tree: prepare build-kernel-source-tree
 	cd $@ && QUILT_PATCHES=../debian/module/debian/patches quilt --quiltrc /dev/null push -a || test $$? = 2
 
 override_dh_installchangelogs:
-	dh_installchangelogs $(upstream_changelog)
+	dh_installchangelogs debian/tmp/NVIDIA_Changelog
 
 override_dh_dkms:
 	dh_dkms -V $(version)

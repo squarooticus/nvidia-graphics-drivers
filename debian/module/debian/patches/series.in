@@ -24,7 +24,7 @@ conftest-verbose.patch
 conftest-via-kbuild.patch
 not-silent.patch
 disable-cc_version_check.patch
-use-nv-kernel-ARCH.o_shipped.patch
+use-nv-kernel-ARCH.o_binary.patch
 avoid-ld.gold.patch
 
 # armhf support

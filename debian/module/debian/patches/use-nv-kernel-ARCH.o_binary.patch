@@ -29,7 +29,7 @@ Description: Select the correct nv-kernel.o blob for the target architecture
 +quiet_cmd_symlink = SYMLINK $@
 + cmd_symlink = ln -sf $< $@
 +
-+$(obj)/$(CORE_OBJS): $(src)/$(CORE_OBJS-y)_shipped
++$(obj)/$(CORE_OBJS): $(src)/$(CORE_OBJS-y)_binary
 +	$(call if_changed,symlink)
  
  $(obj)/$(VERSION_HEADER):

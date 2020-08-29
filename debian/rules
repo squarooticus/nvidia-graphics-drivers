@@ -175,9 +175,9 @@ ifneq (,$(has_uvm))
 endif
 
 	# We may need nv-kernel.o for several architectures to accomodate
-	# all kernel flavors. Use Kbuild-compatible names.
+	# all kernel flavors.
 	$(RM) build/kernel/nv-kernel.o
-	$(foreach a,$(BLOB_ARCH_LIST),cp -al NVIDIA-Linux-$a/kernel/nv-kernel.o build/kernel/nv-kernel-$a.o_shipped ;)
+	$(foreach a,$(BLOB_ARCH_LIST),cp -al NVIDIA-Linux-$a/kernel/nv-kernel.o build/kernel/nv-kernel-$a.o_binary ;)
 
 	# Fix permissions.
 	chmod -R a-sx,u=rwX,go=rX build/kernel

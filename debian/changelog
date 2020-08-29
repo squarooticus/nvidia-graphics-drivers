@@ -74,6 +74,7 @@ nvidia-graphics-drivers (340.108-1~git4deb9stretch) UNRELEASED; urgency=medium
   * Simplify generating the -source and -dkms packages (450.66-1).
   * Backport nv_vmalloc changes from 450.57
     and work around mmap_{sem=>lock} rename
+    and modernize use-nv-kernel-ARCH.o_shipped.patch
     to fix kernel module build for Linux 5.8.
   * Bump Standards-Version to 4.5.0. No changes needed.
 

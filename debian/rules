@@ -263,10 +263,7 @@ override_dh_auto_install:
 module_source_pkg	 = debian/$(nvidia)-kernel-source
 module_source_txz	 = $(module_source_pkg)/usr/src/$(nvidia)-kernel.tar.xz
 
-ifneq (,$(has_driver))
-override_dh_install:
-	dh_install
-
+pack-module-source:
 	chmod a+x $(module_source_pkg)/usr/src/modules/$(nvidia)-kernel/debian/rules
 	find $(module_source_pkg)/usr/src/modules -depth -newermt '@$(SOURCE_DATE_EPOCH)' -print0 | \
 		xargs -0r touch --no-dereference --date='@$(SOURCE_DATE_EPOCH)'
@@ -280,7 +277,6 @@ override_dh_install:
 	    --no-recursion --null -T -
 	tar tfvJ $(module_source_txz)
 	$(RM) -r $(module_source_pkg)/usr/src/modules
-endif
 
 kernel-source-tree: build-stamp $(AUTOGEN)
 	$(RM) -r $@
@@ -288,6 +284,8 @@ kernel-source-tree: build-stamp $(AUTOGEN)
 	cd $@ && QUILT_PATCHES=../debian/module/debian/patches quilt --quiltrc /dev/null push -a || test $$? = 2
 
 ifneq (,$(has_driver))
+execute_after_dh_install: pack-module-source
+
 # Test that the patches can be applied to the module source.
 override_dh_auto_test: kernel-source-tree
 endif

@@ -4,7 +4,6 @@ Priority: optional
 Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>
 Uploaders:
  Andreas Beckmann <anbe@debian.org>,
- Vincent Cheng <vcheng@debian.org>,
  Luca Boccassi <bluca@debian.org>,
 Vcs-Browser: https://salsa.debian.org/nvidia-team/nvidia-graphics-drivers
 Vcs-Git: https://salsa.debian.org/nvidia-team/nvidia-graphics-drivers.git
@@ -285,6 +284,7 @@ Depends:
  ${nvidia}-alternative (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Provides:
+ libnvidia-cfg.so.1 (= ${nvidia:Version}),
  libnvidia-cfg1-any,
 Breaks:
  libgl1-${nvidia}-glx (<< 355.11-5),

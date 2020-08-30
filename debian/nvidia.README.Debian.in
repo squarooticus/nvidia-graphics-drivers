@@ -66,6 +66,15 @@ See /usr/share/doc/#NVIDIA#-driver/README.txt.gz
 for descriptions of all supported NVIDIA driver specific options.
 
 
+NOTES ABOUT SUPPORTED ARCHITECTURES:
+-----------------------------------------------------------------------
+
+The drivers for architectures other than amd64 cannot be tested by the
+maintainers due to lack of access to supported hardware. The packages are
+provided nonetheless in the hope that they will be useful to people using
+such platforms.
+
+
 NOTES ABOUT REPORTING BUGS TO NVIDIA:
 -----------------------------------------------------------------------
 

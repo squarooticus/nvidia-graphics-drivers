@@ -1,4 +1,4 @@
-From ad07c38c3859bf2fa4837b4394a9ae7a91af2e92 Mon Sep 17 00:00:00 2001
+From 8143638dcc40a333a0f6080617cb772e1e625b9e Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 26 Aug 2020 20:15:01 +0200
 Subject: [PATCH 3/3] backport nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
@@ -39,16 +39,16 @@ Subject: [PATCH 3/3] backport nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
  31 files changed, 220 insertions(+), 214 deletions(-)
 
 diff --git a/nvidia-uvm/nvidia-uvm.Kbuild b/nvidia-uvm/nvidia-uvm.Kbuild
-index aacb621..12e9143 100644
+index f40fd87..0a1a4e9 100644
 --- a/nvidia-uvm/nvidia-uvm.Kbuild
 +++ b/nvidia-uvm/nvidia-uvm.Kbuild
-@@ -116,3 +116,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += sysfs_slab_unlink
- NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_t
+@@ -117,3 +117,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_t
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mmu_notifier_ops_invalidate_range
  NV_CONFTEST_TYPE_COMPILE_TESTS += proc_ops
  NV_CONFTEST_TYPE_COMPILE_TESTS += timeval
 +NV_CONFTEST_TYPE_COMPILE_TESTS += mm_has_mmap_lock
 diff --git a/nvidia-uvm/uvm8.c b/nvidia-uvm/uvm8.c
-index 26b4378..fe7b87e 100644
+index 447f72f..14289f8 100644
 --- a/nvidia-uvm/uvm8.c
 +++ b/nvidia-uvm/uvm8.c
 @@ -367,8 +367,9 @@ static void uvm_vm_open_managed(struct vm_area_struct *vma)
@@ -158,7 +158,7 @@ index 26b4378..fe7b87e 100644
  }
  
  static void uvm_vm_close_semaphore_pool_entry(struct vm_area_struct *vma)
-@@ -796,7 +797,7 @@ static int uvm_mmap(struct file *filp, struct vm_area_struct *vma)
+@@ -797,7 +798,7 @@ static int uvm_mmap(struct file *filp, struct vm_area_struct *vma)
          return 0;
      }
  
@@ -167,7 +167,7 @@ index 26b4378..fe7b87e 100644
  
      // VM_MIXEDMAP      Required to use vm_insert_page
      //
-@@ -822,7 +823,7 @@ static int uvm_mmap(struct file *filp, struct vm_area_struct *vma)
+@@ -823,7 +824,7 @@ static int uvm_mmap(struct file *filp, struct vm_area_struct *vma)
      }
      vma_wrapper_allocated = true;
  
@@ -176,7 +176,7 @@ index 26b4378..fe7b87e 100644
      // this va_space from being modified by the GPU fault path or from the ioctl
      // path where we don't have this mm for sure, so we have to lock the VA
      // space directly.
-@@ -863,7 +864,7 @@ out:
+@@ -864,7 +865,7 @@ out:
      if (ret != 0 && vma_wrapper_allocated)
          uvm_vma_wrapper_destroy(vma->vm_private_data);
  
@@ -221,10 +221,10 @@ index e001b60..1d10534 100644
          UVM_ASSERT(g_uvm_global.ats.enabled);
  
 diff --git a/nvidia-uvm/uvm8_ats_ibm.c b/nvidia-uvm/uvm8_ats_ibm.c
-index c7ac613..18ae659 100644
+index 93ede03..5f98f6b 100644
 --- a/nvidia-uvm/uvm8_ats_ibm.c
 +++ b/nvidia-uvm/uvm8_ats_ibm.c
-@@ -269,7 +269,7 @@ static NV_STATUS uvm_ats_ibm_register_gpu_va_space_kernel(uvm_gpu_va_space_t *gp
+@@ -275,7 +275,7 @@ static NV_STATUS uvm_ats_ibm_register_gpu_va_space_kernel(uvm_gpu_va_space_t *gp
      if (current->mm != va_space->va_space_mm.mm)
          return NV_ERR_NOT_SUPPORTED;
  
@@ -233,7 +233,7 @@ index c7ac613..18ae659 100644
  
      // pnv_npu2_init_context() doesn't handle being called multiple times for
      // the same GPU under the same mm, which could happen if multiple VA spaces
-@@ -310,12 +310,13 @@ static void uvm_ats_ibm_unregister_gpu_va_space_kernel(uvm_gpu_va_space_t *gpu_v
+@@ -316,12 +316,13 @@ static void uvm_ats_ibm_unregister_gpu_va_space_kernel(uvm_gpu_va_space_t *gpu_v
      UVM_ASSERT(gpu_va_space->ats.enabled);
      UVM_ASSERT(uvm_gpu_va_space_state(gpu_va_space) == UVM_GPU_VA_SPACE_STATE_DEAD);
  
@@ -252,8 +252,8 @@ index c7ac613..18ae659 100644
 +    uvm_assert_unlocked_order(UVM_LOCK_ORDER_MMAP_LOCK);
      uvm_assert_unlocked_order(UVM_LOCK_ORDER_VA_SPACE);
  
-     pnv_npu2_destroy_context(gpu_va_space->ats.npu_context, gpu_va_space->gpu->pci_dev);
-@@ -339,7 +340,7 @@ static void uvm_ats_ibm_register_gpu_va_space_driver(uvm_gpu_va_space_t *gpu_va_
+     pnv_npu2_destroy_context(gpu_va_space->ats.npu_context, gpu_va_space->gpu->parent->pci_dev);
+@@ -345,7 +346,7 @@ static void uvm_ats_ibm_register_gpu_va_space_driver(uvm_gpu_va_space_t *gpu_va_
          // tell the kernel to send TLB invalidations to the IOMMU. See kernel
          // commit 03b8abedf4f4965e7e9e0d4f92877c42c07ce19f for background.
          //
@@ -262,7 +262,7 @@ index c7ac613..18ae659 100644
          if (bitmap_empty(va_space->ats.npu_active_mask, NV_MAX_NPUS))
              mm_context_add_copro(va_space->va_space_mm.mm);
  
-@@ -462,7 +463,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
+@@ -468,7 +469,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
      UVM_ASSERT(g_uvm_global.ats.enabled);
      UVM_ASSERT(gpu_va_space->ats.enabled);
      UVM_ASSERT(mm);
@@ -272,7 +272,7 @@ index c7ac613..18ae659 100644
      // TODO: Bug 2103669: Service more than a single fault at a time
      ret = NV_GET_USER_PAGES_REMOTE(NULL, mm, (unsigned long)fault_addr, 1, write, force, &page, NULL);
 diff --git a/nvidia-uvm/uvm8_ats_ibm.h b/nvidia-uvm/uvm8_ats_ibm.h
-index 4903305..82598d0 100644
+index 528cbe3..71eb313 100644
 --- a/nvidia-uvm/uvm8_ats_ibm.h
 +++ b/nvidia-uvm/uvm8_ats_ibm.h
 @@ -166,7 +166,7 @@ typedef struct
@@ -301,10 +301,10 @@ index 4903305..82598d0 100644
                                          NvU64 fault_addr,
                                          uvm_fault_access_type_t access_type);
 diff --git a/nvidia-uvm/uvm8_gpu_access_counters.c b/nvidia-uvm/uvm8_gpu_access_counters.c
-index c567a0f..47c56c0 100644
+index 8a57c23..9655b23 100644
 --- a/nvidia-uvm/uvm8_gpu_access_counters.c
 +++ b/nvidia-uvm/uvm8_gpu_access_counters.c
-@@ -1180,7 +1180,7 @@ static NV_STATUS service_phys_single_va_block(uvm_gpu_t *gpu,
+@@ -1174,7 +1174,7 @@ static NV_STATUS service_phys_single_va_block(uvm_gpu_t *gpu,
          // in order to lock it before locking the VA space.
          mm = uvm_va_space_mm_retain(va_space);
          if (mm)
@@ -313,7 +313,7 @@ index c567a0f..47c56c0 100644
  
          // Re-check that the VA block is valid after taking the VA space lock
          uvm_va_space_down_read(va_space);
-@@ -1222,7 +1222,7 @@ done:
+@@ -1216,7 +1216,7 @@ done:
          uvm_va_space_up_read(va_space);
  
      if (mm) {
@@ -323,19 +323,19 @@ index c567a0f..47c56c0 100644
      }
  
 diff --git a/nvidia-uvm/uvm8_gpu_non_replayable_faults.c b/nvidia-uvm/uvm8_gpu_non_replayable_faults.c
-index 81b5626..9682154 100644
+index 0d3d305..f214a76 100644
 --- a/nvidia-uvm/uvm8_gpu_non_replayable_faults.c
 +++ b/nvidia-uvm/uvm8_gpu_non_replayable_faults.c
-@@ -511,7 +511,7 @@ static NV_STATUS service_fault(uvm_gpu_t *gpu, uvm_fault_buffer_entry_t *fault_e
-     // TODO: Bug 1867098: Taking mmap_sem here may deadlock between RM
-     // and UVM.
+@@ -508,7 +508,7 @@ static NV_STATUS service_fault(uvm_gpu_t *gpu, uvm_fault_buffer_entry_t *fault_e
+     // can only service managed faults, not ATS/HMM faults.
+     mm = uvm_va_space_mm_retain(va_space);
      if (mm)
 -        uvm_down_read_mmap_sem(&mm->mmap_sem);
 +        uvm_down_read_mmap_lock(mm);
  
      uvm_va_space_down_read(va_space);
  
-@@ -562,7 +562,7 @@ static NV_STATUS service_fault(uvm_gpu_t *gpu, uvm_fault_buffer_entry_t *fault_e
+@@ -559,7 +559,7 @@ static NV_STATUS service_fault(uvm_gpu_t *gpu, uvm_fault_buffer_entry_t *fault_e
  exit_no_channel:
      uvm_va_space_up_read(va_space);
      if (mm) {
@@ -345,10 +345,10 @@ index 81b5626..9682154 100644
      }
  
 diff --git a/nvidia-uvm/uvm8_gpu_replayable_faults.c b/nvidia-uvm/uvm8_gpu_replayable_faults.c
-index 1200aae..7e5120d 100644
+index d92e693..3fa4c88 100644
 --- a/nvidia-uvm/uvm8_gpu_replayable_faults.c
 +++ b/nvidia-uvm/uvm8_gpu_replayable_faults.c
-@@ -1464,7 +1464,7 @@ static NV_STATUS service_fault_batch(uvm_gpu_t *gpu,
+@@ -1463,7 +1463,7 @@ static NV_STATUS service_fault_batch(uvm_gpu_t *gpu,
  
                  uvm_va_space_up_read(va_space);
                  if (mm) {
@@ -357,16 +357,16 @@ index 1200aae..7e5120d 100644
                      uvm_va_space_mm_release(va_space);
                      mm = NULL;
                  }
-@@ -1483,7 +1483,7 @@ static NV_STATUS service_fault_batch(uvm_gpu_t *gpu,
-             // TODO: Bug 1867098: Taking mmap_sem here may deadlock between RM
-             // and UVM.
+@@ -1479,7 +1479,7 @@ static NV_STATUS service_fault_batch(uvm_gpu_t *gpu,
+             // can only service managed faults, not ATS/HMM faults.
+             mm = uvm_va_space_mm_retain(va_space);
              if (mm)
 -                uvm_down_read_mmap_sem(&mm->mmap_sem);
 +                uvm_down_read_mmap_lock(mm);
  
              uvm_va_space_down_read(va_space);
  
-@@ -1590,7 +1590,7 @@ fail:
+@@ -1586,7 +1586,7 @@ fail:
      if (va_space != NULL) {
          uvm_va_space_up_read(va_space);
          if (mm) {
@@ -376,10 +376,10 @@ index 1200aae..7e5120d 100644
          }
      }
 diff --git a/nvidia-uvm/uvm8_hmm.c b/nvidia-uvm/uvm8_hmm.c
-index 4b059cd..2d608b1 100644
+index 67e81b6..da2cea8 100644
 --- a/nvidia-uvm/uvm8_hmm.c
 +++ b/nvidia-uvm/uvm8_hmm.c
-@@ -125,7 +125,7 @@ NV_STATUS uvm_hmm_mirror_register(uvm_va_space_t *va_space)
+@@ -126,7 +126,7 @@ NV_STATUS uvm_hmm_mirror_register(uvm_va_space_t *va_space)
      if (!uvm_hmm_is_enabled(va_space))
          return NV_OK;
  
@@ -389,7 +389,7 @@ index 4b059cd..2d608b1 100644
  
      va_space->hmm_va_space.mirror.ops = &mirror_ops;
 diff --git a/nvidia-uvm/uvm8_hmm.h b/nvidia-uvm/uvm8_hmm.h
-index 6710332..e7b9b08 100644
+index d2fc589..1fc3f22 100644
 --- a/nvidia-uvm/uvm8_hmm.h
 +++ b/nvidia-uvm/uvm8_hmm.h
 @@ -57,7 +57,7 @@ typedef struct
@@ -426,7 +426,7 @@ index bf53eda..c10cd27 100644
          }
  
 diff --git a/nvidia-uvm/uvm8_lock.h b/nvidia-uvm/uvm8_lock.h
-index 18d129d..e93433d 100644
+index 32cfd47..bc1d275 100644
 --- a/nvidia-uvm/uvm8_lock.h
 +++ b/nvidia-uvm/uvm8_lock.h
 @@ -44,7 +44,7 @@
@@ -678,10 +678,10 @@ index 583f0db..926b593 100644
  
  static NV_STATUS test_all_locks_from(uvm_lock_order_t from_lock_order)
 diff --git a/nvidia-uvm/uvm8_mem.c b/nvidia-uvm/uvm8_mem.c
-index c0eed57..5c74875 100644
+index f88de44..dcb9d1b 100644
 --- a/nvidia-uvm/uvm8_mem.c
 +++ b/nvidia-uvm/uvm8_mem.c
-@@ -481,7 +481,7 @@ static NV_STATUS uvm_mem_map_cpu_to_sysmem_user(uvm_mem_t *mem, struct vm_area_s
+@@ -482,7 +482,7 @@ static NV_STATUS uvm_mem_map_cpu_to_sysmem_user(uvm_mem_t *mem, struct vm_area_s
  
      UVM_ASSERT(uvm_mem_is_sysmem(mem));
      UVM_ASSERT(mem->is_user_allocation);
@@ -690,7 +690,7 @@ index c0eed57..5c74875 100644
  
      // TODO: Bug 1995015: high-order page allocations need to be allocated as
      // compound pages in order to be able to use vm_insert_page on them. This
-@@ -505,7 +505,7 @@ static NV_STATUS uvm_mem_map_cpu_to_vidmem_user(uvm_mem_t *mem, struct vm_area_s
+@@ -506,7 +506,7 @@ static NV_STATUS uvm_mem_map_cpu_to_vidmem_user(uvm_mem_t *mem, struct vm_area_s
      size_t num_chunk_pages = mem->chunk_size / PAGE_SIZE;
  
      UVM_ASSERT(mem->is_user_allocation);
@@ -698,9 +698,9 @@ index c0eed57..5c74875 100644
 +    uvm_assert_mmap_lock_locked(vma->vm_mm);
      UVM_ASSERT(!uvm_mem_is_sysmem(mem));
      UVM_ASSERT(mem->backing_gpu != NULL);
-     UVM_ASSERT(mem->backing_gpu->numa_info.enabled);
+     UVM_ASSERT(mem->backing_gpu->parent->numa_info.enabled);
 diff --git a/nvidia-uvm/uvm8_migrate.c b/nvidia-uvm/uvm8_migrate.c
-index 0c72438..49e4cfa 100644
+index 90a0fc8..cab4fd0 100644
 --- a/nvidia-uvm/uvm8_migrate.c
 +++ b/nvidia-uvm/uvm8_migrate.c
 @@ -596,7 +596,7 @@ static NV_STATUS uvm_migrate(uvm_va_space_t *va_space,
@@ -769,7 +769,7 @@ index 0c72438..49e4cfa 100644
      tracker_status = uvm_tracker_wait_deinit(&local_tracker);
      uvm_va_space_up_read(va_space);
 diff --git a/nvidia-uvm/uvm8_migrate_pageable.c b/nvidia-uvm/uvm8_migrate_pageable.c
-index 03832cd..e4c2c5d 100644
+index dbb7b03..82c8e07 100644
 --- a/nvidia-uvm/uvm8_migrate_pageable.c
 +++ b/nvidia-uvm/uvm8_migrate_pageable.c
 @@ -756,7 +756,7 @@ static NV_STATUS migrate_pageable_vma_region(struct vm_area_struct *vma,
@@ -822,12 +822,12 @@ index 10b8205..56147e1 100644
                                 struct mm_struct *mm,
                                 const unsigned long start,
 diff --git a/nvidia-uvm/uvm8_policy.c b/nvidia-uvm/uvm8_policy.c
-index c27df95..1691655 100644
+index a912963..e9734c8 100644
 --- a/nvidia-uvm/uvm8_policy.c
 +++ b/nvidia-uvm/uvm8_policy.c
-@@ -33,13 +33,13 @@
- // by valid vmas. A vma is valid if the corresponding VM_SPECIAL flags are not
- // set
+@@ -32,13 +32,13 @@
+ // Returns true if the interval [start, start + length - 1] is entirely covered
+ // by vmas.
  //
 -// Locking: current->mm->mmap_sem must be locked
 +// Locking: current->mm->mmap_lock must be locked
@@ -841,7 +841,7 @@ index c27df95..1691655 100644
  
      vma = find_vma_intersection(current->mm, start, end);
  
-@@ -234,7 +234,7 @@ NV_STATUS uvm_api_set_preferred_location(const UVM_SET_PREFERRED_LOCATION_PARAMS
+@@ -233,7 +233,7 @@ NV_STATUS uvm_api_set_preferred_location(const UVM_SET_PREFERRED_LOCATION_PARAMS
  
      UVM_ASSERT(va_space);
  
@@ -850,7 +850,7 @@ index c27df95..1691655 100644
      uvm_va_space_down_write(va_space);
      has_va_space_write_lock = true;
  
-@@ -307,7 +307,7 @@ done:
+@@ -306,7 +306,7 @@ done:
          uvm_va_space_up_write(va_space);
      else
          uvm_va_space_up_read(va_space);
@@ -859,7 +859,7 @@ index c27df95..1691655 100644
  
      return status == NV_OK ? tracker_status : status;
  }
-@@ -319,7 +319,7 @@ NV_STATUS uvm_api_unset_preferred_location(const UVM_UNSET_PREFERRED_LOCATION_PA
+@@ -318,7 +318,7 @@ NV_STATUS uvm_api_unset_preferred_location(const UVM_UNSET_PREFERRED_LOCATION_PA
  
      UVM_ASSERT(va_space);
  
@@ -868,7 +868,7 @@ index c27df95..1691655 100644
      uvm_va_space_down_write(va_space);
  
      status = uvm_api_range_type_check(va_space, params->requestedBase, params->length);
-@@ -330,7 +330,7 @@ NV_STATUS uvm_api_unset_preferred_location(const UVM_UNSET_PREFERRED_LOCATION_PA
+@@ -329,7 +329,7 @@ NV_STATUS uvm_api_unset_preferred_location(const UVM_UNSET_PREFERRED_LOCATION_PA
          status = NV_OK;
  
      uvm_va_space_up_write(va_space);
@@ -877,7 +877,7 @@ index c27df95..1691655 100644
      return status;
  }
  
-@@ -411,7 +411,7 @@ static NV_STATUS accessed_by_set(uvm_va_space_t *va_space,
+@@ -410,7 +410,7 @@ static NV_STATUS accessed_by_set(uvm_va_space_t *va_space,
  
      UVM_ASSERT(va_space);
  
@@ -886,7 +886,7 @@ index c27df95..1691655 100644
      uvm_va_space_down_write(va_space);
  
      status = uvm_api_range_type_check(va_space, base, length);
-@@ -475,7 +475,7 @@ static NV_STATUS accessed_by_set(uvm_va_space_t *va_space,
+@@ -474,7 +474,7 @@ static NV_STATUS accessed_by_set(uvm_va_space_t *va_space,
  
  done:
      uvm_va_space_up_write(va_space);
@@ -895,7 +895,7 @@ index c27df95..1691655 100644
  
      return status;
  }
-@@ -657,8 +657,8 @@ static NV_STATUS read_duplication_set(uvm_va_space_t *va_space, NvU64 base, NvU6
+@@ -656,8 +656,8 @@ static NV_STATUS read_duplication_set(uvm_va_space_t *va_space, NvU64 base, NvU6
  
      UVM_ASSERT(va_space);
  
@@ -906,7 +906,7 @@ index c27df95..1691655 100644
      uvm_va_space_down_write(va_space);
  
      status = uvm_api_range_type_check(va_space, base, length);
-@@ -712,7 +712,7 @@ static NV_STATUS read_duplication_set(uvm_va_space_t *va_space, NvU64 base, NvU6
+@@ -711,7 +711,7 @@ static NV_STATUS read_duplication_set(uvm_va_space_t *va_space, NvU64 base, NvU6
  
  done:
      uvm_va_space_up_write(va_space);
@@ -1003,7 +1003,7 @@ index 5ea3a95..b6509c9 100644
                                  unsigned long start,
                                  unsigned long length,
 diff --git a/nvidia-uvm/uvm8_tools.c b/nvidia-uvm/uvm8_tools.c
-index 0415d26..1300280 100644
+index 0dae47e..620e1cc 100644
 --- a/nvidia-uvm/uvm8_tools.c
 +++ b/nvidia-uvm/uvm8_tools.c
 @@ -264,9 +264,9 @@ static NV_STATUS map_user_pages(NvU64 user_va, NvU64 size, void **addr, struct p
@@ -1019,10 +1019,10 @@ index 0415d26..1300280 100644
          status = NV_ERR_INVALID_ARGUMENT;
          goto fail;
 diff --git a/nvidia-uvm/uvm8_va_block.c b/nvidia-uvm/uvm8_va_block.c
-index 45ba210..291790e 100644
+index 97e8780..a35caf2 100644
 --- a/nvidia-uvm/uvm8_va_block.c
 +++ b/nvidia-uvm/uvm8_va_block.c
-@@ -6447,7 +6447,7 @@ static NV_STATUS uvm_cpu_insert_page(struct vm_area_struct *vma,
+@@ -6463,7 +6463,7 @@ static NV_STATUS uvm_cpu_insert_page(struct vm_area_struct *vma,
  //  - Revoke mappings from other processors as appropriate so the CPU can map
  //    with new_prot permissions
  //  - Guarantee that vm_insert_page is safe to use (vma->vm_mm has a reference
@@ -1031,16 +1031,16 @@ index 45ba210..291790e 100644
  //  - Ensure that the struct page corresponding to the physical memory being
  //    mapped exists
  //  - Manage the block's residency bitmap
-@@ -6516,7 +6516,7 @@ static NV_STATUS block_map_cpu_page_to(uvm_va_block_t *block,
+@@ -6528,7 +6528,7 @@ static NV_STATUS block_map_cpu_page_to(uvm_va_block_t *block,
      // us, so we can safely operate on the vma but we can't use
      // uvm_va_range_vma_current.
      vma = uvm_va_range_vma(va_range);
 -    uvm_assert_mmap_sem_locked(&vma->vm_mm->mmap_sem);
 +    uvm_assert_mmap_lock_locked(vma->vm_mm);
+     UVM_ASSERT(!uvm_va_space_mm_enabled(va_space) || va_space->va_space_mm.mm == vma->vm_mm);
  
      // Add the mapping
-     addr = uvm_va_block_cpu_page_address(block, page_index);
-@@ -9912,10 +9912,10 @@ static NV_STATUS block_cpu_fault_locked(uvm_va_block_t *va_block,
+@@ -9927,10 +9927,10 @@ static NV_STATUS block_cpu_fault_locked(uvm_va_block_t *va_block,
      // 2) current->mm
      // 3) va_space->va_space_mm.mm
      //
@@ -1055,7 +1055,7 @@ index 45ba210..291790e 100644
      service_context->block_context.mm = uvm_va_range_vma(va_range)->vm_mm;
  
      if (service_context->num_retries == 0) {
-@@ -10021,8 +10021,9 @@ NV_STATUS uvm_va_block_cpu_fault(uvm_va_block_t *va_block,
+@@ -10036,8 +10036,9 @@ NV_STATUS uvm_va_block_cpu_fault(uvm_va_block_t *va_block,
      // thinking they each owned the page.
      //
      // This function must only be called when it's safe to call vm_insert_page.
@@ -1067,7 +1067,7 @@ index 45ba210..291790e 100644
      status = UVM_VA_BLOCK_LOCK_RETRY(va_block,
                                       &va_block_retry,
                                       block_cpu_fault_locked(va_block,
-@@ -10660,9 +10661,9 @@ NV_STATUS uvm8_test_change_pte_mapping(UVM_TEST_CHANGE_PTE_MAPPING_PARAMS *param
+@@ -10673,9 +10674,9 @@ NV_STATUS uvm8_test_change_pte_mapping(UVM_TEST_CHANGE_PTE_MAPPING_PARAMS *param
  
      new_prot = g_uvm_test_pte_mapping_to_prot[params->mapping];
  
@@ -1079,7 +1079,7 @@ index 45ba210..291790e 100644
      uvm_va_space_down_read(va_space);
  
      if (uvm_uuid_is_cpu(&params->uuid)) {
-@@ -10745,7 +10746,7 @@ out_block:
+@@ -10758,7 +10759,7 @@ out_block:
  
  out:
      uvm_va_space_up_read(va_space);
@@ -1088,7 +1088,7 @@ index 45ba210..291790e 100644
  
      uvm_va_block_context_free(block_context);
  
-@@ -10760,7 +10761,7 @@ NV_STATUS uvm8_test_va_block_info(UVM_TEST_VA_BLOCK_INFO_PARAMS *params, struct
+@@ -10773,7 +10774,7 @@ NV_STATUS uvm8_test_va_block_info(UVM_TEST_VA_BLOCK_INFO_PARAMS *params, struct
  
      BUILD_BUG_ON(UVM_TEST_VA_BLOCK_SIZE != UVM_VA_BLOCK_SIZE);
  
@@ -1097,7 +1097,7 @@ index 45ba210..291790e 100644
      uvm_va_space_down_read(va_space);
  
      status = uvm_va_block_find(va_space, params->lookup_address, &va_block);
-@@ -10778,7 +10779,7 @@ NV_STATUS uvm8_test_va_block_info(UVM_TEST_VA_BLOCK_INFO_PARAMS *params, struct
+@@ -10791,7 +10792,7 @@ NV_STATUS uvm8_test_va_block_info(UVM_TEST_VA_BLOCK_INFO_PARAMS *params, struct
  
  out:
      uvm_va_space_up_read(va_space);
@@ -1106,7 +1106,7 @@ index 45ba210..291790e 100644
      return status;
  }
  
-@@ -10795,7 +10796,7 @@ NV_STATUS uvm8_test_va_residency_info(UVM_TEST_VA_RESIDENCY_INFO_PARAMS *params,
+@@ -10808,7 +10809,7 @@ NV_STATUS uvm8_test_va_residency_info(UVM_TEST_VA_RESIDENCY_INFO_PARAMS *params,
      unsigned release_block_count = 0;
      NvU64 addr = UVM_ALIGN_DOWN(params->lookup_address, PAGE_SIZE);
  
@@ -1115,7 +1115,7 @@ index 45ba210..291790e 100644
      uvm_va_space_down_read(va_space);
  
      va_range = uvm_va_range_find(va_space, addr);
-@@ -10938,7 +10939,7 @@ out:
+@@ -10951,7 +10952,7 @@ out:
              uvm_va_block_release(block);
      }
      uvm_va_space_up_read(va_space);
@@ -1197,7 +1197,7 @@ index c390027..4972c48 100644
  }
  
 diff --git a/nvidia-uvm/uvm8_va_range.h b/nvidia-uvm/uvm8_va_range.h
-index d7a8c3a..8d5383c 100644
+index 81b17ec..69cb0a0 100644
 --- a/nvidia-uvm/uvm8_va_range.h
 +++ b/nvidia-uvm/uvm8_va_range.h
 @@ -49,7 +49,7 @@
@@ -1227,7 +1227,7 @@ index d7a8c3a..8d5383c 100644
  static struct vm_area_struct *uvm_va_range_vma_check(uvm_va_range_t *va_range, struct mm_struct *mm)
  {
      struct vm_area_struct *vma;
-@@ -693,7 +693,7 @@ static struct vm_area_struct *uvm_va_range_vma_check(uvm_va_range_t *va_range, s
+@@ -692,7 +692,7 @@ static struct vm_area_struct *uvm_va_range_vma_check(uvm_va_range_t *va_range, s
      //
      // Since the "safe" mm varies based on the path, we may not have a reference
      // on the vma's owning mm_struct. We won't know that until we look at the
@@ -1236,16 +1236,16 @@ index d7a8c3a..8d5383c 100644
      // va_space lock in our lock ordering, and we must be holding the va_space
      // lock to query the va_range. Hence the need to detect the cases in which
      // it's safe to operate on the vma.
-@@ -702,7 +702,7 @@ static struct vm_area_struct *uvm_va_range_vma_check(uvm_va_range_t *va_range, s
+@@ -701,7 +701,7 @@ static struct vm_area_struct *uvm_va_range_vma_check(uvm_va_range_t *va_range, s
      // operate on the vma at all. The vma can't be outright freed until we drop
      // the va_space lock so the pointer itself will remain valid, but its fields
      // (like vm_start and vm_end) could be modified behind our back. We also
 -    // aren't allowed to call vm_insert_page unless we hold the vma's mmap_sem.
 +    // aren't allowed to call vm_insert_page unless we hold the vma's mmap_lock.
      //
-     // A few interesting cases are:
-     //
-@@ -718,7 +718,7 @@ static struct vm_area_struct *uvm_va_range_vma_check(uvm_va_range_t *va_range, s
+     // Note that if uvm_va_space_mm_enabled() is true, then vma->vm_mm must be
+     // va_space->va_space_mm.mm because we enforce that at mmap.
+@@ -712,7 +712,7 @@ static struct vm_area_struct *uvm_va_range_vma_check(uvm_va_range_t *va_range, s
      if (mm != vma->vm_mm)
          return NULL;
  
@@ -1255,7 +1255,7 @@ index d7a8c3a..8d5383c 100644
  }
  
 diff --git a/nvidia-uvm/uvm8_va_space.c b/nvidia-uvm/uvm8_va_space.c
-index f631c99..7cfe9db 100644
+index 1c1f116..ad7078f 100644
 --- a/nvidia-uvm/uvm8_va_space.c
 +++ b/nvidia-uvm/uvm8_va_space.c
 @@ -516,7 +516,7 @@ NV_STATUS uvm_va_space_initialize(uvm_va_space_t *va_space, NvU64 flags)
@@ -1276,8 +1276,8 @@ index f631c99..7cfe9db 100644
  
      return status;
  }
-@@ -831,9 +831,9 @@ NV_STATUS uvm_va_space_unregister_gpu(uvm_va_space_t *va_space, const NvProcesso
-     if (gpu->access_counters_supported)
+@@ -833,9 +833,9 @@ NV_STATUS uvm_va_space_unregister_gpu(uvm_va_space_t *va_space, const NvProcesso
+     if (gpu->parent->access_counters_supported)
          uvm_gpu_access_counters_disable(gpu, va_space);
  
 -    // The mmap_sem lock is needed to establish CPU mappings to any pages
@@ -1288,7 +1288,7 @@ index f631c99..7cfe9db 100644
  
      uvm_va_space_down_write(va_space);
  
-@@ -850,7 +850,7 @@ NV_STATUS uvm_va_space_unregister_gpu(uvm_va_space_t *va_space, const NvProcesso
+@@ -852,7 +852,7 @@ NV_STATUS uvm_va_space_unregister_gpu(uvm_va_space_t *va_space, const NvProcesso
      uvm_processor_mask_clear(&va_space->gpu_unregister_in_progress, gpu->id);
  
      uvm_va_space_up_write(va_space);
@@ -1297,7 +1297,7 @@ index f631c99..7cfe9db 100644
  
      uvm_deferred_free_object_list(&deferred_free_list);
  
-@@ -1107,7 +1107,7 @@ static void destroy_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
+@@ -1112,7 +1112,7 @@ static void destroy_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
      }
  
      // Note that this call may wait for faults to finish being serviced, which
@@ -1306,7 +1306,7 @@ index f631c99..7cfe9db 100644
      uvm_ats_ibm_unregister_gpu_va_space(gpu_va_space);
  
      uvm_gpu_va_space_release(gpu_va_space);
-@@ -1271,14 +1271,14 @@ NV_STATUS uvm_va_space_register_gpu_va_space(uvm_va_space_t *va_space,
+@@ -1280,14 +1280,14 @@ NV_STATUS uvm_va_space_register_gpu_va_space(uvm_va_space_t *va_space,
          return status;
      }
  
@@ -1327,7 +1327,7 @@ index f631c99..7cfe9db 100644
  
      uvm_va_space_down_write(va_space);
  
-@@ -1333,9 +1333,9 @@ NV_STATUS uvm_va_space_register_gpu_va_space(uvm_va_space_t *va_space,
+@@ -1342,9 +1342,9 @@ NV_STATUS uvm_va_space_register_gpu_va_space(uvm_va_space_t *va_space,
      uvm_va_space_up_write(va_space);
  
      if (UVM_ATS_IBM_SUPPORTED_IN_KERNEL())
@@ -1339,7 +1339,7 @@ index f631c99..7cfe9db 100644
  
      uvm_gpu_release(gpu);
      return NV_OK;
-@@ -1354,9 +1354,9 @@ error:
+@@ -1363,9 +1363,9 @@ error:
      uvm_va_space_up_write(va_space);
  
      if (UVM_ATS_IBM_SUPPORTED_IN_KERNEL())
@@ -1351,7 +1351,7 @@ index f631c99..7cfe9db 100644
  
      destroy_gpu_va_space(gpu_va_space);
  
-@@ -1430,7 +1430,7 @@ NV_STATUS uvm_va_space_unregister_gpu_va_space(uvm_va_space_t *va_space, const N
+@@ -1439,7 +1439,7 @@ NV_STATUS uvm_va_space_unregister_gpu_va_space(uvm_va_space_t *va_space, const N
      uvm_gpu_retain(gpu);
      uvm_va_space_up_read_rm(va_space);
  
@@ -1360,7 +1360,7 @@ index f631c99..7cfe9db 100644
      uvm_va_space_down_write(va_space);
  
      // We dropped the lock so we have to re-verify that this gpu_va_space is
-@@ -1448,7 +1448,7 @@ NV_STATUS uvm_va_space_unregister_gpu_va_space(uvm_va_space_t *va_space, const N
+@@ -1457,7 +1457,7 @@ NV_STATUS uvm_va_space_unregister_gpu_va_space(uvm_va_space_t *va_space, const N
      }
  
      uvm_va_space_up_write(va_space);
@@ -1370,7 +1370,7 @@ index f631c99..7cfe9db 100644
      uvm_deferred_free_object_list(&deferred_free_list);
      uvm_gpu_va_space_release(gpu_va_space);
 diff --git a/nvidia-uvm/uvm8_va_space.h b/nvidia-uvm/uvm8_va_space.h
-index 823a034..3686449 100644
+index 6dadcce..927fba0 100644
 --- a/nvidia-uvm/uvm8_va_space.h
 +++ b/nvidia-uvm/uvm8_va_space.h
 @@ -128,7 +128,7 @@ struct uvm_gpu_va_space_struct
@@ -1383,10 +1383,10 @@ index 823a034..3686449 100644
      // fault buffer needs to be flushed, before servicing the faults that belong
      // to the va_space.
 diff --git a/nvidia-uvm/uvm8_va_space_mm.c b/nvidia-uvm/uvm8_va_space_mm.c
-index fb029b3..c554c7f 100644
+index 73988de..0c34fec 100644
 --- a/nvidia-uvm/uvm8_va_space_mm.c
 +++ b/nvidia-uvm/uvm8_va_space_mm.c
-@@ -240,7 +240,7 @@ bool uvm_va_space_mm_enabled(uvm_va_space_t *va_space)
+@@ -246,7 +246,7 @@ bool uvm_va_space_mm_enabled(uvm_va_space_t *va_space)
      static int uvm_mmu_notifier_register(uvm_va_space_mm_t *va_space_mm)
      {
          UVM_ASSERT(va_space_mm->mm);
@@ -1395,7 +1395,7 @@ index fb029b3..c554c7f 100644
  
          if (UVM_ATS_IBM_SUPPORTED_IN_DRIVER() && g_uvm_global.ats.enabled)
              va_space_mm->mmu_notifier.ops = &uvm_mmu_notifier_ops_ats;
-@@ -272,7 +272,7 @@ NV_STATUS uvm_va_space_mm_register(uvm_va_space_t *va_space)
+@@ -278,7 +278,7 @@ NV_STATUS uvm_va_space_mm_register(uvm_va_space_t *va_space)
      uvm_va_space_mm_t *va_space_mm = &va_space->va_space_mm;
      int ret;
  
@@ -1404,7 +1404,7 @@ index fb029b3..c554c7f 100644
      uvm_assert_rwsem_locked_write(&va_space->lock);
  
      UVM_ASSERT(uvm_va_space_initialized(va_space) != NV_OK);
-@@ -303,11 +303,11 @@ void uvm_va_space_mm_unregister(uvm_va_space_t *va_space)
+@@ -309,11 +309,11 @@ void uvm_va_space_mm_unregister(uvm_va_space_t *va_space)
  {
      uvm_va_space_mm_t *va_space_mm = &va_space->va_space_mm;
  
@@ -1418,7 +1418,7 @@ index fb029b3..c554c7f 100644
      uvm_assert_unlocked_order(UVM_LOCK_ORDER_VA_SPACE);
  
      if (!va_space_mm->mm)
-@@ -540,9 +540,9 @@ static NV_STATUS mm_read64(struct mm_struct *mm, NvU64 addr, NvU64 *val)
+@@ -546,9 +546,9 @@ static NV_STATUS mm_read64(struct mm_struct *mm, NvU64 addr, NvU64 *val)
  
      UVM_ASSERT(IS_ALIGNED(addr, sizeof(val)));
  
@@ -1431,10 +1431,10 @@ index fb029b3..c554c7f 100644
      if (ret < 0)
          return errno_to_nv_status(ret);
 diff --git a/nvidia-uvm/uvm8_va_space_mm.h b/nvidia-uvm/uvm8_va_space_mm.h
-index 114b529..18205bf 100644
+index 70aca34..7977e99 100644
 --- a/nvidia-uvm/uvm8_va_space_mm.h
 +++ b/nvidia-uvm/uvm8_va_space_mm.h
-@@ -86,7 +86,7 @@ bool uvm_va_space_mm_enabled(uvm_va_space_t *va_space);
+@@ -90,7 +90,7 @@ bool uvm_va_space_mm_enabled(uvm_va_space_t *va_space);
  //
  // Use uvm_va_space_mm_retain() to retrieve the mm.
  //
@@ -1443,7 +1443,7 @@ index 114b529..18205bf 100644
  NV_STATUS uvm_va_space_mm_register(uvm_va_space_t *va_space);
  
  // De-associate the mm from the va_space. This function won't return until all
-@@ -94,18 +94,18 @@ NV_STATUS uvm_va_space_mm_register(uvm_va_space_t *va_space);
+@@ -98,18 +98,18 @@ NV_STATUS uvm_va_space_mm_register(uvm_va_space_t *va_space);
  // to uvm_va_space_mm_retain() will return NULL.
  //
  // This function may invoke uvm_va_space_mm_shutdown() so the caller must not

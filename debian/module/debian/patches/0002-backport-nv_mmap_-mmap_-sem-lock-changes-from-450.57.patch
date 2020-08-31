@@ -1,4 +1,4 @@
-From b8512b3d377f9281ca4c2c43d31b11f8764cf449 Mon Sep 17 00:00:00 2001
+From 13080dd3e30b16f67717618533daaef3a11c5eaa Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 26 Aug 2020 20:10:54 +0200
 Subject: [PATCH 2/3] backport nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
@@ -14,7 +14,7 @@ Subject: [PATCH 2/3] backport nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
  7 files changed, 81 insertions(+), 7 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index 4d75de0..d402715 100644
+index d90f899..b04ff67 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
 @@ -201,4 +201,58 @@ static inline unsigned long nv_page_fault_va(struct vm_fault *vmf)
@@ -77,10 +77,10 @@ index 4d75de0..d402715 100644
 +
  #endif // __NV_MM_H__
 diff --git a/conftest.sh b/conftest.sh
-index b585432..6986548 100755
+index 24df86c..a4ebf81 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -3665,6 +3665,24 @@ compile_test() {
+@@ -3783,6 +3783,24 @@ compile_test() {
  
          ;;
  
@@ -124,16 +124,16 @@ index 1d3e658..f8fcde4 100644
      if (pages_pinned < 0 || (unsigned)pages_pinned < pages_count) {
          goto failed;
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 4d4c90e..901a783 100644
+index 09d5ca4..fd17ea1 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -90,3 +90,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_atomic_helper_swap_state_has_stall_arg
+@@ -92,3 +92,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_atomic_helper_swap_state_has_stall_arg
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_prime_flag_present
  NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_t
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_gem_object_has_resv
 +NV_CONFTEST_TYPE_COMPILE_TESTS += mm_has_mmap_lock
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
-index e77d53b..9159529 100644
+index 1c957ae..39d5820 100644
 --- a/nvidia/nv-mmap.c
 +++ b/nvidia/nv-mmap.c
 @@ -225,7 +225,7 @@ static vm_fault_t nvidia_fault(
@@ -146,10 +146,10 @@ index e77d53b..9159529 100644
          status = rm_schedule_gpu_wakeup(nvl->sp[NV_DEV_STACK_GPU_WAKEUP], nv);
          if (status != NV_OK)
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 4dd0855..cffb4f5 100644
+index 8b807e4..424f6e6 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -173,6 +173,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += sysfs_slab_unlink
+@@ -178,6 +178,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += sysfs_slab_unlink
  NV_CONFTEST_TYPE_COMPILE_TESTS += proc_ops
  NV_CONFTEST_TYPE_COMPILE_TESTS += vmalloc_has_pgprot_t_arg
  NV_CONFTEST_TYPE_COMPILE_TESTS += timeval

@@ -1,12 +1,10 @@
 nvidia-graphics-drivers (450.57-4) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
-  * Test that the patches can be applied to the module source (450.66-1).
+  * Test that the patches can be applied to the module source.
   * nvidia-kernel-dkms: Ship with unapplied patches and apply the patches
-    while building kernel modules (450.66-1).
-  * Simplify generating the -source and -dkms packages (450.66-1).
-  * Backport nv_vmalloc and nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
-    to fix kernel module build for Linux 5.8.
+    while building kernel modules.
+  * Simplify generating the -source and -dkms packages.
 
   [ Vincent Cheng ]
   * Remove myself from Uploaders.

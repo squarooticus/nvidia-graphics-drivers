@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (450.66-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.66-1) unstable; urgency=medium
 
   * New upstream long lived branch release 450.66 (2020-08-18).
     - Added support for the following GPUs: EIZO Quadro MED-XN31LP,
@@ -22,7 +22,7 @@ nvidia-graphics-drivers (450.66-1) UNRELEASED; urgency=medium
   [ Vincent Cheng ]
   * Remove myself from Uploaders.
 
- -- Luca Boccassi <bluca@debian.org>  Thu, 20 Aug 2020 13:08:07 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 01 Sep 2020 00:29:22 +0200
 
 nvidia-graphics-drivers (450.57-3) unstable; urgency=medium
 

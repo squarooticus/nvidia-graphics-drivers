@@ -22,6 +22,7 @@ nvidia-graphics-drivers (390.138-1+git) UNRELEASED; urgency=medium
     a) commenting the last paragraph in dkms.conf and
     b) building with NV_EXCLUDE_KERNEL_MODULES=nvidia-uvm set in the
        environment.
+  * Update lintian overrides.
 
   [ Vincent Cheng ]
   * Remove myself from Uploaders.

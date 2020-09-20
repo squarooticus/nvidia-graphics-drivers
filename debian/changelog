@@ -46,6 +46,7 @@ nvidia-graphics-drivers (455.23.04-1) UNRELEASED; urgency=medium
   * New upstream release 440 series.
 
   [ Andreas Beckmann ]
+  * Update nv-readme.ids.
   * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 21 Sep 2020 01:31:56 +0200

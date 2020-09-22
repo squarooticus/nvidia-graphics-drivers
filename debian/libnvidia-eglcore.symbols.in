@@ -933,6 +933,7 @@ libnvidia-eglcore.so.#VERSION# #PACKAGE# #MINVER#
  _glGetTexParameterfv@Base 346
  _glGetTexParameteriv@Base 346
  _glGetTexParameterxv@Base 346
+ _glGetTextureDirtyTileMapNV@Base 455
  _glGetTextureHandleARB@Base 346
  _glGetTextureHandleNV@Base 346
  _glGetTextureImage@Base 346

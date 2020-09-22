@@ -928,6 +928,7 @@ libGLX_nvidia.so.0 #PACKAGE# #MINVER#
  glGetTexParameterfv@Base 361.28
  glGetTexParameteriv@Base 361.28
  glGetTexParameterxv@Base 361.28
+ glGetTextureDirtyTileMapNV@Base 455
  glGetTextureHandleARB@Base 361.28
  glGetTextureHandleNV@Base 361.28
  glGetTextureImage@Base 361.28

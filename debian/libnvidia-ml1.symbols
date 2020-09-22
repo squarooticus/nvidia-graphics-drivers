@@ -1,11 +1,11 @@
 libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
 * Build-Depends-Package: #PACKAGE#
- nscq_init@Base 450
- nscq_path_compile@Base 450
- nscq_path_release@Base 450
- nscq_session_create@Base 450
- nscq_session_destroy@Base 450
- nscq_shutdown@Base 450
+#MISSING: 455# nscq_init@Base 450
+#MISSING: 455# nscq_path_compile@Base 450
+#MISSING: 455# nscq_path_release@Base 450
+#MISSING: 455# nscq_session_create@Base 450
+#MISSING: 455# nscq_session_destroy@Base 450
+#MISSING: 455# nscq_shutdown@Base 450
  nvmlComputeInstanceDestroy@Base 450
  nvmlComputeInstanceGetInfo@Base 450
  nvmlDeviceClearAccountingPids@Base 319

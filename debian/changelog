@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (455.23.04-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
 
   * New upstream beta 455.23.04 (2020-09-17).
     - Added support for the following GPUs: GeForce RTX 3080, GeForce RTX 3090.
@@ -43,15 +43,14 @@ nvidia-graphics-drivers (455.23.04-1) UNRELEASED; urgency=medium
       may cause behavioral changes for configurations using this option.
   * New upstream release 450 series.
     - Added support for the following GPUs: DGX Display, GeForce MX450.
-  * New upstream release 440 series.
-  * New upstream release 440 series.
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
   * Update symbols files.
   * Update lintian overrides.
+  * Upload to experimental.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 21 Sep 2020 01:31:56 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Sep 2020 21:52:54 +0200
 
 nvidia-graphics-drivers (450.66-1) unstable; urgency=medium
 

@@ -32,10 +32,11 @@ nvidia-graphics-drivers (455.23.04-1) UNRELEASED; urgency=medium
     - Fixed several synchronization bugs that could momentarily lock
       up the X server when moving/resizing/focusing OpenGL and Vulkan
       windows when PRIME Sync was enabled.
-    - Added NVIDIA VDPAU driver support for decoding VP9 10- and 12-bit bitstreams.
+    - Added NVIDIA VDPAU driver support for decoding VP9 10- and 12-bit
+      bitstreams.
       Note that VDPAU's presentation pipeline and OpenGL-VDPAU interop
-      does not support 10- and 12-bit video surfaces yet. See the "VDPAU Support"
-      appendix in the README for supported decoder profiles.
+      does not support 10- and 12-bit video surfaces yet. See the "VDPAU
+      Support" appendix in the README for supported decoder profiles.
     - Fixed a bug that could cause dual-link DVI to be driven over a
       connector that only supports single-link DVI, when "NoMaxPClkCheck" is
       specified in the "ModeValidation" X configuration option.  Note this fix

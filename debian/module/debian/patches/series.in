@@ -15,6 +15,7 @@ kernel-5.7.0-set-memory-array.patch
 #HAS_UVM#0003-work-around-mmap_-sem-lock-rename-uvm-part.patch
 linux-5.9.patch
 0001-backport-get_user_pages_remote-changes-from-455.23.04.patch
+0002-backport-vga_tryget-changes-from-455.23.04.patch
 
 # build system updates
 separate-makefile-kbuild.patch

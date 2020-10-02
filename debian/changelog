@@ -77,7 +77,7 @@ nvidia-graphics-drivers (340.108-1~git4deb9stretch) UNRELEASED; urgency=medium
     and modernize use-nv-kernel-ARCH.o_binary.patch
     to fix kernel module build for Linux 5.8.
   * Backport drm_gem_object_get changes from 418.30.
-  * Backport get_user_pages_remote and vga_tryget
+  * Backport get_user_pages_remote, vga_tryget, drm_driver_has_gem_free_object
     changes from 455.23.04 to fix kernel module build for Linux 5.9.
   * Update lintian overrides.
   * Bump Standards-Version to 4.5.0. No changes needed.

@@ -14,6 +14,7 @@ kernel-5.7.0-set-memory-array.patch
 0002-work-around-mmap_-sem-lock-rename.patch
 #HAS_UVM#0003-work-around-mmap_-sem-lock-rename-uvm-part.patch
 linux-5.9.patch
+0001-backport-drm_gem_object_get-changes-from-418.30.patch
 0001-backport-get_user_pages_remote-changes-from-455.23.04.patch
 0002-backport-vga_tryget-changes-from-455.23.04.patch
 

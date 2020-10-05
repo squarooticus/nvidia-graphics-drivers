@@ -1,31 +1,19 @@
-From 785c239fa1f669a6b39e9e7f2a1b1a57ca689e81 Mon Sep 17 00:00:00 2001
+From 29dbbbef2ef722431e73cdf5224b7d3a75bc6012 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 2 Oct 2020 00:03:05 +0200
-Subject: [PATCH 2/2] backport vga_tryget changes from 455.23.04
+Subject: [PATCH 2/3] backport vga_tryget changes from 455.23.04
 
 ---
- Makefile    |  1 +
- conftest.sh | 16 ++++++++++++++++
- nv.c        |  2 ++
+ conftest.sh          | 16 ++++++++++++++++
+ nvidia/nv.c          |  2 ++
+ nvidia/nvidia.Kbuild |  1 +
  3 files changed, 19 insertions(+)
 
-diff --git a/Makefile b/Makefile
-index 0288cd6..139a72f 100644
---- a/Makefile
-+++ b/Makefile
-@@ -90,6 +90,7 @@ ifdef NV_BUILD_MODULE_INSTANCES
- endif
- 
- COMPILE_TESTS = \
-+	vga_tryget \
- 	mm_has_mmap_lock \
- 	vmalloc_has_pgprot_t_arg \
- 	timeval \
 diff --git a/conftest.sh b/conftest.sh
-index 7a384b4..c06a74f 100755
+index a9feaa0..c323341 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2324,6 +2324,22 @@ compile_test() {
+@@ -4164,6 +4164,22 @@ compile_test() {
  
          ;;
  
@@ -48,13 +36,13 @@ index 7a384b4..c06a74f 100755
      esac
  }
  
-diff --git a/nv.c b/nv.c
-index 9a521c2..9559228 100644
---- a/nv.c
-+++ b/nv.c
-@@ -2787,7 +2787,9 @@ nvidia_probe
+diff --git a/nvidia/nv.c b/nvidia/nv.c
+index 15983f6..cfb2375 100644
+--- a/nvidia/nv.c
++++ b/nvidia/nv.c
+@@ -3872,7 +3872,9 @@ nvidia_probe
  
- #if defined(CONFIG_VGA_ARB)
+ #if defined(CONFIG_VGA_ARB) && !defined(NVCPU_PPC64LE)
  #if defined(VGA_DEFAULT_DEVICE)
 +#if defined(NV_VGA_TRYGET_PRESENT)
      vga_tryget(VGA_DEFAULT_DEVICE, VGA_RSRC_LEGACY_MASK);
@@ -62,6 +50,18 @@ index 9a521c2..9559228 100644
  #endif
      vga_set_legacy_decoding(dev, VGA_RSRC_NONE);
  #endif
+diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
+index 656db7b..6ca49ef 100644
+--- a/nvidia/nvidia.Kbuild
++++ b/nvidia/nvidia.Kbuild
+@@ -158,6 +158,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += jiffies_to_timespec
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_raw_ts64
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_real_ts64
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += ioremap_nocache
++NV_CONFTEST_FUNCTION_COMPILE_TESTS += vga_tryget
+ 
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_gpl_of_node_to_nid
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_swiotlb_map_sg_attrs
 -- 
 2.20.1
 

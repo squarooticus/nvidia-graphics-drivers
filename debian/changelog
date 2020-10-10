@@ -11,6 +11,9 @@ nvidia-graphics-drivers (455.28-1) UNRELEASED; urgency=medium
     - Added support for the following GPUs: A100-PCIE-40GB,
       A100 Graphics Device.
 
+  [ Luca Boccassi ]
+  * Update nv-readme.ids.
+
   [ Andreas Beckmann ]
   * libcuda1: Add Provides: libcuda-11.1-1{,-i386}.
 

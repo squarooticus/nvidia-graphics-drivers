@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (440.100-2+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (440.118.02-1+git) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
@@ -10,13 +10,23 @@ nvidia-graphics-drivers (440.100-2+git) UNRELEASED; urgency=medium
   * nvidia-kernel-dkms: Ship with unapplied patches and apply the patches
     while building kernel modules (450.66-1).
   * Simplify generating the -source and -dkms packages (450.66-1).
-  * Backport nv_vmalloc and nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
-    to fix kernel module build for Linux 5.8.
 
   [ Vincent Cheng ]
   * Remove myself from Uploaders.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 31 Aug 2020 11:43:08 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 13 Oct 2020 00:01:20 +0200
+
+nvidia-graphics-drivers (440.118.02-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 440.118.02 (2020-09-30).
+    - Fixed a bug that could cause the X server to crash when using large
+      cursor images with PRIME display offloading.
+    - Fixed a bug where a Vulkan application under PRIME render
+      offload would not always be correctly throttled to vsync despite
+      the application's request for VK_PRESENT_MODE_FIFO_KHR. This was
+      particularly prevalent on DXVK titles.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 13 Oct 2020 00:01:20 +0200
 
 nvidia-graphics-drivers (440.100-2) unstable; urgency=medium
 
@@ -56,6 +66,8 @@ nvidia-graphics-drivers (440.95.01-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Refresh patches.
   * Update lintian overrides.
+  * Backport nv_vmalloc and nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
+    to fix kernel module build for Linux 5.8.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 29 Jun 2020 21:42:12 +0200
 
@@ -83,6 +95,15 @@ nvidia-graphics-drivers (440.82-1) unstable; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 11 Apr 2020 14:29:59 +0200
 
+nvidia-graphics-drivers (440.64.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 440.64.00 (2020-03-10).
+
+  [ Andreas Beckmann ]
+  * Update lintian overrides.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 18 Mar 2020 21:10:14 +0100
+
 nvidia-graphics-drivers (440.64-2) unstable; urgency=medium
 
   * Prepare infrastructure for packaging Tesla 440 driver releases (available
@@ -96,7 +117,6 @@ nvidia-graphics-drivers (440.64-2) unstable; urgency=medium
 
 nvidia-graphics-drivers (440.64-1) unstable; urgency=medium
 
-  * New upstream Tesla release 440.64.00 (2020-03-10).
   * New upstream long lived branch release 440.64 (2020-02-28).
     - Added support for the following GPUs: GeForce MX330, GeForce MX350.
     - Fixed a regression that allowed displays to enter DPMS mode even

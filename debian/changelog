@@ -5,6 +5,7 @@ nvidia-graphics-drivers (450.80.02-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
+  * Update symbols files.
   * Restrict watch file to releases from the 450.xx long lived branch.
   * Update lintian overrides.
 

@@ -4,6 +4,7 @@ nvidia-graphics-drivers (450.80.02-1) UNRELEASED; urgency=medium
     - Added support for the following GPUs: DGX Display, GeForce MX450.
 
   [ Andreas Beckmann ]
+  * Update nv-readme.ids.
   * Restrict watch file to releases from the 450.xx long lived branch.
   * Update lintian overrides.
 

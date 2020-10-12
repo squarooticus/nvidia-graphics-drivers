@@ -26,6 +26,9 @@ nvidia-graphics-drivers (440.118.02-1) UNRELEASED; urgency=medium
       the application's request for VK_PRESENT_MODE_FIFO_KHR. This was
       particularly prevalent on DXVK titles.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Tue, 13 Oct 2020 00:01:20 +0200
 
 nvidia-graphics-drivers (440.100-2) unstable; urgency=medium

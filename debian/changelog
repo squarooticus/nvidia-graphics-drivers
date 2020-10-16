@@ -20,7 +20,7 @@ nvidia-graphics-drivers (390.138-1+git) UNRELEASED; urgency=medium
     switches the nvidia-uvm module license to "Dual MIT/GPL" as in 415.18.
   * Backport get_user_pages_remote, vga_tryget,
     drm_driver_has_gem_free_object, drm_display_mode_has_vrefresh,
-    drm_driver_master_set_has_int_return_type
+    drm_driver_master_set_has_int_return_type and drm_gem_object_put_unlocked
     changes from 455.23.04 to fix kernel module build for Linux 5.9.
   * Update lintian overrides.
 

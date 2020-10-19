@@ -28,7 +28,7 @@ nvidia-graphics-drivers (418.165.02-1) UNRELEASED; urgency=medium
       "'struct mm_struct' has no member named 'mmap_sem'".
 
   [ Andreas Beckmann ]
-  * Backport get_user_pages_remote, vga_tryget,
+  * Backport get_user_pages_remote, vga_tryget, smp_read_barrier_depends,
     drm_driver_has_gem_free_object, drm_display_mode_has_vrefresh,
     drm_driver_master_set_has_int_return_type and drm_gem_object_put_unlocked
     changes from 455.23.04 to fix kernel module build for Linux 5.9.

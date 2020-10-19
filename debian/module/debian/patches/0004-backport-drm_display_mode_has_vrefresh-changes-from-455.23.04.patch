@@ -1,7 +1,7 @@
-From fcbd642257fb272c1ced87bd07a33aaa6e518d76 Mon Sep 17 00:00:00 2001
+From c380f62870b2102dff4a9b384ca7341cb4b80cbd Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 16 Oct 2020 23:36:40 +0200
-Subject: [PATCH 4/4] backport drm_display_mode_has_vrefresh changes from
+Subject: [PATCH 4/6] backport drm_display_mode_has_vrefresh changes from
  455.23.04
 
 ---
@@ -11,11 +11,11 @@ Subject: [PATCH 4/4] backport drm_display_mode_has_vrefresh changes from
  3 files changed, 26 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index a8b735d..e0347a8 100755
+index 2d53f25..469ac2d 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4164,6 +4164,25 @@ compile_test() {
- 
+@@ -3742,6 +3742,25 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_DRM_DRIVER_HAS_GEM_FREE_OBJECT" "" "types"
          ;;
  
 +        drm_display_mode_has_vrefresh)
@@ -37,9 +37,9 @@ index a8b735d..e0347a8 100755
 +
 +        ;;
 +
-         drm_driver_has_gem_free_object)
+         vga_tryget)
              #
-             # Determine if the 'drm_driver' structure has a 'gem_free_object'
+             # Determine if vga_tryget() is present
 diff --git a/nvidia-drm/nvidia-drm-utils.c b/nvidia-drm/nvidia-drm-utils.c
 index 8cb2d5e..e30b2b6 100644
 --- a/nvidia-drm/nvidia-drm-utils.c
@@ -67,10 +67,10 @@ index 8cb2d5e..e30b2b6 100644
      dst->timings.pixelClockHz = src->clock * 1000; /* In Hz */
  
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 43a3c9f..32ed5c9 100644
+index 45d1595..1fe4456 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -93,4 +93,5 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_gem_prime_export_has_dev_arg
+@@ -93,4 +93,5 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_prime_flag_present
  NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_t
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_gem_object_has_resv
  NV_CONFTEST_TYPE_COMPILE_TESTS += mm_has_mmap_lock

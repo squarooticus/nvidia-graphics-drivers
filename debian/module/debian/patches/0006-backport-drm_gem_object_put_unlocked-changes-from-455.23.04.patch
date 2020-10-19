@@ -1,4 +1,4 @@
-From 188c02a4b282b1cf91c0b0b8038eed8d13410a0f Mon Sep 17 00:00:00 2001
+From d4cc186b1cb24c560ee6dbbda5ae5fd601bd3dd6 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sat, 17 Oct 2020 00:09:36 +0200
 Subject: [PATCH 6/6] backport drm_gem_object_put_unlocked changes from
@@ -11,11 +11,11 @@ Subject: [PATCH 6/6] backport drm_gem_object_put_unlocked changes from
  3 files changed, 33 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 37c40eb..afbf832 100755
+index 9791520..d99460f 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4164,6 +4164,32 @@ compile_test() {
- 
+@@ -3742,6 +3742,32 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_DRM_DRIVER_HAS_GEM_FREE_OBJECT" "" "types"
          ;;
  
 +        drm_gem_object_put_unlocked)
@@ -48,7 +48,7 @@ index 37c40eb..afbf832 100755
              #
              # Determine if the 'drm_display_mode' structure has a 'vrefresh'
 diff --git a/nvidia-drm/nvidia-drm-gem.h b/nvidia-drm/nvidia-drm-gem.h
-index 5691a7a..18c50ca 100644
+index a981440..03776dd 100644
 --- a/nvidia-drm/nvidia-drm-gem.h
 +++ b/nvidia-drm/nvidia-drm-gem.h
 @@ -87,7 +87,13 @@ static inline void
@@ -66,7 +66,7 @@ index 5691a7a..18c50ca 100644
      drm_gem_object_unreference_unlocked(&nv_gem->base);
  #endif
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 9eb6686..66f8545 100644
+index 763d9c7..db71085 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
 @@ -66,6 +66,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_framebuffer_get

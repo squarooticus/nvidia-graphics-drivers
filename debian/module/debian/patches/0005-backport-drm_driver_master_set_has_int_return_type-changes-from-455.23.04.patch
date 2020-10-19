@@ -1,7 +1,7 @@
-From 0f5cebb7340ae262c1485bfee1fbcd3e12aee4c1 Mon Sep 17 00:00:00 2001
+From 12aee3af1ef51a98c395ddfdc4b295fbdd744c2d Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 16 Oct 2020 23:58:27 +0200
-Subject: [PATCH 5/5] backport drm_driver_master_set_has_int_return_type
+Subject: [PATCH 5/6] backport drm_driver_master_set_has_int_return_type
  changes from 455.23.04
 
 ---
@@ -11,10 +11,10 @@ Subject: [PATCH 5/5] backport drm_driver_master_set_has_int_return_type
  3 files changed, 43 insertions(+), 2 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index e0347a8..37c40eb 100755
+index 469ac2d..9791520 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4183,6 +4183,31 @@ compile_test() {
+@@ -3761,6 +3761,31 @@ compile_test() {
  
          ;;
  
@@ -43,11 +43,11 @@ index e0347a8..37c40eb 100755
 +            compile_check_conftest "$CODE" "NV_DRM_DRIVER_SET_MASTER_HAS_INT_RETURN_TYPE" "" "types"
 +        ;;
 +
-         drm_driver_has_gem_free_object)
+         vga_tryget)
              #
-             # Determine if the 'drm_driver' structure has a 'gem_free_object'
+             # Determine if vga_tryget() is present
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 027cf80..1b4cc6d 100644
+index 553a1c9..0013a9f 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
 @@ -466,8 +466,8 @@ static void nv_drm_unload(struct drm_device *dev)
@@ -84,7 +84,7 @@ index 027cf80..1b4cc6d 100644
  static
  void nv_drm_master_drop(struct drm_device *dev,
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 32ed5c9..9eb6686 100644
+index 1fe4456..763d9c7 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
 @@ -94,4 +94,5 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_t

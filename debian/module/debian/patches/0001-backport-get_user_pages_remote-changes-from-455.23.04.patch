@@ -1,7 +1,7 @@
-From 172916c8ad64d3918e38c01dfd130a58d9cb53ff Mon Sep 17 00:00:00 2001
+From 8bee532cc2aba34d5309d586fc074e1a7d84c82b Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Thu, 1 Oct 2020 23:58:28 +0200
-Subject: [PATCH 1/6] backport get_user_pages_remote changes from 455.23.04
+Subject: [PATCH 1/7] backport get_user_pages_remote changes from 455.23.04
 
 ---
  common/inc/nv-mm.h | 37 ++++++++++++++++++++++++++-----------
@@ -9,7 +9,7 @@ Subject: [PATCH 1/6] backport get_user_pages_remote changes from 455.23.04
  2 files changed, 68 insertions(+), 15 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index 27f7f55..50a0760 100644
+index d402715..379c056 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
 @@ -98,11 +98,12 @@ typedef int vm_fault_t;
@@ -75,10 +75,10 @@ index 27f7f55..50a0760 100644
          #else
  
 diff --git a/conftest.sh b/conftest.sh
-index a8ee182..a58c1ac 100755
+index 705fb3b..b82047a 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2568,7 +2568,7 @@ compile_test() {
+@@ -2517,7 +2517,7 @@ compile_test() {
          get_user_pages_remote)
              #
              # Determine if the function get_user_pages_remote() is
@@ -87,7 +87,7 @@ index a8ee182..a58c1ac 100755
              #
              # get_user_pages_remote() was added by commit 1e9877902dc7
              # ("mm/gup: Introduce get_user_pages_remote()") in v4.6 (2016-02-12)
-@@ -2583,6 +2583,10 @@ compile_test() {
+@@ -2532,6 +2532,10 @@ compile_test() {
              # commit 5b56d49fc31d ("mm: add locked parameter to
              # get_user_pages_remote()") in v4.10 (2016-12-14)
              #
@@ -98,7 +98,7 @@ index a8ee182..a58c1ac 100755
              # conftest #1: check if get_user_pages_remote() is available
              # return if not available.
              # Fall through to conftest #2 if it is present
-@@ -2598,6 +2602,7 @@ compile_test() {
+@@ -2547,6 +2551,7 @@ compile_test() {
  
              if [ -f conftest$$.o ]; then
                  echo "#undef NV_GET_USER_PAGES_REMOTE_PRESENT" | append_conftest "functions"
@@ -106,7 +106,7 @@ index a8ee182..a58c1ac 100755
                  echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_WRITE_AND_FORCE_ARGS" | append_conftest "functions"
                  echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_LOCKED_ARG" | append_conftest "functions"
                  rm -f conftest$$.o
-@@ -2627,14 +2632,20 @@ compile_test() {
+@@ -2576,14 +2581,20 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -128,7 +128,7 @@ index a8ee182..a58c1ac 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              long get_user_pages_remote(struct task_struct *tsk,
-@@ -2652,13 +2663,40 @@ compile_test() {
+@@ -2601,13 +2612,40 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then

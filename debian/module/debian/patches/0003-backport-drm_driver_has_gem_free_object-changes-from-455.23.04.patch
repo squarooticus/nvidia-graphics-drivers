@@ -1,7 +1,7 @@
-From 8a3b737627c23a30986cc8bea504a07b07230001 Mon Sep 17 00:00:00 2001
+From 5182b91ef2be23dd7102df17694c93264c47a601 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sat, 3 Oct 2020 00:58:27 +0200
-Subject: [PATCH 3/6] backport drm_driver_has_gem_free_object changes from
+Subject: [PATCH 3/7] backport drm_driver_has_gem_free_object changes from
  455.23.04
 
 ---
@@ -11,11 +11,11 @@ Subject: [PATCH 3/6] backport drm_driver_has_gem_free_object changes from
  3 files changed, 27 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 293b552..2d53f25 100755
+index 1e0376b..9e75283 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -3718,6 +3718,30 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_KVMALLOC_PRESENT" "" "functions"
+@@ -3769,6 +3769,30 @@ compile_test() {
+ 
          ;;
  
 +        drm_driver_has_gem_free_object)
@@ -46,10 +46,10 @@ index 293b552..2d53f25 100755
              #
              # Determine if vga_tryget() is present
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index cb9e3f2..553a1c9 100644
+index 7e75bff..e3c0cd0 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -680,7 +680,9 @@ static struct drm_driver nv_drm_driver = {
+@@ -687,7 +687,9 @@ static struct drm_driver nv_drm_driver = {
  #endif
                                 DRIVER_GEM  | DRIVER_RENDER,
  
@@ -60,10 +60,10 @@ index cb9e3f2..553a1c9 100644
      .ioctls                 = nv_drm_ioctls,
      .num_ioctls             = ARRAY_SIZE(nv_drm_ioctls),
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index a5af634..45d1595 100644
+index 901a783..c422e71 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -93,3 +93,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_prime_flag_present
+@@ -91,3 +91,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_prime_flag_present
  NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_t
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_gem_object_has_resv
  NV_CONFTEST_TYPE_COMPILE_TESTS += mm_has_mmap_lock

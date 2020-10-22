@@ -1,7 +1,7 @@
-From 12aee3af1ef51a98c395ddfdc4b295fbdd744c2d Mon Sep 17 00:00:00 2001
+From 0de9724a5860df6fdb68c463370f287072425e7d Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 16 Oct 2020 23:58:27 +0200
-Subject: [PATCH 5/6] backport drm_driver_master_set_has_int_return_type
+Subject: [PATCH 5/7] backport drm_driver_master_set_has_int_return_type
  changes from 455.23.04
 
 ---
@@ -11,10 +11,10 @@ Subject: [PATCH 5/6] backport drm_driver_master_set_has_int_return_type
  3 files changed, 43 insertions(+), 2 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 469ac2d..9791520 100755
+index 84c1f49..13b07b9 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -3761,6 +3761,31 @@ compile_test() {
+@@ -3812,6 +3812,31 @@ compile_test() {
  
          ;;
  
@@ -47,10 +47,10 @@ index 469ac2d..9791520 100755
              #
              # Determine if vga_tryget() is present
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 553a1c9..0013a9f 100644
+index e3c0cd0..6bc4570 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -466,8 +466,8 @@ static void nv_drm_unload(struct drm_device *dev)
+@@ -470,8 +470,8 @@ static void nv_drm_unload(struct drm_device *dev)
  
  #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
  
@@ -61,7 +61,7 @@ index 553a1c9..0013a9f 100644
  {
      struct nv_drm_device *nv_dev = to_nv_device(dev);
  
-@@ -478,6 +478,21 @@ static int nv_drm_master_set(struct drm_device *dev,
+@@ -482,6 +482,21 @@ static int nv_drm_master_set(struct drm_device *dev,
      return 0;
  }
  
@@ -84,10 +84,10 @@ index 553a1c9..0013a9f 100644
  static
  void nv_drm_master_drop(struct drm_device *dev,
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 1fe4456..763d9c7 100644
+index 9bd8d80..f7e1797 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -94,4 +94,5 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_t
+@@ -92,4 +92,5 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_t
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_gem_object_has_resv
  NV_CONFTEST_TYPE_COMPILE_TESTS += mm_has_mmap_lock
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_display_mode_has_vrefresh

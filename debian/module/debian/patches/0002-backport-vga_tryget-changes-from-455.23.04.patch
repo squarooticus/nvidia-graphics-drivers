@@ -1,23 +1,22 @@
-From 98d030d949dcb621052bde88f874639a4e96af09 Mon Sep 17 00:00:00 2001
+From b0b95aa91390a1285b50dda0621b420180d10002 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 2 Oct 2020 00:03:05 +0200
-Subject: [PATCH 2/6] backport vga_tryget changes from 455.23.04
+Subject: [PATCH 2/7] backport vga_tryget changes from 455.23.04
 
 ---
- conftest.sh          | 17 +++++++++++++++++
- nvidia/nv.c          |  2 ++
+ conftest.sh          | 16 ++++++++++++++++
+ nvidia/nv-pci.c      |  2 ++
  nvidia/nvidia.Kbuild |  1 +
- 3 files changed, 20 insertions(+)
+ 3 files changed, 19 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index a58c1ac..293b552 100755
+index b82047a..1e0376b 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -3717,6 +3717,23 @@ compile_test() {
-         }"
-             compile_check_conftest "$CODE" "NV_KVMALLOC_PRESENT" "" "functions"
+@@ -3769,6 +3769,22 @@ compile_test() {
+ 
          ;;
-+
+ 
 +        vga_tryget)
 +            #
 +            # Determine if vga_tryget() is present
@@ -34,14 +33,14 @@ index a58c1ac..293b552 100755
 +            compile_check_conftest "$CODE" "NV_VGA_TRYGET_PRESENT" "" "functions"
 +        ;;
 +
-     esac
- }
- 
-diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 56d9836..d8f2606 100644
---- a/nvidia/nv.c
-+++ b/nvidia/nv.c
-@@ -4145,7 +4145,9 @@ nvidia_probe
+         # When adding a new conftest entry, please use the correct format for
+         # specifying the relevant upstream Linux kernel commit.
+         #
+diff --git a/nvidia/nv-pci.c b/nvidia/nv-pci.c
+index 462b523..8bbdea9 100644
+--- a/nvidia/nv-pci.c
++++ b/nvidia/nv-pci.c
+@@ -405,7 +405,9 @@ nv_pci_probe
  
  #if defined(CONFIG_VGA_ARB) && !defined(NVCPU_PPC64LE)
  #if defined(VGA_DEFAULT_DEVICE)
@@ -49,13 +48,13 @@ index 56d9836..d8f2606 100644
      vga_tryget(VGA_DEFAULT_DEVICE, VGA_RSRC_LEGACY_MASK);
 +#endif
  #endif
-     vga_set_legacy_decoding(dev, VGA_RSRC_NONE);
+     vga_set_legacy_decoding(pci_dev, VGA_RSRC_NONE);
  #endif
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 7b38d2d..efea563 100644
+index 03ad7db..c04f0d6 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -159,6 +159,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += vmf_insert_pfn
+@@ -146,6 +146,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += vmf_insert_pfn
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += jiffies_to_timespec
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_raw_ts64
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_real_ts64

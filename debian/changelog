@@ -18,10 +18,9 @@ nvidia-graphics-drivers (390.138-1+git) UNRELEASED; urgency=medium
     "radix-tree: Use local_lock for protection" (which effectively made
     radix_tree_preloads GPL-only) gets reverted in Linux 5.8 or NVIDIA
     switches the nvidia-uvm module license to "Dual MIT/GPL" as in 415.18.
-  * Note: Building the nvidia-uvm module can be temporarily disabled by
-    a) commenting the last paragraph in dkms.conf and
-    b) building with NV_EXCLUDE_KERNEL_MODULES=nvidia-uvm set in the
-       environment.
+  * Backport get_user_pages_remote, vga_tryget,
+    drm_driver_has_gem_free_object
+    changes from 455.23.04 to fix kernel module build for Linux 5.9.
   * Update lintian overrides.
 
   [ Vincent Cheng ]

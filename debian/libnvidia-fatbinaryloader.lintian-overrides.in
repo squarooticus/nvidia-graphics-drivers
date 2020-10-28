@@ -2,7 +2,6 @@
 [i386]: binary-file-built-without-LFS-support
 hardening-no-bindnow
 hardening-no-fortify-functions
-hardening-no-stackprotector
 
 # Use wildcard instead of exact path substitution, this is a M-A: same package.
 embedded-library usr/lib*/libnvidia-fatbinaryloader.so.#VERSION#: zlib

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (418.152.00-1+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.152.00-2+git4deb10buster) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
@@ -10,13 +10,18 @@ nvidia-graphics-drivers (418.152.00-1+git) UNRELEASED; urgency=medium
   * nvidia-kernel-dkms: Ship with unapplied patches and apply the patches
     while building kernel modules (450.66-1).
   * Simplify generating the -source and -dkms packages (450.66-1).
-  * Backport nv_vmalloc and nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
-    to fix kernel module build for Linux 5.8.
 
   [ Vincent Cheng ]
   * Remove myself from Uploaders.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 30 Aug 2020 22:11:52 +0200
+
+nvidia-graphics-drivers (418.152.00-2) UNRELEASED; urgency=medium
+
+  * Backport nv_vmalloc and nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
+    to fix kernel module build for Linux 5.8.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 01 Sep 2020 00:48:01 +0200
 
 nvidia-graphics-drivers (418.152.00-1) buster; urgency=medium
 

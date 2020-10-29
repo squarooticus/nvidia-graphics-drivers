@@ -1,7 +1,9 @@
-nvidia-graphics-drivers (450.80.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.80.02-1) unstable; urgency=medium
 
   * New upstream long lived branch release 450.80.02 (2020-09-30).
     - Added support for the following GPUs: DGX Display, GeForce MX450.
+    * Improved compatibility with recent Linux kernels.
+      (Closes: #972514, #972582, #972834, #972856, #972901)
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
@@ -9,7 +11,7 @@ nvidia-graphics-drivers (450.80.02-1) UNRELEASED; urgency=medium
   * Restrict watch file to releases from the 450.xx long lived branch.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 13 Oct 2020 00:19:13 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 29 Oct 2020 01:05:29 +0100
 
 nvidia-graphics-drivers (450.66-1) unstable; urgency=medium
 
@@ -74,6 +76,22 @@ nvidia-graphics-drivers (450.57-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 22 Jul 2020 16:33:11 +0200
 
+nvidia-graphics-drivers (450.51.06-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.51.06 (2020-07-28).
+
+  [ Andreas Beckmann ]
+  * Backport nv_vmalloc and nv_mmap_* (mmap_{sem=>lock}) changes from 450.57
+    to fix kernel module build for Linux 5.8.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 18 Aug 2020 22:14:06 +0200
+
+nvidia-graphics-drivers (450.51.05-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.51.05 (2020-07-07).
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Jul 2020 16:45:37 +0200
+
 nvidia-graphics-drivers (450.51-2) experimental; urgency=medium
 
   * Prepare infrastructure for packaging Tesla 450 driver releases (available
@@ -85,8 +103,6 @@ nvidia-graphics-drivers (450.51-2) experimental; urgency=medium
 
 nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
 
-  * New upstream Tesla release 450.51.06 (2020-07-28).
-  * New upstream Tesla release 450.51.05 (2020-07-07).
   * New upstream beta 450.51 (2020-06-24).
     - Added support for Vulkan direct-to-display on DisplayPort displays which
       are connected via DisplayPort Multi-Stream Transport (DP-MST).

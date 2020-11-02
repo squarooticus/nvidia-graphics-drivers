@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (455.28-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (455.28-1) experimental; urgency=medium
 
   * New upstream short lived branch release 455.28 (2020-10-07).
     - Fixed a bug that caused X to crash when the NVIDIA RandR provider was
@@ -18,7 +18,7 @@ nvidia-graphics-drivers (455.28-1) UNRELEASED; urgency=medium
   * libcuda1: Add Provides: libcuda-11.1-1{,-i386}.
   * Refresh patches.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 13 Oct 2020 22:31:15 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 02 Nov 2020 13:57:40 +0100
 
 nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
 

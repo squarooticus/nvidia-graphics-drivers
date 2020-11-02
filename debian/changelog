@@ -1,3 +1,19 @@
+nvidia-graphics-drivers (455.38-1) UNRELEASED; urgency=medium
+
+  * New upstream short lived branch release 455.38 (2020-10-29).
+    - Added support for the following GPU: GeForce RTX 3070.
+    - Added support for using an NVIDIA-driven display as a PRIME Display
+      Offload sink with a PRIME Display Offload source driven by the
+      xf86-video-intel driver.
+    - Fixed a bug in a Vulkan barrier optimization that allowed some
+      back-to-back copies to run unordered.
+  * New upstream release 450 series.
+    - Fixed a performance regression in the NVIDIA X driver which affected
+      some X11 RENDER extension use cases.
+    - Added AMD Secure Memory Encryption compatibility.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 02 Nov 2020 14:18:33 +0100
+
 nvidia-graphics-drivers (455.28-1) experimental; urgency=medium
 
   * New upstream short lived branch release 455.28 (2020-10-07).
@@ -77,7 +93,7 @@ nvidia-graphics-drivers (450.80.02-1) unstable; urgency=medium
   * New upstream long lived branch release 450.80.02 (2020-09-30).
     - Added support for the following GPUs: DGX Display, GeForce MX450.
     * Improved compatibility with recent Linux kernels.
-      (Closes: #972514, #972582, #972834, #972856, #972901)
+      (Closes: #972514, #972582, #972834, #972856, #972901, #973362)
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.

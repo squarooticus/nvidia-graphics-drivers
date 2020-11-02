@@ -8,7 +8,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
 #MISSING: 455# nscq_shutdown@Base 450
  nvmlComputeInstanceDestroy@Base 450
  nvmlComputeInstanceGetInfo@Base 450
-#MISSING: 455.28# nvmlComputeInstanceGetInfo_v2@Base 450.80.02
+ nvmlComputeInstanceGetInfo_v2@Base 450.80.02
  nvmlDeviceClearAccountingPids@Base 319
  nvmlDeviceClearCpuAffinity@Base 340
  nvmlDeviceClearEccErrorCounts@Base 270

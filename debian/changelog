@@ -12,6 +12,9 @@ nvidia-graphics-drivers (455.38-1) UNRELEASED; urgency=medium
       some X11 RENDER extension use cases.
     - Added AMD Secure Memory Encryption compatibility.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Mon, 02 Nov 2020 14:18:33 +0100
 
 nvidia-graphics-drivers (455.28-1) experimental; urgency=medium

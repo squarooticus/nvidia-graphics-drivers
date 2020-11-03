@@ -3,7 +3,7 @@ nvidia-graphics-drivers (450.80.02-1) unstable; urgency=medium
   * New upstream long lived branch release 450.80.02 (2020-09-30).
     - Added support for the following GPUs: DGX Display, GeForce MX450.
     * Improved compatibility with recent Linux kernels.
-      (Closes: #972514, #972582, #972834, #972856, #972901)
+      (Closes: #972514, #972582, #972834, #972856, #972901, #973362, #973665)
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.

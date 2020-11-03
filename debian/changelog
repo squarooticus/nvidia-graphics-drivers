@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (455.38-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (455.38-1) experimental; urgency=medium
 
   * New upstream short lived branch release 455.38 (2020-10-29).
     - Added support for the following GPU: GeForce RTX 3070.
@@ -15,7 +15,7 @@ nvidia-graphics-drivers (455.38-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 02 Nov 2020 14:18:33 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 03 Nov 2020 08:34:40 +0100
 
 nvidia-graphics-drivers (455.28-1) experimental; urgency=medium
 

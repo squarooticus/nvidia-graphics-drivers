@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (455.45.01-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (455.45.01-1) experimental; urgency=medium
 
   * New upstream short lived branch release 455.45.01 (2020-11-17).
     - Fixed a bug in a Vulkan blending optimization that could produce incorrect
@@ -6,8 +6,9 @@ nvidia-graphics-drivers (455.45.01-1) UNRELEASED; urgency=medium
       Life is Strange 2, Shadow of the Tomb Raider.
     - Fixed an issue that caused Vulkan swapchain creation to fail for
       full-screen windows when a G-SYNC monitor is connected.
+    * Supposedly fixes nvidia-uvm usability with Linux 5.9.  (Closes: #973729)
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 20 Nov 2020 20:53:51 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 20 Nov 2020 22:12:34 +0100
 
 nvidia-graphics-drivers (455.38-1) experimental; urgency=medium
 
@@ -33,7 +34,7 @@ nvidia-graphics-drivers (455.28-1) experimental; urgency=medium
   * New upstream short lived branch release 455.28 (2020-10-07).
     - Fixed a bug that caused X to crash when the NVIDIA RandR provider was
       disabled while using an NVIDIA-driven display as a PRIME Display Offload
-      sink.
+      sink.  (Closes: #972860)
   * New upstream release 450 series.
     - Fixed a bug where glGetGraphicsResetStatusARB would incorrectly
       return GL_PURGED_CONTEXT_RESET_NV immediately after application

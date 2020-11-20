@@ -1,3 +1,14 @@
+nvidia-graphics-drivers (455.45.01-1) UNRELEASED; urgency=medium
+
+  * New upstream short lived branch release 455.45.01 (2020-11-17).
+    - Fixed a bug in a Vulkan blending optimization that could produce incorrect
+      results. Some of the Vulkan titles affected by this bug were:
+      Life is Strange 2, Shadow of the Tomb Raider.
+    - Fixed an issue that caused Vulkan swapchain creation to fail for
+      full-screen windows when a G-SYNC monitor is connected.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 20 Nov 2020 20:53:51 +0100
+
 nvidia-graphics-drivers (455.38-1) experimental; urgency=medium
 
   * New upstream short lived branch release 455.38 (2020-10-29).

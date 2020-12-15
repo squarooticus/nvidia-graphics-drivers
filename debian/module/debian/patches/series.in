@@ -11,6 +11,8 @@ linux-5.9.patch
 0004-backport-drm_display_mode_has_vrefresh-changes-from-455.23.04.patch
 0005-backport-drm_driver_master_set_has_int_return_type-changes-from-455.23.04.patch
 0006-backport-drm_gem_object_put_unlocked-changes-from-455.23.04.patch
+0001-backport-drm_prime_pages_to_sg_has_drm_device_arg-changes-from-455.45.01.patch
+0002-backport-get_dma_ops-changes-from-455.45.01.patch
 
 # build system updates
 use-kbuild-compiler.patch

@@ -32,7 +32,7 @@ nvidia-graphics-drivers (390.138-2) UNRELEASED; urgency=medium
     drm_driver_has_gem_free_object, drm_display_mode_has_vrefresh,
     drm_driver_master_set_has_int_return_type and drm_gem_object_put_unlocked
     changes from 455.23.04 to fix kernel module build for Linux 5.9.
-  * Backport drm_prime_pages_to_sg_has_drm_device_arg changes
+  * Backport drm_prime_pages_to_sg_has_drm_device_arg and get_dma_ops changes
     from 455.45.01 to fix kernel module build for Linux 5.10.
   * Update lintian overrides.
 

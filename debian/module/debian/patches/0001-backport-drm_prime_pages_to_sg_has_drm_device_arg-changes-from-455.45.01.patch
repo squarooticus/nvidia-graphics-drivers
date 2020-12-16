@@ -1,7 +1,7 @@
-From b8c3c7aa1920eb7e60e2cd14bbedb6b8674c1c31 Mon Sep 17 00:00:00 2001
+From b76d56a46cb2522ba8e2c07cb222596eaed76312 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 15 Dec 2020 18:17:00 +0100
-Subject: [PATCH] backport drm_prime_pages_to_sg_has_drm_device_arg changes
+Subject: [PATCH 1/2] backport drm_prime_pages_to_sg_has_drm_device_arg changes
  from 455.45.01
 
 ---
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_prime_pages_to_sg_has_drm_device_arg changes
  4 files changed, 45 insertions(+), 2 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index afbf832..05a6c33 100755
+index d99460f..b8f0bf7 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4274,6 +4274,30 @@ compile_test() {
+@@ -3828,6 +3828,30 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_VGA_TRYGET_PRESENT" "" "functions"
          ;;
  
@@ -47,7 +47,7 @@ index afbf832..05a6c33 100755
  }
  
 diff --git a/nvidia-drm/nvidia-drm-gem-user-memory.c b/nvidia-drm/nvidia-drm-gem-user-memory.c
-index 76dedba..4ac4559 100644
+index 5109767..616b883 100644
 --- a/nvidia-drm/nvidia-drm-gem-user-memory.c
 +++ b/nvidia-drm/nvidia-drm-gem-user-memory.c
 @@ -29,6 +29,7 @@
@@ -99,7 +99,7 @@ index 2489924..831737d 100644
  
  /*
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 66f8545..0b200e3 100644
+index db71085..07eeb8f 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
 @@ -97,3 +97,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += mm_has_mmap_lock

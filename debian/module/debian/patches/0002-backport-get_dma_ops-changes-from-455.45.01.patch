@@ -1,4 +1,4 @@
-From 6d33dd40ff10d955c4932e2a8e83e43450dcf2bd Mon Sep 17 00:00:00 2001
+From 8723677af254a461ded7fa6bbdda30ecb71b2cbd Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 15 Dec 2020 17:09:29 +0100
 Subject: [PATCH 2/2] backport get_dma_ops changes from 455.45.01
@@ -9,12 +9,12 @@ Subject: [PATCH 2/2] backport get_dma_ops changes from 455.45.01
  2 files changed, 13 insertions(+)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index 67bdc2c..70d237e 100644
+index e57d445..c373f2f 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -179,6 +179,10 @@ static inline uid_t __kuid_val(kuid_t uid)
+@@ -168,6 +168,10 @@ static inline uid_t __kuid_val(uid_t uid)
+ #include <linux/pagemap.h>
  #include <linux/dma-mapping.h>
- #endif
  
 +#if defined(NV_LINUX_DMA_MAP_OPS_H_PRESENT)
 +#include <linux/dma-map-ops.h>
@@ -24,18 +24,18 @@ index 67bdc2c..70d237e 100644
  #include <linux/swiotlb.h>
  #endif
 diff --git a/conftest.sh b/conftest.sh
-index b8f0bf7..b470995 100755
+index 24e0c46..8382c89 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -135,6 +135,7 @@ test_headers() {
-     FILES="$FILES linux/dma-resv.h"
+@@ -151,6 +151,7 @@ test_headers() {
      FILES="$FILES sound/hdaudio.h"
-     FILES="$FILES linux/atomic.h"
+     FILES="$FILES asm/opal-api.h"
+     FILES="$FILES asm/pgtable_types.h"
 +    FILES="$FILES linux/dma-map-ops.h"
  
-     # Arch specific headers which need testing
-     FILES_ARCH="asm/book3s/64/hash-64k.h"
-@@ -1632,8 +1633,16 @@ compile_test() {
+     translate_and_preprocess_header_files $FILES
+ }
+@@ -1499,8 +1500,16 @@ compile_test() {
              # e1c7e324539a ("dma-mapping: always provide the dma_map_ops
              # based implementation") in v4.5
              #

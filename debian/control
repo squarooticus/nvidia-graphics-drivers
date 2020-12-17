@@ -1019,6 +1019,9 @@ Provides:
  libopencl-1.1-1,
  libopencl-1.2-1,
  libopencl-2.0-1,
+ libopencl-2.1-1,
+ libopencl-2.2-1,
+ libopencl-3.0-1,
 Conflicts:
  libopencl1,
 Replaces:

@@ -1,3 +1,80 @@
+nvidia-graphics-drivers (460.27.04-1) UNRELEASED; urgency=medium
+
+  * New upstream beta 460.27.04 (2020-12-15).
+    - Fixed a bug that could cause detailed timing information for displays
+      with a large number of detailed timings to be truncated in the X log.
+    - Fixed a bug that prevented scaled display resolutions configured via
+      the nvidia-settings control panel from being reported by RandR.
+    - Added support for the following GPUs: GeForce RTX 3060 Ti, RTX A6000.
+    - Fixed a bug with the SLI Mosaic Mode configuration dialog in
+      nvidia-settings that left displays enabled when they were not needed in
+      the selected configuration.
+    - Added support for RandR rotation and reflection while using an
+      NVIDIA-driven display as a PRIME Display Offload sink.
+    - Added support for "Reverse PRIME Bypass", an optimization that bypasses
+      the bandwidth overhead of PRIME Render Offload and PRIME Display Offload
+      in conditions where a render offload application is fullscreen,
+      unredirected, and visible only on a given NVIDIA-driven PRIME Display
+      Offload output. Use of the optimization is reported in the X log when
+      verbose logging is enabled in the X server.
+    - Add support for the VK_KHR_acceleration_structure extension.
+    - Add support for the VK_KHR_ray_tracing_pipeline extension.
+    - Add support for the VK_KHR_ray_query extension.
+    - Add support for the VK_KHR_pipeline_library extension.
+    - Add support for the VK_KHR_deferred_host_operations extension.
+    - Removed the MetaMode string truncation warning for older X Servers when
+      saving the X Configuration file from nvidia-settings.
+    - Add support for the VK_NV_fragment_shading_rate_enums extension.
+    - Fixed a bug where copying from an X11 pixmap to an RGB overlay window
+      would exhibit corruption.
+    - Fixed an issue with VK_ACCESS_MEMORY_READ_BIT and
+      VK_ACCESS_MEMORY_WRITE_BIT when used as part of a render pass.
+    - Add support for the VK_KHR_fragment_shading_rate extension.
+    - Add support for the VK_KHR_shader_terminate_invocation extension.
+    - Reduce host memory consumption for descriptor memory in cases where the
+      pNext chain contains a structure of type
+      VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO.
+    - Increased the default size for new OpenGL/Vulkan Shader Disk Cache
+      location to 1024MB. Note that caches with paths containing "/.nv/ will
+      continue to use the previous default of 128MB unless the size is manually
+      overridden. For more information see the "OpenGL Shader Disk Cache"
+      section in the "Specifying OpenGL Environment Variable Settings" chapter
+      of the README.
+    - Changed the default location for new OpenGL/Vulkan Shader Disk Caches.
+      If the location is not manually overridden and a cache is detected in the
+      previous default location, that location will be used instead of the new
+      default location. For more information see the "OpenGL Shader Disk Cache"
+      section in the "Specifying OpenGL Environment Variable Settings" chapter
+      of the README.
+    - Add support for the VK_EXT_shader_image_atomic_int64 extension.
+    - Add support for the VK_KHR_copy_commands2 extension.
+    - Allow importing cached memory via VK_EXT_external_memory_host.
+    - Removed support for the following deprecated frame lock NV-CONTROL
+      attributes: NV_CTRL_FRAMELOCK_MASTER, NV_CTRL_FRAMELOCK_SLAVES,
+      NV_CTRL_FRAMELOCK_MASTERABLE, NV_CTRL_FRAMELOCK_SLAVEABLE.
+    - Default AllowEmptyInitialConfiguration to True such that the NVIDIA X
+      driver succeeds when launching the X server even if there are no display
+      devices connected.
+    - RRGetCrtcInfo will now return Rotate_0 instead of 0 as the active
+      rotation for disabled CRTCs.
+    - Improved the NVIDIA VDPAU implementation of
+      VdpVideoSurfaceGetBitsYCbCr and VdpVideoSurfacePutBitsYCbCr when
+      using planar or semi-planar formats.  This helps applications that
+      transfer data between VDPAU video surfaces and system memory.
+    - Added initial experimental support for S0ix-based system suspend
+      (suspend-to-idle). This feature is platform and GPU dependent,
+      so the feature will be disabled by default. To enable this feature,
+      refer to the 'powermanagement' section of the README.
+  * New upstream release 450 series.
+    - Fixed the X driver's composition pipeline (used, e.g., for X desktop
+      rotation, "ForceCompositionPipeline", and some OpenGL Swap Group
+      configurations) to correctly preserve color precision in depth 30.
+    - Improved the memory allocation strategy in nvidia-modeset.ko to reduce
+      the likelihood of out-of-memory errors, which typically manifest as
+      "page allocation failure" messages in the kernel log.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Dec 2020 16:50:20 +0100
+
 nvidia-graphics-drivers (455.45.01-2) unstable; urgency=medium
 
   * Restrict watch file to releases from the 455.xx short lived branch.
@@ -8,6 +85,8 @@ nvidia-graphics-drivers (455.45.01-2) unstable; urgency=medium
 nvidia-graphics-drivers (455.45.01-1) experimental; urgency=medium
 
   * New upstream short lived branch release 455.45.01 (2020-11-17).
+    - Fixed an issue where Vulkan applications would fail to initialize if the
+      connected X11 Server did not expose support for GLX.
     - Fixed a bug in a Vulkan blending optimization that could produce incorrect
       results. Some of the Vulkan titles affected by this bug were:
       Life is Strange 2, Shadow of the Tomb Raider.
@@ -46,8 +125,7 @@ nvidia-graphics-drivers (455.28-1) experimental; urgency=medium
     - Fixed a bug where glGetGraphicsResetStatusARB would incorrectly
       return GL_PURGED_CONTEXT_RESET_NV immediately after application
       start-up if the system had previously been suspended.
-    - Added support for the following GPUs: A100-PCIE-40GB,
-      A100 Graphics Device.
+    - Added support for the following GPUs: A100 Graphics Device.
 
   [ Luca Boccassi ]
   * Update nv-readme.ids.
@@ -296,7 +374,7 @@ nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
   * New upstream release 445 series.
     - Removed support for "IgnoreDisplayDevices" X configuration option.
     - Added support for PRIME Synchronization when using displays driven by
-      the x86-video-amdgpu driver as PRIME display offload sinks.
+      the xf86-video-amdgpu driver as PRIME display offload sinks.
     - Added support for displays connected to NVIDIA GPUs to act as PRIME
       display offload sinks, also known as "Reverse PRIME". See the chapter
       titled "Offloading Graphics Display with RandR 1.4" in the README for

@@ -73,6 +73,9 @@ nvidia-graphics-drivers (460.27.04-1) UNRELEASED; urgency=medium
       the likelihood of out-of-memory errors, which typically manifest as
       "page allocation failure" messages in the kernel log.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Dec 2020 16:50:20 +0100
 
 nvidia-graphics-drivers (455.45.01-2) unstable; urgency=medium

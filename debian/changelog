@@ -77,6 +77,7 @@ nvidia-graphics-drivers (460.27.04-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Update symbols files.
   * nvidia-libopencl1 now supports up to OpenCL 3.0.
+  * libcuda1: Add Provides: libcuda-11.2-1{,-i386}.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Dec 2020 16:50:20 +0100
 

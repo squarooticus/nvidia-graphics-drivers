@@ -1,4 +1,6 @@
+#!/usr/bin/dh-exec --with=filter
 nvidia-bug-report.sh		usr/lib/#PRIVATE#/
 nvidia-debugdump		usr/lib/#PRIVATE#/
+nvidia-powerd			usr/lib/#PRIVATE#/				[amd64]
 nvidia-application-profiles-#VERSION#-rc	usr/share/nvidia/
 nvidia-application-profiles-#VERSION#-key-documentation	usr/share/nvidia/

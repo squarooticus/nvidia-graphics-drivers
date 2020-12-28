@@ -80,6 +80,9 @@ nvidia-graphics-drivers (460.27.04-1) UNRELEASED; urgency=medium
   * libcuda1: Add Provides: libcuda-11.2-1{,-i386}.
   * nvidia-driver-bin: Ship nvidia-powerd [amd64].
 
+  [ Luca Boccassi ]
+  * Update location and license (zlib/libpng) of supported-gpus.json.
+
  -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Dec 2020 16:50:20 +0100
 
 nvidia-graphics-drivers (455.45.01-2) unstable; urgency=medium

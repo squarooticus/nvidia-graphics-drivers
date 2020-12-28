@@ -1,5 +1,6 @@
 .manifest
 LICENSE
+supported-gpus/LICENSE
 makeself-help-script.sh
 makeself.sh
 mkprecompiled

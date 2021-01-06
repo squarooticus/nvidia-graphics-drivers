@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (460.27.04-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (460.27.04-1) experimental; urgency=medium
 
   * New upstream beta 460.27.04 (2020-12-15).
     - Fixed a bug that could cause detailed timing information for displays
@@ -6,9 +6,6 @@ nvidia-graphics-drivers (460.27.04-1) UNRELEASED; urgency=medium
     - Fixed a bug that prevented scaled display resolutions configured via
       the nvidia-settings control panel from being reported by RandR.
     - Added support for the following GPUs: GeForce RTX 3060 Ti, RTX A6000.
-    - Fixed a bug with the SLI Mosaic Mode configuration dialog in
-      nvidia-settings that left displays enabled when they were not needed in
-      the selected configuration.
     - Added support for RandR rotation and reflection while using an
       NVIDIA-driven display as a PRIME Display Offload sink.
     - Added support for "Reverse PRIME Bypass", an optimization that bypasses
@@ -49,9 +46,6 @@ nvidia-graphics-drivers (460.27.04-1) UNRELEASED; urgency=medium
     - Add support for the VK_EXT_shader_image_atomic_int64 extension.
     - Add support for the VK_KHR_copy_commands2 extension.
     - Allow importing cached memory via VK_EXT_external_memory_host.
-    - Removed support for the following deprecated frame lock NV-CONTROL
-      attributes: NV_CTRL_FRAMELOCK_MASTER, NV_CTRL_FRAMELOCK_SLAVES,
-      NV_CTRL_FRAMELOCK_MASTERABLE, NV_CTRL_FRAMELOCK_SLAVEABLE.
     - Default AllowEmptyInitialConfiguration to True such that the NVIDIA X
       driver succeeds when launching the X server even if there are no display
       devices connected.
@@ -80,11 +74,12 @@ nvidia-graphics-drivers (460.27.04-1) UNRELEASED; urgency=medium
   * libcuda1: Add Provides: libcuda-11.2-1{,-i386}.
   * nvidia-driver-bin: Ship nvidia-powerd [amd64].
   * Update lintian overrides.
+  * Upload to experimental.
 
   [ Luca Boccassi ]
   * Update location and license (zlib/libpng) of supported-gpus.json.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Dec 2020 16:50:20 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 06 Jan 2021 02:22:29 +0100
 
 nvidia-graphics-drivers (455.45.01-2) unstable; urgency=medium
 

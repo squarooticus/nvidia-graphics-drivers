@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (390.138-4+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (390.141-1+git) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
@@ -16,7 +16,26 @@ nvidia-graphics-drivers (390.138-4+git) UNRELEASED; urgency=medium
   [ Vincent Cheng ]
   * Remove myself from Uploaders.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Dec 2020 00:11:19 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 09 Jan 2021 23:16:55 +0100
+
+nvidia-graphics-drivers (390.141-1) UNRELEASED; urgency=medium
+
+  * New upstream legacy branch release 390.141 (2021-01-07).
+    * Fixed CVE‑2021‑1056.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5142
+    - Fixed a driver installation failure on Linux kernel 5.8 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "'struct mm_struct' has no member named 'mmap_sem'".
+    - Fixed a driver installation failure on Linux kernel 5.8 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "too many arguments to function '__vmalloc'".
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+  * Update symbols files.
+  * Update lintian overrides.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 09 Jan 2021 23:16:55 +0100
 
 nvidia-graphics-drivers (390.138-4) UNRELEASED; urgency=medium
 

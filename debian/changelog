@@ -33,6 +33,7 @@ nvidia-graphics-drivers (390.141-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.
   * Update symbols files.
+  * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 09 Jan 2021 23:16:55 +0100
 

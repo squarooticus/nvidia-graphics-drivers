@@ -30,6 +30,9 @@ nvidia-graphics-drivers (390.141-1) UNRELEASED; urgency=medium
       candidates, where the NVIDIA kernel module failed to build with error
       "too many arguments to function '__vmalloc'".
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Sat, 09 Jan 2021 23:16:55 +0100
 
 nvidia-graphics-drivers (390.138-4) UNRELEASED; urgency=medium

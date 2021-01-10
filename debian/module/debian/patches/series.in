@@ -1,7 +1,6 @@
 # kernel support
 do-div-cast.patch
 kernel-5.7.0-set-memory-array.patch
-linux-5.9.patch
 
 # build system updates
 use-kbuild-compiler.patch

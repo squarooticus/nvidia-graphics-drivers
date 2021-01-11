@@ -21,6 +21,9 @@ nvidia-graphics-drivers (450.102.04-1) UNRELEASED; urgency=medium
       return GL_PURGED_CONTEXT_RESET_NV immediately after application
       start-up if the system had previously been suspended.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Mon, 11 Jan 2021 17:23:13 +0100
 
 nvidia-graphics-drivers (450.80.02-2) unstable; urgency=medium

@@ -1,3 +1,28 @@
+nvidia-graphics-drivers (450.102.04-1) UNRELEASED; urgency=medium
+
+  * New upstream long lived branch release 450.102.04 (2021-01-07).
+    * Fixed CVE-2021-1052, CVE-2021-1053, CVE-2021-1056.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5142
+    - Fixed the X driver's composition pipeline (used, e.g., for X desktop
+      rotation, "ForceCompositionPipeline", and some OpenGL Swap Group
+      configurations) to correctly preserve color precision in depth 30.
+    - Fixed a bug that could cause X clients to crash when closing display
+      connections to the X server.
+    - Fixed a bug that could cause the X server to configure DisplayPort
+      Multi-Stream Transport displays in an inconsistent order.
+    - Added support for the following GPUs: T500, A100-SXM4-80GB.
+    - Improved the memory allocation strategy in nvidia-modeset.ko to reduce
+      the likelihood of out-of-memory errors, which typically manifest as
+      "page allocation failure" messages in the kernel log.  (Closes: #979573)
+    - Fixed a performance regression in the NVIDIA X driver which affected
+      some X11 RENDER extension use cases.
+    - Added AMD Secure Memory Encryption compatibility.
+    - Fixed a bug where glGetGraphicsResetStatusARB would incorrectly
+      return GL_PURGED_CONTEXT_RESET_NV immediately after application
+      start-up if the system had previously been suspended.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 11 Jan 2021 17:23:13 +0100
+
 nvidia-graphics-drivers (450.80.02-2) unstable; urgency=medium
 
   * libcuda1: Add Provides: libcuda-11.1-1{,-i386}.
@@ -11,7 +36,8 @@ nvidia-graphics-drivers (450.80.02-2) unstable; urgency=medium
 nvidia-graphics-drivers (450.80.02-1) unstable; urgency=medium
 
   * New upstream long lived branch release 450.80.02 (2020-09-30).
-    - Added support for the following GPUs: DGX Display, GeForce MX450.
+    - Added support for the following GPUs: A100-PCIE-40GB,
+      A100 Graphics Device, DGX Display, GeForce MX450.
     * Improved compatibility with recent Linux kernels.
       (Closes: #972514, #972582, #972834, #972856, #972901, #973362, #973665)
 

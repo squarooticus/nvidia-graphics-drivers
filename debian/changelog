@@ -21,7 +21,7 @@ nvidia-graphics-drivers (390.141-1+git) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (390.141-1) UNRELEASED; urgency=medium
 
   * New upstream legacy branch release 390.141 (2021-01-07).
-    * Fixed CVE‑2021‑1056.
+    * Fixed CVE-2021-1056.
       https://nvidia.custhelp.com/app/answers/detail/a_id/5142
     - Fixed a driver installation failure on Linux kernel 5.8 release
       candidates, where the NVIDIA kernel module failed to build with error
@@ -186,7 +186,7 @@ nvidia-graphics-drivers (390.116-2) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (390.116-1) stretch; urgency=medium
 
   * New upstream legacy branch release 390.116 (2019-02-22).
-    * Fixed CVE‑2018‑6260.  (Closes: #913467)
+    * Fixed CVE-2018-6260.  (Closes: #913467)
       https://nvidia.custhelp.com/app/answers/detail/a_id/4772
     - Fixed build failures which resulted in errors like "implicit declaration
       of function drm_...", when building the NVIDIA DRM kernel module for Linux

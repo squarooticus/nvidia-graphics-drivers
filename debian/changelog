@@ -1,3 +1,16 @@
+nvidia-graphics-drivers (460.32.03-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 460.32.03 (2021-01-07).
+    * Fixed CVE-2021-1052, CVE-2021-1053, CVE-2021-1056.  (Closes: #979670)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5142
+    - Added a new "NoInterlacedModes" token to the NVIDIA X driver's
+      "ModeValidation" option, to allow preventing interlaced modes from
+      being validated. Refer to the "X Config Options" appendix of the
+      driver README for further details.
+    - Added support for the following GPU: A40.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 14 Jan 2021 22:37:21 +0100
+
 nvidia-graphics-drivers (460.27.04-1) experimental; urgency=medium
 
   * New upstream beta 460.27.04 (2020-12-15).

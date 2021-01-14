@@ -12,6 +12,7 @@ nvidia-graphics-drivers (460.32.03-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
   * Refresh patches.
+  * Update symbols files.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 14 Jan 2021 22:37:21 +0100
 

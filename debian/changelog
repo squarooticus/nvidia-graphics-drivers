@@ -23,6 +23,7 @@ nvidia-graphics-drivers (450.102.04-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
+  * Refresh patches.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 11 Jan 2021 17:23:13 +0100
 

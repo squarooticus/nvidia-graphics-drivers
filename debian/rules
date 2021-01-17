@@ -139,13 +139,13 @@ NVIDIA-Linux-armhf: NVIDIA-Linux-amd64
 	cp -al $</*.json $@
 endif
 
-ifneq (,$(filter ppc64el,$(NO_DRIVER_ARCH_LIST)))
+#ifneq (,$(filter ppc64el,$(NO_DRIVER_ARCH_LIST)))
 NVIDIA-Linux-ppc64el: NVIDIA-Linux-amd64
 	$(RM) -r $@
 	mkdir $@
 	cp -al $</*.icd $@
 	cp -al $</*.json* $@
-endif
+#endif
 
 # Unpack all architectures, we may need files from all of them.
 unpack-stamp: $(patsubst %,NVIDIA-Linux-%,$(ARCH_LIST))
@@ -521,7 +521,7 @@ endif
 
 UPSTREAM_NAME		 = nvidia-graphics-drivers
 UPSTREAM_VERSION	 = $(NVIDIA_RELEASE)
-TARBALL_LIST		 = $(foreach a,empty $(DRIVER_ARCH_LIST),$(call get_tarball,$a))
+TARBALL_LIST		 = $(foreach a,empty $(filter-out ppc64el,$(DRIVER_ARCH_LIST)),$(call get_tarball,$a))
 
 GIT			?= git
 TARBALL_REPOSITORY	 = https://salsa.debian.org/nvidia-team/tarballs-$(UPSTREAM_NAME).git

@@ -16,7 +16,7 @@ nvidia-graphics-drivers (390.141-1+git) UNRELEASED; urgency=medium
   [ Vincent Cheng ]
   * Remove myself from Uploaders.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 09 Jan 2021 23:16:55 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 12 Jan 2021 02:08:48 +0100
 
 nvidia-graphics-drivers (390.141-1) UNRELEASED; urgency=medium
 
@@ -29,20 +29,21 @@ nvidia-graphics-drivers (390.141-1) UNRELEASED; urgency=medium
     - Fixed a driver installation failure on Linux kernel 5.8 release
       candidates, where the NVIDIA kernel module failed to build with error
       "too many arguments to function '__vmalloc'".
+    * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
   * Refresh patches.
-  * Update symbols files.
+  * Update glvnd symbols files.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 09 Jan 2021 23:16:55 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 10 Jan 2021 03:31:58 +0100
 
 nvidia-graphics-drivers (390.138-4) UNRELEASED; urgency=medium
 
   * Backport drm_prime_pages_to_sg_has_drm_device_arg and get_dma_ops changes
     from 455.45.01 to fix kernel module build for Linux 5.10.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Dec 2020 00:11:19 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Dec 2020 00:28:48 +0100
 
 nvidia-graphics-drivers (390.138-3) UNRELEASED; urgency=medium
 

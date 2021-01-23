@@ -37,6 +37,7 @@ nvidia-graphics-drivers (440.118.02-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
+  * Update glvnd symbols files.
   * Backport get_user_pages_remote, vga_tryget, smp_read_barrier_depends,
     drm_driver_has_gem_free_object, drm_display_mode_has_vrefresh,
     drm_driver_master_set_has_int_return_type and drm_gem_object_put_unlocked

@@ -1,6 +1,7 @@
 nvidia-graphics-drivers (460.32.03-2) UNRELEASED; urgency=medium
 
   * nvidia-detect: Add support for Tesla 460 drivers.
+  * nvidia-detect: Drop support for jessie(-lts) (EoL).
   * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 25 Jan 2021 15:43:22 +0100

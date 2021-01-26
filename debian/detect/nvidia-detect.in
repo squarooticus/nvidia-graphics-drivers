@@ -295,7 +295,7 @@ fi
 		elif [[ -n ${VERSIONS[71]} ]]; then
 			echo "Uh oh. Your card is only supported by the 71.86 legacy drivers series, which is not in any current Debian suite."
 		else
-			echo "Oops. Internal error 11 ($NVGA)"
+			echo "Oops. Internal error 12 ($NVGA)"
 		fi
 		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-tesla-460-driver" ] && [[ -n ${VERSIONS[461]} ]]; then
 			echo "Your card is also supported by the Tesla 460 drivers series."

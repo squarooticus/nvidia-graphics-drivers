@@ -1,3 +1,11 @@
+nvidia-graphics-drivers (460.32.03-2) unstable; urgency=medium
+
+  * nvidia-detect: Add support for Tesla 460 drivers.
+  * nvidia-detect: Drop support for jessie(-lts) (EoL).
+  * Update lintian overrides.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 26 Jan 2021 02:21:27 +0100
+
 nvidia-graphics-drivers (460.32.03-1) unstable; urgency=medium
 
   * New upstream production branch release 460.32.03 (2021-01-07).
@@ -227,12 +235,13 @@ nvidia-graphics-drivers (450.102.04-1) UNRELEASED; urgency=medium
     - Fixed a bug where glGetGraphicsResetStatusARB would incorrectly
       return GL_PURGED_CONTEXT_RESET_NV immediately after application
       start-up if the system had previously been suspended.
+    * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
   * Refresh patches.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 11 Jan 2021 17:23:13 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 25 Jan 2021 18:21:19 +0100
 
 nvidia-graphics-drivers (450.80.02-2) unstable; urgency=medium
 
@@ -467,7 +476,7 @@ nvidia-graphics-drivers (440.118.02-2) UNRELEASED; urgency=medium
   * Backport drm_prime_pages_to_sg_has_drm_device_arg and get_dma_ops changes
     from 455.45.01 to fix kernel module build for Linux 5.10.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Dec 2020 02:05:26 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Dec 2020 13:35:38 +0100
 
 nvidia-graphics-drivers (440.118.02-1) UNRELEASED; urgency=medium
 
@@ -481,6 +490,7 @@ nvidia-graphics-drivers (440.118.02-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
+  * Update glvnd symbols files.
   * Backport get_user_pages_remote, vga_tryget, smp_read_barrier_depends,
     drm_driver_has_gem_free_object, drm_display_mode_has_vrefresh,
     drm_driver_master_set_has_int_return_type and drm_gem_object_put_unlocked
@@ -978,6 +988,33 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
 
+nvidia-graphics-drivers (418.181.07-1) buster; urgency=medium
+
+  * New upstream Tesla release 418.181.07 (2021-01-19).
+    * Fixed CVE-2021-1056.  (Closes: #979670)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5142
+    * Improved compatibility with recent Linux kernels.
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+  * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
+    libnvidia-cfg1 in third-party packages (450.57-2).
+    - Add Provides: libnvidia-cfg.so.1 (= ${nvidia:Version}).
+    - Generate alternative versioned dependency on libnvidia-cfg.so.1 through
+      the symbols file.
+  * Test that the patches can be applied to the module source (450.66-1).
+  * nvidia-kernel-dkms: Ship with unapplied patches and apply the patches
+    while building kernel modules (450.66-1).
+  * Simplify generating the -source and -dkms packages (450.66-1).
+  * Bump watch file version to 4.
+  * Bump Standards-Version to 4.5.1. No changes needed.
+  * Upload to buster.
+
+  [ Vincent Cheng ]
+  * Remove myself from Uploaders.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 23 Jan 2021 19:12:36 +0100
+
 nvidia-graphics-drivers (418.165.02-2) UNRELEASED; urgency=medium
 
   * Use a version=4 watch file.
@@ -985,18 +1022,11 @@ nvidia-graphics-drivers (418.165.02-2) UNRELEASED; urgency=medium
   * Backport drm_prime_pages_to_sg_has_drm_device_arg and get_dma_ops changes
     from 455.45.01 to fix kernel module build for Linux 5.10.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Dec 2020 01:02:45 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Dec 2020 13:08:40 +0100
 
 nvidia-graphics-drivers (418.165.02-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 418.165.02 (2020-09-30).
-  * New upstream release 390 series.
-    - Fixed a driver installation failure on Linux kernel 5.8 release
-      candidates, where the NVIDIA kernel module failed to build with error
-      "too many arguments to function '__vmalloc'".
-    - Fixed a driver installation failure on Linux kernel 5.8 release
-      candidates, where the NVIDIA kernel module failed to build with error
-      "'struct mm_struct' has no member named 'mmap_sem'".
 
   [ Andreas Beckmann ]
   * Backport get_user_pages_remote, vga_tryget, smp_read_barrier_depends,
@@ -1639,20 +1669,21 @@ nvidia-graphics-drivers (390.141-1) UNRELEASED; urgency=medium
     - Fixed a driver installation failure on Linux kernel 5.8 release
       candidates, where the NVIDIA kernel module failed to build with error
       "too many arguments to function '__vmalloc'".
+    * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
   * Refresh patches.
-  * Update symbols files.
+  * Update glvnd symbols files.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 09 Jan 2021 23:16:55 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 10 Jan 2021 03:31:58 +0100
 
 nvidia-graphics-drivers (390.138-4) UNRELEASED; urgency=medium
 
   * Backport drm_prime_pages_to_sg_has_drm_device_arg and get_dma_ops changes
     from 455.45.01 to fix kernel module build for Linux 5.10.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Dec 2020 00:11:19 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Dec 2020 00:28:48 +0100
 
 nvidia-graphics-drivers (390.138-3) UNRELEASED; urgency=medium
 

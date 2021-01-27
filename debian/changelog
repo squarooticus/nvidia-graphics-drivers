@@ -17,6 +17,9 @@ nvidia-graphics-drivers (460.39-1) UNRELEASED; urgency=medium
     - Fixed a bug that could intermittently cause NvFBC applications to fail
       with the error message "Unable to send exported fds".
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Wed, 27 Jan 2021 20:23:12 +0100
 
 nvidia-graphics-drivers (460.32.03-2) unstable; urgency=medium

@@ -1,10 +1,10 @@
-nvidia-graphics-drivers (460.39-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (460.39-1) unstable; urgency=medium
 
   * New upstream production branch release 460.39 (2021-01-26).
     - Updated the NVIDIA driver to restore functionality of some features,
       including runtime power management, hotplugging audio-capable display
       devices, and S0ix-based system suspend, with recent kernels such as
-      Linux 5.10.
+      Linux 5.10.  (Closes: #981187)
     - Fixed a bug that caused bindless texture samplers to be incorrectly
       counted towards the MAX_COMPUTE_TEXTURE_IMAGE_UNITS limit.
     - Fixed a bug that could cause the GPU to hang when attempting to
@@ -20,7 +20,7 @@ nvidia-graphics-drivers (460.39-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 27 Jan 2021 20:23:12 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 28 Jan 2021 01:33:29 +0100
 
 nvidia-graphics-drivers (460.32.03-2) unstable; urgency=medium
 

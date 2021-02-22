@@ -290,9 +290,6 @@ endif
 override_dh_installchangelogs:
 	dh_installchangelogs debian/tmp/NVIDIA_Changelog
 
-override_dh_dkms:
-	dh_dkms -V $(version)
-
 override_dh_bugfiles:
 	dh_bugfiles -A
 

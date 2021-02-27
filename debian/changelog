@@ -11,6 +11,9 @@ nvidia-graphics-drivers (460.56-1) UNRELEASED; urgency=medium
     - Fixed a regression that could cause display corruption when using
       a scaled resolution after resuming from power management suspend.
 
+  [ Luca Boccassi ]
+  * Update nv-readme.ids.
+
   [ Andreas Beckmann ]
   * Switch to dh-sequence-dkms.
   * Simplify dh_dkms usage.

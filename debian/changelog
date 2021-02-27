@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (460.56-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (460.56-1) unstable; urgency=medium
 
   * New upstream production branch release 460.56 (2021-02-25).
     - Added support for the following GPUs: GeForce RTX 3060, CMP 40HX
@@ -18,7 +18,7 @@ nvidia-graphics-drivers (460.56-1) UNRELEASED; urgency=medium
   * Switch to dh-sequence-dkms.
   * Simplify dh_dkms usage.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 27 Feb 2021 21:24:51 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 28 Feb 2021 00:26:36 +0100
 
 nvidia-graphics-drivers (460.39-1) unstable; urgency=medium
 

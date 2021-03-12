@@ -1,3 +1,10 @@
+nvidia-graphics-drivers (418.181.07-1+git4deb10buster) UNRELEASED; urgency=medium
+
+  * nvidia-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed (460.56-2).
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 12 Mar 2021 13:39:58 +0100
+
 nvidia-graphics-drivers (418.181.07-1) buster; urgency=medium
 
   * New upstream Tesla release 418.181.07 (2021-01-19).

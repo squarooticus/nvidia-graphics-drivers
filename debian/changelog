@@ -86,6 +86,8 @@ nvidia-graphics-drivers (340.108-1~git4deb9stretch) UNRELEASED; urgency=medium
     got finally disabled.
   * Backport drm_prime_pages_to_sg_has_drm_device_arg changes
     from 455.45.01 to fix kernel module build for Linux 5.10.
+  * nvidia-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed (460.56-2).
   * Update lintian overrides.
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.5.1. No changes needed.

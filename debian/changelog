@@ -1,3 +1,12 @@
+nvidia-graphics-drivers (440.118.02-3) UNRELEASED; urgency=medium
+
+  * Switch to dh-sequence-dkms (460.56-1).
+  * Simplify dh_dkms usage (460.56-1).
+  * nvidia-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed (460.56-2).
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 12 Mar 2021 20:31:15 +0100
+
 nvidia-graphics-drivers (440.118.02-2) UNRELEASED; urgency=medium
 
   * Bump watch file version to 4.

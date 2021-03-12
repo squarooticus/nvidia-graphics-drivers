@@ -10,6 +10,10 @@ nvidia-graphics-drivers (440.118.02-2+git) UNRELEASED; urgency=medium
   * nvidia-kernel-dkms: Ship with unapplied patches and apply the patches
     while building kernel modules (450.66-1).
   * Simplify generating the -source and -dkms packages (450.66-1).
+  * Switch to dh-sequence-dkms (460.56-1).
+  * Simplify dh_dkms usage (460.56-1).
+  * nvidia-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed (460.56-2).
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.5.1. No changes needed.
 

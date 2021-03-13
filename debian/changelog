@@ -1,3 +1,12 @@
+nvidia-graphics-drivers (460.32.03-3) UNRELEASED; urgency=medium
+
+  * Switch to dh-sequence-dkms (460.56-1).
+  * Simplify dh_dkms usage (460.56-1).
+  * nvidia-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed (460.56-2).
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 13 Mar 2021 21:24:40 +0100
+
 nvidia-graphics-drivers (460.32.03-2) unstable; urgency=medium
 
   * nvidia-detect: Add support for Tesla 460 drivers.

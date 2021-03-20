@@ -16,6 +16,9 @@ nvidia-graphics-drivers (460.67-1) UNRELEASED; urgency=medium
       candidates, where the NVIDIA kernel module failed to build with error
       "fatal error: asm/kmap_types.h: No such file or directory".
 
+  [ Luca Boccassi ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Sat, 20 Mar 2021 23:00:41 +0100
 
 nvidia-graphics-drivers (460.56-2) unstable; urgency=medium

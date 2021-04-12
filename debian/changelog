@@ -1,3 +1,46 @@
+nvidia-graphics-drivers (465.19.01-1) UNRELEASED; urgency=medium
+
+  * New upstream beta 465.19.01 (2021-03-30).
+    - Improved X11 DrawText() performance when rendering stippled text.
+    - Fixed a bug that could prevent some hardware configurations with large
+      numbers of displays connected to the same GPU from working correctly.
+    - Fixed a bug that could cause multi-threaded GLX applications to hang
+      while attempting to handle an XError.
+    - Fixed a potential crash in the Vulkan driver when clearing images with
+      multiple layers.
+    - Fixed a bug with the host-visible device-local memory heap, where if an
+      allocation failed due to space constraints, it could cause the application
+      to crash on future Vulkan function calls.
+    - Fixed corruption in the Vulkan driver that sometimes occurred with shadow
+      rendering with image arrays.
+    - Added support for the VK_KHR_synchronization2 extension.
+    - Added support for the VK_KHR_workgroup_memory_explicit_layout extension.
+    - Added support for the VK_KHR_zero_initialize_workgroup_memory extension.
+    - Added support for linear images for use with host-visible video memory in
+      Vulkan.
+    - Fixed an issue with OpenGL where imported Vulkan buffers would fail with
+      GL_OUT_OF_MEMORY when marked as resident.
+    - Fixed a bug that caused the NVIDIA driver to retain an incorrect
+      memory mapping of the UEFI system console when booting with the
+      kernel parameter pci=realloc. This could cause the console to corrupt
+      memory in use by the NVIDIA driver, and vice versa.
+    - Runtime D3 Power Management is now enabled by default on supported
+      notebook systems with Ampere or newer GPUs. See the chapter titled
+      "PCI-Express Runtime D3 (RTD3) Power Management" in the README for
+      further details.
+    - Updated the NVIDIA X driver to allow OpenGL applications running on an X
+      server that has left the active virtual terminal (VT) to continue running
+      on the GPU, but with a limited frame rate.
+      This functionality is only enabled when the
+      NVreg_PreserveVideoMemoryAllocations=1 nvidia module parameter is enabled.
+    - Fix a Vulkan clamping bug where fragment depth values would not be clamped
+      to the range [0,1] if VK_EXT_depth_range_unrestricted was not enabled.
+    - Fix a bug related to SPIR-V 1.4 non-Input/Output entry point variables.
+    - Fixed a bug in compilation of SPIR-V intersection shaders when modules
+      with multiple entry points are used.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 12 Apr 2021 08:33:14 +0200
+
 nvidia-graphics-drivers (460.73.01-1) unstable; urgency=medium
 
   * New upstream production branch release 460.73.01 (2021-04-14).

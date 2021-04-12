@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (460.67-2) UNRELEASED; urgency=medium
+
+  * Restrict watch file to releases from the 460.xx production branch.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 12 Apr 2021 08:31:01 +0200
+
 nvidia-graphics-drivers (460.67-1) unstable; urgency=medium
 
   * New upstream production branch release 460.67 (2021-03-18).

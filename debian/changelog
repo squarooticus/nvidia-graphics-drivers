@@ -39,6 +39,9 @@ nvidia-graphics-drivers (465.19.01-1) UNRELEASED; urgency=medium
     - Fixed a bug in compilation of SPIR-V intersection shaders when modules
       with multiple entry points are used.
 
+  [ Andreas Beckmann ]
+  * Update symbols files.
+
  -- Andreas Beckmann <anbe@debian.org>  Mon, 12 Apr 2021 08:33:14 +0200
 
 nvidia-graphics-drivers (460.73.01-1) unstable; urgency=medium

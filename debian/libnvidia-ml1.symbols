@@ -163,6 +163,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceRemoveGpu_v2@Base 396
  nvmlDeviceResetApplicationsClocks@Base 304.30
  nvmlDeviceResetGpuLockedClocks@Base 410
+ nvmlDeviceResetMemoryLockedClocks@Base 465
  nvmlDeviceResetNvLinkErrorCounters@Base 361.42
  nvmlDeviceResetNvLinkUtilizationCounter@Base 361
  nvmlDeviceSetAPIRestriction@Base 319.60
@@ -176,6 +177,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceSetEccMode@Base 270
  nvmlDeviceSetGpuLockedClocks@Base 410
  nvmlDeviceSetGpuOperationMode@Base 304.48
+ nvmlDeviceSetMemoryLockedClocks@Base 465
  nvmlDeviceSetMigMode@Base 450
  nvmlDeviceSetNvLinkUtilizationControl@Base 361
  nvmlDeviceSetPersistenceMode@Base 270
@@ -193,6 +195,8 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlEventSetWait_v2@Base 450
  nvmlGetBlacklistDeviceCount@Base 410
  nvmlGetBlacklistDeviceInfoByIndex@Base 410
+ nvmlGetExcludedDeviceCount@Base 465
+ nvmlGetExcludedDeviceInfoByIndex@Base 465
  nvmlGetVgpuCompatibility@Base 375.26
  nvmlGetVgpuVersion@Base 410.66
  nvmlGpuInstanceCreateComputeInstance@Base 450

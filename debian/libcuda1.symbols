@@ -93,6 +93,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuEventSynchronize@Base 169
  cuExternalMemoryGetMappedBuffer@Base 410
  cuExternalMemoryGetMappedMipmappedArray@Base 410
+ cuFlushGPUDirectRDMAWrites@Base 465
  cuFuncGetAttribute@Base 185
  cuFuncGetModule@Base 450
  cuFuncSetAttribute@Base 384
@@ -119,6 +120,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGetErrorName@Base 331
  cuGetErrorString@Base 331
  cuGetExportTable@Base 195.30
+ cuGetProcAddress@Base 465
  cuGraphAddChildGraphNode@Base 410
  cuGraphAddDependencies@Base 410
  cuGraphAddEmptyNode@Base 410
@@ -133,6 +135,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGraphChildGraphNodeGetGraph@Base 410
  cuGraphClone@Base 410
  cuGraphCreate@Base 410
+ cuGraphDebugDotPrint@Base 465
  cuGraphDestroy@Base 410
  cuGraphDestroyNode@Base 410
  cuGraphEventRecordNodeGetEvent@Base 455
@@ -176,7 +179,9 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGraphNodeGetDependencies@Base 410
  cuGraphNodeGetDependentNodes@Base 410
  cuGraphNodeGetType@Base 410
+ cuGraphReleaseUserObject@Base 465
  cuGraphRemoveDependencies@Base 410
+ cuGraphRetainUserObject@Base 465
  cuGraphUpload@Base 455
  cuGraphUpload_ptsz@Base 455
  (arch=!i386 !ppc64el)cuGraphicsEGLRegisterImage@Base 346
@@ -435,6 +440,8 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuStreamGetAttribute_ptsz@Base 450
  cuStreamGetCaptureInfo@Base 418
  cuStreamGetCaptureInfo_ptsz@Base 418
+ cuStreamGetCaptureInfo_v2@Base 465
+ cuStreamGetCaptureInfo_v2_ptsz@Base 465
  cuStreamGetCtx@Base 396
  cuStreamGetCtx_ptsz@Base 396
  cuStreamGetFlags@Base 319
@@ -449,6 +456,8 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuStreamSetAttribute_ptsz@Base 450
  cuStreamSynchronize@Base 169
  cuStreamSynchronize_ptsz@Base 346
+ cuStreamUpdateCaptureDependencies@Base 465
+ cuStreamUpdateCaptureDependencies_ptsz@Base 465
  cuStreamWaitEvent@Base 260
  cuStreamWaitEvent_ptsz@Base 346
  cuStreamWaitValue32@Base 361.42
@@ -501,6 +510,9 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuTexRefSetMipmapLevelClamp@Base 304
  cuTexRefSetMipmappedArray@Base 304
  cuThreadExchangeStreamCaptureMode@Base 418
+ cuUserObjectCreate@Base 465
+ cuUserObjectRelease@Base 465
+ cuUserObjectRetain@Base 465
  cuVDPAUCtxCreate@Base 256
  cuVDPAUCtxCreate_v2@Base 260
  cuVDPAUGetDevice@Base 256

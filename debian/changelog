@@ -41,6 +41,7 @@ nvidia-graphics-drivers (465.19.01-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Update symbols files.
+  * Ship the firmware blob on amd64.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 12 Apr 2021 08:33:14 +0200
 

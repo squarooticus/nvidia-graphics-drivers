@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (390.141-1+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (390.143-1+git) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
@@ -19,6 +19,19 @@ nvidia-graphics-drivers (390.141-1+git) UNRELEASED; urgency=medium
   * Remove myself from Uploaders.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 12 Jan 2021 02:08:48 +0100
+
+nvidia-graphics-drivers (390.143-1) UNRELEASED; urgency=medium
+
+  * New upstream legacy branch release 390.143 (2021-04-19).
+    * Fixed CVE-2021-1076.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5172
+    - Fixed a bug where vkCreateSwapchain could cause the X Server to crash
+      when an invalid imageFormat was provided.
+    - Fixed a driver installation failure on Linux kernel 5.11 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "fatal error: asm/kmap_types.h: No such file or directory".
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 19 Apr 2021 22:38:56 +0200
 
 nvidia-graphics-drivers (390.141-1) UNRELEASED; urgency=medium
 

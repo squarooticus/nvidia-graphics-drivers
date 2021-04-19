@@ -1,5 +1,8 @@
-nvidia-graphics-drivers (465.19.01-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (465.24.02-1) UNRELEASED; urgency=medium
 
+  * New upstream new feature branch release 465.24.02 (2021-04-14).
+    * Fixed CVE-2021-1076, CVE-2021-1077.  (Closes: #987216)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5172
   * New upstream beta 465.19.01 (2021-03-30).
     - Improved X11 DrawText() performance when rendering stippled text.
     - Fixed a bug that could prevent some hardware configurations with large
@@ -44,7 +47,7 @@ nvidia-graphics-drivers (465.19.01-1) UNRELEASED; urgency=medium
   * Ship the firmware blob on amd64.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 12 Apr 2021 08:33:14 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 19 Apr 2021 17:03:12 +0200
 
 nvidia-graphics-drivers (460.73.01-1) unstable; urgency=medium
 

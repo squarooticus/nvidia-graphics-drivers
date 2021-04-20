@@ -749,6 +749,18 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
 
+nvidia-graphics-drivers (418.197.02-1) buster; urgency=medium
+
+  * New upstream Tesla release 418.197.02 (2021-04-19).
+    * Fixed CVE-2021-1076.  (Closes: #987216)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5172
+
+  [ Andreas Beckmann ]
+  * nvidia-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed (460.56-2).  (Closes: #984881)
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 20 Apr 2021 15:01:59 +0200
+
 nvidia-graphics-drivers (418.181.07-1) buster; urgency=medium
 
   * New upstream Tesla release 418.181.07 (2021-01-19).
@@ -1357,6 +1369,19 @@ nvidia-graphics-drivers (396.18-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 22 Apr 2018 13:59:45 +0200
+
+nvidia-graphics-drivers (390.143-1) UNRELEASED; urgency=medium
+
+  * New upstream legacy branch release 390.143 (2021-04-19).
+    * Fixed CVE-2021-1076.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5172
+    - Fixed a bug where vkCreateSwapchain could cause the X Server to crash
+      when an invalid imageFormat was provided.
+    - Fixed a driver installation failure on Linux kernel 5.11 release
+      candidates, where the NVIDIA kernel module failed to build with error
+      "fatal error: asm/kmap_types.h: No such file or directory".
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 19 Apr 2021 22:38:56 +0200
 
 nvidia-graphics-drivers (390.141-1) UNRELEASED; urgency=medium
 

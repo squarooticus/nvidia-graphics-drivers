@@ -1,14 +1,14 @@
-nvidia-graphics-drivers (418.197.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.197.02-1) buster; urgency=medium
 
   * New upstream Tesla release 418.197.02 (2021-04-19).
-    * Fixed CVE-2021-1076.
+    * Fixed CVE-2021-1076.  (Closes: #987216)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5172
 
   [ Andreas Beckmann ]
   * nvidia-alternative: Add libnvidia-ml.so slave alternative if
-    libnvidia-ml-dev is installed (460.56-2).
+    libnvidia-ml-dev is installed (460.56-2).  (Closes: #984881)
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 20 Apr 2021 02:57:40 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 20 Apr 2021 15:01:59 +0200
 
 nvidia-graphics-drivers (418.181.07-1) buster; urgency=medium
 

@@ -7,6 +7,7 @@ nvidia-graphics-drivers (460.73.01-1) UNRELEASED; urgency=medium
       RTX A4000, RTX A5000, T400, T600.
 
   [ Andreas Beckmann ]
+  * Update nv-readme.ids.
   * Restrict watch file to releases from the 460.xx production branch.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 22 Apr 2021 21:42:12 +0200

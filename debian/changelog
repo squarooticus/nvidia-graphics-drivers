@@ -300,7 +300,7 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
 nvidia-graphics-drivers (450.119.03-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.119.03 (2021-04-19).
-    * Fixed CVE-2021-1076, CVE-2021-1077.
+    * Fixed CVE-2021-1076, CVE-2021-1077.  (Closes: #987221)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5172
     - Fixed a driver installation failure on Linux kernel 5.11 release
       candidates, where the NVIDIA kernel module failed to build with error
@@ -314,6 +314,15 @@ nvidia-graphics-drivers (450.119.03-1) UNRELEASED; urgency=medium
       with the error message "Unable to send exported fds".
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 22 Apr 2021 21:13:14 +0200
+
+nvidia-graphics-drivers (450.102.04-2) UNRELEASED; urgency=medium
+
+  * Switch to dh-sequence-dkms (460.56-1).
+  * Simplify dh_dkms usage (460.56-1).
+  * nvidia-tesla-450-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed (460.56-2).  (Closes: #984881)
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 13 Mar 2021 18:43:15 +0100
 
 nvidia-graphics-drivers (450.102.04-1) UNRELEASED; urgency=medium
 
@@ -569,6 +578,15 @@ nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 01 Jul 2020 00:02:18 +0200
+
+nvidia-graphics-drivers (440.118.02-3) UNRELEASED; urgency=medium
+
+  * Switch to dh-sequence-dkms (460.56-1).
+  * Simplify dh_dkms usage (460.56-1).
+  * nvidia-tesla-440-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed (460.56-2).  (Closes: #984881)
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 12 Mar 2021 21:03:13 +0100
 
 nvidia-graphics-drivers (440.118.02-2) UNRELEASED; urgency=medium
 
@@ -1089,6 +1107,14 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
 
+nvidia-graphics-drivers (418.197.02-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 418.197.02 (2021-04-19).
+    * Fixed CVE-2021-1076.  (Closes: #987219)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5172
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 20 Apr 2021 15:01:59 +0200
+
 nvidia-graphics-drivers (418.197.02-1) buster; urgency=medium
 
   * New upstream Tesla release 418.197.02 (2021-04-19).
@@ -1100,6 +1126,15 @@ nvidia-graphics-drivers (418.197.02-1) buster; urgency=medium
     libnvidia-ml-dev is installed (460.56-2).  (Closes: #984881)
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 20 Apr 2021 15:01:59 +0200
+
+nvidia-graphics-drivers (418.181.07-2) UNRELEASED; urgency=medium
+
+  * Switch to dh-sequence-dkms (460.56-1).
+  * Simplify dh_dkms usage (460.56-1).
+  * nvidia-tesla-418-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed (460.56-2).  (Closes: #984881)
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 12 Mar 2021 20:11:00 +0100
 
 nvidia-graphics-drivers (418.181.07-1) UNRELEASED; urgency=medium
 

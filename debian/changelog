@@ -1,7 +1,7 @@
 nvidia-graphics-drivers (450.119.03-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.119.03 (2021-04-19).
-    * Fixed CVE-2021-1076.  (Closes: #987221)
+    * Fixed CVE-2021-1076, CVE-2021-1077.  (Closes: #987221)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5172
     - Fixed a driver installation failure on Linux kernel 5.11 release
       candidates, where the NVIDIA kernel module failed to build with error
@@ -14,7 +14,7 @@ nvidia-graphics-drivers (450.119.03-1) UNRELEASED; urgency=medium
     - Fixed a bug that could intermittently cause NvFBC applications to fail
       with the error message "Unable to send exported fds".
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 20 Apr 2021 17:19:40 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 22 Apr 2021 21:13:14 +0200
 
 nvidia-graphics-drivers (450.102.04-2) UNRELEASED; urgency=medium
 
@@ -254,7 +254,7 @@ nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
   * New upstream release 445 series.
     - Removed support for "IgnoreDisplayDevices" X configuration option.
     - Added support for PRIME Synchronization when using displays driven by
-      the x86-video-amdgpu driver as PRIME display offload sinks.
+      the xf86-video-amdgpu driver as PRIME display offload sinks.
     - Added support for displays connected to NVIDIA GPUs to act as PRIME
       display offload sinks, also known as "Reverse PRIME". See the chapter
       titled "Offloading Graphics Display with RandR 1.4" in the README for

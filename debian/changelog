@@ -237,7 +237,7 @@ nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
   * New upstream release 445 series.
     - Removed support for "IgnoreDisplayDevices" X configuration option.
     - Added support for PRIME Synchronization when using displays driven by
-      the x86-video-amdgpu driver as PRIME display offload sinks.
+      the xf86-video-amdgpu driver as PRIME display offload sinks.
     - Added support for displays connected to NVIDIA GPUs to act as PRIME
       display offload sinks, also known as "Reverse PRIME". See the chapter
       titled "Offloading Graphics Display with RandR 1.4" in the README for

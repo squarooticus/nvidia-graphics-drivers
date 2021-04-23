@@ -27,8 +27,8 @@ nvidia-graphics-drivers (460.67-1) unstable; urgency=medium
 
 nvidia-graphics-drivers (460.56-2) unstable; urgency=medium
 
-  * Add libnvidia-ml.so slave alternative if libnvidia-ml-dev is installed.
-    (Closes: #984881)
+  * nvidia-alternative: Add libnvidia-ml.so slave alternative if
+    libnvidia-ml-dev is installed.  (Closes: #984881)
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 10 Mar 2021 21:03:59 +0100
 

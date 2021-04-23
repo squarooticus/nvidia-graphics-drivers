@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (460.73.01-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (460.73.01-1) unstable; urgency=medium
 
   * New upstream production branch release 460.73.01 (2021-04-14).
     * Fixed CVE-2021-1076, CVE-2021-1077.  (Closes: #987216)
@@ -10,7 +10,7 @@ nvidia-graphics-drivers (460.73.01-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Restrict watch file to releases from the 460.xx production branch.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 22 Apr 2021 21:42:12 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Apr 2021 08:59:01 +0200
 
 nvidia-graphics-drivers (460.67-1) unstable; urgency=medium
 
@@ -35,7 +35,7 @@ nvidia-graphics-drivers (460.56-2) unstable; urgency=medium
 nvidia-graphics-drivers (460.56-1) unstable; urgency=medium
 
   * New upstream production branch release 460.56 (2021-02-25).
-    - Added support for the following GPUs: GeForce RTX 3060, CMP 40HX
+    - Added support for the following GPUs: GeForce RTX 3060, CMP 40HX,
       CMP 30HX.
     - Fixed a bug with indexed ray payloads in Vulkan.
 

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (465.24.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
 
   * New upstream new feature branch release 465.24.02 (2021-04-14).
     * Fixed CVE-2021-1076, CVE-2021-1077.  (Closes: #987216)
@@ -47,8 +47,9 @@ nvidia-graphics-drivers (465.24.02-1) UNRELEASED; urgency=medium
   * Ship the firmware blob on amd64.
   * Some power management features were not yet in Linux 2.6.32.
   * Update lintian overrides.
+  * Upload to experimental.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 19 Apr 2021 17:03:12 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Apr 2021 18:48:53 +0200
 
 nvidia-graphics-drivers (460.73.01-1) unstable; urgency=medium
 

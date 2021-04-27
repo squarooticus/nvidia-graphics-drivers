@@ -1,5 +1,6 @@
 # kernel support
 kernel-5.7.0-set-memory-array.patch
+linux-2.6.34-dev_pm_info-runtime_auto.patch
 
 # build system updates
 use-kbuild-compiler.patch

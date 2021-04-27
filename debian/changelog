@@ -45,6 +45,7 @@ nvidia-graphics-drivers (465.24.02-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Update symbols files.
   * Ship the firmware blob on amd64.
+  * Some power management features were not yet in Linux 2.6.32.
   * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 19 Apr 2021 17:03:12 +0200

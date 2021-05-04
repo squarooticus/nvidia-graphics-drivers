@@ -1,9 +1,26 @@
-nvidia-graphics-drivers (465.24.02-2) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (465.27-1) UNRELEASED; urgency=medium
 
+  * New upstream new feature branch release 465.27 (2021-04-29).
+  * New upstream release 460 series.
+    - Added support for the following GPUs: T600 Laptop GPU, T1200 Laptop GPU,
+      RTX A5000 Laptop GPU, RTX A4000 Laptop GPU, RTX A3000 Laptop GPU,
+      RTX A2000 Laptop GPU.
+    - Fixed a bug that could prevent a system from resuming from suspend
+      when DisplayPort activity occurred while the system was suspended.
+    - Fixed a regression that prevented eglQueryDevicesEXT from correctly
+      enumerating GPUs on systems with multiple GPUs where access to the
+      GPU device files was restricted for some GPUs.
+    - Fixed a regression that could cause system hangs when changing display
+      resolution on SLI Mosaic configurations.
+  * New upstream release 450 series.
+    - Fixed a bug that could result in blank displays when driving multiple
+      displays at the same resolution using active DisplayPort dongles.
+
+  [ Andreas Beckmann ]
   * libcuda1: Add Provides: libcuda-11.3-1{,-i386}.
   * Build the nvidia-peermem kernel module.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 04 May 2021 15:09:18 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 04 May 2021 16:03:09 +0200
 
 nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
 

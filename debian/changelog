@@ -17,6 +17,7 @@ nvidia-graphics-drivers (465.27-1) UNRELEASED; urgency=medium
       displays at the same resolution using active DisplayPort dongles.
 
   [ Andreas Beckmann ]
+  * Update nv-readme.ids.
   * libcuda1: Add Provides: libcuda-11.3-1{,-i386}.
   * Build the nvidia-peermem kernel module.
 

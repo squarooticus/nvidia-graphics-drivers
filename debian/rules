@@ -55,6 +55,7 @@ DRIVER_ARCH_LIST	 = $(filter-out $(NO_DRIVER_ARCH_LIST),$(ARCH_LIST))
 unload_modules		 =
 unload_modules		+= nvidia-drm
 unload_modules		+= nvidia-modeset
+unload_modules		+= nvidia-peermem
 unload_modules		+= $(if $(has_uvm),nvidia-uvm)
 unload_modules		+= nvidia
 

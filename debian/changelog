@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (465.27-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (465.27-1) experimental; urgency=medium
 
   * New upstream new feature branch release 465.27 (2021-04-29).
   * New upstream release 460 series.
@@ -21,7 +21,7 @@ nvidia-graphics-drivers (465.27-1) UNRELEASED; urgency=medium
   * libcuda1: Add Provides: libcuda-11.3-1{,-i386}.
   * Build the nvidia-peermem kernel module.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 04 May 2021 16:03:09 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 04 May 2021 20:37:18 +0200
 
 nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
 

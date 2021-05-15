@@ -15,6 +15,9 @@ nvidia-graphics-drivers (460.80-1) unstable; urgency=medium
     - Fixed a regression that could cause system hangs when changing display
       resolution on SLI Mosaic configurations.
 
+  [ Luca Boccassi ]
+  * Update nv-readme.ids.
+
  -- Luca Boccassi <bluca@debian.org>  Sat, 15 May 2021 17:25:14 +0100
 
 nvidia-graphics-drivers (460.73.01-1) unstable; urgency=medium

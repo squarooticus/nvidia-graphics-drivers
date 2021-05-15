@@ -17,6 +17,7 @@ nvidia-graphics-drivers (460.80-1) unstable; urgency=medium
 
   [ Luca Boccassi ]
   * Update nv-readme.ids.
+  * Refresh kmods patches to remove fuzz.
 
  -- Luca Boccassi <bluca@debian.org>  Sat, 15 May 2021 17:25:14 +0100
 

@@ -1,8 +1,10 @@
 nvidia-graphics-drivers (450.119.04-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.119.04 (2021-05-04).
+    - Fixed a bug that could result in blank displays when driving multiple
+      displays at the same resolution using active DisplayPort dongles.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 18 May 2021 19:09:46 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 20 May 2021 13:53:07 +0200
 
 nvidia-graphics-drivers (450.119.03-1) UNRELEASED; urgency=medium
 

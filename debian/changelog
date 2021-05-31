@@ -7,8 +7,9 @@ nvidia-graphics-drivers (418.197.02-1) buster; urgency=medium
   [ Andreas Beckmann ]
   * nvidia-alternative: Add libnvidia-ml.so slave alternative if
     libnvidia-ml-dev is installed (460.56-2).  (Closes: #984881)
+  * Upload to buster.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 20 Apr 2021 15:01:59 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 31 May 2021 11:40:00 +0200
 
 nvidia-graphics-drivers (418.181.07-1) buster; urgency=medium
 

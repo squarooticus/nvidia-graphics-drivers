@@ -1,3 +1,10 @@
+nvidia-graphics-drivers (460.84-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 460.84 (2021-06-03).
+    - Added support for the following GPU: GeForce RTX 3080 Ti.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Jun 2021 21:19:51 +0200
+
 nvidia-graphics-drivers (460.80-1) unstable; urgency=medium
 
   * New upstream production branch release 460.80 (2021-05-11).

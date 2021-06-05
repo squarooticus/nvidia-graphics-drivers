@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (460.84-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (460.84-1) unstable; urgency=medium
 
   * New upstream production branch release 460.84 (2021-06-03).
     - Added support for the following GPU: GeForce RTX 3080 Ti.
@@ -7,7 +7,7 @@ nvidia-graphics-drivers (460.84-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Jun 2021 21:19:51 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 05 Jun 2021 03:30:17 +0200
 
 nvidia-graphics-drivers (460.80-1) unstable; urgency=medium
 

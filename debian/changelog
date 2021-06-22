@@ -1,3 +1,93 @@
+nvidia-graphics-drivers (470.42.01-1) UNRELEASED; urgency=medium
+
+  * New upstream beta 470.42.01 (2021-06-22).
+    - Added support for the following GPUs: A100-PG506-207, A100-PG506-217.
+    - Increased the maximum limit on concurrent OpenGL contexts. This
+      limit was previously constrained by a fixed-size internal driver
+      resource, and is now constrained by available system memory.
+    - Applications that exceed the maximum limit on concurrent OpenGL
+      contexts will now receive a BadAlloc X error rather than crashing.
+    - Fixed a bug that could cause the X server to crash upon shutdown
+      with some configurations using GPU screens.
+    - Fixed a bug that could cause rendering errors when displaying scaled
+      MetaModes using the "Nearest" resampling method.
+    - Fixed a bug that could cause OpenGL applications run in PID namespaces to
+      hang upon exit, generating warnings such as the following in the X log:
+      (WW) NVIDIA: Wait for channel idle timed out.
+    - Added support for PRIME Display Offload where both the display offload
+      source and display offload sink are driven by the NVIDIA X Driver.
+    - Added support for PRIME Display Offload where the display offload source
+      is AMDGPU.
+    - Fixed a bug that could prevent the driver from applying application
+      profiles when running applications through Proton or Wine on a PRIME
+      Render Offload configuration.
+    - Fixed a bug that could cause NvFBC's "direct capture" to crash the X
+      server when certain GLX calls are made during a capture.
+    - Added an NVIDIA NGX build for use with Proton and Wine. A new library,
+      nvngx.dll, has been added to enable driver-side support for running
+      Windows applications which make use of DLSS. Changes to Proton, Wine, and
+      other third-party software are needed for this feature.
+    - Added support for VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT from the
+      VK_EXT_global_priority extension. This enables support for asynchronous
+      reprojection in SteamVR.
+      VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT is supported on Pascal GPUs and
+      newer.
+      Global priorities other than VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT require
+      root privileges or the CAP_SYS_NICE capability.
+    - Added support for the VK_EXT_global_priority_query extension.
+    - Added the nvidia-peermem.ko kernel module. This module provides
+      Mellanox InfiniBand HCAs (Host Channel Adapters) direct peer-to-peer
+      access to NVIDIA GPU memory without need without needing to copy data
+      to host memory.
+      See the chapter "GPUDirect RDMA Peer Memory Client" in the README
+      for details.
+    - Added support for the VK_EXT_provoking_vertex extension.
+    - Initial support for hardware accelerated OpenGL and Vulkan rendering
+      on Xwayland. See the chapter "OpenGL and Vulkan on Xwayland" in the
+      README for details.
+    - Fixed a bug that could cause intermittent corruption in Wolfenstein:
+      Youngblood when using NVIDIA Kepler, Maxwell, Pascal, and Volta GPUs.
+    - Fixed a bug that could cause games running with DXVK to crash with Xid 31
+      (MMU Fault) errors when using NVIDIA Pascal GPUs.
+    - Added support for the VK_EXT_extended_dynamic_state2 extension.
+    - Added support for the VK_EXT_color_write_enable extension.
+    - Added support for the VK_EXT_vertex_input_dynamic_state extension.
+    - Added support for the VK_EXT_ycbcr_2plane_444_formats extension.
+    - Added support for the VK_NV_inherited_viewport_scissor extension.
+    - NvFBC's "direct capture" mode no longer causes flipping to be
+      disabled for applications being captured. G-SYNC can now also be
+      used simultaneously with NvFBC direct capture.
+    - Deprecated NvIFROpenGL support.  Release 470 will be the last to
+      support this functionality.  NvIFROpenGL header files, samples
+      and documentation were removed from the NVIDIA Capture SDK 7.1.9
+      release.  Future drivers will remove libnvidia-ifr.so and any
+      other reference to NvIFROpenGL.
+      For details please see:
+        https://developer.nvidia.com/nvidia-video-codec-sdk
+    - Fixed a bug that prevented Vulkan direct-to-display from working when
+      DRM KMS is enabled.
+    - Enabled the NVIDIA driver, by default, to attempt to initialize SLI when
+      using GPUs with different amounts of video memory.  Previously, this was
+      only available when bit 1 was set in the "Coolbits" X config option.
+    - Updated GPU fan control to be available by default in
+      nvidia-settings and NV-CONTROL, for GPU boards that support
+      programmable fan control.  Previously, this was only available
+      when bit 2 was set in the "Coolbits" X config option.
+    - Fixed an issue where vkCreate{Graphics,Compute}Pipeline would sometimes
+      crash when the shaders contained resources with no set/binding.
+    - Fixed a memory fault in the Vulkan driver when using some smaller
+      dimensions of sparse images.
+    - Fixed an issue with vkCmdSetViewport when firstViewport is non-zero.
+    - Fixed handling of VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT for
+      variable size descriptor bindings.
+  * New upstream release 460 series.
+    - Added support for the following GPUs: GeForce RTX 3070 Ti, CMP 50HX.
+  * New upstream release 390 series.
+    - Worked around a bug in Meson builds of libglvnd 1.3.0 that caused the
+      nvidia_icd.json file to be installed in the wrong location.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 22 Jun 2021 22:40:30 +0200
+
 nvidia-graphics-drivers (465.31-1) experimental; urgency=medium
 
   * New upstream new feature branch release 465.31 (2021-05-18).
@@ -23,6 +113,9 @@ nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
     * Fixed CVE-2021-1076, CVE-2021-1077.  (Closes: #987216)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5172
   * New upstream beta 465.19.01 (2021-03-30).
+    - Added gsp.bin firmware file which is used to offload the GPU initialization
+      and management tasks on some GPUs. See the "GSP Firmware" chapter in the
+      README for more information.
     - Improved X11 DrawText() performance when rendering stippled text.
     - Fixed a bug that could prevent some hardware configurations with large
       numbers of displays connected to the same GPU from working correctly.

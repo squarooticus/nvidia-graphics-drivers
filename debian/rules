@@ -232,6 +232,9 @@ build-stamp: unpack-stamp
 	cp -al NVIDIA-Linux-amd64/NVIDIA_Changelog build/
 	$(RM) -r build/32
 	$(RM) -r build/libglvnd_install_checker
+ifeq (amd64,$(DEB_HOST_ARCH))
+	chmod -x build/*.dll
+endif
 ifneq (,$(has_driver))
 	gzip -9fn build/nvidia-smi.1
 

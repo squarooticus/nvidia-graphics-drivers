@@ -33,6 +33,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetBoardPartNumber@Base 361
  nvmlDeviceGetBrand@Base 340
  nvmlDeviceGetBridgeChipInfo@Base 331.20
+ nvmlDeviceGetClkMonStatus@Base 470
  nvmlDeviceGetClock@Base 361.42
  nvmlDeviceGetClockInfo@Base 270
  nvmlDeviceGetComputeInstanceId@Base 450
@@ -69,6 +70,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetGpuInstanceById@Base 450
  nvmlDeviceGetGpuInstanceId@Base 450
  nvmlDeviceGetGpuInstancePossiblePlacements@Base 450
+ nvmlDeviceGetGpuInstancePossiblePlacements_v2@Base 470
  nvmlDeviceGetGpuInstanceProfileInfo@Base 450
  nvmlDeviceGetGpuInstanceRemainingCapacity@Base 450
  nvmlDeviceGetGpuInstances@Base 450
@@ -90,6 +92,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetInforomImageVersion@Base 304
  nvmlDeviceGetInforomVersion@Base 270
  nvmlDeviceGetMPSComputeRunningProcesses@Base 384.90
+ nvmlDeviceGetMPSComputeRunningProcesses_v2@Base 470
  nvmlDeviceGetMaxClockInfo@Base 285
  nvmlDeviceGetMaxCustomerBoostClock@Base 361.42
  nvmlDeviceGetMaxMigDeviceCount@Base 450
@@ -105,6 +108,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetName@Base 270
  nvmlDeviceGetNvLinkCapability@Base 361
  nvmlDeviceGetNvLinkErrorCounter@Base 361
+ nvmlDeviceGetNvLinkRemoteDeviceType@Base 470
  nvmlDeviceGetNvLinkRemotePciInfo@Base 361
  nvmlDeviceGetNvLinkRemotePciInfo_v2@Base 384
  nvmlDeviceGetNvLinkState@Base 361

@@ -16,6 +16,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuCtxAttach@Base 169
  cuCtxCreate@Base 169
  cuCtxCreate_v2@Base 260
+ cuCtxCreate_v3@Base 470
  cuCtxDestroy@Base 177
  cuCtxDestroy_v2@Base 270
  cuCtxDetach@Base 169
@@ -25,6 +26,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuCtxGetCacheConfig@Base 260
  cuCtxGetCurrent@Base 270
  cuCtxGetDevice@Base 177
+ cuCtxGetExecAffinity@Base 470
  cuCtxGetFlags@Base 346
  cuCtxGetLimit@Base 256
  cuCtxGetSharedMemConfig@Base 295.33
@@ -48,6 +50,8 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuDeviceGetByPCIBusId@Base 285
  cuDeviceGetCount@Base 169
  cuDeviceGetDefaultMemPool@Base 460
+ cuDeviceGetExecAffinitySupport@Base 470
+ cuDeviceGetGraphMemAttribute@Base 470
  cuDeviceGetLuid@Base 455
  cuDeviceGetMemPool@Base 460
  cuDeviceGetName@Base 169
@@ -57,6 +61,8 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuDeviceGetProperties@Base 169
  cuDeviceGetTexture1DLinearMaxWidth@Base 455
  cuDeviceGetUuid@Base 396
+ cuDeviceGetUuid_v2@Base 470
+ cuDeviceGraphMemTrim@Base 470
  cuDevicePrimaryCtxGetState@Base 346
  cuDevicePrimaryCtxRelease@Base 346
  cuDevicePrimaryCtxRelease_v2@Base 450
@@ -65,6 +71,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuDevicePrimaryCtxRetain@Base 346
  cuDevicePrimaryCtxSetFlags@Base 346
  cuDevicePrimaryCtxSetFlags_v2@Base 450
+ cuDeviceSetGraphMemAttribute@Base 470
  cuDeviceSetMemPool@Base 460
  cuDeviceTotalMem@Base 169
  cuDeviceTotalMem_v2@Base 260
@@ -130,6 +137,8 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGraphAddExternalSemaphoresWaitNode@Base 460
  cuGraphAddHostNode@Base 410
  cuGraphAddKernelNode@Base 410
+ cuGraphAddMemAllocNode@Base 470
+ cuGraphAddMemFreeNode@Base 470
  cuGraphAddMemcpyNode@Base 410
  cuGraphAddMemsetNode@Base 410
  cuGraphChildGraphNodeGetGraph@Base 410
@@ -163,6 +172,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGraphHostNodeGetParams@Base 410
  cuGraphHostNodeSetParams@Base 410
  cuGraphInstantiate@Base 410
+ cuGraphInstantiateWithFlags@Base 470
  cuGraphInstantiate_v2@Base 450
  cuGraphKernelNodeCopyAttributes@Base 450
  cuGraphKernelNodeGetAttribute@Base 450
@@ -171,6 +181,8 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGraphKernelNodeSetParams@Base 410
  cuGraphLaunch@Base 410
  cuGraphLaunch_ptsz@Base 410
+ cuGraphMemAllocNodeGetParams@Base 470
+ cuGraphMemFreeNodeGetParams@Base 470
  cuGraphMemcpyNodeGetParams@Base 410
  cuGraphMemcpyNodeSetParams@Base 410
  cuGraphMemsetNodeGetParams@Base 410

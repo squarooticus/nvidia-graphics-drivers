@@ -311,6 +311,7 @@ Recommends:
  libgles-${nvidia-}1 (= ${binary:Version}),
  libgles-${nvidia-}2 (= ${binary:Version}),
  lib${nvidia}-cfg1 (= ${binary:Version}),
+ lib${nvidia}-encode1 (= ${binary:Version}),
  ${nvidia}-vulkan-icd (= ${binary:Version}) [amd64 i386],
 Provides:
  nvidia-driver-libs-any,

@@ -14,6 +14,7 @@ nvidia-graphics-drivers (390.143-1+git) UNRELEASED; urgency=medium
     libnvidia-ml-dev is installed (460.56-2).
   * debian/gen-control.pl: Support substitutions in the Vcs-Git field.
   * Compute and substitute the Git branch instead of hardcoding it.
+  * nvidia-driver-libs: Add Recommends: libnvidia-encode1.  (Closes: #989885)
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.5.1. No changes needed.
 

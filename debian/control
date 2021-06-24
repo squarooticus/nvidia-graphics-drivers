@@ -101,6 +101,7 @@ Recommends:
  ${nvidia}-driver-libs-i386 [amd64],
  libgles1-${nvidia} (= ${binary:Version}),
  libgles2-${nvidia} (= ${binary:Version}),
+ lib${nvidia}-encode1 (= ${binary:Version}),
  lib${nvidia}-cfg1 (= ${binary:Version}),
 Provides:
  nvidia-driver-libs-any,

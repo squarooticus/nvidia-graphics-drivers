@@ -1019,7 +1019,6 @@ Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
 Depends:
- ${libcuda1} (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Description: NVENC Video Encoding runtime library${nvidia:VariantDesc}
  The NVENC Video Encoding library provides an interface to video encoder
@@ -1081,7 +1080,6 @@ Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
 Depends:
- ${libcuda1} (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Homepage: https://developer.nvidia.com/opticalflow-sdk
 Description: NVIDIA Optical Flow runtime library${nvidia:VariantDesc}
@@ -1096,7 +1094,6 @@ Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
 Depends:
- ${libcuda1} (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Description: NVIDIA allocator runtime library${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
@@ -1111,7 +1108,6 @@ Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
 Depends:
- ${libcuda1} (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Description: NVIDIA NGX runtime library${nvidia:VariantDescShort}
  The NVIDIA binary driver provides optimized hardware acceleration of

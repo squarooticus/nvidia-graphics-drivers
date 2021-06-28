@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.42.01-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.42.01-1) experimental; urgency=medium
 
   * New upstream beta 470.42.01 (2021-06-22).
     - Added support for the following GPUs: A100-PG506-207, A100-PG506-217.
@@ -90,8 +90,10 @@ nvidia-graphics-drivers (470.42.01-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Update symbols files.
   * libnvidia-nvvm4: New package for the NVVM Compiler library.
+  * Drop manually added Depends: libcuda1 from libraries not referencing it.
+  * nvidia-driver-libs: Add Recommends: libnvidia-encode1.  (Closes: #989885)
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 22 Jun 2021 22:40:30 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 28 Jun 2021 21:07:47 +0200
 
 nvidia-graphics-drivers (465.31-1) experimental; urgency=medium
 
@@ -167,13 +169,6 @@ nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Apr 2021 18:48:53 +0200
-
-nvidia-graphics-drivers (460.84-2) UNRELEASED; urgency=medium
-
-  * Drop manually added Depends: libcuda1 from libraries not referencing it.
-  * nvidia-driver-libs: Add Recommends: libnvidia-encode1.  (Closes: #989885)
-
- -- Andreas Beckmann <anbe@debian.org>  Fri, 25 Jun 2021 01:19:23 +0200
 
 nvidia-graphics-drivers (460.84-1) unstable; urgency=medium
 

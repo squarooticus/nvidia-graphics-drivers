@@ -70,6 +70,24 @@ nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Apr 2021 18:48:53 +0200
 
+nvidia-graphics-drivers (460.84-2) UNRELEASED; urgency=medium
+
+  * Drop manually added Depends: libcuda1 from libraries not referencing it.
+  * nvidia-driver-libs: Add Recommends: libnvidia-encode1.  (Closes: #989885)
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 25 Jun 2021 01:19:23 +0200
+
+nvidia-graphics-drivers (460.84-1) unstable; urgency=medium
+
+  * New upstream production branch release 460.84 (2021-06-03).
+    - Added support for the following GPU: GeForce RTX 3080 Ti.
+
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+  * Update lintian overrides.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 05 Jun 2021 03:30:17 +0200
+
 nvidia-graphics-drivers (460.80-1) unstable; urgency=medium
 
   * New upstream production branch release 460.80 (2021-05-11).

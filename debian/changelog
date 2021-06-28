@@ -89,6 +89,7 @@ nvidia-graphics-drivers (470.42.01-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
   * Update symbols files.
+  * libnvidia-nvvm4: New package for the NVVM Compiler library.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 22 Jun 2021 22:40:30 +0200
 

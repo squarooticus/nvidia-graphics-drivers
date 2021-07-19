@@ -19,6 +19,9 @@ nvidia-graphics-drivers (470.57.02-1) UNRELEASED; urgency=medium
       NVIDIA PG506-243, NVIDIA PG506-242 ,NVIDIA CMP 90HX, NVIDIA CMP 70HX,
       NVIDIA RTX A2000, NVIDIA T4G.
 
+  [ Luca Boccassi ]
+  * Update nv-readme.ids.
+
  -- Luca Boccassi <bluca@debian.org>  Mon, 19 Jul 2021 20:20:52 +0100
 
 nvidia-graphics-drivers (470.42.01-1) experimental; urgency=medium

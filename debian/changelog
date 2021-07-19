@@ -21,6 +21,7 @@ nvidia-graphics-drivers (470.57.02-1) UNRELEASED; urgency=medium
 
   [ Luca Boccassi ]
   * Update nv-readme.ids.
+  * Update symbols files.
 
  -- Luca Boccassi <bluca@debian.org>  Mon, 19 Jul 2021 20:20:52 +0100
 

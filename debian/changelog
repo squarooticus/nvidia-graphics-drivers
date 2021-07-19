@@ -1,3 +1,26 @@
+nvidia-graphics-drivers (470.57.02-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 470.57.02 (2021-07-19).
+    - Updated the nvidia-settings command line interface to confirm successful
+      assignment of string attributes. This makes the behavior more consistent
+      with other types of attribute assignments.
+    - Fixed a bug that could cause flickering in Blender and Steam when
+      running on Xwayland.
+    - Fixed a bug that caused GTK+3 applications using the GtkGLArea class
+      to crash when running on Xwayland.
+    - Added a workaround for DOOM Eternal, which avoids an application bug where
+      Vulkan swapchain recreation events are not properly handled. On desktops
+      like GNOME where the window is initially redirected to the compositor,
+      this may prevent the game from flipping (and thus enabling G-SYNC).
+    - Added a workaround for Far Cry 5 when run through DXVK, which avoids a
+      shader race condition bug that was previously exposed by new compiler
+      optimizations.
+    - Added support for the following GPUs: NVIDIA A100 80GB PCIe, NVIDIA A16,
+      NVIDIA PG506-243, NVIDIA PG506-242 ,NVIDIA CMP 90HX, NVIDIA CMP 70HX,
+      NVIDIA RTX A2000, NVIDIA T4G.
+
+ -- Luca Boccassi <bluca@debian.org>  Mon, 19 Jul 2021 20:20:52 +0100
+
 nvidia-graphics-drivers (470.42.01-1) experimental; urgency=medium
 
   * New upstream beta 470.42.01 (2021-06-22).

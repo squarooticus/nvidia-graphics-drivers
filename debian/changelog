@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (390.143-1+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (390.144-1+git) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
@@ -21,7 +21,15 @@ nvidia-graphics-drivers (390.143-1+git) UNRELEASED; urgency=medium
   [ Vincent Cheng ]
   * Remove myself from Uploaders.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 12 Jan 2021 02:08:48 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 21 Jul 2021 14:45:24 +0200
+
+nvidia-graphics-drivers (390.144-1) UNRELEASED; urgency=medium
+
+  * New upstream legacy branch release 390.144 (2021-07-20).
+    * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5211
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 21 Jul 2021 14:45:24 +0200
 
 nvidia-graphics-drivers (390.143-1) UNRELEASED; urgency=medium
 

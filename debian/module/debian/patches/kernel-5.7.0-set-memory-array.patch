@@ -54,7 +54,7 @@ Bug-Debian: https://bugs.debian.org/960735
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -1881,7 +1887,7 @@ compile_test() {
+@@ -1869,7 +1875,7 @@ compile_test() {
              # Determine if atomic_long_t and associated functions are defined
              # Added in 2.6.16 2006-01-06 d3cb487149bd706aa6aeb02042332a450978dc1c
              CODE="
@@ -63,7 +63,7 @@ Bug-Debian: https://bugs.debian.org/960735
              void conftest_atomic_long(void) {
                  atomic_long_t data;
                  atomic_long_read(&data);
-@@ -1895,7 +1901,7 @@ compile_test() {
+@@ -1883,7 +1889,7 @@ compile_test() {
          atomic64_type)
              # Determine if atomic64_t and associated functions are defined
              CODE="
@@ -72,7 +72,7 @@ Bug-Debian: https://bugs.debian.org/960735
              void conftest_atomic64(void) {
                  atomic64_t data;
                  atomic64_read(&data);
-@@ -3585,7 +3591,7 @@ compile_test() {
+@@ -3584,7 +3590,7 @@ compile_test() {
              #     2008-01-25  9ee85241fdaab358dff1d8647f20a478cfa512a1
              #
              CODE="

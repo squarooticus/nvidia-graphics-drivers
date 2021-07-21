@@ -29,6 +29,9 @@ nvidia-graphics-drivers (390.144-1) UNRELEASED; urgency=medium
     * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.
       https://nvidia.custhelp.com/app/answers/detail/a_id/5211
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Wed, 21 Jul 2021 14:45:24 +0200
 
 nvidia-graphics-drivers (390.143-1) UNRELEASED; urgency=medium

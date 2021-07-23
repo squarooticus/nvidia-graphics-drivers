@@ -5,13 +5,13 @@ nvidia-graphics-drivers (450.142.00-1+git) UNRELEASED; urgency=medium
   * nvidia-alternative: Add libnvidia-ml.so slave alternative if
     libnvidia-ml-dev is installed (460.56-2).  (Closes: #984881)
   * nvidia-driver-libs: Add Recommends: libnvidia-encode1
-    (470.42.01-1).  (Closes: #989885)
+    (460.91.03-1).  (Closes: #989885)
   * debian/gen-control.pl: Support substitutions in the Vcs-Git field
-    (470.57.02-1).
+    (460.91.03-1).
   * Compute and substitute the Git branch instead of hardcoding it
-    (470.57.02-1).
+    (460.91.03-1).
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 22:22:20 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 22:54:44 +0200
 
 nvidia-graphics-drivers (450.142.00-1) UNRELEASED; urgency=medium
 
@@ -24,7 +24,7 @@ nvidia-graphics-drivers (450.142.00-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 22:22:20 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 22:54:44 +0200
 
 nvidia-graphics-drivers (450.119.04-1) UNRELEASED; urgency=medium
 
@@ -800,11 +800,11 @@ nvidia-graphics-drivers (418.211.00-1) buster; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.
   * nvidia-driver-libs: Add Recommends: libnvidia-encode1
-    (470.42.01-1).  (Closes: #989885)
+    (460.91.03-1).  (Closes: #989885)
   * debian/gen-control.pl: Support substitutions in the Vcs-Git field
-    (470.57.02-1).
+    (460.91.03-1).
   * Compute and substitute the Git branch instead of hardcoding it
-    (470.57.02-1).
+    (460.91.03-1).
   * Upload to buster.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 21 Jul 2021 22:06:09 +0200

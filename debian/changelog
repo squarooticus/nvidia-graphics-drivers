@@ -305,7 +305,18 @@ nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 01 Jul 2020 00:02:18 +0200
 
-nvidia-graphics-drivers (440.118.02-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (440.118.02-5) UNRELEASED; urgency=medium
+
+  * nvidia-tesla-440-driver-libs: Add Recommends: libnvidia-tesla-440-encode1
+    (460.91.03-1).  (Closes: #989885)
+  * debian/gen-control.pl: Support substitutions in the Vcs-Git field
+    (460.91.03-1).
+  * Compute and substitute the Git branch instead of hardcoding it
+    (460.91.03-1).
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 22 Jul 2021 18:05:03 +0200
+
+nvidia-graphics-drivers (440.118.02-4) UNRELEASED; urgency=medium
 
   * Switch to dh-sequence-dkms (460.56-1).
   * Simplify dh_dkms usage (460.56-1).
@@ -833,6 +844,23 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
 
+nvidia-graphics-drivers (418.211.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 418.211.00 (2021-07-20).
+    * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.  (Closes: #991354)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5211
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+  * nvidia-driver-libs: Add Recommends: libnvidia-encode1
+    (460.91.03-1).  (Closes: #989885)
+  * debian/gen-control.pl: Support substitutions in the Vcs-Git field
+    (460.91.03-1).
+  * Compute and substitute the Git branch instead of hardcoding it
+    (460.91.03-1).
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 22 Jul 2021 11:27:19 +0200
+
 nvidia-graphics-drivers (418.211.00-1) buster; urgency=medium
 
   * New upstream Tesla release 418.211.00 (2021-07-20).
@@ -857,7 +885,7 @@ nvidia-graphics-drivers (418.197.02-1) UNRELEASED; urgency=medium
     * Fixed CVE-2021-1076.  (Closes: #987219)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5172
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 20 Apr 2021 15:01:59 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 20 Apr 2021 16:15:04 +0200
 
 nvidia-graphics-drivers (418.197.02-1) buster; urgency=medium
 

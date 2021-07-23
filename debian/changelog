@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (450.119.04-1+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.142.00-1+git) UNRELEASED; urgency=medium
 
   * Switch to dh-sequence-dkms (460.56-1).
   * Simplify dh_dkms usage (460.56-1).
@@ -11,13 +11,21 @@ nvidia-graphics-drivers (450.119.04-1+git) UNRELEASED; urgency=medium
   * Compute and substitute the Git branch instead of hardcoding it
     (470.57.02-1).
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 20 May 2021 13:53:07 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 22:22:20 +0200
+
+nvidia-graphics-drivers (450.142.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.142.00 (2021-07-20).
+    * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5211
+    - Fixed a bug that could result in blank displays when driving multiple
+      displays at the same resolution using active DisplayPort dongles.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 22:22:20 +0200
 
 nvidia-graphics-drivers (450.119.04-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.119.04 (2021-05-04).
-    - Fixed a bug that could result in blank displays when driving multiple
-      displays at the same resolution using active DisplayPort dongles.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 20 May 2021 13:53:07 +0200
 

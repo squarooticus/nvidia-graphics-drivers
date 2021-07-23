@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (460.91.03-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (460.91.03-1) unstable; urgency=medium
 
   * New upstream production branch release 460.91.03 (2021-07-20).
     * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.  (Closes: #991351)
@@ -13,7 +13,7 @@ nvidia-graphics-drivers (460.91.03-1) UNRELEASED; urgency=medium
   * debian/gen-control.pl: Support substitutions in the Vcs-Git field.
   * Compute and substitute the Git branch instead of hardcoding it.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 23:30:45 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 24 Jul 2021 01:25:40 +0200
 
 nvidia-graphics-drivers (460.84-1) unstable; urgency=medium
 

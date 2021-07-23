@@ -1,9 +1,16 @@
-nvidia-graphics-drivers (460.84-2) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (460.91.03-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 460.91.03 (2021-07-20).
+    * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.  (Closes: #991351)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5211
+    - Added support for the following GPUs: GeForce RTX 3070 Ti, CMP 50HX.
+    * Fixed crash with certain DisplayPort devices.  (Closes: #989069)
+
+  [ Andreas Beckmann ]
   * Drop manually added Depends: libcuda1 from libraries not referencing it.
   * nvidia-driver-libs: Add Recommends: libnvidia-encode1.  (Closes: #989885)
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 25 Jun 2021 01:19:23 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 23:30:45 +0200
 
 nvidia-graphics-drivers (460.84-1) unstable; urgency=medium
 

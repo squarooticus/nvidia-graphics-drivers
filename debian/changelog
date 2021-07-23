@@ -21,6 +21,9 @@ nvidia-graphics-drivers (450.142.00-1) UNRELEASED; urgency=medium
     - Fixed a bug that could result in blank displays when driving multiple
       displays at the same resolution using active DisplayPort dongles.
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 22:22:20 +0200
 
 nvidia-graphics-drivers (450.119.04-1) UNRELEASED; urgency=medium

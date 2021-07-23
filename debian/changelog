@@ -13,11 +13,11 @@ nvidia-graphics-drivers (390.144-1+git) UNRELEASED; urgency=medium
   * nvidia-alternative: Add libnvidia-ml.so slave alternative if
     libnvidia-ml-dev is installed (460.56-2).
   * nvidia-driver-libs: Add Recommends: libnvidia-encode1
-    (470.42.01-1).  (Closes: #989885)
+    (460.91.03-1).  (Closes: #989885)
   * debian/gen-control.pl: Support substitutions in the Vcs-Git field
-    (470.57.02-1).
+    (460.91.03-1).
   * Compute and substitute the Git branch instead of hardcoding it
-    (470.57.02-1).
+    (460.91.03-1).
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.5.1. No changes needed.
 

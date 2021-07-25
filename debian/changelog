@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.57.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.57.02-1) experimental; urgency=medium
 
   * New upstream production branch release 470.57.02 (2021-07-19).
     * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.  (Closes: #991351)
@@ -27,7 +27,7 @@ nvidia-graphics-drivers (470.57.02-1) UNRELEASED; urgency=medium
   * libcuda1: Add Provides: libcuda-11.4-1{,-i386}.
   * nvidia-detect: Add support for Tesla 470 drivers.
 
- -- Luca Boccassi <bluca@debian.org>  Mon, 19 Jul 2021 20:20:52 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 25 Jul 2021 15:37:56 +0200
 
 nvidia-graphics-drivers (470.42.01-1) experimental; urgency=medium
 

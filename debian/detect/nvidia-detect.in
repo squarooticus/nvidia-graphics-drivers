@@ -98,6 +98,11 @@ then
 	VERSIONS[461]=460.32.03
 fi
 
+if grep -q -i $NVGA $IDLISTDIR/nvidia-tesla-470.ids 2>/dev/null
+then
+	VERSIONS[471]=470.57.02
+fi
+
 if grep -q -i $NVGA $IDLISTDIR/nvidia.ids 2>/dev/null
 then
 	# 999 means current
@@ -186,6 +191,10 @@ fi
 		elif [[ -n ${VERSIONS[340]} ]]; then
 			echo "Your card is only supported up to the 340 legacy drivers series."
 			PACKAGE="nvidia-legacy-340xx-driver"
+		elif [[ -n ${VERSIONS[471]} ]]; then
+			echo "Your card is supported by the Tesla 470 drivers series in buster-backports."
+			echo "See https://backports.debian.org for instructions how to use backports."
+			PACKAGE="nvidia-tesla-470-driver/buster-backports"
 		elif [[ -n ${VERSIONS[461]} ]]; then
 			echo "Your card is supported by the Tesla 460 drivers series in buster-backports."
 			echo "See https://backports.debian.org for instructions how to use backports."
@@ -225,6 +234,9 @@ fi
 			echo "Your card is only supported on the amd64 platform."
 			echo "Your card is only supported up to the 390 legacy drivers series."
 			PACKAGE="nvidia-legacy-390xx-driver:amd64"
+		elif [[ -n ${VERSIONS[471]} ]]; then
+			echo "Your card is supported by the Tesla 470 drivers series."
+			PACKAGE="nvidia-tesla-470-driver"
 		elif [[ -n ${VERSIONS[461]} ]]; then
 			echo "Your card is supported by the Tesla 460 drivers series."
 			PACKAGE="nvidia-tesla-460-driver"
@@ -246,6 +258,9 @@ fi
 			echo "Uh oh. Your card is only supported by the 71.86 legacy drivers series, which is not in any current Debian suite."
 		else
 			echo "Oops. Internal error 11 ($NVGA)"
+		fi
+		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-tesla-470-driver" ] && [[ -n ${VERSIONS[471]} ]]; then
+			echo "Your card is also supported by the Tesla 470 drivers series."
 		fi
 		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-tesla-460-driver" ] && [[ -n ${VERSIONS[461]} ]]; then
 			echo "Your card is also supported by the Tesla 460 drivers series."
@@ -272,6 +287,9 @@ fi
 			echo "Your card is only supported on the amd64 platform."
 			echo "Your card is only supported up to the 390 legacy drivers series."
 			PACKAGE="nvidia-legacy-390xx-driver:amd64"
+		elif [[ -n ${VERSIONS[471]} ]]; then
+			echo "Your card is supported by the Tesla 470 drivers series."
+			PACKAGE="nvidia-tesla-470-driver"
 		elif [[ -n ${VERSIONS[461]} ]]; then
 			echo "Your card is supported by the Tesla 460 drivers series."
 			PACKAGE="nvidia-tesla-460-driver"
@@ -296,6 +314,9 @@ fi
 			echo "Uh oh. Your card is only supported by the 71.86 legacy drivers series, which is not in any current Debian suite."
 		else
 			echo "Oops. Internal error 12 ($NVGA)"
+		fi
+		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-tesla-470-driver" ] && [[ -n ${VERSIONS[471]} ]]; then
+			echo "Your card is also supported by the Tesla 470 drivers series."
 		fi
 		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-tesla-460-driver" ] && [[ -n ${VERSIONS[461]} ]]; then
 			echo "Your card is also supported by the Tesla 460 drivers series."

@@ -23,6 +23,7 @@ nvidia-graphics-drivers (470.57.02-1) UNRELEASED; urgency=medium
   * Update symbols files.
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * libcuda1: Add Provides: libcuda-11.4-1{,-i386}.
 
  -- Luca Boccassi <bluca@debian.org>  Mon, 19 Jul 2021 20:20:52 +0100

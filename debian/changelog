@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (470.57.02-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 02 Aug 2021 13:23:11 +0200
+
 nvidia-graphics-drivers (470.57.02-1) experimental; urgency=medium
 
   * New upstream production branch release 470.57.02 (2021-07-19).

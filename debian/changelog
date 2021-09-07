@@ -5,6 +5,9 @@ nvidia-graphics-drivers (470.63.01-1) UNRELEASED; urgency=medium
       visual corruption.
     - Added support for the VK_KHR_wayland_surface extension.
     - Fixed a Vulkan performance regression that affected rFactor2.
+  * libegl-nvidia0: Ship new library libnvidia-vulkan-producer.so.#VERSION#
+    but do not provide alternatives since it is unclear how this undocumented
+    SONAME-less library is supposed to be used.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 07 Sep 2021 16:24:57 +0200
 

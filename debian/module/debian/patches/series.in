@@ -1,4 +1,6 @@
 # kernel support
+0001-backport-drm_device_has_pdev-changes-from-470.63.01.patch
+0002-backport-set_current_state-changes-from-470.63.01.patch
 do-div-cast.patch
 kernel-5.7.0-set-memory-array.patch
 

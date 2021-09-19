@@ -16,7 +16,7 @@ Build-Depends:
  libxext6 [!ppc64el],
  quilt,
  po-debconf,
-Build-Conflicts:
+Build-Conflicts-Arch:
  libglvnd-dev,
 Rules-Requires-Root: no
 Standards-Version: 4.6.0

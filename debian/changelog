@@ -19,7 +19,7 @@ nvidia-graphics-drivers (390.144-1+git) UNRELEASED; urgency=medium
   * Compute and substitute the Git branch instead of hardcoding it
     (460.91.03-1).
   * Bump watch file version to 4.
-  * Bump Standards-Version to 4.5.1. No changes needed.
+  * Bump Standards-Version to 4.6.0. No changes needed.
 
   [ Vincent Cheng ]
   * Remove myself from Uploaders.

@@ -72,6 +72,7 @@ Multi-Arch: foreign
 Pre-Depends:
  dpkg (>= 1.17.21),
  ${nvidia:legacy-check},
+ ${misc:Pre-Depends}
 Depends:
  glx-alternative-nvidia (>= 0.8.4~) [!ppc64el],
  ${misc:Depends}

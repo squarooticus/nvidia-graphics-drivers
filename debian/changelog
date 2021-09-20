@@ -19,7 +19,7 @@ nvidia-graphics-drivers (390.144-2+git) UNRELEASED; urgency=medium
   * Compute and substitute the Git branch instead of hardcoding it
     (460.91.03-1).
   * Generate tight dependencies on libnvidia*-glcore/libnvidia*-eglcore
-    (470.57.02-3).  (Closes: #992057)
+    (470.57.02-3).
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.6.0. No changes needed.
 

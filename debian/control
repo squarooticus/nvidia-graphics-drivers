@@ -20,7 +20,7 @@ Build-Depends:
  po-debconf,
  libglvnd-dev,
 Rules-Requires-Root: no
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Homepage: https://www.nvidia.com
 XS-Autobuild: yes
 
@@ -74,6 +74,7 @@ Multi-Arch: foreign
 Pre-Depends:
  dpkg (>= 1.17.21),
  ${nvidia:legacy-check},
+ ${misc:Pre-Depends}
 Depends:
  glx-alternative-nvidia (>= 0.9),
  ${misc:Depends}
@@ -206,7 +207,6 @@ Pre-Depends:
  ${nvidia:legacy-check},
 Depends:
  xserver-xorg-video-nvidia-legacy-390xx [${nvidia:arch:has-no-driver}],
- lib${nvidia}-glcore (= ${binary:Version}) [${nvidia:arch:has-driver}],
  ${nvidia}-alternative (= ${binary:Version}) [${nvidia:arch:has-driver}],
  nvidia-support [${nvidia:arch:has-driver}],
  ${nvidia:xorgDepends},
@@ -404,7 +404,6 @@ Pre-Depends:
 Depends:
  ${nvidia}-alternative (= ${binary:Version}),
  libglx0 | libglx0-glvnd-nvidia,
- lib${nvidia}-glcore (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Provides:
  libglx-vendor,
@@ -449,7 +448,6 @@ Pre-Depends:
  ${misc:Pre-Depends}
 Depends:
  ${nvidia}-alternative (= ${binary:Version}),
- lib${nvidia}-glcore (= ${binary:Version}),
  nvidia-support,
  ${shlibs:Depends}, ${misc:Depends}
 Recommends:
@@ -523,7 +521,6 @@ Pre-Depends:
  ${misc:Pre-Depends}
 Depends:
  ${nvidia}-alternative (= ${binary:Version}),
- lib${nvidia}-eglcore (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Description: NVIDIA binary EGL library${nvidia:VariantDesc}
  EGL provides a platform-agnostic mechanism for creating rendering surfaces

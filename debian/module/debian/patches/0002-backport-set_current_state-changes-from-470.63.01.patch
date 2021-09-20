@@ -1,4 +1,4 @@
-From ae3e6140ff5b9f16a108d9e8b378c1b5faf4641f Mon Sep 17 00:00:00 2001
+From 8193b22de5852fed4b3780fa3281bb32d9a20454 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 19 Sep 2021 15:24:53 +0200
 Subject: [PATCH 2/2] backport set_current_state changes from 470.63.01
@@ -9,10 +9,10 @@ Subject: [PATCH 2/2] backport set_current_state changes from 470.63.01
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/nvidia/nvlink_linux.c b/nvidia/nvlink_linux.c
-index 872bc90..ba57b86 100644
+index dbe2091..6e1c799 100644
 --- a/nvidia/nvlink_linux.c
 +++ b/nvidia/nvlink_linux.c
-@@ -597,7 +597,7 @@ void NVLINK_API_CALL nvlink_sleep(unsigned int ms)
+@@ -582,7 +582,7 @@ void NVLINK_API_CALL nvlink_sleep(unsigned int ms)
          // the requested timeout has expired, loop until less
          // than a jiffie of the desired delay remains.
          //
@@ -22,10 +22,10 @@ index 872bc90..ba57b86 100644
          {
              schedule_timeout(jiffies);
 diff --git a/nvidia/os-interface.c b/nvidia/os-interface.c
-index 3603a5a..262171f 100644
+index 3624aa7..67496af 100644
 --- a/nvidia/os-interface.c
 +++ b/nvidia/os-interface.c
-@@ -580,7 +580,7 @@ NV_STATUS NV_API_CALL os_delay(NvU32 MilliSeconds)
+@@ -607,7 +607,7 @@ NV_STATUS NV_API_CALL os_delay(NvU32 MilliSeconds)
          // the requested timeout has expired, loop until less
          // than a jiffie of the desired delay remains.
          //

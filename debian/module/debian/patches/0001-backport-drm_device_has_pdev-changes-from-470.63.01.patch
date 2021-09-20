@@ -1,4 +1,4 @@
-From d7216677336b0a25b3de4c4df424d331ff4c62dc Mon Sep 17 00:00:00 2001
+From 4f88d34fba32f451c735f9a32b1838fdc7947948 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 19 Sep 2021 15:19:46 +0200
 Subject: [PATCH 1/2] backport drm_device_has_pdev changes from 470.63.01
@@ -10,10 +10,10 @@ Subject: [PATCH 1/2] backport drm_device_has_pdev changes from 470.63.01
  3 files changed, 26 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index caa3035..ea64aab 100755
+index 1642b38..85c3ccf 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4493,6 +4493,29 @@ compile_test() {
+@@ -4068,6 +4068,29 @@ compile_test() {
              fi
          ;;
  
@@ -44,10 +44,10 @@ index caa3035..ea64aab 100755
  }
  
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 54389be..b90206c 100644
+index 9e258e1..8e52c1a 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -811,7 +811,9 @@ static void nv_drm_register_drm_device(const nv_gpu_info_t *gpu_info)
+@@ -816,7 +816,9 @@ static void nv_drm_register_drm_device(const nv_gpu_info_t *gpu_info)
  
      dev->dev_private = nv_dev;
      nv_dev->dev = dev;
@@ -58,7 +58,7 @@ index 54389be..b90206c 100644
      /* Register DRM device to DRM sub-system */
  
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index b4cdec5..2894f6a 100644
+index f11829f..01fc5e3 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
 @@ -102,3 +102,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_has_gem_prime_callbacks

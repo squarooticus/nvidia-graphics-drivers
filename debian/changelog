@@ -1,3 +1,13 @@
+nvidia-graphics-drivers (450.142.00-2) UNRELEASED; urgency=medium
+
+  * Backport drm_device_has_pdev and set_current_state changes from 470.63.01
+    to fix kernel module build for Linux 5.14.
+  * Generate tight dependencies on libnvidia*-glcore/libnvidia*-eglcore
+    (470.57.02-3).
+  * Bump Standards-Version to 4.6.0. No changes needed.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 21 Sep 2021 12:19:13 +0200
+
 nvidia-graphics-drivers (450.142.00-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.142.00 (2021-07-20).
@@ -844,6 +854,13 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
 
+nvidia-graphics-drivers (418.211.00-2) UNRELEASED; urgency=medium
+
+  * Backport drm_device_has_pdev and set_current_state changes from 470.63.01
+    to fix kernel module build for Linux 5.14.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 21 Sep 2021 00:40:47 +0200
+
 nvidia-graphics-drivers (418.211.00-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 418.211.00 (2021-07-20).
@@ -1602,6 +1619,13 @@ nvidia-graphics-drivers (396.18-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 22 Apr 2018 13:59:45 +0200
+
+nvidia-graphics-drivers (390.144-2) UNRELEASED; urgency=medium
+
+  * Backport drm_device_has_pdev and set_current_state changes from 470.63.01
+    to fix kernel module build for Linux 5.14.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 20 Sep 2021 21:13:35 +0200
 
 nvidia-graphics-drivers (390.144-1) UNRELEASED; urgency=medium
 

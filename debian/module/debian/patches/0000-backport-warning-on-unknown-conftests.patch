@@ -1,0 +1,35 @@
+From 4ef8fe2bec2990d79633bf2dc2ecfdccee032b57 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Wed, 22 Sep 2021 08:49:14 +0200
+Subject: [PATCH] backport warning on unknown conftests
+
+for easier backporting of future conftest.sh changes
+---
+ conftest.sh | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/conftest.sh b/conftest.sh
+index caa3035..17ce670 100755
+--- a/conftest.sh
++++ b/conftest.sh
+@@ -4493,6 +4493,17 @@ compile_test() {
+             fi
+         ;;
+ 
++        # When adding a new conftest entry, please use the correct format for
++        # specifying the relevant upstream Linux kernel commit.
++        #
++        # <function> was added|removed|etc by commit <sha> ("<commit message")
++        # in <kernel-version> (<commit date>).
++
++        *)
++            # Unknown test name given
++            echo "Error: unknown conftest '$1' requested" >&2
++            exit 0 #1
++        ;;
+     esac
+ }
+ 
+-- 
+2.20.1
+

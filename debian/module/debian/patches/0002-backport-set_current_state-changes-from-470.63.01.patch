@@ -1,4 +1,4 @@
-From a62ac7e1604c910a7e1e3e11e5c80f75f671c5c1 Mon Sep 17 00:00:00 2001
+From e714497ce829cb432bb9134005f4769fcb3f2176 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 19 Sep 2021 15:24:53 +0200
 Subject: [PATCH 2/2] backport set_current_state changes from 470.63.01
@@ -8,10 +8,10 @@ Subject: [PATCH 2/2] backport set_current_state changes from 470.63.01
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/common/inc/nv-time.h b/common/inc/nv-time.h
-index dc80806..10c492d 100644
+index ee14004..0133383 100644
 --- a/common/inc/nv-time.h
 +++ b/common/inc/nv-time.h
-@@ -205,7 +205,7 @@ static inline NV_STATUS nv_sleep_ms(unsigned int ms)
+@@ -214,7 +214,7 @@ static inline NV_STATUS nv_sleep_ms(unsigned int ms)
          // the requested timeout has expired, loop until less
          // than a jiffie of the desired delay remains.
          //

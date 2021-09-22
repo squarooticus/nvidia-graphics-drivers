@@ -1,4 +1,4 @@
-From ae3e6140ff5b9f16a108d9e8b378c1b5faf4641f Mon Sep 17 00:00:00 2001
+From 48d73e63b51aec8e9137e4c3274c5d5366d9d1d3 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 19 Sep 2021 15:24:53 +0200
 Subject: [PATCH 2/2] backport set_current_state changes from 470.63.01

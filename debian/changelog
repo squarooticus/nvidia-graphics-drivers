@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.57.02-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.57.02-3) unstable; urgency=medium
 
   * Backport drm_device_has_pdev and set_current_state changes from 470.63.01
     to fix kernel module build for Linux 5.14.  (Closes: #994860)
@@ -7,7 +7,7 @@ nvidia-graphics-drivers (470.57.02-3) UNRELEASED; urgency=medium
   * Bump Standards-Version to 4.6.0. No changes needed.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 22 Sep 2021 09:43:46 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 22 Sep 2021 10:56:55 +0200
 
 nvidia-graphics-drivers (470.57.02-2) unstable; urgency=medium
 

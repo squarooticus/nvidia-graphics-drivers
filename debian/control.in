@@ -12,6 +12,7 @@ Build-Depends:
  dh-sequence-dkms,
  dh-exec,
  xz-utils,
+ libnvidia-egl-wayland-dev,
  libvulkan1 (>= 1.0.42),
  libxext6,
  quilt,

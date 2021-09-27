@@ -1,3 +1,22 @@
+nvidia-graphics-drivers (470.74-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 470.74 (2021-09-20).
+    - Fixed a bug that could cause GPU applications to exit when resuming
+      from suspend.
+    - Fixed a regression which resulted in very-high system memory usage for
+      Direct3D 12 games when run through vkd3d-proton.
+    (Closes: #994942, #995271, #996031)
+  * New upstream release 450 series.
+    - Fixed a bug that could cause the /proc/driver/nvidia/suspend power
+      management interface to fail to preserve and restore video memory
+      allocations when the NVreg_TemporaryFilePath module parameter for
+      nvidia.ko specified an invalid path.
+  * New upstream release 390 series.
+    - Fixed a bug that caused nvidia-drm.ko to crash when loading with
+      DRM-KMS enabled (modeset=1) on Linux v5.14.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 27 Sep 2021 13:26:37 +0200
+
 nvidia-graphics-drivers (470.63.01-1) unstable; urgency=medium
 
   * New upstream production branch release 470.63.01 (2021-08-10).

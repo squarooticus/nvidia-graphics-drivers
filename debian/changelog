@@ -9,6 +9,9 @@ nvidia-graphics-drivers (470.63.01-1) UNRELEASED; urgency=medium
     but do not provide alternatives since it is unclear how this undocumented
     SONAME-less library is supposed to be used.
   * Add Build-Depends: libnvidia-egl-wayland-dev.
+  * nvidia-kernel-support: Restore nvidia-modprobe.conf which might have gone
+    missing due to bugs in debhelper (#994919) and dpkg (#995387).
+    (Closes: #994971)
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 07 Sep 2021 16:24:57 +0200
 

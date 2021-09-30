@@ -1,10 +1,13 @@
-nvidia-graphics-drivers (470.63.01-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.63.01-1) unstable; urgency=medium
 
   * New upstream production branch release 470.63.01 (2021-08-10).
     - Added an application profile to disable FXAA for Firefox to prevent
       visual corruption.
     - Added support for the VK_KHR_wayland_surface extension.
     - Fixed a Vulkan performance regression that affected rFactor2.
+    (Closes: #994633)
+
+  [ Andreas Beckmann ]
   * libegl-nvidia0: Ship new library libnvidia-vulkan-producer.so.#VERSION#
     but do not provide alternatives since it is unclear how this undocumented
     SONAME-less library is supposed to be used.
@@ -13,7 +16,7 @@ nvidia-graphics-drivers (470.63.01-1) UNRELEASED; urgency=medium
     missing due to bugs in debhelper (#994919) and dpkg (#995387).
     (Closes: #994971)
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 07 Sep 2021 16:24:57 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 30 Sep 2021 18:55:41 +0200
 
 nvidia-graphics-drivers (470.57.02-3) unstable; urgency=medium
 

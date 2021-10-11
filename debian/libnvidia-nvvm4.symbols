@@ -1,4 +1,4 @@
-libnvvm.so.4 #PACKAGE# #MINVER#
+libnvidia-nvvm.so.4 #PACKAGE# #MINVER#
 * Build-Depends-Package: #PACKAGE#
  __nvvmHandle@Base 470
  nvvmAddModuleToProgram@Base 470

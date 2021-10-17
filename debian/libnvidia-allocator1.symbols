@@ -12,3 +12,4 @@ libnvidia-allocator.so.1 #PACKAGE# #MINVER#
  NvRmShimSessionDestroy@Base 440
  NvRmShimUnMapMemory@Base 440
  NvRmShimValidateUUID@Base 465
+ gbmint_get_backend@Base 495

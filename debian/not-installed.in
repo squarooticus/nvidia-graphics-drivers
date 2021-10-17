@@ -31,6 +31,8 @@ nvidia-ngx-updater
 
 libnvidia-egl-wayland.so.1.*.*
 10_nvidia_wayland.json
+libnvidia-egl-gbm.so.1.1.*
+15_nvidia_gbm.json
 
 libEGL.so.#VERSION#
 

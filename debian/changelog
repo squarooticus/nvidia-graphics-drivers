@@ -1,3 +1,27 @@
+nvidia-graphics-drivers (495.29.05-1) UNRELEASED; urgency=medium
+
+  * New upstream beta 495.29.05 (2021-10-14).
+    - Added support for the GBM API. This adds the new symlink
+      nvidia-drm_gbm.so pointing to the file libnvidia-allocator.so.VERSION to
+      implement a GBM backend driver usable with the GBM loader from the Mesa
+      project version 21.2 and above, as well as the files
+      libnvidia-egl-gbm.so.1.1.0 and 15_nvidia_gbm.json, which implement EGL
+      support for the GBM platform (EGL_KHR_platform_gbm).
+    - Add indicator for Resizable BAR support on compatible systems.
+    - Fixed a bug that could cause the X server to crash when starting a
+      new server generation on PRIME configurations.
+    - Removed support for NvIFROpenGL. This functionality was deprecated
+      in the 470.xx driver release.
+    - Removed libnvidia-cbl.so from the driver package.  This
+      functionality is now provided by other driver libraries.
+    - Changed the minimum required Linux kernel version from 2.6.32 to 3.10.
+    - Updated nvidia.ko to load even if no supported NVIDIA GPUs are present
+      when an NVIDIA NVSwitch device is detected in the system. Previously,
+      nvidia.ko would fail to load into the kernel if no supported GPUs were
+      present.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 19 Oct 2021 23:08:37 +0200
+
 nvidia-graphics-drivers (470.82.01-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 470.82.01 (2021-11-02).

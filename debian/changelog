@@ -1687,9 +1687,9 @@ nvidia-graphics-drivers (364.19-1) experimental; urgency=medium
         EGL_EXT_output_drm
         EGL_EXT_stream_consumer_egloutput
       to enable Mir and Wayland compositors to display their content
-      through EGLDevice, EGLOutput, and EGLstreams.
+      through EGLDevice, EGLOutput, and EGLStreams.
     - Added a Wayland platform library, libnvidia-egl-wayland.so, to allow
-      Wayland compositors that support EGLDevice, EGLOutput, and EGLstreams
+      Wayland compositors that support EGLDevice, EGLOutput, and EGLStreams
       to share EGL buffers with Wayland applications.
     - Fixed a bug that could cause incorrect frame rate reporting on Quadro
       Sync configurations with multiple GPUs.

@@ -14,6 +14,8 @@ nvidia-graphics-drivers (450.142.00-2+git) UNRELEASED; urgency=medium
     (470.57.02-3).
   * Drop the unusable leftover non-GLVND libegl1-nvidia package
     (470.74-2).
+  * nvidia-alternative: Drop unused non-GLVND slave links
+    (470.74-2).
   * Bump Standards-Version to 4.6.0. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Jul 2021 22:54:44 +0200

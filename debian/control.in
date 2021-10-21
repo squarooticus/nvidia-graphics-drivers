@@ -781,7 +781,6 @@ Depends:
  ${misc:Depends}
 Suggests:
  libegl-${nvidia-}0 [i386 amd64 ${arch:ppc64el}]
- | libegl-nvidia-tesla-440-0 [!i386 !armhf]
  | libegl-nvidia-tesla-418-0 [!i386 !armhf]
  | libegl-nvidia-legacy-390xx0 [!ppc64el],
 Description: NVIDIA binary EGL driver - common files
@@ -850,7 +849,6 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-vulkan-icd [i386 amd64 ${arch:ppc64el}]
- | nvidia-tesla-440-vulkan-icd [!i386]
  | nvidia-tesla-418-vulkan-icd [!i386]
  | nvidia-legacy-390xx-vulkan-icd [!ppc64el],
 Conflicts:
@@ -1280,7 +1278,6 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-opencl-icd [i386 amd64 ${arch:ppc64el}]
- | nvidia-tesla-440-opencl-icd [!i386]
  | nvidia-tesla-418-opencl-icd [!i386]
  | nvidia-legacy-390xx-opencl-icd [!ppc64el],
 Description: NVIDIA OpenCL driver - common files
@@ -1356,4 +1353,4 @@ Description: NVIDIA GPU detection utility
  The 'nvidia-detect' script in this package checks for an NVIDIA GPU in the
  system and recommends one of the non-free accelerated driver meta-packages
  (nvidia-driver, nvidia-legacy-390xx-driver, nvidia-legacy-340xx-driver,
- nvidia-tesla-440-driver, or nvidia-tesla-418-driver) for installation.
+ or nvidia-tesla-418-driver) for installation.

@@ -24,6 +24,7 @@ drm_legacy_pci_init.patch
 # build system updates
 separate-makefile-kbuild.patch
 KERNEL_UNAME.patch
+bashisms.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
 build-sanity-checks.patch

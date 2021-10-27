@@ -6,6 +6,7 @@ do-div-cast.patch
 kernel-5.7.0-set-memory-array.patch
 
 # build system updates
+bashisms.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
 use-kbuild-gcc-plugins.patch

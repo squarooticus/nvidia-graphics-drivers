@@ -23,6 +23,7 @@ nvidia-graphics-drivers (390.144-2+git) UNRELEASED; urgency=medium
   * bug-script: Show the nvidia and glx alternatives (470.74-2).
   * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
     sufficient to activate a nvidia alternative (470.74-2).
+  * Fix bashisms in upstream scripts (470.74-2).
   * Update lintian overrides.
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.6.0. No changes needed.

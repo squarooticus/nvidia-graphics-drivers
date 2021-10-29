@@ -1,3 +1,13 @@
+nvidia-graphics-drivers (470.82.00-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 470.82.00 (2021-10-26).
+    - Added support for the following GPUs: Matrox D-Series D2450,
+      Matrox D-Series D2480, NVIDIA A2.
+    - Fixed a bug that can cause a kernel crash in SLI Mosaic configurations.
+    - Added support for the EGL_NV_robustness_video_memory_purge extension
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 29 Oct 2021 15:37:03 +0200
+
 nvidia-graphics-drivers (470.74-1) unstable; urgency=medium
 
   * New upstream production branch release 470.74 (2021-09-20).

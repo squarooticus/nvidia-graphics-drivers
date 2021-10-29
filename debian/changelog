@@ -20,10 +20,10 @@ nvidia-graphics-drivers (390.144-2+git) UNRELEASED; urgency=medium
     (460.91.03-1).
   * Generate tight dependencies on libnvidia*-glcore/libnvidia*-eglcore
     (470.57.02-3).
-  * bug-script: Show the nvidia and glx alternatives (470.74-2).
+  * bug-script: Show the nvidia and glx alternatives (470.82.00-1).
   * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
-    sufficient to activate a nvidia alternative (470.74-2).
-  * Fix bashisms in upstream scripts (470.74-2).
+    sufficient to activate a nvidia alternative (470.82.00-1).
+  * Fix bashisms in upstream scripts (470.82.00-1).
   * Update lintian overrides.
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.6.0. No changes needed.

@@ -6,6 +6,9 @@ nvidia-graphics-drivers (470.82.00-1) UNRELEASED; urgency=medium
     - Fixed a bug that can cause a kernel crash in SLI Mosaic configurations.
     - Added support for the EGL_NV_robustness_video_memory_purge extension
 
+  [ Andreas Beckmann ]
+  * Restrict watch file to releases from the 470.xx production branch.
+
  -- Andreas Beckmann <anbe@debian.org>  Fri, 29 Oct 2021 15:37:03 +0200
 
 nvidia-graphics-drivers (470.74-1) unstable; urgency=medium

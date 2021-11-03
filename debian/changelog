@@ -19,6 +19,7 @@ nvidia-graphics-drivers (495.29.05-1) UNRELEASED; urgency=medium
       when an NVIDIA NVSwitch device is detected in the system. Previously,
       nvidia.ko would fail to load into the kernel if no supported GPUs were
       present.
+    * Removed support for cards based on the Kepler architecture.
 
   [ Luca Boccassi ]
   * Update nv-readme.ids.
@@ -29,6 +30,8 @@ nvidia-graphics-drivers (495.29.05-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * libcuda1: Add Provides: libcuda-11.5-1{,-i386}.
   * Ship the gsp.bin firmware blob on arm64.
+  * Add NEWS entry and update nvidia-legacy-check to suggest using
+    nvidia-tesla-470-driver for Kepler cards.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 19 Oct 2021 23:08:37 +0200
 

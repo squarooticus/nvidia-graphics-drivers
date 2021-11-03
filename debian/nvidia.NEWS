@@ -1,3 +1,20 @@
+nvidia-graphics-drivers (495.29.05-1) UNRELEASED; urgency=medium
+
+  LEGACY GPUs: If you have a GRID K520, GeForce 710M/920M,
+  GeForce GT 630/635/640/640M/710/720/730/730M/740/740M/745M,
+  GeForce GTX 645/650/660/670/680/690/760/760M/770/780/870M,
+  GeForce GTX TITAN/TITAN Black/TITAN Z, NVS 510,
+  Quadro 410/K420/K600/K2000/K2000D/K4000/K4200/K5000/K5200/K6000,
+  Tesla K8/K10/K20/K40/K80, i.e., any GPU based on the GK104/GK104GL/GK104M,
+  GK106/GK106GL/GK106M, GK107/GK107GL/GK107M, GK110/GK110B/GK110BGL/GK110GL,
+  GK180GL, GK208/GK208B/GK208BM/GK208M, GK210GL chips or a variant thereof
+  (that is anything from the Kepler architecture),
+  DO NOT INSTALL THIS RELEASE!!!
+  Use the nvidia-tesla-470-driver, nvidia-tesla-470-kernel-dkms
+  packages instead.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 19 Oct 2021 23:08:37 +0200
+
 nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 
   LEGACY GPUs: If you have a GeForce 710A/810M/820M/825M/910M,

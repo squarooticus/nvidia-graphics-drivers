@@ -1,3 +1,12 @@
+nvidia-graphics-drivers (470.82.01-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 470.82.01 (2021-11-02).
+    - Fixed a regression which prevented DisplayPort and HDMI 2.1 variable
+      refresh rate (VRR) G-SYNC Compatible monitors from functioning correctly
+      in variable refresh rate mode, resulting in issues such as flickering.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 03 Nov 2021 10:50:27 +0100
+
 nvidia-graphics-drivers (470.82.00-1) unstable; urgency=medium
 
   * New upstream production branch release 470.82.00 (2021-10-26).

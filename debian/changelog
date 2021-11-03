@@ -1,5 +1,17 @@
-nvidia-graphics-drivers (495.29.05-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (495.44-1) UNRELEASED; urgency=medium
 
+  * New upstream new feature branch release 495.44 (2021-10-26).
+    - Fixed a bug in the Vulkan driver where unused input attributes to a vertex
+      shader would corrupt the interpolation qualifiers for the shader.
+    - Fixed a bug in the Vulkan driver where individual components of
+      barycentric inputs could not be read.
+    - Added support for the VK_KHR_present_id extension.
+    - Added support for the VK_KHR_present_wait extension.
+    - Added support for the VK_KHR_shader_subgroup_uniform_control_flow
+      extension.
+    - Fixed a bug where VK_NVX_binary_import was advertised as supported on
+      unsupported platforms. This caused calls to vkCreateDevice to fail if
+      applications attempted to enable VK_NVX_binary_import on such platforms.
   * New upstream beta 495.29.05 (2021-10-14).
     - Added support for the GBM API. This adds the new symlink
       nvidia-drm_gbm.so pointing to the file libnvidia-allocator.so.VERSION to
@@ -33,7 +45,7 @@ nvidia-graphics-drivers (495.29.05-1) UNRELEASED; urgency=medium
   * Add NEWS entry and update nvidia-legacy-check to suggest using
     nvidia-tesla-470-driver for Kepler cards.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 19 Oct 2021 23:08:37 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 03 Nov 2021 22:26:07 +0100
 
 nvidia-graphics-drivers (470.82.01-1) UNRELEASED; urgency=medium
 

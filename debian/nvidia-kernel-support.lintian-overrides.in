@@ -1,2 +1,5 @@
-# We do not build arch:all packages from the proprietary driver.
-package-contains-no-arch-dependent-files
+# Firmware blob.
+binary-from-other-architecture lib/firmware/nvidia/#VERSION#/gsp.bin
+statically-linked-binary lib/firmware/nvidia/#VERSION#/gsp.bin
+binary-has-unneeded-section lib/firmware/nvidia/#VERSION#/gsp.bin .comment
+spelling-error-in-binary lib/firmware/nvidia/#VERSION#/gsp.bin *

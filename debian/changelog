@@ -20,6 +20,11 @@ nvidia-graphics-drivers (390.144-2+git) UNRELEASED; urgency=medium
     (460.91.03-1).
   * Generate tight dependencies on libnvidia*-glcore/libnvidia*-eglcore
     (470.57.02-3).
+  * bug-script: Show the nvidia and glx alternatives (470.82.00-1).
+  * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
+    sufficient to activate a nvidia alternative (470.82.00-1).
+  * Fix bashisms in upstream scripts (470.82.00-1).
+  * Update lintian overrides.
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.6.0. No changes needed.
 
@@ -1688,9 +1693,9 @@ nvidia-graphics-drivers (364.19-1) experimental; urgency=medium
         EGL_EXT_output_drm
         EGL_EXT_stream_consumer_egloutput
       to enable Mir and Wayland compositors to display their content
-      through EGLDevice, EGLOutput, and EGLstreams.
+      through EGLDevice, EGLOutput, and EGLStreams.
     - Added a Wayland platform library, libnvidia-egl-wayland.so, to allow
-      Wayland compositors that support EGLDevice, EGLOutput, and EGLstreams
+      Wayland compositors that support EGLDevice, EGLOutput, and EGLStreams
       to share EGL buffers with Wayland applications.
     - Fixed a bug that could cause incorrect frame rate reporting on Quadro
       Sync configurations with multiple GPUs.

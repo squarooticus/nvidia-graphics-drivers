@@ -7,6 +7,7 @@ nvidia-graphics-drivers (470.82.00-1) UNRELEASED; urgency=medium
     - Added support for the EGL_NV_robustness_video_memory_purge extension
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * bug-script: Show the nvidia and glx alternatives.
   * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
     sufficient to activate a nvidia alternative.  (Closes: #996595)

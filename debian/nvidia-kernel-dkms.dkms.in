@@ -1,6 +1,5 @@
 # DKMS configuration for the NVIDIA kernel module.  -*- sh -*-
 
-# The version is replaced at build time by dh_dkms invoked in debian/rules.
 PACKAGE_NAME="#MODULE#"
 PACKAGE_VERSION="#VERSION#"
 

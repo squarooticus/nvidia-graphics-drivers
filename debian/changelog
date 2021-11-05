@@ -7,7 +7,15 @@ nvidia-graphics-drivers (470.82.00-1) UNRELEASED; urgency=medium
     - Added support for the EGL_NV_robustness_video_memory_purge extension
 
   [ Andreas Beckmann ]
+  * bug-script: Show the nvidia and glx alternatives.
+  * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
+    sufficient to activate a nvidia alternative.  (Closes: #996595)
+  * Fix bashisms in upstream scripts.
+  * Drop the unusable leftover non-GLVND libegl1-nvidia package.
+    (Closes: #996763)
+  * nvidia-alternative: Drop unused non-GLVND slave links.
   * Restrict watch file to releases from the 470.xx production branch.
+  * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 29 Oct 2021 15:37:03 +0200
 
@@ -18,12 +26,7 @@ nvidia-graphics-drivers (470.74-1) unstable; urgency=medium
       from suspend.
     - Fixed a regression which resulted in very-high system memory usage for
       Direct3D 12 games when run through vkd3d-proton.
-    (Closes: #994942, #995271, #996031, #996164)
-  * New upstream release 450 series.
-    - Fixed a bug that could cause the /proc/driver/nvidia/suspend power
-      management interface to fail to preserve and restore video memory
-      allocations when the NVreg_TemporaryFilePath module parameter for
-      nvidia.ko specified an invalid path.
+    (Closes: #994942, #995271, #996031, #996164, #996468)
   * New upstream release 390 series.
     - Fixed a bug that caused nvidia-drm.ko to crash when loading with
       DRM-KMS enabled (modeset=1) on Linux v5.14.
@@ -266,12 +269,18 @@ nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
 
   [ Andreas Beckmann ]
   * Update symbols files.
-  * Ship the firmware blob on amd64.
+  * Ship the gsp.bin firmware blob on amd64.
   * Some power management features were not yet in Linux 2.6.32.
   * Update lintian overrides.
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Apr 2021 18:48:53 +0200
+
+nvidia-graphics-drivers (460.106.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 460.106.00 (2021-10-26).
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
 
 nvidia-graphics-drivers (460.91.03-2) UNRELEASED; urgency=medium
 
@@ -608,6 +617,16 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Sep 2020 21:52:54 +0200
+
+nvidia-graphics-drivers (450.156.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.156.00 (2021-10-26).
+    - Fixed a bug that could cause the /proc/driver/nvidia/suspend power
+      management interface to fail to preserve and restore video memory
+      allocations when the NVreg_TemporaryFilePath module parameter for
+      nvidia.ko specified an invalid path.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 30 Oct 2021 11:01:36 +0200
 
 nvidia-graphics-drivers (450.142.00-2) UNRELEASED; urgency=medium
 
@@ -1393,6 +1412,12 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
+
+nvidia-graphics-drivers (418.226.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 418.226.00 (2021-10-26).
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 29 Oct 2021 15:58:47 +0200
 
 nvidia-graphics-drivers (418.211.00-2) UNRELEASED; urgency=medium
 
@@ -3708,9 +3733,9 @@ nvidia-graphics-drivers (364.19-1) experimental; urgency=medium
         EGL_EXT_output_drm
         EGL_EXT_stream_consumer_egloutput
       to enable Mir and Wayland compositors to display their content
-      through EGLDevice, EGLOutput, and EGLstreams.
+      through EGLDevice, EGLOutput, and EGLStreams.
     - Added a Wayland platform library, libnvidia-egl-wayland.so, to allow
-      Wayland compositors that support EGLDevice, EGLOutput, and EGLstreams
+      Wayland compositors that support EGLDevice, EGLOutput, and EGLStreams
       to share EGL buffers with Wayland applications.
     - Fixed a bug that could cause incorrect frame rate reporting on Quadro
       Sync configurations with multiple GPUs.

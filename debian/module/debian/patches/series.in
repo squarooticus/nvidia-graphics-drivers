@@ -1,7 +1,9 @@
 # kernel support
+0000-backport-warning-on-unknown-conftests.patch
 kernel-5.7.0-set-memory-array.patch
 
 # build system updates
+bashisms.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
 use-kbuild-gcc-plugins.patch

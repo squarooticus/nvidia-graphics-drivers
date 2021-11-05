@@ -1,5 +1,5 @@
 # The NVIDIA license does not allow any form of modification.
-[!i386 !armhf]: embedded-library usr/lib/#PRIVATE#/nvidia-smi: zlib
+[!i386 !armhf]: embedded-library zlib usr/lib/#PRIVATE#/nvidia-smi
 [!i386 !armhf]: spelling-error-in-binary
 [!i386 !armhf]: hardening-no-bindnow
 [!i386 !armhf]: hardening-no-fortify-functions

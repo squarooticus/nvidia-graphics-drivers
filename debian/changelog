@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (495.44-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (495.44-1) experimental; urgency=medium
 
   * New upstream new feature branch release 495.44 (2021-10-26).
     - Fixed a bug in the Vulkan driver where unused input attributes to a vertex
@@ -44,8 +44,9 @@ nvidia-graphics-drivers (495.44-1) UNRELEASED; urgency=medium
   * Ship the gsp.bin firmware blob on arm64.
   * Add NEWS entry and update nvidia-legacy-check to suggest using
     nvidia-tesla-470-driver for Kepler cards.
+  * Upload to experimental.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 03 Nov 2021 22:26:07 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Nov 2021 10:45:12 +0100
 
 nvidia-graphics-drivers (470.82.01-1) UNRELEASED; urgency=medium
 

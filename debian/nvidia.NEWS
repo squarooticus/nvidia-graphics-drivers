@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (495.29.05-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (495.44-1) experimental; urgency=medium
 
   LEGACY GPUs: If you have a GRID K520, GeForce 710M/920M,
   GeForce GT 630/635/640/640M/710/720/730/730M/740/740M/745M,
@@ -13,7 +13,7 @@ nvidia-graphics-drivers (495.29.05-1) UNRELEASED; urgency=medium
   Use the nvidia-tesla-470-driver, nvidia-tesla-470-kernel-dkms
   packages instead.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 19 Oct 2021 23:08:37 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Nov 2021 10:45:12 +0100
 
 nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 

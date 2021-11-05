@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.82.00-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.82.00-1) unstable; urgency=medium
 
   * New upstream production branch release 470.82.00 (2021-10-26).
     - Added support for the following GPUs: Matrox D-Series D2450,
@@ -18,7 +18,7 @@ nvidia-graphics-drivers (470.82.00-1) UNRELEASED; urgency=medium
   * Restrict watch file to releases from the 470.xx production branch.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 29 Oct 2021 15:37:03 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Nov 2021 09:18:55 +0100
 
 nvidia-graphics-drivers (470.74-1) unstable; urgency=medium
 

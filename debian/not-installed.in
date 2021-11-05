@@ -27,10 +27,12 @@ libnvidia-gtk3.so.#VERSION#
 nvidia-xconfig
 nvidia-xconfig.1
 
-libnvidia-egl-wayland.so.1.1.5
+nvidia-ngx-updater
+
+libnvidia-egl-wayland.so.1.*.*
 10_nvidia_wayland.json
 
-nvidia-ngx-updater
+libEGL.so.#VERSION#
 
 libEGL.so.1.1.0
 libGL.so.1.7.0

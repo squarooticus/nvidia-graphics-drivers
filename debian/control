@@ -13,11 +13,12 @@ Build-Depends:
  debhelper-compat (= 13),
  dh-sequence-dkms,
  dh-exec,
- xz-utils,
+ libnvidia-egl-wayland1,
  libvulkan1 (>= 1.0.42),
  libxext6,
- quilt,
  po-debconf,
+ quilt,
+ xz-utils,
  libglvnd-dev,
 Rules-Requires-Root: no
 Standards-Version: 4.6.0
@@ -375,25 +376,6 @@ Description: NVIDIA binary OpenGL/GLX core libraries${nvidia:VariantDesc}
  This package contains the private core libraries used by the NVIDIA
  implementation of OpenGL and GLX.
 
-Package: libegl1-nvidia
-Architecture: amd64 arm64 ppc64el
-Multi-Arch: same
-Pre-Depends:
- ${misc:Pre-Depends}
-Depends:
- ${nvidia}-alternative (= ${binary:Version}),
- libegl-${nvidia-}0 (= ${binary:Version}),
- ${shlibs:Depends}, ${misc:Depends}
-Conflicts:
- ${nvidia}-driver-libs,
- libgl1-${nvidia}-glvnd-glx,
-Description: NVIDIA binary EGL library (non-GLVND variant)${nvidia:VariantDesc}
- EGL provides a platform-agnostic mechanism for creating rendering surfaces
- for use with other graphics libraries, such as OpenGL|ES.
- .
- This package contains the driver specific binary EGL implementation by NVIDIA
- as a non-GLVND alternative.
-
 Package: libegl-nvidia0
 Architecture: i386 amd64 arm64 ppc64el
 Multi-Arch: same
@@ -494,8 +476,9 @@ Depends:
  ${misc:Depends}
 Suggests:
  libegl-${nvidia-}0 [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
+ | libegl-nvidia-tesla-470-0 [i386 amd64 arm64 ppc64el]
+ | libegl-nvidia-tesla-460-0 [i386 amd64 arm64 ppc64el]
  | libegl-nvidia-tesla-450-0 [i386 amd64 arm64 ppc64el]
- | libegl-nvidia-tesla-440-0 [i386 amd64 ppc64el]
  | libegl-nvidia-tesla-418-0 [i386 amd64 ppc64el]
  | libegl-nvidia-legacy-390xx0 [i386 amd64 armhf],
 Description: NVIDIA binary EGL driver - common files
@@ -564,8 +547,9 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-vulkan-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
+ | nvidia-tesla-470-vulkan-icd [i386 amd64 arm64 ppc64el]
+ | nvidia-tesla-460-vulkan-icd [i386 amd64 arm64 ppc64el]
  | nvidia-tesla-450-vulkan-icd [i386 amd64 arm64 ppc64el]
- | nvidia-tesla-440-vulkan-icd [i386 amd64 ppc64el]
  | nvidia-tesla-418-vulkan-icd [i386 amd64 ppc64el]
  | nvidia-legacy-390xx-vulkan-icd [i386 amd64],
 Conflicts:
@@ -617,6 +601,8 @@ Suggests:
  | nvidia-legacy-390xx-nonglvnd-vulkan-icd [i386 amd64],
 Conflicts:
  libgl1-${nvidia}-glvnd-glx,
+ libgl1-nvidia-tesla-470-glvnd-glx,
+ libgl1-nvidia-tesla-460-glvnd-glx,
  libgl1-nvidia-tesla-450-glvnd-glx,
  libgl1-nvidia-tesla-440-glvnd-glx,
  libgl1-nvidia-tesla-418-glvnd-glx,
@@ -988,8 +974,9 @@ Depends:
  ${misc:Depends}
 Suggests:
  ${nvidia}-opencl-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
+ | nvidia-tesla-470-opencl-icd [i386 amd64 arm64 ppc64el]
+ | nvidia-tesla-460-opencl-icd [i386 amd64 arm64 ppc64el]
  | nvidia-tesla-450-opencl-icd [i386 amd64 arm64 ppc64el]
- | nvidia-tesla-440-opencl-icd [i386 amd64 ppc64el]
  | nvidia-tesla-418-opencl-icd [i386 amd64 ppc64el]
  | nvidia-legacy-390xx-opencl-icd [i386 amd64],
 Description: NVIDIA OpenCL driver - common files
@@ -1067,5 +1054,6 @@ Depends:
 Description: NVIDIA GPU detection utility
  The 'nvidia-detect' script in this package checks for an NVIDIA GPU in the
  system and recommends one of the non-free accelerated driver meta-packages
- (nvidia-driver, nvidia-legacy-390xx-driver, nvidia-tesla-450-driver,
- nvidia-tesla-440-driver, or nvidia-tesla-418-driver) for installation.
+ (nvidia-driver, nvidia-tesla-470-driver, nvidia-tesla-460-driver,
+ nvidia-tesla-450-driver, nvidia-tesla-418-driver,
+ or nvidia-legacy-390xx-driver) for installation.

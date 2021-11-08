@@ -1,3 +1,72 @@
+nvidia-graphics-drivers (470.82.01-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 470.82.01 (2021-11-02).
+    - Fixed a regression which prevented DisplayPort and HDMI 2.1 variable
+      refresh rate (VRR) G-SYNC Compatible monitors from functioning correctly
+      in variable refresh rate mode, resulting in issues such as flickering.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 03 Nov 2021 10:50:27 +0100
+
+nvidia-graphics-drivers (470.82.00-1) unstable; urgency=medium
+
+  * New upstream production branch release 470.82.00 (2021-10-26).
+    - Added support for the following GPUs: Matrox D-Series D2450,
+      Matrox D-Series D2480, NVIDIA A2.
+    - Fixed a bug that can cause a kernel crash in SLI Mosaic configurations.
+    - Added support for the EGL_NV_robustness_video_memory_purge extension
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+  * bug-script: Show the nvidia and glx alternatives.
+  * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
+    sufficient to activate a nvidia alternative.  (Closes: #996595)
+  * Fix bashisms in upstream scripts.
+  * Drop the unusable leftover non-GLVND libegl1-nvidia package.
+    (Closes: #996763)
+  * nvidia-alternative: Drop unused non-GLVND slave links.
+  * Restrict watch file to releases from the 470.xx production branch.
+  * Update lintian overrides.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Nov 2021 09:18:55 +0100
+
+nvidia-graphics-drivers (470.74-1) unstable; urgency=medium
+
+  * New upstream production branch release 470.74 (2021-09-20).
+    - Fixed a bug that could cause GPU applications to exit when resuming
+      from suspend.
+    - Fixed a regression which resulted in very-high system memory usage for
+      Direct3D 12 games when run through vkd3d-proton.
+    (Closes: #994942, #995271, #996031, #996164, #996468)
+  * New upstream release 390 series.
+    - Fixed a bug that caused nvidia-drm.ko to crash when loading with
+      DRM-KMS enabled (modeset=1) on Linux v5.14.
+
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+  * Update lintian overrides.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 12 Oct 2021 09:11:35 +0200
+
+nvidia-graphics-drivers (470.63.01-1) unstable; urgency=medium
+
+  * New upstream production branch release 470.63.01 (2021-08-10).
+    - Added an application profile to disable FXAA for Firefox to prevent
+      visual corruption.
+    - Added support for the VK_KHR_wayland_surface extension.
+    - Fixed a Vulkan performance regression that affected rFactor2.
+    (Closes: #994633)
+
+  [ Andreas Beckmann ]
+  * libegl-nvidia0: Ship new library libnvidia-vulkan-producer.so.#VERSION#
+    but do not provide alternatives since it is unclear how this undocumented
+    SONAME-less library is supposed to be used.
+  * Add Build-Depends: libnvidia-egl-wayland1.
+  * nvidia-kernel-support: Restore nvidia-modprobe.conf which might have gone
+    missing due to bugs in debhelper (#994919) and dpkg (#995387).
+    (Closes: #994971)
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 30 Sep 2021 18:55:41 +0200
+
 nvidia-graphics-drivers (470.57.02-3) unstable; urgency=medium
 
   * Backport drm_device_has_pdev and set_current_state changes from 470.63.01
@@ -129,8 +198,6 @@ nvidia-graphics-drivers (470.42.01-1) experimental; urgency=medium
     - Fixed handling of VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT for
       variable size descriptor bindings.
     * Fixed crash with certain DisplayPort devices.  (Closes: #989069)
-  * New upstream release 460 series.
-    - Added support for the following GPUs: GeForce RTX 3070 Ti, CMP 50HX.
   * New upstream release 390 series.
     - Worked around a bug in Meson builds of libglvnd 1.3.0 that caused the
       nvidia_icd.json file to be installed in the wrong location.
@@ -212,12 +279,18 @@ nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
 
   [ Andreas Beckmann ]
   * Update symbols files.
-  * Ship the firmware blob on amd64.
+  * Ship the gsp.bin firmware blob on amd64.
   * Some power management features were not yet in Linux 2.6.32.
   * Update lintian overrides.
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Apr 2021 18:48:53 +0200
+
+nvidia-graphics-drivers (460.106.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 460.106.00 (2021-10-26).
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
 
 nvidia-graphics-drivers (460.91.03-2) UNRELEASED; urgency=medium
 
@@ -576,6 +649,16 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Sep 2020 21:52:54 +0200
+
+nvidia-graphics-drivers (450.156.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.156.00 (2021-10-26).
+    - Fixed a bug that could cause the /proc/driver/nvidia/suspend power
+      management interface to fail to preserve and restore video memory
+      allocations when the NVreg_TemporaryFilePath module parameter for
+      nvidia.ko specified an invalid path.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 30 Oct 2021 11:01:36 +0200
 
 nvidia-graphics-drivers (450.142.00-2) UNRELEASED; urgency=medium
 
@@ -1429,6 +1512,12 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
+
+nvidia-graphics-drivers (418.226.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 418.226.00 (2021-10-26).
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 29 Oct 2021 15:58:47 +0200
 
 nvidia-graphics-drivers (418.211.00-2) UNRELEASED; urgency=medium
 
@@ -3863,9 +3952,9 @@ nvidia-graphics-drivers (364.19-1) experimental; urgency=medium
         EGL_EXT_output_drm
         EGL_EXT_stream_consumer_egloutput
       to enable Mir and Wayland compositors to display their content
-      through EGLDevice, EGLOutput, and EGLstreams.
+      through EGLDevice, EGLOutput, and EGLStreams.
     - Added a Wayland platform library, libnvidia-egl-wayland.so, to allow
-      Wayland compositors that support EGLDevice, EGLOutput, and EGLstreams
+      Wayland compositors that support EGLDevice, EGLOutput, and EGLStreams
       to share EGL buffers with Wayland applications.
     - Fixed a bug that could cause incorrect frame rate reporting on Quadro
       Sync configurations with multiple GPUs.

@@ -1,3 +1,20 @@
+nvidia-graphics-drivers (460.106.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 460.106.00 (2021-10-26).
+
+  [ Andreas Beckmann ]
+  * bug-script: Show the nvidia and glx alternatives (470.82.00-1).
+  * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
+    sufficient to activate a nvidia alternative (470.82.00-1).
+  * Fix bashisms in upstream scripts (470.82.00-1).
+  * Drop the unusable leftover non-GLVND libegl1-nvidia package
+    (470.82.00-1).
+  * nvidia-alternative: Drop unused non-GLVND slave links
+    (470.82.00-1).
+  * Update lintian overrides.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
+
 nvidia-graphics-drivers (460.91.03-2) UNRELEASED; urgency=medium
 
   * Backport drm_device_has_pdev and set_current_state changes from 470.63.01
@@ -359,6 +376,16 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Sep 2020 21:52:54 +0200
+
+nvidia-graphics-drivers (450.156.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.156.00 (2021-10-26).
+    - Fixed a bug that could cause the /proc/driver/nvidia/suspend power
+      management interface to fail to preserve and restore video memory
+      allocations when the NVreg_TemporaryFilePath module parameter for
+      nvidia.ko specified an invalid path.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 30 Oct 2021 11:01:36 +0200
 
 nvidia-graphics-drivers (450.142.00-2) UNRELEASED; urgency=medium
 
@@ -1212,6 +1239,12 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
+
+nvidia-graphics-drivers (418.226.00-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 418.226.00 (2021-10-26).
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 29 Oct 2021 15:58:47 +0200
 
 nvidia-graphics-drivers (418.211.00-2) UNRELEASED; urgency=medium
 
@@ -3646,9 +3679,9 @@ nvidia-graphics-drivers (364.19-1) experimental; urgency=medium
         EGL_EXT_output_drm
         EGL_EXT_stream_consumer_egloutput
       to enable Mir and Wayland compositors to display their content
-      through EGLDevice, EGLOutput, and EGLstreams.
+      through EGLDevice, EGLOutput, and EGLStreams.
     - Added a Wayland platform library, libnvidia-egl-wayland.so, to allow
-      Wayland compositors that support EGLDevice, EGLOutput, and EGLstreams
+      Wayland compositors that support EGLDevice, EGLOutput, and EGLStreams
       to share EGL buffers with Wayland applications.
     - Fixed a bug that could cause incorrect frame rate reporting on Quadro
       Sync configurations with multiple GPUs.

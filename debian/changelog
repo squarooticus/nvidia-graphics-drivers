@@ -1,3 +1,11 @@
+nvidia-graphics-drivers (470.86-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 470.86 (2021-11-10).
+    - Added support for the following GPUs: RTX A2000 12GB, RTX A4500,
+      T400 4GB, T1000 8GB.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 16 Nov 2021 11:40:20 +0100
+
 nvidia-graphics-drivers (470.82.01-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 470.82.01 (2021-11-02).
@@ -5,7 +13,7 @@ nvidia-graphics-drivers (470.82.01-1) UNRELEASED; urgency=medium
       refresh rate (VRR) G-SYNC Compatible monitors from functioning correctly
       in variable refresh rate mode, resulting in issues such as flickering.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 03 Nov 2021 10:50:27 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 08 Nov 2021 16:52:53 +0100
 
 nvidia-graphics-drivers (470.82.00-1) unstable; urgency=medium
 

@@ -4,6 +4,9 @@ nvidia-graphics-drivers (470.86-1) UNRELEASED; urgency=medium
     - Added support for the following GPUs: RTX A2000 12GB, RTX A4500,
       T400 4GB, T1000 8GB.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Tue, 16 Nov 2021 11:40:20 +0100
 
 nvidia-graphics-drivers (470.82.01-1) UNRELEASED; urgency=medium

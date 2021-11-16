@@ -6,6 +6,9 @@ nvidia-graphics-drivers (470.86-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
+  * nvidia-kernel-support: Provide /etc/modprobe.d/nvidia-options.conf as a
+    template taking into account the module renaming. This is a slave
+    alternative of the nvidia alternative.  (Closes: #999670)
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 16 Nov 2021 11:40:20 +0100
 

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.86-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.86-1) unstable; urgency=medium
 
   * New upstream production branch release 470.86 (2021-11-10).
     - Added support for the following GPUs: RTX A2000 12GB, RTX A4500,
@@ -10,7 +10,7 @@ nvidia-graphics-drivers (470.86-1) UNRELEASED; urgency=medium
     template taking into account the module renaming. This is a slave
     alternative of the nvidia alternative.  (Closes: #999670)
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 16 Nov 2021 11:40:20 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 16 Nov 2021 15:05:47 +0100
 
 nvidia-graphics-drivers (470.82.01-1) UNRELEASED; urgency=medium
 

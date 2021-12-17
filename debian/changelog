@@ -6,6 +6,9 @@ nvidia-graphics-drivers (470.94-1) UNRELEASED; urgency=medium
       therefore taking advantage of G-SYNC and G-SYNC Compatible monitors) on
       certain desktops such as GNOME.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Dec 2021 14:38:13 +0100
 
 nvidia-graphics-drivers (470.86-1) unstable; urgency=medium

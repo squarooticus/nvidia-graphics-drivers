@@ -1,3 +1,13 @@
+nvidia-graphics-drivers (470.94-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 470.94 (2021-12-13).
+    - Added support for the following GPU: NVIDIA PG509-210.
+    - Worked around an issue that prevented some games from flipping (and
+      therefore taking advantage of G-SYNC and G-SYNC Compatible monitors) on
+      certain desktops such as GNOME.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Dec 2021 14:38:13 +0100
+
 nvidia-graphics-drivers (470.86-1) unstable; urgency=medium
 
   * New upstream production branch release 470.86 (2021-11-10).
@@ -51,7 +61,7 @@ nvidia-graphics-drivers (470.74-1) unstable; urgency=medium
     - Fixed a regression which resulted in very-high system memory usage for
       Direct3D 12 games when run through vkd3d-proton.
     (Closes: #994942, #995271, #996031, #996164, #996468)
-  * New upstream release 390 series.
+  * New upstream release 450 series.
     - Fixed a bug that caused nvidia-drm.ko to crash when loading with
       DRM-KMS enabled (modeset=1) on Linux v5.14.
 

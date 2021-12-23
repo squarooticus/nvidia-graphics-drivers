@@ -31,6 +31,7 @@ kernel-5.7.0-set-memory-array.patch
 0030-skip-list-operations-if-drm_device.legacy_dev_list-i.patch
 0031-backport-set_current_state-changes-from-470.63.01.patch
 0032-backport-drm_device_has_pdev-changes-from-470.63.01.patch
+0033-check-for-member-agp-in-struct-drm_device.patch
 
 # build system updates
 separate-makefile-kbuild.patch

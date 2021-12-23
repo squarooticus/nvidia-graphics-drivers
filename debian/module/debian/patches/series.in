@@ -28,6 +28,7 @@ kernel-5.7.0-set-memory-array.patch
 0027-add-static-and-nv_-prefix-to-copied-drm-legacy-bits.patch
 0028-backport-asm-kmap_types.h-changes-from-460.32.03.patch
 0029-backport-drm_driver_has_gem_prime_callbacks-changes-.patch
+0030-skip-list-operations-if-drm_device.legacy_dev_list-i.patch
 0031-backport-set_current_state-changes-from-470.63.01.patch
 
 # build system updates

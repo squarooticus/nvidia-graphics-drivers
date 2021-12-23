@@ -1,10 +1,13 @@
 # kernel support
 0001-backport-error-on-unknown-conftests.patch
+0002-backport-error-on-unknown-conftests-uvm-part.patch
 unregister_procfs_on_failure.patch
 kmem_cache_create_usercopy.patch
 buildfix_kernel_4.11.patch
 buildfix_kernel_5.2.patch
 03-unfuck-for-5.5.x.patch
+0008-backport-drm_available-changes-from-361.16.patch
+0009-backport-drm_driver_has_legacy_dev_list-changes-from.patch
 0010-backport-drm_gem_object_get-changes-from-418.30.patch
 0011-backport-nv_ioremap_nocache-changes-from-440.64.patch
 0012-backport-nv_proc_ops_t-changes-from-440.82.patch
@@ -20,7 +23,9 @@ kernel-5.7.0-set-memory-array.patch
 0022-backport-vga_tryget-changes-from-455.23.04.patch
 0023-backport-drm_driver_has_gem_free_object-changes-from.patch
 0024-backport-drm_prime_pages_to_sg_has_drm_device_arg-ch.patch
+0025-check-for-drm_pci_init.patch
 0026-import-drm_legacy_pci_init-exit-from-src-linux-5.9.1.patch
+0027-add-static-and-nv_-prefix-to-copied-drm-legacy-bits.patch
 0028-backport-asm-kmap_types.h-changes-from-460.32.03.patch
 0031-backport-set_current_state-changes-from-470.63.01.patch
 

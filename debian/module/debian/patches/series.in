@@ -1,6 +1,6 @@
 # kernel support
 0001-backport-error-on-unknown-conftests.patch
-0002-backport-error-on-unknown-conftests-uvm-part.patch
+#HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
 unregister_procfs_on_failure.patch
 kmem_cache_create_usercopy.patch
 buildfix_kernel_4.11.patch

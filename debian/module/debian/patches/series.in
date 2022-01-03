@@ -3,6 +3,7 @@
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
 kernel-5.7.0-set-memory-array.patch
 0004-backport-stdarg.h-changes-from-495.44.patch
+0005-backport-stddef.h-changes-from-495.44.patch
 
 # build system updates
 bashisms.patch

@@ -1,5 +1,6 @@
 # kernel support
-0000-backport-warning-on-unknown-conftests.patch
+0001-backport-error-on-unknown-conftests.patch
+#HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
 kernel-5.7.0-set-memory-array.patch
 
 # build system updates

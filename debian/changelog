@@ -121,7 +121,7 @@ nvidia-graphics-drivers (340.108-2) UNRELEASED; urgency=medium
     build for Linux 5.14.
   * Add check for drm_device.agp and disable operations using drm_device.agp
     if unavailable to fix kernel module build with DRM_LEGACY disabled.
-  * Backport stdarg.h changes from 495.44 to fix kernel module build for
+  * Backport stdarg.h changes from 470.82.00 to fix kernel module build for
     Linux 5.16.
 
   * Backport asm/kmap_types.h changes from 460.32.03 to fix kernel module

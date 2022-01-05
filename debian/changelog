@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (495.46-1) UNRELEASED; urgency=medium
+
+  * New upstream new feature branch release 495.46 (2021-12-13).
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 05 Jan 2022 17:15:32 +0100
+
 nvidia-graphics-drivers (495.44-1) experimental; urgency=medium
 
   * New upstream new feature branch release 495.44 (2021-10-26).

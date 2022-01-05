@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.94-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.94-1) unstable; urgency=medium
 
   * New upstream production branch release 470.94 (2021-12-13).
     - Added support for the following GPU: NVIDIA PG509-210.
@@ -10,7 +10,7 @@ nvidia-graphics-drivers (470.94-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Dec 2021 14:38:13 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 05 Jan 2022 04:08:50 +0100
 
 nvidia-graphics-drivers (470.86-1) unstable; urgency=medium
 

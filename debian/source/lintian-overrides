@@ -2,7 +2,7 @@
 patch-file-present-but-not-mentioned-in-series
 
 # this file is part of the compressed .run files
-superfluous-file-pattern debian/copyright supported-gpus/supported-gpus.json (Files, line *)
+superfluous-file-pattern supported-gpus/supported-gpus.json [debian/copyright:*]
 
 # upstream provides no signatures
 debian-watch-does-not-check-gpg-signature

@@ -1,3 +1,51 @@
+nvidia-graphics-drivers (510.39.01-1) UNRELEASED; urgency=medium
+
+  * New upstream beta 510.39.01 (2022-01-11).
+    - Fixed several issues which caused the supported-gpus.json file to
+      contain incorrect product information.
+    - Fixed a bug which caused Vulkan applications to hang when the
+      __GL_THREADED_OPTIMIZATIONS environment variable was set to enable
+      threaded optimizations in the NVIDIA driver.
+    - Fixed a bug where calls to vkWaitForPresentKHR would fail with
+      VK_TIMEOUT on Maxwell and Pascal GPUs.
+    - Added support for the VK_EXT_depth_clip_control extension.
+    - Added support for the VK_EXT_border_color_swizzle extension.
+    - Added support for the VK_EXT_image_view_min_lod extension.
+    - Fixed a bug in the Vulkan compiler where 64-bit atomics were partially
+      broken.
+    - Fixed a bug in the Vulkan driver where VK_NULL_HANDLE was not properly
+      handled as input to
+      VkRenderingFragmentShadingRateAttachmentInfoKHR.imageView.
+    - Added support for the VK_KHR_dynamic_rendering extension.
+    - Added support for the bufferDeviceAddressCaptureReplay Vulkan feature.
+    - Optimized the Vulkan fullscreen presentation path for X11 and
+      direct-to-display swapchains.
+    - Added AV1 decode support to the NVIDIA VDPAU driver. See the
+      VDPAU Support appendix in the README for supported AV1 decoder
+      profiles.
+    - Added support for the VK_KHR_format_feature_flags2 extension.
+    - Added support for the VK_KHR_maintenance4 extension.
+    - Fixed a bug in the Vulkan driver where the SPIR-V Centroid interpolation
+      decoration was not ignored when used in conjunction with FragCoord.
+    - Fixed a bug in the Vulkan driver where unreferenced descriptor bindings
+      were sometimes not ignored properly.
+    - Fixed a bug in the Vulkan driver where vkCmdBindDescriptorSets would not
+      properly handle pDynamicOffsets for compute pipelines.
+    - Added support for the VK_KHR_shader_integer_dot_product extension.
+    - Added support for the VK_EXT_primitive_topology_list_restart extension.
+    - Added support for the VK_EXT_load_store_op_none extension.
+    - Fixed a bug which caused OpenGL and Vulkan applications to generate
+      excessive traffic over dbus while attempting to communicate with
+      nvidia-powerd, even though nvidia-powerd was not running.
+    - Enabled GSP Firmware by default on NVIDIA T4, A100, A30, A40, A16, A2,
+      and several other Tesla products.  Please see the "GSP Firmware"
+      chapter in the README for details.
+  * New upstream release 495 series.
+    - Fixed a bug in the Vulkan driver where some Ray Tracing shaders would
+      timeout, resulting in device loss.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 17 Jan 2022 23:33:34 +0100
+
 nvidia-graphics-drivers (495.46-1) experimental; urgency=medium
 
   * New upstream new feature branch release 495.46 (2021-12-13).

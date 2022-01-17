@@ -44,6 +44,9 @@ nvidia-graphics-drivers (510.39.01-1) UNRELEASED; urgency=medium
     - Fixed a bug in the Vulkan driver where some Ray Tracing shaders would
       timeout, resulting in device loss.
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Mon, 17 Jan 2022 23:33:34 +0100
 
 nvidia-graphics-drivers (495.46-1) experimental; urgency=medium

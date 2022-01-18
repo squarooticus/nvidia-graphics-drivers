@@ -1,3 +1,15 @@
+nvidia-graphics-drivers (390.144-1~deb9u1) stretch-security; urgency=high
+
+  * Non-maintainer upload by the LTS team.
+  * Fix CVE-2021-1076, CVE-2021-1093, CVE-2021-1094, CVE-2021-1095
+    and CVE-2021-1056.
+    Multiple security vulnerabilities have been discovered in the
+    NVIDIA binary driver and libraries that provide optimized
+    hardware acceleration which may lead to denial of service,
+    information disclosure, or data corruption.
+
+ -- Markus Koschany <apo@debian.org>  Tue, 18 Jan 2022 18:50:56 +0100
+
 nvidia-graphics-drivers (390.138-1) stretch; urgency=medium
 
   * New upstream legacy branch release 390.138 (2020-06-24).

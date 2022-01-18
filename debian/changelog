@@ -47,6 +47,7 @@ nvidia-graphics-drivers (510.39.01-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.
   * Update nv-readme.ids.
+  * Update symbols files.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 17 Jan 2022 23:33:34 +0100
 

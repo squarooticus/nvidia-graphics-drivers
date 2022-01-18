@@ -11,6 +11,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuArrayDestroy@Base 169
  cuArrayGetDescriptor@Base 169
  cuArrayGetDescriptor_v2@Base 260
+ cuArrayGetMemoryRequirements@Base 510
  cuArrayGetPlane@Base 460
  cuArrayGetSparseProperties@Base 455
  cuCtxAttach@Base 169
@@ -190,7 +191,9 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGraphNodeFindInClone@Base 410
  cuGraphNodeGetDependencies@Base 410
  cuGraphNodeGetDependentNodes@Base 410
+ cuGraphNodeGetEnabled@Base 510
  cuGraphNodeGetType@Base 410
+ cuGraphNodeSetEnabled@Base 510
  cuGraphReleaseUserObject@Base 465
  cuGraphRemoveDependencies@Base 410
  cuGraphRetainUserObject@Base 465
@@ -401,6 +404,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuMipmappedArrayCreate@Base 304
  cuMipmappedArrayDestroy@Base 304
  cuMipmappedArrayGetLevel@Base 304
+ cuMipmappedArrayGetMemoryRequirements@Base 510
  cuMipmappedArrayGetSparseProperties@Base 455
  cuModuleGetFunction@Base 169
  cuModuleGetGlobal@Base 169

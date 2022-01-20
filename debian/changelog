@@ -48,6 +48,7 @@ nvidia-graphics-drivers (510.39.01-1) UNRELEASED; urgency=medium
   * Refresh patches.
   * Update nv-readme.ids.
   * Update symbols files.
+  * libcuda1: Add Provides: libcuda-11.6-1{,-i386}.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 17 Jan 2022 23:33:34 +0100
 

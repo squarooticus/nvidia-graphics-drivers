@@ -1,3 +1,10 @@
+nvidia-graphics-drivers (470.103.01-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 470.103.01 (2022-01-01).
+    - Added support for the following GPUs: MX550, MX570, RTX 2050.
+
+ -- Luca Boccassi <bluca@debian.org>  Tue, 01 Feb 2022 23:23:13 +0000
+
 nvidia-graphics-drivers (470.94-1) unstable; urgency=medium
 
   * New upstream production branch release 470.94 (2021-12-13).

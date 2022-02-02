@@ -3,7 +3,7 @@ Description: fix bashisms in conftest.sh
 
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4561,7 +4561,7 @@ case "$5" in
+@@ -4562,7 +4562,7 @@ case "$5" in
  
          if [ -n "$VGX_BUILD" ]; then
              if [ -f /proc/xen/capabilities ]; then

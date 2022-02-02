@@ -37,6 +37,7 @@ nvidia-graphics-drivers (450.172.01-1) UNRELEASED; urgency=medium
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Fixed a bug that caused nvidia-drm.ko to crash when loading with
       DRM-KMS enabled (modeset=1) on Linux v5.14.
+    * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
   * Refresh patches.

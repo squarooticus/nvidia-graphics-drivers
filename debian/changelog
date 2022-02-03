@@ -1,7 +1,10 @@
 nvidia-graphics-drivers (470.103.01-1) UNRELEASED; urgency=medium
 
-  * New upstream production branch release 470.103.01 (2022-01-01).
-    - Added support for the following GPUs: MX550, MX570, RTX 2050.
+  * New upstream production branch release 470.103.01 (2022-01-31).
+    * Fixed CVE‑2022‑21813, CVE‑2022‑21814.  (Closes: #1004847)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5312
+    - Added support for the following GPUs: NVIDIA GeForce MX550,
+      NVIDIA GeForce MX570, NVIDIA GeForce RTX 2050.
 
   [ Luca Boccassi ]
   * Update nv-readme.ids.

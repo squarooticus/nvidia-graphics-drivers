@@ -6,7 +6,8 @@ nvidia-graphics-drivers (470.103.01-1) UNRELEASED; urgency=medium
     - Added support for the following GPUs: NVIDIA GeForce MX550,
       NVIDIA GeForce MX570, NVIDIA GeForce RTX 2050.
 
-  [ Luca Boccassi ]
+  [ Andreas Beckmann ]
+  * Refresh patches.
   * Update nv-readme.ids.
 
  -- Luca Boccassi <bluca@debian.org>  Tue, 01 Feb 2022 23:23:13 +0000

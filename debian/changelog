@@ -76,9 +76,6 @@ nvidia-graphics-drivers (470.74-1) unstable; urgency=medium
     - Fixed a regression which resulted in very-high system memory usage for
       Direct3D 12 games when run through vkd3d-proton.
     (Closes: #994942, #995271, #996031, #996164, #996468)
-  * New upstream release 450 series.
-    - Fixed a bug that caused nvidia-drm.ko to crash when loading with
-      DRM-KMS enabled (modeset=1) on Linux v5.14.
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
@@ -666,6 +663,20 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Sep 2020 21:52:54 +0200
+
+nvidia-graphics-drivers (450.172.01-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.172.01 (2022-01-31).
+    * Fixed CVE‑2022‑21813, CVE‑2022‑21814.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5312
+    - Fixed a bug that caused nvidia-drm.ko to crash when loading with
+      DRM-KMS enabled (modeset=1) on Linux v5.14.
+    * Improved compatibility with recent Linux kernels.
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 01 Feb 2022 22:33:16 +0100
 
 nvidia-graphics-drivers (450.156.00-1) UNRELEASED; urgency=medium
 

@@ -463,7 +463,7 @@ ORIGDIR.empty		?= $(ORIGDIR)
 TARBALL.empty		?= $(TARBALL)
 
 # $1 = arch
-get_download_url	 = $(or $(HTTPURL_PREFIX_$(strip $1)),$(HTTPURL_PREFIX))/$(if $(HTTPURL_ARCHDIR_$(strip $1)),$(HTTPURL_ARCHDIR_$(strip $1))/)$(or $(HTTPURL_VERDIR),$(NVIDIA_RELEASE))/$(NVIDIA_FILENAME_$(strip $1))
+get_download_url	 = $(or $(HTTPURL_PREFIX_$(strip $1)),$(HTTPURL_PREFIX))/$(if $(HTTPURL_ARCHDIR_$(strip $1)),$(HTTPURL_ARCHDIR_$(strip $1))/)$(if $2,,$(or $(HTTPURL_VERDIR),$(NVIDIA_RELEASE))/)$(NVIDIA_FILENAME_$(strip $1))
 get_origdir		 = $(or $(ORIGDIR.$(strip $1)),$(ORIGDIR)-$(strip $1))
 get_tarball		 = $(or $(TARBALL.$(strip $1)),$(TARBALL_BASE)-$(strip $1)$(TARBALL_SUFFIX))
 
@@ -477,7 +477,8 @@ get-orig-source-prepare/%: get-orig-source-prepare
 
 get-orig-source-download/%: get-orig-source-prepare
 	ln -v $(CACHE)/$(NVIDIA_FILENAME_$*) get-orig-source/ 2>/dev/null || \
-		wget $(call get_download_url,$*) -P get-orig-source/
+		wget $(call get_download_url,$*) -P get-orig-source/ || \
+		wget $(call get_download_url,$*,1) -P get-orig-source/
 	if [ -d $(CACHE) ] && [ ! -f $(CACHE)/$(NVIDIA_FILENAME_$*) ]; then \
 		ln -v get-orig-source/$(NVIDIA_FILENAME_$*) $(CACHE) ; fi
 

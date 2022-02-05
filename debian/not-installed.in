@@ -55,3 +55,6 @@ libOpenGL.so.0
 nvidia-ngx-updater
 
 libEGL.so.#VERSION#
+
+nvidia-powerd
+nvidia-dbus.conf

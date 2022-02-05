@@ -71,6 +71,7 @@ nvidia-graphics-drivers (510.47.03-1) UNRELEASED; urgency=medium
   * libcuda1: Add Provides: libcuda-11.6-1{,-i386}.
   * nvidia-detect: Add support for Tesla 510 drivers.
   * Prepare nvidia-powerd: New package for the NVIDIA Dynamic Boost daemon.
+  * Do not ship libnvidia-compiler-next.so.*.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Feb 2022 03:13:58 +0100
 

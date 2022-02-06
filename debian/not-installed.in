@@ -1,3 +1,4 @@
+# upstream packaging
 .manifest
 LICENSE
 gl.h
@@ -16,16 +17,20 @@ pkg-history.txt
 tls_test
 tls_test_dso.so
 
+# installed by dh_installchangelogs
 NVIDIA_Changelog
 nvidia_icd.json.template
 
+# built from src:nvidia-modprobe
 nvidia-modprobe
 nvidia-modprobe.1
 
+# built from src:nvidia-persistenced
 nvidia-persistenced
 nvidia-persistenced-init.tar.bz2
 nvidia-persistenced.1
 
+# built from src:nvidia-settings*
 nvidia-settings
 nvidia-settings.1
 nvidia-settings.desktop
@@ -33,8 +38,12 @@ nvidia-settings.png
 libnvidia-gtk2.so.#VERSION#
 libnvidia-gtk3.so.#VERSION#
 
+# built from src:nvidia-xconfig
 nvidia-xconfig
 nvidia-xconfig.1
 
-libnvidia-egl-wayland.so.1.0.2
+# built from src:egl-wayland
+libnvidia-egl-wayland.so.1.*.*
 10_nvidia_wayland.json
+
+# not shipped

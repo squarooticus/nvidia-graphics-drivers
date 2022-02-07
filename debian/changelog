@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (510.47.03-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (510.47.03-1) experimental; urgency=medium
 
   * New upstream production branch release 510.47.03 (2022-02-01).
     * Fixed CVE‑2022‑21813, CVE‑2022‑21814.  (Closes: #1004847)
@@ -73,7 +73,7 @@ nvidia-graphics-drivers (510.47.03-1) UNRELEASED; urgency=medium
   * Prepare nvidia-powerd: New package for the NVIDIA Dynamic Boost daemon.
   * Do not ship libnvidia-compiler-next.so.*.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Feb 2022 03:13:58 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 07 Feb 2022 11:45:15 +0100
 
 nvidia-graphics-drivers (495.46-1) experimental; urgency=medium
 

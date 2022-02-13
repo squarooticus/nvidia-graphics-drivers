@@ -25,6 +25,7 @@ nvidia-graphics-drivers (450.172.01-2+git) UNRELEASED; urgency=medium
     /etc/modprobe.d/nvidia-options.conf as a template taking into account the
     module renaming. This is a slave alternative of the nvidia alternative
     (470.86-1).  (Closes: #999670)
+  * Add xorg-video-abi-25 (Xorg Xserver 21) as alternative dependency.
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.0. No changes needed.
 

@@ -4,6 +4,9 @@ nvidia-graphics-drivers (510.54-1) UNRELEASED; urgency=medium
     - Fixed a bug that could cause GPU exceptions when minimizing a fullscreen
       Vulkan application on certain desktops, such as Plasma.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Tue, 15 Feb 2022 18:41:43 +0100
 
 nvidia-graphics-drivers (510.47.03-1) experimental; urgency=medium

@@ -1,3 +1,11 @@
+nvidia-graphics-drivers (510.54-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 510.54 (2022-02-14).
+    - Fixed a bug that could cause GPU exceptions when minimizing a fullscreen
+      Vulkan application on certain desktops, such as Plasma.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 15 Feb 2022 18:41:43 +0100
+
 nvidia-graphics-drivers (510.47.03-1) experimental; urgency=medium
 
   * New upstream production branch release 510.47.03 (2022-02-01).
@@ -56,9 +64,6 @@ nvidia-graphics-drivers (510.47.03-1) experimental; urgency=medium
   * New upstream release 495 series.
     - Fixed a bug in the Vulkan driver where some Ray Tracing shaders would
       timeout, resulting in device loss.
-  * New upstream release 470 series.
-    - Added an application profile to avoid an image corruption issue in
-      Blender, as described at https://developer.blender.org/T76874
   * New upstream release 390 series.
     - Fixed a driver installation failure on Linux kernel 5.17 release
       candidates, where the NVIDIA kernel module failed to build with error
@@ -136,6 +141,8 @@ nvidia-graphics-drivers (470.103.01-1) unstable; urgency=medium
   * New upstream production branch release 470.103.01 (2022-01-31).
     * Fixed CVE‑2022‑21813, CVE‑2022‑21814.  (Closes: #1004847)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
+    - Added an application profile to avoid an image corruption issue in
+      Blender, as described at https://developer.blender.org/T76874
     - Added support for the following GPUs: NVIDIA GeForce MX550,
       NVIDIA GeForce MX570, NVIDIA GeForce RTX 2050.
 

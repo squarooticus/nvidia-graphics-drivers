@@ -1,24 +1,29 @@
 # upstream packaging
 .manifest
 LICENSE
-gl.h
-glext.h
-glx.h
-glxext.h
-libGL.la
-#!armhf#libnvidia-tls.so.#VERSION#
-libnvidia-wfb.so.#VERSION#
 makeself-help-script.sh
 makeself.sh
 mkprecompiled
 nvidia-installer
 nvidia-installer.1
 pkg-history.txt
+
+# old-style TLS (before Linux 2.6)
+#!armhf#libnvidia-tls.so.#VERSION#
 tls_test
 tls_test_dso.so
 
+# shipped by src:libglvnd
+gl.h
+glext.h
+glx.h
+glxext.h
+libGL.la
+
 # installed by dh_installchangelogs
 NVIDIA_Changelog
+
+# installed after substitution
 nvidia_icd.json.template
 
 # built from src:nvidia-modprobe
@@ -47,3 +52,5 @@ libnvidia-egl-wayland.so.1.*.*
 10_nvidia_wayland.json
 
 # not shipped
+
+libnvidia-wfb.so.#VERSION#

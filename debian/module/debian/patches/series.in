@@ -1,6 +1,7 @@
 # kernel support
 0001-backport-error-on-unknown-conftests.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
+0003-backport-pde_data-changes-from-510.39.01.patch
 do-div-cast.patch
 kernel-5.7.0-set-memory-array.patch
 

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (390.147-1+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (390.147-2+git) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Allow alternative libnvidia-{tesla,legacy}-*-cfg1 packages to substitute
@@ -30,6 +30,7 @@ nvidia-graphics-drivers (390.147-1+git) UNRELEASED; urgency=medium
     /etc/modprobe.d/nvidia-options.conf as a template taking into account the
     module renaming. This is a slave alternative of the nvidia alternative
     (470.86-1).  (Closes: #999670)
+  * Add xorg-video-abi-25 (Xorg Xserver 21) as alternative dependency.
   * Update lintian overrides.
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.6.0. No changes needed.
@@ -38,6 +39,13 @@ nvidia-graphics-drivers (390.147-1+git) UNRELEASED; urgency=medium
   * Remove myself from Uploaders.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Dec 2021 15:43:05 +0100
+
+nvidia-graphics-drivers (390.147-2) UNRELEASED; urgency=medium
+
+  * Backport pde_data changes from 510.39.01 to fix kernel module build for
+    Linux 5.17.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Feb 2022 17:03:53 +0100
 
 nvidia-graphics-drivers (390.147-1) UNRELEASED; urgency=medium
 

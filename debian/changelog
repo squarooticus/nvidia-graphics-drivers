@@ -139,6 +139,14 @@ nvidia-graphics-drivers (495.44-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Nov 2021 10:45:12 +0100
 
+nvidia-graphics-drivers (470.103.01-2) unstable; urgency=medium
+
+  * Add xorg-video-abi-25 (Xorg Xserver 21) as alternative dependency.
+    (Closes: #1005311)
+  * nvidia-detect: Add support for (Tesla) 470 drivers in bullseye.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 13 Feb 2022 23:20:24 +0100
+
 nvidia-graphics-drivers (470.103.01-1) unstable; urgency=medium
 
   * New upstream production branch release 470.103.01 (2022-01-31).

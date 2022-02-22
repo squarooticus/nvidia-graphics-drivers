@@ -112,6 +112,9 @@ nvidia-graphics-drivers (340.108-1~git4deb8jessie) UNRELEASED; urgency=medium
 
 nvidia-graphics-drivers (340.108-2) UNRELEASED; urgency=medium
 
+  * Backport pde_data changes from 510.39.01 to fix kernel module build for
+    Linux 5.17.
+
   * Backport drm_driver_has_gem_prime_callbacks changes from 460.39 to fix drm
     detection for Linux 5.11.
   * Backport drm_driver_has_legacy_dev_list changes from 361.16 and disable

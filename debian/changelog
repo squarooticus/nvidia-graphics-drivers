@@ -45,7 +45,7 @@ nvidia-graphics-drivers (390.147-2) UNRELEASED; urgency=medium
   * Backport pde_data changes from 510.39.01 to fix kernel module build for
     Linux 5.17.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Feb 2022 17:03:53 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Feb 2022 18:28:11 +0100
 
 nvidia-graphics-drivers (390.147-1) UNRELEASED; urgency=medium
 
@@ -2717,6 +2717,9 @@ nvidia-graphics-drivers (343.22-1) experimental; urgency=medium
  -- Andreas Beckmann <anbe@debian.org>  Mon, 20 Oct 2014 19:04:58 +0200
 
 nvidia-graphics-drivers (340.108-2) UNRELEASED; urgency=medium
+
+  * Backport pde_data changes from 510.39.01 to fix kernel module build for
+    Linux 5.17.
 
   * Backport drm_driver_has_gem_prime_callbacks changes from 460.39 to fix drm
     detection for Linux 5.11.

@@ -1,4 +1,4 @@
-From 5b446ec6cf9c37a5a0865cc98367b1f70a402c59 Mon Sep 17 00:00:00 2001
+From 5a470a78d6ffaa56251a19e43dfd2fb0e91475c9 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 22 Sep 2021 08:49:14 +0200
 Subject: [PATCH 1/2] backport error on unknown conftests
@@ -10,10 +10,10 @@ for easier backporting of future conftest.sh changes
  2 files changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index abbb636..a965b14 100755
+index 3e9b066..e831b64 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4516,6 +4516,18 @@ compile_test() {
+@@ -4090,6 +4090,18 @@ compile_test() {
  
              compile_check_conftest "$CODE" "NV_DRM_DEVICE_HAS_PDEV" "" "types"
          ;;
@@ -33,7 +33,7 @@ index abbb636..a965b14 100755
  }
  
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 185d3b5..9375ebb 100644
+index 3d803f1..184010b 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
 @@ -105,7 +105,7 @@ NV_OBJECTS_DEPEND_ON_CONFTEST += $(NVIDIA_OBJECTS)
@@ -45,7 +45,7 @@ index 185d3b5..9375ebb 100644
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += set_pages_uc
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += list_is_first
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += set_memory_uc
-@@ -127,7 +127,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += acpi_walk_namespace
+@@ -128,7 +128,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += acpi_walk_namespace
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_domain_nr
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_dma_mapping_error
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += sg_alloc_table

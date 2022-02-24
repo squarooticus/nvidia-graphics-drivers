@@ -18,7 +18,6 @@ gl.h
 glext.h
 glx.h
 glxext.h
-libGL.la
 
 # installed by dh_installchangelogs
 NVIDIA_Changelog
@@ -52,5 +51,7 @@ libnvidia-egl-wayland.so.1.*.*
 10_nvidia_wayland.json
 
 # not shipped
+
+libGL.la
 
 libnvidia-wfb.so.#VERSION#

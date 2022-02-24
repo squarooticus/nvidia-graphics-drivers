@@ -1,47 +1,49 @@
-From 173610bbc196eeb0f7239ce81386e809ead54409 Mon Sep 17 00:00:00 2001
+From e68abf7d75a08b9e02884fffc246e46557897e1b Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Dec 2021 14:39:02 +0100
-Subject: [PATCH 34/34] backport stdarg.h changes from 495.44
+Subject: [PATCH] backport stdarg.h changes from 495.44
 
 ---
- conftest.sh              |  1 +
- nv.h                     |  2 +-
- nv_stdarg.h              | 39 +++++++++++++++++++++++++++++++++++++++
- nvidia-modules-common.mk |  2 ++
- os-interface.h           |  2 +-
- 5 files changed, 44 insertions(+), 2 deletions(-)
- create mode 100644 nv_stdarg.h
+ Kbuild                                       |  1 +
+ common/inc/nv.h                              |  2 +-
+ common/inc/nv_stdarg.h                       | 39 ++++++++++++++++++++
+ common/inc/os-interface.h                    |  2 +-
+ conftest.sh                                  |  1 +
+ nvidia-modeset/nvidia-modeset-os-interface.h |  2 +-
+ nvidia-uvm/uvm8_mmu.c                        |  2 +-
+ 7 files changed, 45 insertions(+), 4 deletions(-)
+ create mode 100644 common/inc/nv_stdarg.h
 
-diff --git a/conftest.sh b/conftest.sh
-index aa25f7d..6ea47a5 100755
---- a/conftest.sh
-+++ b/conftest.sh
-@@ -177,6 +177,7 @@ test_headers() {
-     FILES="$FILES linux/fence.h"
-     FILES="$FILES linux/ktime.h"
-     FILES="$FILES linux/file.h"
-+    FILES="$FILES linux/stdarg.h"
+diff --git a/Kbuild b/Kbuild
+index 31fc135..8503d67 100644
+--- a/Kbuild
++++ b/Kbuild
+@@ -67,6 +67,7 @@ EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-
+ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"418.226.00\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
+ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
+ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
++EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
  
-     FILES_ARCH="$FILES_ARCH asm/set_memory.h"
- 
-diff --git a/nv.h b/nv.h
-index 40a13b5..d0b9bfe 100644
---- a/nv.h
-+++ b/nv.h
-@@ -13,7 +13,7 @@
- #define _NV_H_
+ #
+ # Detect SGI UV systems and apply system-specific optimizations.
+diff --git a/common/inc/nv.h b/common/inc/nv.h
+index afb30b3..bf696fb 100644
+--- a/common/inc/nv.h
++++ b/common/inc/nv.h
+@@ -20,7 +20,7 @@
  
  #include <nvtypes.h>
+ #include <nvCpuUuid.h>
 -#include <stdarg.h>
 +#include "nv_stdarg.h"
  
- #if !defined(NV_MIN)
- #define NV_MIN(_a,_b) ((_a) < (_b) ? (_a) : (_b))
-diff --git a/nv_stdarg.h b/nv_stdarg.h
+ #if !defined(NV_KERNEL_INTERFACE_API_H_MISSING)
+ #include <nv-kernel-interface-api.h>
+diff --git a/common/inc/nv_stdarg.h b/common/inc/nv_stdarg.h
 new file mode 100644
 index 0000000..4b63340
 --- /dev/null
-+++ b/nv_stdarg.h
++++ b/common/inc/nv_stdarg.h
 @@ -0,0 +1,39 @@
 +/*
 + * SPDX-FileCopyrightText: Copyright (c) 2021 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
@@ -82,32 +84,57 @@ index 0000000..4b63340
 +#endif   
 +
 +#endif // _NV_STDARG_H_
-diff --git a/nvidia-modules-common.mk b/nvidia-modules-common.mk
-index b94591b..b32bca7 100644
---- a/nvidia-modules-common.mk
-+++ b/nvidia-modules-common.mk
-@@ -118,6 +118,8 @@ MODULE_OBJECT := $(MODULE_NAME).ko
- 
- EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"340.108\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE -D__linux__ -DNV_DEV_NAME=\"$(MODULE_NAME)\"
- 
-+EXTRA_CFLAGS	+= -DNV_KERNEL_INTERFACE_LAYER
-+
- #
- # Detect SGI UV systems and apply system-specific optimizations.
- #
-diff --git a/os-interface.h b/os-interface.h
-index 88f8f66..8576896 100644
---- a/os-interface.h
-+++ b/os-interface.h
+diff --git a/common/inc/os-interface.h b/common/inc/os-interface.h
+index 0d23da2..68fd38f 100644
+--- a/common/inc/os-interface.h
++++ b/common/inc/os-interface.h
 @@ -24,7 +24,7 @@
  *                                                                           *
  \***************************************************************************/
  
 -#include <stdarg.h>
 +#include "nv_stdarg.h"
+ #include <nv-kernel-interface-api.h>
+ #include "nvipmi.h"
  
- /*
-  * Define away Microsoft compiler extensions when possible
+diff --git a/conftest.sh b/conftest.sh
+index e831b64..63ced98 100755
+--- a/conftest.sh
++++ b/conftest.sh
+@@ -135,6 +135,7 @@ test_headers() {
+     FILES="$FILES linux/dma-resv.h"
+     FILES="$FILES linux/atomic.h"
+     FILES="$FILES linux/dma-map-ops.h"
++    FILES="$FILES linux/stdarg.h"
+ 
+     # Arch specific headers which need testing
+     FILES_ARCH="asm/book3s/64/hash-64k.h"
+diff --git a/nvidia-modeset/nvidia-modeset-os-interface.h b/nvidia-modeset/nvidia-modeset-os-interface.h
+index a7bb7c9..c1ce2b2 100644
+--- a/nvidia-modeset/nvidia-modeset-os-interface.h
++++ b/nvidia-modeset/nvidia-modeset-os-interface.h
+@@ -17,7 +17,7 @@
+ #define _NVIDIA_MODESET_OS_INTERFACE_H_
+ 
+ #include <stddef.h>  /* size_t */
+-#include <stdarg.h>  /* va_list */
++#include "nv_stdarg.h"  /* va_list */
+ 
+ #include "nvtypes.h" /* NvU8 */
+ 
+diff --git a/nvidia-uvm/uvm8_mmu.c b/nvidia-uvm/uvm8_mmu.c
+index afffc62..ffb5f78 100644
+--- a/nvidia-uvm/uvm8_mmu.c
++++ b/nvidia-uvm/uvm8_mmu.c
+@@ -32,7 +32,7 @@
+ #include "uvm8_push.h"
+ #include "uvm8_mem.h"
+ #include "uvm8_va_space.h"
+-#include <stdarg.h>
++#include "nv_stdarg.h"
+ 
+ // The page tree has 5 levels on pascal, and the root is never freed by a normal 'put' operation
+ // which leaves a maximum of 4 levels
 -- 
 2.20.1
 

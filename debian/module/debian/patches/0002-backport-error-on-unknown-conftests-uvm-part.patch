@@ -1,4 +1,4 @@
-From c2a0cf09fed824a739f32dcb0bfc28e5df116fde Mon Sep 17 00:00:00 2001
+From ce800a8282cbe40e17844c5a2b197f9807e5b8b5 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 22 Dec 2021 18:06:40 +0100
 Subject: [PATCH 2/2] backport error on unknown conftests (uvm part)
@@ -8,10 +8,10 @@ Subject: [PATCH 2/2] backport error on unknown conftests (uvm part)
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/nvidia-uvm/nvidia-uvm.Kbuild b/nvidia-uvm/nvidia-uvm.Kbuild
-index d447e23..27e33c1 100644
+index ae0c575..d019718 100644
 --- a/nvidia-uvm/nvidia-uvm.Kbuild
 +++ b/nvidia-uvm/nvidia-uvm.Kbuild
-@@ -91,7 +91,7 @@ endif
+@@ -82,7 +82,7 @@ endif
  
  NV_OBJECTS_DEPEND_ON_CONFTEST += $(NVIDIA_UVM_OBJECTS)
  

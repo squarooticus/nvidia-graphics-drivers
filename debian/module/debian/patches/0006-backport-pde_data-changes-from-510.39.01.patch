@@ -1,4 +1,4 @@
-From 71a0431369fd2fca774565d01a4e41a3f159d9d2 Mon Sep 17 00:00:00 2001
+From 11d2cebd3b820ef04f65caa1f4ed52164d93dba4 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 16 Feb 2022 16:56:45 +0100
 Subject: [PATCH] backport pde_data changes from 510.39.01
@@ -10,10 +10,10 @@ Subject: [PATCH] backport pde_data changes from 510.39.01
  3 files changed, 23 insertions(+), 3 deletions(-)
 
 diff --git a/common/inc/nv-procfs.h b/common/inc/nv-procfs.h
-index e76325c..ac5aea8 100644
+index 107b324..1f2b3f9 100644
 --- a/common/inc/nv-procfs.h
 +++ b/common/inc/nv-procfs.h
-@@ -113,9 +113,11 @@ typedef struct file_operations nv_proc_ops_t;
+@@ -86,9 +86,11 @@ typedef struct file_operations nv_proc_ops_t;
      })
  
  #if defined(NV_PDE_DATA_PRESENT)
@@ -28,11 +28,11 @@ index e76325c..ac5aea8 100644
  
  #if defined(NV_PROC_REMOVE_PRESENT)
 diff --git a/conftest.sh b/conftest.sh
-index 453b637..e582eae 100755
+index c9a040d..07a4cda 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -1800,6 +1800,23 @@ compile_test() {
- 
+@@ -1307,6 +1307,23 @@ compile_test() {
+         ;;
  
          pde_data)
 +            #
@@ -55,7 +55,7 @@ index 453b637..e582eae 100755
              #
              # Determine if the PDE_DATA() function is present.
              #
-@@ -1809,7 +1826,7 @@ compile_test() {
+@@ -1319,7 +1336,7 @@ compile_test() {
                  PDE_DATA();
              }"
  
@@ -65,12 +65,12 @@ index 453b637..e582eae 100755
  
          get_num_physpages)
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 9375ebb..299b1aa 100644
+index bc1f1af..1629f93 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -133,6 +133,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += get_num_physpages
+@@ -117,6 +117,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_get_domain_bus_and_slot
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += get_num_physpages
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += efi_enabled
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += proc_create_data
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += pde_data
 +NV_CONFTEST_FUNCTION_COMPILE_TESTS += PDE_DATA
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += proc_remove

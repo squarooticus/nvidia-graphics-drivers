@@ -3,4 +3,4 @@ spelling-error-in-binary
 unstripped-binary-or-object
 
 # This is patched at module build time.
-bash-term-in-posix-shell [usr/src/#MODULE#-#VERSION#/conftest.sh:*] '[ "`cat /proc/xen/capabilities`" =='
+bash-term-in-posix-shell '[ "`cat /proc/xen/capabilities`" ==' [usr/src/#MODULE#-#VERSION#/conftest.sh:*]

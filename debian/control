@@ -327,7 +327,6 @@ Recommends:
 Provides:
  nvidia-driver-libs-any,
 Conflicts:
- libgldispatch0-nvidia,
  libglvnd0-nvidia,
  libopengl0-glvnd-nvidia,
  libglx0-glvnd-nvidia,

@@ -911,6 +911,10 @@ nvidia-graphics-drivers (418.226.00-2) UNRELEASED; urgency=medium
     build for Linux 5.16.
   * Backport pde_data changes from 510.39.01 to fix kernel module build for
     Linux 5.17.
+  * nvidia-kernel-support: Provide
+    /etc/modprobe.d/nvidia-options.conf as a template taking into account the
+    module renaming. This is a slave alternative of the nvidia alternative
+    (470.86-1).  (Closes: #999670)
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Feb 2022 13:23:58 +0100
 
@@ -922,6 +926,7 @@ nvidia-graphics-drivers (418.226.00-1) UNRELEASED; urgency=medium
   * bug-script: Show the nvidia and glx alternatives (470.82.00-1).
   * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
     sufficient to activate a nvidia alternative (470.82.00-1).
+    (Closes: #996595)
   * Fix bashisms in upstream scripts (470.82.00-1).
   * libegl1-mesa is a transitional package since buster (470.82.00-1).
   * Update lintian overrides.

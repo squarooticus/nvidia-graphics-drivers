@@ -26,6 +26,9 @@ nvidia-graphics-drivers (450.172.01-2+git) UNRELEASED; urgency=medium
     module renaming. This is a slave alternative of the nvidia alternative
     (470.86-1).  (Closes: #999670)
   * Add xorg-video-abi-25 (Xorg Xserver 21) as alternative dependency.
+  * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip build for -rt
+    kernels, not supported upstream.
+  * Declare Testsuite: autopkgtest-pkg-dkms.
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.0. No changes needed.
 

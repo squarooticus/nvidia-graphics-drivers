@@ -1,8 +1,8 @@
 nvidia-graphics-drivers (470.103.01-3) UNRELEASED; urgency=medium
 
-  * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip build for -rt
-    kernels, not supported upstream.
-  * Declare Testsuite: autopkgtest-pkg-dkms.
+  * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip building for -rt
+    kernels, not supported upstream (510.54-1).
+  * Declare Testsuite: autopkgtest-pkg-dkms (510.54-1).
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 01 Mar 2022 22:35:09 +0100
 

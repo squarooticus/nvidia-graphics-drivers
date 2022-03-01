@@ -1,7 +1,7 @@
-From f94e74f4b9b36d02c3d5dfe8d6c9f4e48cb4a7b5 Mon Sep 17 00:00:00 2001
+From 050adfbd9bab2432d307af82f80b0245def2712f Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 16 Feb 2022 16:56:45 +0100
-Subject: [PATCH] backport pde_data changes from 510.39.01
+Subject: [PATCH] backport pde_data changes from 470.103.01
 
 ---
  Makefile    |  1 +

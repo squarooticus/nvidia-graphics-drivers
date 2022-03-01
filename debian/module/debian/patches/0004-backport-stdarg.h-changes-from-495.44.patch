@@ -1,44 +1,32 @@
-From e68abf7d75a08b9e02884fffc246e46557897e1b Mon Sep 17 00:00:00 2001
+From 93333d84d7a8cc6087abfe5df91e86fd8490b49a Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Dec 2021 14:39:02 +0100
 Subject: [PATCH] backport stdarg.h changes from 495.44
 
 ---
- Kbuild                                       |  1 +
  common/inc/nv.h                              |  2 +-
  common/inc/nv_stdarg.h                       | 39 ++++++++++++++++++++
  common/inc/os-interface.h                    |  2 +-
  conftest.sh                                  |  1 +
  nvidia-modeset/nvidia-modeset-os-interface.h |  2 +-
- nvidia-uvm/uvm8_mmu.c                        |  2 +-
- 7 files changed, 45 insertions(+), 4 deletions(-)
+ nvidia-uvm/uvm_mmu.c                         |  2 +-
+ nvidia/export_nvswitch.h                     |  2 +-
+ 7 files changed, 45 insertions(+), 5 deletions(-)
  create mode 100644 common/inc/nv_stdarg.h
 
-diff --git a/Kbuild b/Kbuild
-index 31fc135..8503d67 100644
---- a/Kbuild
-+++ b/Kbuild
-@@ -67,6 +67,7 @@ EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-
- EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"418.226.00\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
- EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
- EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
-+EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
- 
- #
- # Detect SGI UV systems and apply system-specific optimizations.
 diff --git a/common/inc/nv.h b/common/inc/nv.h
-index afb30b3..bf696fb 100644
+index d56e97d..cbf592a 100644
 --- a/common/inc/nv.h
 +++ b/common/inc/nv.h
-@@ -20,7 +20,7 @@
+@@ -22,7 +22,7 @@
  
  #include <nvtypes.h>
  #include <nvCpuUuid.h>
 -#include <stdarg.h>
 +#include "nv_stdarg.h"
- 
- #if !defined(NV_KERNEL_INTERFACE_API_H_MISSING)
- #include <nv-kernel-interface-api.h>
+ #include <nv-caps.h>
+ #include <nv-ioctl.h>
+ #include <nvmisc.h>
 diff --git a/common/inc/nv_stdarg.h b/common/inc/nv_stdarg.h
 new file mode 100644
 index 0000000..4b63340
@@ -85,7 +73,7 @@ index 0000000..4b63340
 +
 +#endif // _NV_STDARG_H_
 diff --git a/common/inc/os-interface.h b/common/inc/os-interface.h
-index 0d23da2..68fd38f 100644
+index 4720c66..5dd37fb 100644
 --- a/common/inc/os-interface.h
 +++ b/common/inc/os-interface.h
 @@ -24,7 +24,7 @@
@@ -95,22 +83,22 @@ index 0d23da2..68fd38f 100644
 -#include <stdarg.h>
 +#include "nv_stdarg.h"
  #include <nv-kernel-interface-api.h>
- #include "nvipmi.h"
+ #include <os/nv_memory_type.h>
  
 diff --git a/conftest.sh b/conftest.sh
-index e831b64..63ced98 100755
+index 3dfa0eb..5f22d09 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -135,6 +135,7 @@ test_headers() {
-     FILES="$FILES linux/dma-resv.h"
-     FILES="$FILES linux/atomic.h"
+@@ -159,6 +159,7 @@ test_headers() {
+     FILES="$FILES asm/pgtable_types.h"
+     FILES="$FILES linux/stringhash.h"
      FILES="$FILES linux/dma-map-ops.h"
 +    FILES="$FILES linux/stdarg.h"
  
-     # Arch specific headers which need testing
-     FILES_ARCH="asm/book3s/64/hash-64k.h"
+     translate_and_preprocess_header_files $FILES
+ }
 diff --git a/nvidia-modeset/nvidia-modeset-os-interface.h b/nvidia-modeset/nvidia-modeset-os-interface.h
-index a7bb7c9..c1ce2b2 100644
+index 6e6bfcb..a9da953 100644
 --- a/nvidia-modeset/nvidia-modeset-os-interface.h
 +++ b/nvidia-modeset/nvidia-modeset-os-interface.h
 @@ -17,7 +17,7 @@
@@ -122,19 +110,32 @@ index a7bb7c9..c1ce2b2 100644
  
  #include "nvtypes.h" /* NvU8 */
  
-diff --git a/nvidia-uvm/uvm8_mmu.c b/nvidia-uvm/uvm8_mmu.c
-index afffc62..ffb5f78 100644
---- a/nvidia-uvm/uvm8_mmu.c
-+++ b/nvidia-uvm/uvm8_mmu.c
+diff --git a/nvidia-uvm/uvm_mmu.c b/nvidia-uvm/uvm_mmu.c
+index 7c6e06e..f47a8d3 100644
+--- a/nvidia-uvm/uvm_mmu.c
++++ b/nvidia-uvm/uvm_mmu.c
 @@ -32,7 +32,7 @@
- #include "uvm8_push.h"
- #include "uvm8_mem.h"
- #include "uvm8_va_space.h"
+ #include "uvm_push.h"
+ #include "uvm_mem.h"
+ #include "uvm_va_space.h"
 -#include <stdarg.h>
 +#include "nv_stdarg.h"
  
  // The page tree has 5 levels on pascal, and the root is never freed by a normal 'put' operation
  // which leaves a maximum of 4 levels
+diff --git a/nvidia/export_nvswitch.h b/nvidia/export_nvswitch.h
+index 8902fa0..322d76a 100644
+--- a/nvidia/export_nvswitch.h
++++ b/nvidia/export_nvswitch.h
+@@ -28,7 +28,7 @@
+ extern "C" {
+ #endif
+ 
+-#include <stdarg.h>
++#include "nv_stdarg.h"
+ #include "nvlink_common.h"
+ #include "ioctl_common_nvswitch.h"
+ 
 -- 
 2.20.1
 

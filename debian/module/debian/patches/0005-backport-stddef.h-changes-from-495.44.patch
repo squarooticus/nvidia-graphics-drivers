@@ -1,19 +1,21 @@
-From 8893232467e6504083eebe69bb1f5ee3943805ee Mon Sep 17 00:00:00 2001
+From b17c6f876bc7c61feab6cc6e4cdf2909d597a8dc Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 3 Jan 2022 13:21:37 +0100
 Subject: [PATCH] backport stddef.h changes from 495.44
 
 ---
  common/inc/nv-linux.h                        | 10 +++++++++-
+ common/inc/nv-misc.h                         |  4 ++++
+ common/inc/nvtypes.h                         |  6 +++++-
  nvidia-modeset/nvidia-modeset-os-interface.h |  6 +++++-
  nvidia-modeset/nvkms.h                       |  6 +++++-
- 3 files changed, 19 insertions(+), 3 deletions(-)
+ 5 files changed, 28 insertions(+), 4 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index 920383d..0b5b0db 100644
+index 497bac7..135e9bc 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -82,7 +82,15 @@
+@@ -84,7 +84,15 @@
  #include <linux/types.h>            /* pic_t, size_t, __u32, etc        */
  #include <linux/errno.h>            /* error codes                      */
  #include <linux/list.h>             /* circular linked list             */
@@ -30,8 +32,41 @@ index 920383d..0b5b0db 100644
  #include <linux/wait.h>             /* wait queues                      */
  #include <linux/string.h>           /* strchr(), strpbrk()              */
  
+diff --git a/common/inc/nv-misc.h b/common/inc/nv-misc.h
+index cd5ffb9..1241e1d 100644
+--- a/common/inc/nv-misc.h
++++ b/common/inc/nv-misc.h
+@@ -17,7 +17,11 @@
+ #if defined(NV_KERNEL_INTERFACE_LAYER) && defined(__FreeBSD__)
+   #include <sys/stddef.h> // NULL
+ #else
++#if defined(NV_KERNEL_INTERFACE_LAYER) && defined(NV_LINUX)
++  #include <linux/stddef.h>
++  #else
+   #include <stddef.h>     // NULL
++  #endif
+ #endif
+ 
+ #endif /* _NV_MISC_H_ */
+diff --git a/common/inc/nvtypes.h b/common/inc/nvtypes.h
+index 8dc0799..cd28a0d 100644
+--- a/common/inc/nvtypes.h
++++ b/common/inc/nvtypes.h
+@@ -69,7 +69,11 @@ extern "C" {
+ // _MSC_VER is a hack to avoid  failures for old setup of UEFI builds which are
+ //  currently set to msvc100 but do not properly set the include paths
+ #if defined(NV_WINDOWS) && (!defined(_MSC_VER) || (_MSC_VER > 1600))
+-#include <stddef.h>
++#if defined(NV_KERNEL_INTERFACE_LAYER) && defined(NV_LINUX)
++#include <linux/stddef.h> /* size_t */
++#else
++#include <stddef.h>       /* size_t */
++#endif
+ #define NV_HAS_WCHAR_T_TYPEDEF 1
+ #endif
+ #endif // __cplusplus
 diff --git a/nvidia-modeset/nvidia-modeset-os-interface.h b/nvidia-modeset/nvidia-modeset-os-interface.h
-index c1ce2b2..d186c74 100644
+index a9da953..60e7414 100644
 --- a/nvidia-modeset/nvidia-modeset-os-interface.h
 +++ b/nvidia-modeset/nvidia-modeset-os-interface.h
 @@ -16,7 +16,11 @@
@@ -48,7 +83,7 @@ index c1ce2b2..d186c74 100644
  
  #include "nvtypes.h" /* NvU8 */
 diff --git a/nvidia-modeset/nvkms.h b/nvidia-modeset/nvkms.h
-index d99904f..9acf71e 100644
+index ff49fdf..9f595a8 100644
 --- a/nvidia-modeset/nvkms.h
 +++ b/nvidia-modeset/nvkms.h
 @@ -9,7 +9,11 @@

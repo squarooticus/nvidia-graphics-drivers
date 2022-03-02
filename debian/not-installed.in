@@ -12,6 +12,11 @@ pkg-history.txt
 # installed by dh_installchangelogs
 NVIDIA_Changelog
 
+# built from src:nvidia-cuda-mps
+nvidia-cuda-mps-control
+nvidia-cuda-mps-control.1
+nvidia-cuda-mps-server
+
 # built from src:nvidia-modprobe
 nvidia-modprobe
 nvidia-modprobe.1

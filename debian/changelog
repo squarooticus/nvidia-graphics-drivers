@@ -91,9 +91,9 @@ nvidia-graphics-drivers (340.108-1~git4deb9stretch) UNRELEASED; urgency=medium
     /etc/modprobe.d/nvidia-options.conf as a template taking into account the
     module renaming. This is a slave alternative of the nvidia alternative
     (470.86-1).  (Closes: #999670)
-  * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip build for -rt
-    kernels, not supported upstream.
-  * Declare Testsuite: autopkgtest-pkg-dkms.
+  * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip building for -rt
+    kernels, not supported upstream (510.54-1).
+  * Declare Testsuite: autopkgtest-pkg-dkms (510.54-1).
   * Update lintian overrides.
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.6.0. No changes needed.

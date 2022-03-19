@@ -27,7 +27,7 @@ Bug-Debian: https://bugs.debian.org/960735
 
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -429,6 +429,8 @@
+@@ -429,6 +429,8 @@ compile_test() {
              # Determine if the set_memory_uc() function is present.
              #
              CODE="
@@ -36,7 +36,7 @@ Bug-Debian: https://bugs.debian.org/960735
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -449,6 +451,8 @@
+@@ -449,6 +451,8 @@ compile_test() {
              # Determine if the set_memory_array_uc() function is present.
              #
              CODE="
@@ -45,7 +45,7 @@ Bug-Debian: https://bugs.debian.org/960735
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -504,6 +508,8 @@
+@@ -504,6 +508,8 @@ compile_test() {
              # Determine if the set_pages_uc() function is present.
              #
              CODE="
@@ -54,7 +54,7 @@ Bug-Debian: https://bugs.debian.org/960735
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -1870,7 +1876,7 @@
+@@ -1870,7 +1876,7 @@ compile_test() {
              # Determine if atomic_long_t and associated functions are defined
              # Added in 2.6.16 2006-01-06 d3cb487149bd706aa6aeb02042332a450978dc1c
              CODE="
@@ -63,7 +63,7 @@ Bug-Debian: https://bugs.debian.org/960735
              void conftest_atomic_long(void) {
                  atomic_long_t data;
                  atomic_long_read(&data);
-@@ -1884,7 +1890,7 @@
+@@ -1884,7 +1890,7 @@ compile_test() {
          atomic64_type)
              # Determine if atomic64_t and associated functions are defined
              CODE="
@@ -72,7 +72,7 @@ Bug-Debian: https://bugs.debian.org/960735
              void conftest_atomic64(void) {
                  atomic64_t data;
                  atomic64_read(&data);
-@@ -3585,7 +3591,7 @@
+@@ -3585,7 +3591,7 @@ compile_test() {
              #     2008-01-25  9ee85241fdaab358dff1d8647f20a478cfa512a1
              #
              CODE="

@@ -1,6 +1,6 @@
 # kernel support
 kernel-5.7.0-set-memory-array.patch
-0006-backport-pde_data-changes-from-510.39.01.patch
+0006-backport-pde_data-changes-from-470.103.01.patch
 
 # build system updates
 bashisms.patch

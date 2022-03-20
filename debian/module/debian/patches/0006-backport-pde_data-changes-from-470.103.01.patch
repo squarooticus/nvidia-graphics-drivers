@@ -1,7 +1,7 @@
-From 11d2cebd3b820ef04f65caa1f4ed52164d93dba4 Mon Sep 17 00:00:00 2001
+From a61d2c8c83c9f76b0de49051324df215313d1ce0 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 16 Feb 2022 16:56:45 +0100
-Subject: [PATCH] backport pde_data changes from 510.39.01
+Subject: [PATCH] backport pde_data changes from 470.103.01
 
 ---
  common/inc/nv-procfs.h |  6 ++++--

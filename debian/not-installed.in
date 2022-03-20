@@ -51,3 +51,5 @@ libOpenGL.so.0
 nvidia-ngx-updater
 
 libEGL.so.#VERSION#
+
+libnvidia-nvvm.so.4.0.0

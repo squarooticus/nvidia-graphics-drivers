@@ -988,7 +988,7 @@ Description: NVIDIA PTX JIT Compiler library${nvidia:VariantDesc}
  This package contains the runtime PTX JIT Compiler library.
 
 Package: lib${nvidia}-nvvm4
-Architecture: amd64 ${arch:arm64} ${arch:ppc64el}
+Architecture: #amd64 ${arch:arm64} ${arch:ppc64el}
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}

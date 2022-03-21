@@ -831,6 +831,20 @@ Description: NVIDIA PTX JIT Compiler library${nvidia:VariantDesc}
  .
  This package contains the runtime PTX JIT Compiler library.
 
+Package: libnvidia-nvvm4
+Architecture: amd64 arm64
+Multi-Arch: same
+Pre-Depends:
+ ${misc:Pre-Depends}
+Depends:
+ ${shlibs:Depends}, ${misc:Depends}
+Description: NVIDIA NVVM Compiler library${nvidia:VariantDesc}
+ The Compute Unified Device Architecture (CUDA) enables NVIDIA
+ graphics processing units (GPUs) to be used for massively parallel
+ general purpose computation.
+ .
+ This package contains the NVVM Compiler library.
+
 Package: libnvcuvid1
 Architecture: i386 amd64 arm64
 Multi-Arch: same

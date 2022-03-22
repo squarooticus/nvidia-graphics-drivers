@@ -36,7 +36,8 @@ nvidia-graphics-drivers (510.54-1) experimental; urgency=medium
   * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip building for -rt
     kernels, not supported upstream.
   * Declare Testsuite: autopkgtest-pkg-dkms.
-  * Disable building nvidia-cuda-mps.
+  * Disable building nvidia-cuda-mps, will be built from
+    src:nvidia-graphics-drivers-tesla-${latest}.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Mar 2022 12:00:52 +0100
 

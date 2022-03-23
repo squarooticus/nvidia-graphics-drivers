@@ -21,6 +21,7 @@ nvidia-graphics-drivers (510.60.02-1) UNRELEASED; urgency=medium
 
   [ Luca Boccassi ]
   * Update nv-readme.ids.
+  * Refresh use-kbuild-flags.patch.
 
  -- Luca Boccassi <bluca@debian.org>  Wed, 23 Mar 2022 00:09:33 +0000
 

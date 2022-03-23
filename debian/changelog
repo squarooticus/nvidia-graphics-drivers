@@ -19,6 +19,9 @@ nvidia-graphics-drivers (510.60.02-1) UNRELEASED; urgency=medium
       affected custom packages which were prepared with nvidia-installer's
       --add-this-kernel option, for example.
 
+  [ Luca Boccassi ]
+  * Update nv-readme.ids.
+
  -- Luca Boccassi <bluca@debian.org>  Wed, 23 Mar 2022 00:09:33 +0000
 
 nvidia-graphics-drivers (510.54-1) experimental; urgency=medium

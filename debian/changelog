@@ -1,3 +1,26 @@
+nvidia-graphics-drivers (510.60.02-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 510.60.02 (2022-03-22).
+    - Added support for the following GPUs: NVIDIA RTX A4000H, NVIDIA RTX A5500.
+    - Fixed a bug that could cause displays with HDMI or DisplayPort audio to be
+      deselected as the default audio output device after resuming from suspend.
+    - Fixed a regression that could cause OpenGL applications to hang or render
+      incorrectly after suspend/resume cycles or VT-switches
+    - Fixed a bug, introduced in 495.29.05, that caused GPU "Model:" in
+      /proc/driver/nvidia/gpus/<Bus:Device.Function>/information to be "Unknown"
+      for some GPUs.
+    - Fixed a bug that caused the nvidia-settings control panel to print
+      spurious error messages
+    - Fixed a bug that could prevent nvidia-installer from detecting the
+      scripts/sign-file kernel module signing tool when using separate kernel
+      source and output directories.
+    - Fixed a bug which prevented kernel modules linked from precompiled kernel
+      interface object files from being loaded on recent Linux kernels. This
+      affected custom packages which were prepared with nvidia-installer's
+      --add-this-kernel option, for example.
+
+ -- Luca Boccassi <bluca@debian.org>  Wed, 23 Mar 2022 00:09:33 +0000
+
 nvidia-graphics-drivers (510.54-1) experimental; urgency=medium
 
   * New upstream production branch release 510.54 (2022-02-14).

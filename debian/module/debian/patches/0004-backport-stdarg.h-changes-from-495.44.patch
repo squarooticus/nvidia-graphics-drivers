@@ -1,4 +1,4 @@
-From e68abf7d75a08b9e02884fffc246e46557897e1b Mon Sep 17 00:00:00 2001
+From 2acf41f9bafc6157e550b9f600eb8074deb86ef1 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Dec 2021 14:39:02 +0100
 Subject: [PATCH] backport stdarg.h changes from 495.44
@@ -15,17 +15,17 @@ Subject: [PATCH] backport stdarg.h changes from 495.44
  create mode 100644 common/inc/nv_stdarg.h
 
 diff --git a/Kbuild b/Kbuild
-index 31fc135..8503d67 100644
+index 31fc135..dd566eb 100644
 --- a/Kbuild
 +++ b/Kbuild
-@@ -67,6 +67,7 @@ EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-
- EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"418.226.00\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
+@@ -68,6 +68,7 @@ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"418.226.00\"
  EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
  EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
-+EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
  
++EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
  #
  # Detect SGI UV systems and apply system-specific optimizations.
+ #
 diff --git a/common/inc/nv.h b/common/inc/nv.h
 index afb30b3..bf696fb 100644
 --- a/common/inc/nv.h
@@ -98,7 +98,7 @@ index 0d23da2..68fd38f 100644
  #include "nvipmi.h"
  
 diff --git a/conftest.sh b/conftest.sh
-index e831b64..63ced98 100755
+index 8d90469..849998d 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -135,6 +135,7 @@ test_headers() {

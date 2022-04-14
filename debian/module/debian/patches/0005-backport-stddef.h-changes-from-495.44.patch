@@ -1,4 +1,4 @@
-From 8893232467e6504083eebe69bb1f5ee3943805ee Mon Sep 17 00:00:00 2001
+From 9df3f7ae73a38e82fca0918fd01787ac53693d78 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 3 Jan 2022 13:21:37 +0100
 Subject: [PATCH] backport stddef.h changes from 495.44

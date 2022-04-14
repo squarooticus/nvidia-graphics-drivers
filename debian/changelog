@@ -28,6 +28,7 @@ nvidia-graphics-drivers (450.172.01-2+git) UNRELEASED; urgency=medium
   * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip building for -rt
     kernels, not supported upstream (510.54-1).
   * Declare Testsuite: autopkgtest-pkg-dkms (510.54-1).
+  * Fix kernel module build for ppc64el.
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.0. No changes needed.
 

@@ -1,3 +1,12 @@
+nvidia-graphics-drivers (450.172.01-3) UNRELEASED; urgency=medium
+
+  * Update kernel-5.7.0-set-memory-array.patch to fix kernel module build for
+    ppc64el.
+  * Backport mt_device_gre changes from 510.39.01 to fix kernel module build
+    for arm64.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 15 Apr 2022 20:40:45 +0200
+
 nvidia-graphics-drivers (450.172.01-2) UNRELEASED; urgency=medium
 
   * Add xorg-video-abi-25 (Xorg Xserver 21) as alternative dependency.

@@ -1,3 +1,22 @@
+nvidia-graphics-drivers (460.106.00-4) UNRELEASED; urgency=medium
+
+  * Update kernel-5.7.0-set-memory-array.patch to fix kernel module build for
+    ppc64el.
+  * Backport mt_device_gre changes from 510.39.01 to fix kernel module build
+    for arm64.
+  * Refresh patches.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 15 Apr 2022 22:56:54 +0200
+
+nvidia-graphics-drivers (460.106.00-3) UNRELEASED; urgency=medium
+
+  * The Tesla 460 driver series has been declared as End-of-Life by
+    NVIDIA. No further updates fixing security issues, critical bugs, or
+    adding support for new Xorg or Linux releases will be issued.
+    https://docs.nvidia.com/datacenter/tesla/drivers/
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 16 Mar 2022 15:24:04 +0100
+
 nvidia-graphics-drivers (460.106.00-2) UNRELEASED; urgency=medium
 
   * Backport stdarg.h and stddef.h changes from 495.44 to fix kernel module
@@ -394,15 +413,24 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Sep 2020 21:52:54 +0200
 
+nvidia-graphics-drivers (450.172.01-3) UNRELEASED; urgency=medium
+
+  * Update kernel-5.7.0-set-memory-array.patch to fix kernel module build for
+    ppc64el.
+  * Backport mt_device_gre changes from 510.39.01 to fix kernel module build
+    for arm64.
+  * Refresh patches.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 15 Apr 2022 22:28:22 +0200
+
 nvidia-graphics-drivers (450.172.01-2) UNRELEASED; urgency=medium
 
   * Add xorg-video-abi-25 (Xorg Xserver 21) as alternative dependency.
   * Backport pde_data changes from 470.103.01 to fix kernel module build for
     Linux 5.17.
-  * Add xorg-video-abi-25 (Xorg Xserver 21) as alternative dependency.
-  * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip build for -rt
-    kernels, not supported upstream.
-  * Declare Testsuite: autopkgtest-pkg-dkms.
+  * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip building for -rt
+    kernels, not supported upstream (510.54-1).
+  * Declare Testsuite: autopkgtest-pkg-dkms (510.54-1).
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 28 Feb 2022 21:03:12 +0100
 

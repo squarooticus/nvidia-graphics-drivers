@@ -26,6 +26,7 @@ nvidia-graphics-drivers (460.106.00-3) UNRELEASED; urgency=medium
     ppc64el.
   * Backport mt_device_gre changes from 510.39.01 to fix kernel module build
     for arm64.
+  * Refresh patches.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 15 Apr 2022 22:56:54 +0200
 

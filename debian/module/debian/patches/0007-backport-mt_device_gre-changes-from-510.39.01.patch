@@ -1,4 +1,4 @@
-From 7d266a365cc6e248f494be1cb6820cdd4199f600 Mon Sep 17 00:00:00 2001
+From 48e4fb617b41369c4923cb17bde37d6e94b2cd3c Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Thu, 14 Apr 2022 22:07:16 +0200
 Subject: [PATCH] backport mt_device_gre changes from 510.39.01
@@ -28,10 +28,10 @@ index fdeaa8e..6446c0f 100644
      __pgprot_modify(old_prot, PTE_ATTRINDX_MASK, NV_PROT_WRITE_COMBINED_DEVICE)
  #define NV_PGPROT_WRITE_COMBINED(old_prot)      NV_PGPROT_UNCACHED(old_prot)
 diff --git a/conftest.sh b/conftest.sh
-index 941b506..2b52af4 100755
+index dfb84d2..fe1c87c 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2508,6 +2508,24 @@ compile_test() {
+@@ -2524,6 +2524,24 @@ compile_test() {
                  return
              fi
          ;;
@@ -57,11 +57,11 @@ index 941b506..2b52af4 100755
              #
              # Conftest for get_user_pages()
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 1629f93..ca8baa0 100644
+index 04e7bdc..72708f2 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -194,6 +194,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += timeval
- NV_CONFTEST_TYPE_COMPILE_TESTS += timespec64
+@@ -209,6 +209,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += vmalloc_has_pgprot_t_arg
+ NV_CONFTEST_TYPE_COMPILE_TESTS += acpi_fadt_low_power_s0
  NV_CONFTEST_TYPE_COMPILE_TESTS += mm_has_mmap_lock
  NV_CONFTEST_TYPE_COMPILE_TESTS += pci_channel_state
 +NV_CONFTEST_TYPE_COMPILE_TESTS += mt_device_gre

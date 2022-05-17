@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.103.01-4) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.103.01-4) unstable; urgency=medium
 
   * Update kernel-5.7.0-set-memory-array.patch to fix kernel module build for
     ppc64el.
@@ -6,7 +6,7 @@ nvidia-graphics-drivers (470.103.01-4) UNRELEASED; urgency=medium
     for arm64.
   * Refresh patches.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 17 May 2022 14:13:32 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 17 May 2022 14:21:14 +0200
 
 nvidia-graphics-drivers (470.103.01-3~deb11u2) bullseye; urgency=medium
 

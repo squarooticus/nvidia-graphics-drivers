@@ -21,7 +21,7 @@ nvidia-graphics-drivers (418.226.00-2+git4deb10buster) UNRELEASED; urgency=mediu
     kernels, not supported upstream (510.54-1).
   * Declare Testsuite: autopkgtest-pkg-dkms (510.54-1).
   * Update lintian overrides.
-  * Bump Standards-Version to 4.6.0. No changes needed.
+  * Bump Standards-Version to 4.6.1. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
 

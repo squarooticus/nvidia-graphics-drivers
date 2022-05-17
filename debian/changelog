@@ -34,7 +34,7 @@ nvidia-graphics-drivers (390.147-2+git) UNRELEASED; urgency=medium
   * Declare Testsuite: autopkgtest-pkg-dkms (510.54-1).
   * Update lintian overrides.
   * Bump watch file version to 4.
-  * Bump Standards-Version to 4.6.0. No changes needed.
+  * Bump Standards-Version to 4.6.1. No changes needed.
 
   [ Vincent Cheng ]
   * Remove myself from Uploaders.

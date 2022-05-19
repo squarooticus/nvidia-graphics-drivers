@@ -56,6 +56,8 @@ nvidia-graphics-drivers (390.151-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Refresh patches.
+  * Work around architecture misdetection when building the kernel modules in
+    an armhf environment on an arm64 host.  (Closes: #1010230)
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 17 May 2022 15:42:34 +0200
 

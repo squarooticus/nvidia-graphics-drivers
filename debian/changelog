@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (450.172.01-3+git) xUNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.191.01-1+git) UNRELEASED; urgency=medium
 
   * Switch to dh-sequence-dkms (460.56-1).
   * Simplify dh_dkms usage (460.56-1).
@@ -28,12 +28,20 @@ nvidia-graphics-drivers (450.172.01-3+git) xUNRELEASED; urgency=medium
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.1. No changes needed.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 01 Feb 2022 22:33:16 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 20 May 2022 00:26:50 +0200
+
+nvidia-graphics-drivers (450.191.01-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.191.01 (2022-05-16).
+    * Fixed CVE-2022-28181, CVE-2022-28185, CVE-2022-28192.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5353
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 20 May 2022 00:26:50 +0200
 
 nvidia-graphics-drivers (450.172.01-3) UNRELEASED; urgency=medium
 
   * Update kernel-5.7.0-set-memory-array.patch to fix kernel module build for
-    ppc64el.
+    ppc64el.  (Closes: #976901)
   * Backport mt_device_gre changes from 510.39.01 to fix kernel module build
     for arm64.
   * Refresh patches.

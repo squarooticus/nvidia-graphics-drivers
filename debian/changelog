@@ -60,7 +60,7 @@ nvidia-graphics-drivers (390.151-1) UNRELEASED; urgency=medium
   * Work around architecture misdetection when building the kernel modules in
     an armhf environment on an arm64 host.  (Closes: #1010230)
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 17 May 2022 15:42:34 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 19 May 2022 12:07:44 +0200
 
 nvidia-graphics-drivers (390.147-2) UNRELEASED; urgency=medium
 
@@ -88,6 +88,18 @@ nvidia-graphics-drivers (390.144-2) UNRELEASED; urgency=medium
     to fix kernel module build for Linux 5.14.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 20 Sep 2021 21:13:35 +0200
+
+nvidia-graphics-drivers (390.144-1~deb9u1) stretch-security; urgency=high
+
+  * Non-maintainer upload by the LTS team.
+  * Fix CVE-2021-1076, CVE-2021-1093, CVE-2021-1094, CVE-2021-1095
+    and CVE-2021-1056.  (Closes: #987216, #991351)
+    Multiple security vulnerabilities have been discovered in the
+    NVIDIA binary driver and libraries that provide optimized
+    hardware acceleration which may lead to denial of service,
+    information disclosure, or data corruption.
+
+ -- Markus Koschany <apo@debian.org>  Tue, 18 Jan 2022 18:50:56 +0100
 
 nvidia-graphics-drivers (390.144-1) UNRELEASED; urgency=medium
 

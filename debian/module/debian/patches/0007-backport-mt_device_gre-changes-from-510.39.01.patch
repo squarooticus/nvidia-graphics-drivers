@@ -1,4 +1,4 @@
-From 7d266a365cc6e248f494be1cb6820cdd4199f600 Mon Sep 17 00:00:00 2001
+From 2c46113d3c552162ba3bf338a7e30b2a9cc42987 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Thu, 14 Apr 2022 22:07:16 +0200
 Subject: [PATCH] backport mt_device_gre changes from 510.39.01

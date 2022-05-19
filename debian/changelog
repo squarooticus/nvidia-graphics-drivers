@@ -36,6 +36,9 @@ nvidia-graphics-drivers (450.191.01-1) UNRELEASED; urgency=medium
     * Fixed CVE-2022-28181, CVE-2022-28185, CVE-2022-28192.
       https://nvidia.custhelp.com/app/answers/detail/a_id/5353
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Fri, 20 May 2022 00:26:50 +0200
 
 nvidia-graphics-drivers (450.172.01-3) UNRELEASED; urgency=medium

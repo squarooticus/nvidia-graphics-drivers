@@ -54,6 +54,9 @@ nvidia-graphics-drivers (390.151-1) UNRELEASED; urgency=medium
       candidates, where the NVIDIA kernel module failed to build with error
       "implicit declaration of function 'PDE'".
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Tue, 17 May 2022 15:42:34 +0200
 
 nvidia-graphics-drivers (390.147-2) UNRELEASED; urgency=medium

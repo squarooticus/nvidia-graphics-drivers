@@ -1,15 +1,13 @@
 # kernel support
 0001-backport-error-on-unknown-conftests.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
+0003-fix-conftest-includes.patch
 do-div-cast.patch
-kernel-5.7.0-set-memory-array.patch
-0006-backport-pde_data-changes-from-470.103.01.patch
 
 # build system updates
 bashisms.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
-use-kbuild-gcc-plugins.patch
 conftest-verbose.patch
 cc_version_check-gcc5.patch
 nvidia-use-ARCH.o_binary.patch
@@ -20,3 +18,4 @@ include-swiotlb-header-on-arm.patch
 ignore_xen_on_arm.patch
 arm-outer-sync.patch
 nvidia-drm-arm-cflags.patch
+armhf-on-arm64-kernel.patch

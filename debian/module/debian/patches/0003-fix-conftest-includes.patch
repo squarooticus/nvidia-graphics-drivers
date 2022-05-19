@@ -1,33 +1,42 @@
-Author: Jiri Palecek <jpalecek@web.de>
-Description: fix module build failure for Linux 5.7
- I was trying to test nvidia drivers with the new kernel in experimental
- 5.7.0-rc5-686-pae. In the build log, I noticed it failed due to missing
- functions set_memory_array_wb and friends. However, the code seemed to
- be prepared for that possibility, so the problem must be the conftest.
- .
- I checked the output from the compilation checks and found some are
- failing for the wrong reason, which causes some functions to be wrongly
- detected as present (!) and some wrongly detected as missing. This would
- probably apply to the other branches of nvidia drivers as well. I
- prepared a patch for this, some comments:
- .
- - asm/page.h and asm/pgtable.h are needed for the pgprop_t type. Some
-   arches have here, some have it there. Otherwise the compilation
-   wrongly fails and detects the functions as present
- .
- - atomic_long_t is pulled by including linux/atomic.h, not
-   asm/atomic.h. Otherwise it's detected wrongly as absent
- .
- - linux/acpi.h is needed for acpi_status type
- .
- I checked that these files were present in the linux kernel since
- 2.6.39, but haven't tested compilation with such old kernels. It should,
- however, work.
-Bug-Debian: https://bugs.debian.org/960735
+From 56ccf83b92aaf85f4e177c044062a7bcaa1bf91b Mon Sep 17 00:00:00 2001
+From: Jiri Palecek <jpalecek@web.de>
+Date: Sat, 16 May 2020 02:02:43 +0200
+Subject: [PATCH] fix conftest includes
 
+I was trying to test nvidia drivers with the new kernel in experimental
+5.7.0-rc5-686-pae. In the build log, I noticed it failed due to missing
+functions set_memory_array_wb and friends. However, the code seemed to
+be prepared for that possibility, so the problem must be the conftest.
+
+I checked the output from the compilation checks and found some are
+failing for the wrong reason, which causes some functions to be wrongly
+detected as present (!) and some wrongly detected as missing. This would
+probably apply to the other branches of nvidia drivers as well. I
+prepared a patch for this, some comments:
+
+- asm/page.h and asm/pgtable.h are needed for the pgprop_t type. Some
+  arches have here, some have it there. Otherwise the compilation
+  wrongly fails and detects the functions as present
+
+- atomic_long_t is pulled by including linux/atomic.h, not
+  asm/atomic.h. Otherwise it's detected wrongly as absent
+
+- linux/acpi.h is needed for acpi_status type
+
+I checked that these files were present in the linux kernel since
+2.6.39, but haven't tested compilation with such old kernels. It
+should, however, work.
+
+Bug-Debian: https://bugs.debian.org/960735
+---
+ conftest.sh | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/conftest.sh b/conftest.sh
+index 35f1e52..712fea5 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -429,6 +429,8 @@ compile_test() {
+@@ -430,6 +430,8 @@ compile_test() {
              # Determine if the set_memory_uc() function is present.
              #
              CODE="
@@ -36,7 +45,7 @@ Bug-Debian: https://bugs.debian.org/960735
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -449,6 +451,8 @@ compile_test() {
+@@ -450,6 +452,8 @@ compile_test() {
              # Determine if the set_memory_array_uc() function is present.
              #
              CODE="
@@ -45,7 +54,7 @@ Bug-Debian: https://bugs.debian.org/960735
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -504,6 +508,8 @@ compile_test() {
+@@ -505,6 +509,8 @@ compile_test() {
              # Determine if the set_pages_uc() function is present.
              #
              CODE="
@@ -54,7 +63,7 @@ Bug-Debian: https://bugs.debian.org/960735
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -1870,7 +1876,7 @@ compile_test() {
+@@ -1888,7 +1894,7 @@ compile_test() {
              # Determine if atomic_long_t and associated functions are defined
              # Added in 2.6.16 2006-01-06 d3cb487149bd706aa6aeb02042332a450978dc1c
              CODE="
@@ -63,7 +72,7 @@ Bug-Debian: https://bugs.debian.org/960735
              void conftest_atomic_long(void) {
                  atomic_long_t data;
                  atomic_long_read(&data);
-@@ -1884,7 +1890,7 @@ compile_test() {
+@@ -1902,7 +1908,7 @@ compile_test() {
          atomic64_type)
              # Determine if atomic64_t and associated functions are defined
              CODE="
@@ -72,7 +81,7 @@ Bug-Debian: https://bugs.debian.org/960735
              void conftest_atomic64(void) {
                  atomic64_t data;
                  atomic64_read(&data);
-@@ -3585,7 +3591,7 @@ compile_test() {
+@@ -3603,7 +3609,7 @@ compile_test() {
              #     2008-01-25  9ee85241fdaab358dff1d8647f20a478cfa512a1
              #
              CODE="
@@ -81,3 +90,6 @@ Bug-Debian: https://bugs.debian.org/960735
              int conftest_register_acpi_notifier(void) {
                  return register_acpi_notifier();
              }"
+-- 
+2.20.1
+

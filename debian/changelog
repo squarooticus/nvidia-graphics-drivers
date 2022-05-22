@@ -931,6 +931,7 @@ nvidia-graphics-drivers (418.226.00-5) UNRELEASED; urgency=medium
 
   * Backport linker scripts changes from 510.60.02.
   * Refresh patches.
+  * Bump Standards-Version to 4.6.1. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 22 May 2022 13:17:00 +0200
 
@@ -947,6 +948,10 @@ nvidia-graphics-drivers (418.226.00-3) UNRELEASED; urgency=medium
     NVIDIA. No further updates fixing security issues, critical bugs, or
     adding support for new Xorg or Linux releases will be issued.
     https://docs.nvidia.com/datacenter/tesla/drivers/
+
+  * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip building for -rt
+    kernels, not supported upstream (510.54-1).
+  * Declare Testsuite: autopkgtest-pkg-dkms (510.54-1).
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 18:44:57 +0200
 

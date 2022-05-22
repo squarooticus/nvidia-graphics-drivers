@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (418.226.00-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.226.00-3) unstable; urgency=medium
 
   The Tesla 418 driver series has been declared as End-of-Life by
   NVIDIA. No further updates fixing security issues, critical bugs, or

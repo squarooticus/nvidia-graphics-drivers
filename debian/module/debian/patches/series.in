@@ -1,6 +1,6 @@
 # kernel support
 0003-fix-conftest-includes.patch
-0007-backport-mt_device_gre-changes-from-510.39.01.patch
+0008-backport-mt_device_gre-changes-from-510.39.01.patch
 
 # build system updates
 bashisms.patch

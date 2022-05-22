@@ -23,8 +23,9 @@ nvidia-graphics-drivers (418.226.00-5+git4deb10buster) UNRELEASED; urgency=mediu
 nvidia-graphics-drivers (418.226.00-5) UNRELEASED; urgency=medium
 
   * Backport linker scripts changes from 510.60.02.
+  * Refresh patches.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 22 May 2022 13:17:00 +0200
 
 nvidia-graphics-drivers (418.226.00-4) UNRELEASED; urgency=medium
 

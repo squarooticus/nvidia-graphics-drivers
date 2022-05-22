@@ -1,4 +1,4 @@
-From 56ccf83b92aaf85f4e177c044062a7bcaa1bf91b Mon Sep 17 00:00:00 2001
+From 8cfdb992fb45e444ae20cc6ebd8177b3a6130ff7 Mon Sep 17 00:00:00 2001
 From: Jiri Palecek <jpalecek@web.de>
 Date: Sat, 16 May 2020 02:02:43 +0200
 Subject: [PATCH] fix conftest includes
@@ -24,9 +24,11 @@ should, however, work.
 
 Bug-Debian: https://bugs.debian.org/960735
 ---
+ conftest.sh | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 35f1e52..712fea5 100755
+index e831b64..8d90469 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -466,6 +466,8 @@ compile_test() {

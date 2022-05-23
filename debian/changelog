@@ -16,6 +16,7 @@ nvidia-graphics-drivers (470.129.06-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Refresh patches.
+  * Update nv-readme.ids.
   * Bump Standards-Version to 4.6.1. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 23 May 2022 17:48:34 +0200

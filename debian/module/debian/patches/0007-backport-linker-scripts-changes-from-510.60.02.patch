@@ -1,4 +1,4 @@
-From f784c89d1744ef6a9581b0a925e21b08cec6c5f8 Mon Sep 17 00:00:00 2001
+From 92cf5ab812fc4e622079c655f8bb3da328fa375a Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 20 May 2022 09:09:42 +0200
 Subject: [PATCH] backport linker scripts changes from 510.60.02
@@ -8,10 +8,10 @@ Subject: [PATCH] backport linker scripts changes from 510.60.02
  1 file changed, 10 insertions(+), 8 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 23f630c..8ba8013 100644
+index 3eca854..49f55fd 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -92,14 +92,16 @@ else
+@@ -91,14 +91,16 @@ else
  
    module: modules
  
@@ -35,7 +35,7 @@ index 23f630c..8ba8013 100644
  
    # Use $* to match the stem % in the kernel interface file %-linux.o. Replace
    # "nv" with "nvidia" in $* as appropriate: e.g. nv-modeset-linux.o links
-@@ -111,7 +113,7 @@ else
+@@ -110,7 +112,7 @@ else
    # cannot be defined in the *Kbuild files, which are only used during stage 1.
  
    %-linux.o: modules

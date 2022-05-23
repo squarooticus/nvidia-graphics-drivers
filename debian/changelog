@@ -429,6 +429,7 @@ nvidia-graphics-drivers (450.191.01-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Refresh patches.
+  * Bump Standards-Version to 4.6.1. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 22 May 2022 18:48:35 +0200
 
@@ -1353,6 +1354,7 @@ nvidia-graphics-drivers (418.226.00-5) UNRELEASED; urgency=medium
 
   * Backport linker scripts changes from 510.60.02.
   * Refresh patches.
+  * Bump Standards-Version to 4.6.1. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 22 May 2022 13:17:00 +0200
 

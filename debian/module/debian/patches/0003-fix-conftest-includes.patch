@@ -1,4 +1,4 @@
-From 30a656eecb4746e50528e081cd1fc9b48869c815 Mon Sep 17 00:00:00 2001
+From b96e30d78b8b445ada6180a7b4e23aa491341eca Mon Sep 17 00:00:00 2001
 From: Jiri Palecek <jpalecek@web.de>
 Date: Sat, 16 May 2020 02:02:43 +0200
 Subject: [PATCH] fix conftest includes
@@ -28,10 +28,10 @@ Bug-Debian: https://bugs.debian.org/960735
  1 file changed, 8 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 99739cd..3aaf177 100755
+index 31f8f16..ffec4c2 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -507,6 +507,8 @@ compile_test() {
+@@ -510,6 +510,8 @@ compile_test() {
              # It does not exist on all architectures.
              #
              CODE="
@@ -40,7 +40,7 @@ index 99739cd..3aaf177 100755
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -528,6 +530,8 @@ compile_test() {
+@@ -531,6 +533,8 @@ compile_test() {
              # It does not exist on all architectures.
              #
              CODE="
@@ -49,7 +49,7 @@ index 99739cd..3aaf177 100755
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -584,6 +588,8 @@ compile_test() {
+@@ -587,6 +591,8 @@ compile_test() {
              # It does not exist on all architectures.
              #
              CODE="
@@ -58,7 +58,7 @@ index 99739cd..3aaf177 100755
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -610,6 +616,8 @@ compile_test() {
+@@ -613,6 +619,8 @@ compile_test() {
              # 19 14:51:15 2009)
              #
              CODE="

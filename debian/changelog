@@ -1,12 +1,18 @@
-nvidia-graphics-drivers (510.68.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (510.73.05-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 510.73.05 (2022-05-16).
+    * Fixed CVE-2022-28181, CVE-2022-28183, CVE-2022-28184, CVE-2022-28185,
+      CVE-2022-28191, CVE-2022-28192.  (Closes: #1011140)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5353
+    - Added a new configuration option for NVIDIA NGX to allow disabling the DSO
+      signature check. See the "NGX" chapter of the README for more information.
   * New upstream production branch release 510.68.02 (2022-04-26).
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
   * Update symbols files.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 24 May 2022 14:02:02 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 24 May 2022 14:56:26 +0200
 
 nvidia-graphics-drivers (510.60.02-1) experimental; urgency=medium
 

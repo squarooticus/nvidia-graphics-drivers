@@ -125,6 +125,7 @@ NVIDIA-Linux-%:
 	sh $*/${NVIDIA_FILENAME_$*} --extract-only
 	ln -s ${NVIDIA_DIRNAME_$*} $@
 	gunzip $@/*.1.gz
+	patch $@/README.txt < debian/patches/legacy-470.patch
 
 ifneq (,$(filter i386,$(NO_DRIVER_ARCH_LIST)))
 NVIDIA-Linux-i386: NVIDIA-Linux-amd64

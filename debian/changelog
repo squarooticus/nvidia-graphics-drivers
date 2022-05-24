@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.129.06-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.129.06-1) unstable; urgency=medium
 
   * New upstream production branch release 470.129.06 (2022-05-16).
     * Fixed CVE-2022-28181, CVE-2022-28183, CVE-2022-28184, CVE-2022-28185,
@@ -17,12 +17,12 @@ nvidia-graphics-drivers (470.129.06-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.
   * Update nv-readme.ids.
-  * Import legacy IDs still supported by the 470.* driver but missing in
-    README.txt from the the 510.* README.txt.
+  * Import missing legacy IDs from the 510.* README.txt.
+    The Kepler notebook GPUs seem still supported by the 470.* driver.
     (Closes: #1011245, #939447, #939067)
   * Bump Standards-Version to 4.6.1. No changes needed.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 23 May 2022 17:48:34 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 24 May 2022 02:51:40 +0200
 
 nvidia-graphics-drivers (470.103.01-4) unstable; urgency=medium
 

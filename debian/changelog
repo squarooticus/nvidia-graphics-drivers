@@ -9,6 +9,7 @@ nvidia-graphics-drivers (510.73.05-1) UNRELEASED; urgency=medium
   * New upstream production branch release 510.68.02 (2022-04-26).
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * Update nv-readme.ids.
   * Update symbols files.
 

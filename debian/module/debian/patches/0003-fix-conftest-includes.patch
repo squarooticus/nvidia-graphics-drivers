@@ -1,4 +1,4 @@
-From b96e30d78b8b445ada6180a7b4e23aa491341eca Mon Sep 17 00:00:00 2001
+From 322cce86186328e446907ad765583558f805ac7e Mon Sep 17 00:00:00 2001
 From: Jiri Palecek <jpalecek@web.de>
 Date: Sat, 16 May 2020 02:02:43 +0200
 Subject: [PATCH] fix conftest includes
@@ -28,40 +28,40 @@ Bug-Debian: https://bugs.debian.org/960735
  1 file changed, 8 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 31f8f16..ffec4c2 100755
+index ff4376b..94041f2 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -510,6 +510,8 @@ compile_test() {
-             # It does not exist on all architectures.
+@@ -531,6 +531,8 @@ compile_test() {
              #
              CODE="
+             #include <linux/types.h>
 +            #include <asm/page.h>
 +            #include <asm/pgtable.h>
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -531,6 +533,8 @@ compile_test() {
-             # It does not exist on all architectures.
+@@ -553,6 +555,8 @@ compile_test() {
              #
              CODE="
+             #include <linux/types.h>
 +            #include <asm/page.h>
 +            #include <asm/pgtable.h>
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -587,6 +591,8 @@ compile_test() {
-             # It does not exist on all architectures.
+@@ -610,6 +614,8 @@ compile_test() {
              #
              CODE="
+             #include <linux/types.h>
 +            #include <asm/page.h>
 +            #include <asm/pgtable.h>
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -613,6 +619,8 @@ compile_test() {
-             # 19 14:51:15 2009)
+@@ -637,6 +643,8 @@ compile_test() {
              #
              CODE="
+             #include <linux/types.h>
 +            #include <asm/page.h>
 +            #include <asm/pgtable.h>
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)

@@ -4,6 +4,7 @@ nvidia-graphics-drivers (510.68.02-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
+  * Update symbols files.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 24 May 2022 14:02:02 +0200
 

@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (510.68.02-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 510.68.02 (2022-04-26).
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 24 May 2022 14:02:02 +0200
+
 nvidia-graphics-drivers (510.60.02-1) experimental; urgency=medium
 
   * New upstream production branch release 510.60.02 (2022-03-22).
@@ -11,11 +17,6 @@ nvidia-graphics-drivers (510.60.02-1) experimental; urgency=medium
     - Fixed a bug, introduced in 495.29.05, that caused GPU "Model:" in
       /proc/driver/nvidia/gpus/<Bus:Device.Function>/information to be
       "Unknown" for some GPUs.
-  * New upstream release 390 series.
-    - Fixed a bug which prevented kernel modules linked from precompiled
-      kernel interface object files from being loaded on recent Linux
-      kernels. This affected custom packages which were prepared with
-      nvidia-installer's --add-this-kernel option, for example.
 
   [ Luca Boccassi ]
   * Update nv-readme.ids.
@@ -97,10 +98,6 @@ nvidia-graphics-drivers (510.47.03-1) experimental; urgency=medium
   * New upstream release 495 series.
     - Fixed a bug in the Vulkan driver where some Ray Tracing shaders would
       timeout, resulting in device loss.
-  * New upstream release 390 series.
-    - Fixed a driver installation failure on Linux kernel 5.17 release
-      candidates, where the NVIDIA kernel module failed to build with error
-      "implicit declaration of function 'PDE'".
 
   [ Andreas Beckmann ]
   * Refresh patches.

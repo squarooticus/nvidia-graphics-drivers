@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (510.73.08-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (510.73.08-1) experimental; urgency=medium
 
   * New upstream Tesla release 510.73.08 (2022-05-23).
   * New upstream production branch release 510.73.05 (2022-05-16).
@@ -14,7 +14,7 @@ nvidia-graphics-drivers (510.73.08-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Update symbols files.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 24 May 2022 18:50:42 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 24 May 2022 22:32:57 +0200
 
 nvidia-graphics-drivers (510.60.02-1) experimental; urgency=medium
 

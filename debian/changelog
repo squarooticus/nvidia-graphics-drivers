@@ -1,8 +1,8 @@
-nvidia-graphics-drivers (470.129.06-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.129.06-3) unstable; urgency=medium
 
   * Do not create backups when patching README.txt.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 26 May 2022 11:32:02 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 26 May 2022 13:27:23 +0200
 
 nvidia-graphics-drivers (470.129.06-2) unstable; urgency=medium
 

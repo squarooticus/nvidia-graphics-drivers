@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (470.129.06-4) UNRELEASED; urgency=medium
+
+  * Use different virtual packages for firmware file Conflicts and Depends.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 07 Jun 2022 01:09:28 +0200
+
 nvidia-graphics-drivers (470.129.06-3) unstable; urgency=medium
 
   * Do not create backups when patching README.txt.

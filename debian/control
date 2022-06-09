@@ -110,7 +110,7 @@ Depends:
  ${misc:Depends}
 Provides:
  nvidia-kernel-support-any,
- ${nvidia}-kernel-support--v1,
+ ${nvidia}-kernel-support-${nvidia:Version},
  nvidia-firmware-${nvidia:Version},
 Conflicts:
  nvidia-firmware-${nvidia:Version},
@@ -129,8 +129,7 @@ Pre-Depends:
  nvidia-installer-cleanup,
 Depends:
  dkms,
- nvidia-firmware-${nvidia:Version} [amd64],
- ${nvidia}-kernel-support--v1,
+ ${nvidia}-kernel-support-${nvidia:Version},
  ${misc:Depends}
 Recommends:
  ${nvidia}-driver (>= ${nvidia:Version})

@@ -1,6 +1,8 @@
 nvidia-graphics-drivers (510.73.08-2) UNRELEASED; urgency=medium
 
   * Add nvidia-drm_gbm.so symlink.  (Closes: #1012514)
+  * nvidia-driver-libs: Recommend libnvidia-allocator1.
+  * libnvidia-allocator1: Recommend libnvidia-egl-gbm1.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 09 Jun 2022 22:24:14 +0200
 

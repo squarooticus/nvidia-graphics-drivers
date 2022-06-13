@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (510.73.08-3) UNRELEASED; urgency=medium
+
+  * Try new dkms feature BUILD_EXCLUSIVE_CONFIG.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 13 Jun 2022 22:51:48 +0200
+
 nvidia-graphics-drivers (510.73.08-2) experimental; urgency=medium
 
   * Add nvidia-drm_gbm.so symlink.  (Closes: #1012514)

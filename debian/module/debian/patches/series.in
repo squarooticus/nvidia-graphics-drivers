@@ -2,6 +2,8 @@
 0001-backport-error-on-unknown-conftests.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
 0003-fix-conftest-includes.patch
+0009-backport-pci-dma-changes-from-470.129.06.patch
+#HAS_UVM#0010-backport-pci-dma-changes-from-470.129.06-uvm-part.patch
 do-div-cast.patch
 
 # build system updates

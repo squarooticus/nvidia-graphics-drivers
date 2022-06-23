@@ -6,6 +6,8 @@
 0005-backport-stddef.h-changes-from-495.44.patch
 0006-backport-pde_data-changes-from-470.103.01.patch
 0007-backport-linker-scripts-changes-from-510.60.02.patch
+0009-backport-pci-dma-changes-from-470.129.06.patch
+0013-backport-acpi_bus_get_device-changes-from-470.129.06.patch
 
 # build system updates
 bashisms.patch

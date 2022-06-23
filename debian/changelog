@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (450.191.01-1+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.191.01-2+git) UNRELEASED; urgency=medium
 
   * Switch to dh-sequence-dkms (460.56-1).
   * Simplify dh_dkms usage (460.56-1).
@@ -27,6 +27,14 @@ nvidia-graphics-drivers (450.191.01-1+git) UNRELEASED; urgency=medium
     (470.86-1).  (Closes: #999670)
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.1. No changes needed.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 20 May 2022 00:26:50 +0200
+
+nvidia-graphics-drivers (450.191.01-2) UNRELEASED; urgency=medium
+
+  * Backport pci/dma, iosys_map, dma_set_coherent_mask, acpi_bus_get_device
+    changes from 470.129.06 to fix kernel module build for
+    Linux 5.18.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 20 May 2022 00:26:50 +0200
 
@@ -871,6 +879,13 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
 
+nvidia-graphics-drivers (418.226.00-6) UNRELEASED; urgency=medium
+
+  * Backport pci/dma, iosys_map, dma_set_coherent_mask and acpi_bus_get_device
+    changes from 470.129.06 to fix kernel module build for Linux 5.18.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 23 Jun 2022 14:36:25 +0200
+
 nvidia-graphics-drivers (418.226.00-5) UNRELEASED; urgency=medium
 
   * Backport linker scripts changes from 510.60.02.
@@ -1559,6 +1574,13 @@ nvidia-graphics-drivers (396.18-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 22 Apr 2018 13:59:45 +0200
+
+nvidia-graphics-drivers (390.151-2) UNRELEASED; urgency=medium
+
+  * Backport pci/dma changes from 470.129.06 to fix kernel module build for
+    Linux 5.18.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 22 Jun 2022 02:56:26 +0200
 
 nvidia-graphics-drivers (390.151-1) UNRELEASED; urgency=medium
 
@@ -4291,6 +4313,9 @@ nvidia-graphics-drivers (343.22-1) experimental; urgency=medium
  -- Andreas Beckmann <anbe@debian.org>  Mon, 20 Oct 2014 19:04:58 +0200
 
 nvidia-graphics-drivers (340.108-2) UNRELEASED; urgency=medium
+
+  * Backport pci/dma and acpi_bus_get_device changes from 470.129.06 to fix
+    kernel module build for Linux 5.18.
 
   * Backport pde_data changes from 470.103.01 to fix kernel module build for
     Linux 5.17.

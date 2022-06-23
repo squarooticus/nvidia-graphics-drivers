@@ -1,4 +1,4 @@
-From 3132637f194daec80771314a41faefb41d40b8ae Mon Sep 17 00:00:00 2001
+From b2271ade48cb9e7aaa63b9898e2be5e33846bd74 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 11:14:33 +0200
 Subject: [PATCH 2/3] backport dma_set_coherent_mask from 470.129.06
@@ -10,10 +10,10 @@ Subject: [PATCH 2/3] backport dma_set_coherent_mask from 470.129.06
  3 files changed, 25 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 097725c..00641a7 100755
+index 4c8e87e..eea7acf 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4118,6 +4118,22 @@ compile_test() {
+@@ -4337,6 +4337,22 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_DEVICE_HAS_PDEV" "" "types"
          ;;
  
@@ -37,41 +37,41 @@ index 097725c..00641a7 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 8a51f1c..a9ca565 100644
+index d50ae02..8adddbc 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -2970,7 +2970,11 @@ nv_set_dma_address_size(
+@@ -2888,7 +2888,11 @@ nv_set_dma_address_size(
           * minor release update but detect the failure scenario here to prevent
           * an installation regression */
  #if !NV_IS_EXPORT_SYMBOL_GPL_sme_active
 +#if defined(NV_DMA_SET_COHERENT_MASK_PRESENT)
-+        dma_set_coherent_mask(&nvl->dev->dev, new_mask);
++        dma_set_coherent_mask(&nvl->pci_dev->dev, new_mask);
 +#else
-         pci_set_consistent_dma_mask(nvl->dev, new_mask);
+         pci_set_consistent_dma_mask(nvl->pci_dev, new_mask);
 +#endif
  #endif
      }
  }
-@@ -4928,7 +4932,11 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4477,7 +4481,11 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
      start = dma_addr & ~(saved_dma_mask);
  
      /* Update the coherent mask to match */
 +#if defined(NV_DMA_SET_COHERENT_MASK_PRESENT)
-     dma_set_coherent_mask(&dev->dev, dev->dma_mask);
+     dma_set_coherent_mask(&pci_dev->dev, pci_dev->dma_mask);
 +#else
-+    pci_set_consistent_dma_mask(dev, dev->dma_mask);
++    pci_set_consistent_dma_mask(pci_dev, pci_dev->dma_mask);
 +#endif
  
  done:
  #endif
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 9ce0097..b605736 100644
+index ca8baa0..d71ea4a 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -168,6 +168,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_raw_ts64
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_real_ts64
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += vga_tryget
+@@ -157,6 +157,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pgprot_decrypted
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += iterate_fd
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += seq_read_iter
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += unsafe_follow_pfn
 +NV_CONFTEST_FUNCTION_COMPILE_TESTS += dma_set_coherent_mask
  
  NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_gpl_of_node_to_nid

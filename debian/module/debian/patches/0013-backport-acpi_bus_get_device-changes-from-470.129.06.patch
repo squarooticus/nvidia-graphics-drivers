@@ -1,19 +1,19 @@
-From 460a972ae36646a589d989977fe3dea50d13e8f2 Mon Sep 17 00:00:00 2001
+From 69a909db4e7c3400931888983871e3b275af7216 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 11:15:34 +0200
 Subject: [PATCH 3/3] backport acpi_bus_get_device changes from 470.129.06
 
 ---
  conftest.sh          | 16 ++++++++++++++++
- nvidia/nv-acpi.c     | 13 +++++++++++++
+ nvidia/nv-acpi.c     | 18 ++++++++++++++++++
  nvidia/nvidia.Kbuild |  1 +
- 3 files changed, 30 insertions(+)
+ 3 files changed, 35 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 00641a7..da55564 100755
+index eea7acf..09d4c17 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4134,6 +4134,22 @@ compile_test() {
+@@ -4353,6 +4353,22 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DMA_SET_COHERENT_MASK_PRESENT" "" "functions"
          ;;
  
@@ -37,10 +37,10 @@ index 00641a7..da55564 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
-index dd11109..7bf464c 100644
+index e67a96c..c35dc48 100644
 --- a/nvidia/nv-acpi.c
 +++ b/nvidia/nv-acpi.c
-@@ -629,8 +629,10 @@ static void nv_uninstall_notifier(nv_acpi_t *pNvAcpiObject, acpi_notify_handler
+@@ -618,8 +618,10 @@ static void nv_uninstall_notifier(nv_acpi_t *pNvAcpiObject, acpi_notify_handler
  
  void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
  {
@@ -51,7 +51,7 @@ index dd11109..7bf464c 100644
  
  
      if (!handlesPresent) // Caller passed us invalid pointer.
-@@ -642,6 +644,7 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
+@@ -631,6 +633,7 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
      NV_ACPI_WALK_NAMESPACE(ACPI_TYPE_DEVICE, ACPI_ROOT_OBJECT,
                          ACPI_UINT32_MAX, nv_acpi_find_methods, NULL, NULL);
  
@@ -59,7 +59,7 @@ index dd11109..7bf464c 100644
      if (nvif_handle)
      {
          *handlesPresent = NV_ACPI_NVIF_HANDLE_PRESENT;
-@@ -670,6 +673,7 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
+@@ -659,6 +662,7 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
  
          } while (0);
      }
@@ -67,7 +67,7 @@ index dd11109..7bf464c 100644
  
      if (wmmx_handle)
          *handlesPresent = *handlesPresent | NV_ACPI_WMMX_HANDLE_PRESENT;
-@@ -677,6 +681,8 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
+@@ -666,6 +670,8 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
          *handlesPresent = *handlesPresent | NV_ACPI_MXMI_HANDLE_PRESENT;
      if (mxms_handle)
          *handlesPresent = *handlesPresent | NV_ACPI_MXMS_HANDLE_PRESENT;
@@ -76,7 +76,7 @@ index dd11109..7bf464c 100644
      if (psr_handle)
      {
          // Since _PSR is not a per-GPU construct we only need to register a
-@@ -692,6 +698,7 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
+@@ -681,6 +687,7 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
              }
          }
      }
@@ -84,8 +84,8 @@ index dd11109..7bf464c 100644
  
      return;
  }
-@@ -756,9 +763,11 @@ void NV_API_CALL nv_acpi_methods_uninit(void)
-     if (nvif_parent_gpu_handle == NULL) 
+@@ -745,9 +752,11 @@ void NV_API_CALL nv_acpi_methods_uninit(void)
+     if (nvif_parent_gpu_handle == NULL)
          return;
  
 +#if defined(NV_ACPI_BUS_GET_DEVICE_PRESENT)
@@ -96,7 +96,7 @@ index dd11109..7bf464c 100644
  
      device->driver_data = NULL;
      nvif_parent_gpu_handle = NULL;
-@@ -1318,7 +1327,11 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+@@ -1313,7 +1322,11 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
      if (!dev_handle)
          return NV_ERR_INVALID_ARGUMENT;
  
@@ -108,13 +108,26 @@ index dd11109..7bf464c 100644
  
      if (ACPI_FAILURE(status) || !device)
          return NV_ERR_INVALID_ARGUMENT;
+@@ -1722,7 +1735,12 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
+     if (!dev_handle)
+         return NV_ERR_INVALID_ARGUMENT;
+ 
++#if defined(NV_ACPI_BUS_GET_DEVICE_PRESENT)
+     status = acpi_bus_get_device(dev_handle, &device);
++#else
++    return NV_ERR_NOT_SUPPORTED;
++#endif
++
+ 
+     if (ACPI_FAILURE(status) || !device)
+         return NV_ERR_INVALID_ARGUMENT;
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index b605736..eac42be 100644
+index d71ea4a..882c8a1 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -169,6 +169,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_real_ts64
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += vga_tryget
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += iterate_fd
+@@ -158,6 +158,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += iterate_fd
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += seq_read_iter
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += unsafe_follow_pfn
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += dma_set_coherent_mask
 +NV_CONFTEST_FUNCTION_COMPILE_TESTS += acpi_bus_get_device
  

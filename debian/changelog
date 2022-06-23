@@ -43,7 +43,7 @@ nvidia-graphics-drivers (390.151-2) UNRELEASED; urgency=medium
   * Backport pci/dma changes from 470.129.06 to fix kernel module build for
     Linux 5.18.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 17 May 2022 15:42:34 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 22 Jun 2022 02:56:26 +0200
 
 nvidia-graphics-drivers (390.151-1) UNRELEASED; urgency=medium
 

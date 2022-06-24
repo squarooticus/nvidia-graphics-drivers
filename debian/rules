@@ -18,6 +18,7 @@ NVIDIA_SETTINGS		?= nvidia-settings$(legacy)
 ARCH_LIST		?= amd64
 ARCH_DEPS_i386		?=
 BLOB_ARCH_LIST		?= $(strip $(DEB_HOST_ARCH) $(ARCH_DEPS_$(DEB_HOST_ARCH)))
+NO_DRIVER_ARCH_LIST	?=
 NO_UVM_ARCH_LIST	?=
 
 NVIDIA_RELEASE		 = $(DEB_VERSION_UPSTREAM)
@@ -35,6 +36,7 @@ legacy_description	 = $(if $(NVIDIA_LEGACY), ($(NVIDIA_LEGACY)xx legacy version)
 legacy_description_short = $(if $(NVIDIA_LEGACY), ($(NVIDIA_LEGACY)xx legacy))
 watch_pattern		 = $(or $(WATCH_PATTERN),$(if $(WATCH_VERSION),$(WATCH_VERSION)(?:\.[\d\.\-]+)?),\d[\d\.\-]*)
 standards_version	:= $(shell sed -rn 's/Standards-Version: (.*)/\1/p' debian/control)
+DRIVER_ARCH_LIST	 = $(filter-out $(NO_DRIVER_ARCH_LIST),$(ARCH_LIST))
 
 # this needs the internal names (i.e. upstream's names, not our renamed files)
 unload_modules		 =
@@ -291,7 +293,7 @@ override_dh_strip_nondeterminism:
 	-e 's{#LIBDIR#}{$(libdir)}g;' \
 	-e 's{#PRIVATE#}{$(nvidia_private)}g;' \
 	-e 's{#UNLOAD_MODULES#}{$(strip $(unload_modules))}g;' \
-	-e 's{#ARCH_LIST#}{$(ARCH_LIST)}g;' \
+	-e 's{#ARCH_LIST#}{$(DRIVER_ARCH_LIST)}g;' \
 	-e 's{#HAS_UVM#}{$(if $(has_uvm),,#)}g;' \
 	-e 's{#!armhf#}{$(if $(filter armhf,$(DEB_HOST_ARCH)),#)}g;' \
 	-e 's{#tls#}{$(if $(filter armhf,$(DEB_HOST_ARCH)),,tls/)}g;' \
@@ -350,7 +352,7 @@ pci.ids.nvidia: /usr/share/misc/pci.ids
 	done > $@
 
 # only invoked manually
-file-lists: $(patsubst %,debian/files_$(NVIDIA_RELEASE)_%,$(ARCH_LIST))
+file-lists: $(patsubst %,debian/files_$(NVIDIA_RELEASE)_%,$(DRIVER_ARCH_LIST))
 debian/files_$(NVIDIA_RELEASE)_%: NVIDIA-Linux-%
 	(cd $< && find .) | sed 's/$(NVIDIA_RELEASE)/VERSION/g' | sort > $@
 
@@ -406,8 +408,8 @@ get-orig-source-pack/%: get-orig-source-files/%
 	    touch $(call get_tarball,$*) -r $(call get_origdir,$*).stamp
 	mv get-orig-source/$(call get_tarball,$*) .
 
-get-orig-source-files/empty: get-orig-source-prepare/empty $(foreach a,$(ARCH_LIST),get-orig-source-pack/$a)
-	touch get-orig-source/$(call get_origdir,empty).stamp -r $$(ls -tr $(foreach a,$(ARCH_LIST),$(call get_tarball,$a)) | tail -n 1)
+get-orig-source-files/empty: get-orig-source-prepare/empty $(foreach a,$(DRIVER_ARCH_LIST),get-orig-source-pack/$a)
+	touch get-orig-source/$(call get_origdir,empty).stamp -r $$(ls -tr $(foreach a,$(DRIVER_ARCH_LIST),$(call get_tarball,$a)) | tail -n 1)
 
 .PHONY: get-orig-source
 get-orig-source: get-orig-source-pack/empty
@@ -418,7 +420,7 @@ get-orig-source-link/%:
 	ln -sf $(subst $(legacy),,$(call get_tarball,$*)) $(call get_tarball,$*)
 
 .PHONY: get-orig-links
-get-orig-links: get-orig-source-link/empty $(foreach a,$(ARCH_LIST),get-orig-source-link/$a)
+get-orig-links: get-orig-source-link/empty $(foreach a,$(DRIVER_ARCH_LIST),get-orig-source-link/$a)
 endif
 
 ############################################################################
@@ -430,7 +432,7 @@ endif
 
 UPSTREAM_NAME		 = nvidia-graphics-drivers
 UPSTREAM_VERSION	 = $(NVIDIA_RELEASE)
-TARBALL_LIST		 = $(foreach a,empty $(ARCH_LIST),$(call get_tarball,$a))
+TARBALL_LIST		 = $(foreach a,empty $(DRIVER_ARCH_LIST),$(call get_tarball,$a))
 
 GIT			?= git
 TARBALL_REPOSITORY	 = https://salsa.debian.org/nvidia-team/tarballs-$(UPSTREAM_NAME).git

@@ -1,4 +1,4 @@
-From 364e7ebfe084f970f1cea08e8ba46661d5c4e088 Mon Sep 17 00:00:00 2001
+From bfe1a3757667d6f2affdddaab48f03d53be4195a Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 12:59:38 +0200
 Subject: [PATCH] backport cc_mkdec changes from 470.129.06
@@ -10,10 +10,10 @@ Subject: [PATCH] backport cc_mkdec changes from 470.129.06
  3 files changed, 28 insertions(+)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index c96bca7..f35f74c 100644
+index 135e9bc..cea6402 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -968,9 +968,16 @@ static inline pgprot_t nv_adjust_pgprot(pgprot_t vm_prot, NvU32 extra)
+@@ -975,9 +975,16 @@ static inline pgprot_t nv_adjust_pgprot(pgprot_t vm_prot, NvU32 extra)
      /*
       * When AMD memory encryption is enabled, device memory mappings with the
       * C-bit set read as 0xFF, so ensure the bit is cleared for user mappings.
@@ -31,10 +31,10 @@ index c96bca7..f35f74c 100644
  }
  
 diff --git a/conftest.sh b/conftest.sh
-index 09d4c17..8c5f773 100755
+index 1620c14..d5243bc 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -155,6 +155,7 @@ test_headers() {
+@@ -161,6 +161,7 @@ test_headers() {
      FILES="$FILES linux/dma-map-ops.h"
      FILES="$FILES linux/stdarg.h"
      FILES="$FILES linux/iosys-map.h"
@@ -42,7 +42,7 @@ index 09d4c17..8c5f773 100755
  
      translate_and_preprocess_header_files $FILES
  }
-@@ -4078,6 +4079,25 @@ compile_test() {
+@@ -4335,6 +4336,25 @@ compile_test() {
  
          ;;
  
@@ -69,11 +69,11 @@ index 09d4c17..8c5f773 100755
              #
              # Determine if drm_prime_pages_to_sg() has 'dev' argument.
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 882c8a1..367d9f8 100644
+index 9694d1b..3ac70c5 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -154,6 +154,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_raw_ts64
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += ktime_get_real_ts64
+@@ -160,6 +160,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += hlist_for_each_entry
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_enable_atomic_ops_to_root
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += vga_tryget
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += pgprot_decrypted
 +NV_CONFTEST_FUNCTION_COMPILE_TESTS += cc_mkdec

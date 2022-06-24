@@ -1,4 +1,4 @@
-From b2271ade48cb9e7aaa63b9898e2be5e33846bd74 Mon Sep 17 00:00:00 2001
+From 81eabab72ecde070dae1799104bd368efc3deb4e Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 11:14:33 +0200
 Subject: [PATCH 2/3] backport dma_set_coherent_mask from 470.129.06
@@ -10,10 +10,10 @@ Subject: [PATCH 2/3] backport dma_set_coherent_mask from 470.129.06
  3 files changed, 25 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 4c8e87e..eea7acf 100755
+index 37b7e32..c520d92 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4337,6 +4337,22 @@ compile_test() {
+@@ -4572,6 +4572,22 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_DEVICE_HAS_PDEV" "" "types"
          ;;
  
@@ -37,10 +37,10 @@ index 4c8e87e..eea7acf 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index d50ae02..8adddbc 100644
+index 17ac402..7b22422 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -2888,7 +2888,11 @@ nv_set_dma_address_size(
+@@ -2811,7 +2811,11 @@ nv_set_dma_address_size(
           * minor release update but detect the failure scenario here to prevent
           * an installation regression */
  #if !NV_IS_EXPORT_SYMBOL_GPL_sme_active
@@ -52,8 +52,8 @@ index d50ae02..8adddbc 100644
  #endif
      }
  }
-@@ -4477,7 +4481,11 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
-     start = dma_addr & ~(saved_dma_mask);
+@@ -4455,7 +4459,11 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+     nvl->dma_dev.addressable_range.start = dma_addr & ~(saved_dma_mask);
  
      /* Update the coherent mask to match */
 +#if defined(NV_DMA_SET_COHERENT_MASK_PRESENT)
@@ -63,12 +63,12 @@ index d50ae02..8adddbc 100644
 +#endif
  
  done:
- #endif
+     return nvl->dma_dev.addressable_range.start;
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index ca8baa0..d71ea4a 100644
+index 72708f2..b678cad 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -157,6 +157,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pgprot_decrypted
+@@ -163,6 +163,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += pgprot_decrypted
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += iterate_fd
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += seq_read_iter
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += unsafe_follow_pfn

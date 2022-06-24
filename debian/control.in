@@ -78,6 +78,7 @@ Depends:
  glx-alternative-nvidia (>= 0.8.4~) [!ppc64el],
  ${misc:Depends}
 Provides:
+ nvidia-alternative-any,
  ${nvidia}-alternative--kmod-alias,
 Breaks:
  nvidia-settings (<< 319.49),

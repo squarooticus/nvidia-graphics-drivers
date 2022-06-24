@@ -26,7 +26,7 @@ nvidia-graphics-drivers (460.106.00-6) UNRELEASED; urgency=medium
     cc_mkdec and drm_mode_config_has_allow_fb_modifiers changes from
     470.129.06 to fix kernel module build for Linux 5.18.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 24 Jun 2022 15:51:57 +0200
 
 nvidia-graphics-drivers (460.106.00-5) UNRELEASED; urgency=medium
 

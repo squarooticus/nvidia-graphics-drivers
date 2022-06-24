@@ -23,7 +23,7 @@ nvidia-graphics-drivers (460.106.00-6+git) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (460.106.00-6) UNRELEASED; urgency=medium
 
   * Backport pci/dma, iosys_map, dma_set_coherent_mask, acpi_bus_get_device,
-    cc_mkdec changes from
+    cc_mkdec and drm_mode_config_has_allow_fb_modifiers changes from
     470.129.06 to fix kernel module build for Linux 5.18.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100

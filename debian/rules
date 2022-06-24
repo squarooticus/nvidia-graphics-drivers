@@ -10,6 +10,7 @@ include debian/rules.defs
 NVIDIA_LEGACY		?=
 WATCH_VERSION		?= $(NVIDIA_LEGACY)
 WATCH_PATTERN		?=
+GIT_BRANCH		?= $(if $(variant),$(variant)/master)
 XORG_ABI_LIST		?=
 XORG_BOUND		?=
 LINUX_KMOD_TESTED	?=
@@ -375,7 +376,7 @@ debian/control-real: $(CONTROL_FILES)
 		-V'nvidia-if-variant=$(nvidia_if_variant)' \
 		-V'nvidia:Variant=$(-variant)' \
 		-V'libcuda1=$(libcuda1)' \
-		-V'Vcs-Git:Branch=$(if $(variant), -b $(subst legacy-,,$(variant))/master)' \
+		-V'Vcs-Git:Branch=$(if $(GIT_BRANCH), -b $(GIT_BRANCH))' \
 		$(foreach a,$(ARCH_CANDIDATES),-V'arch:$a=$(filter $a,$(DRIVER_ARCH_LIST))') \
 		-- \
 		debian/control.in > debian/control.new

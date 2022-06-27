@@ -76,6 +76,7 @@ Depends:
  glx-alternative-nvidia (>= 1.2),
  ${misc:Depends}
 Provides:
+ nvidia-alternative-any,
  ${nvidia}-alternative--kmod-alias,
 Conflicts:
  libglvnd0-nvidia,
@@ -110,6 +111,7 @@ Depends:
  ${misc:Depends}
 Provides:
  nvidia-kernel-support-any,
+ ${nvidia}-kernel-support--v1,
  ${nvidia}-kernel-support-${nvidia:Version},
  nvidia-firmware-${nvidia:Version},
 Conflicts:
@@ -130,6 +132,7 @@ Pre-Depends:
 Depends:
  dkms,
  ${nvidia}-kernel-support-${nvidia:Version},
+ ${nvidia}-kernel-support--v1,
  ${misc:Depends}
 Recommends:
  ${nvidia}-driver (>= ${nvidia:Version})

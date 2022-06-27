@@ -1,9 +1,9 @@
-nvidia-graphics-drivers (510.73.08-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (510.73.08-3) experimental; urgency=medium
 
   * Merge changes from 470.129.06-5.
   * Try new dkms feature BUILD_EXCLUSIVE_CONFIG.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 13 Jun 2022 22:51:48 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 27 Jun 2022 18:35:59 +0200
 
 nvidia-graphics-drivers (510.73.08-2) experimental; urgency=medium
 

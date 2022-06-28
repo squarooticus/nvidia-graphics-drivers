@@ -32,6 +32,9 @@ nvidia-graphics-drivers (515.43.04-1) UNRELEASED; urgency=medium
       (NVreg_DynamicPowerManagementVideoMemoryThreshold) maximum value from
       200 MB to 1024 MB.
 
+  [ Andreas Beckmann ]
+  * Update symbols files.
+
  -- Andreas Beckmann <anbe@debian.org>  Tue, 28 Jun 2022 08:03:08 +0200
 
 nvidia-graphics-drivers (510.85.02-6) unstable; urgency=medium

@@ -129,6 +129,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGetErrorString@Base 331
  cuGetExportTable@Base 195.30
  cuGetProcAddress@Base 465
+ cuGraphAddBatchMemOpNode@Base 515
  cuGraphAddChildGraphNode@Base 410
  cuGraphAddDependencies@Base 410
  cuGraphAddEmptyNode@Base 410
@@ -142,6 +143,8 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGraphAddMemFreeNode@Base 470
  cuGraphAddMemcpyNode@Base 410
  cuGraphAddMemsetNode@Base 410
+ cuGraphBatchMemOpNodeGetParams@Base 515
+ cuGraphBatchMemOpNodeSetParams@Base 515
  cuGraphChildGraphNodeGetGraph@Base 410
  cuGraphClone@Base 410
  cuGraphCreate@Base 410
@@ -152,6 +155,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuGraphEventRecordNodeSetEvent@Base 455
  cuGraphEventWaitNodeGetEvent@Base 455
  cuGraphEventWaitNodeSetEvent@Base 455
+ cuGraphExecBatchMemOpNodeSetParams@Base 515
  cuGraphExecChildGraphNodeSetParams@Base 455
  cuGraphExecDestroy@Base 410
  cuGraphExecEventRecordNodeSetEvent@Base 455
@@ -273,6 +277,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuMemGetAllocationPropertiesFromHandle@Base 440
  cuMemGetAttribute@Base 190
  cuMemGetAttribute_v2@Base 270
+ cuMemGetHandleForAddressRange@Base 515
  cuMemGetInfo@Base 169
  cuMemGetInfo_v2@Base 260
  cuMemHostAlloc@Base 185
@@ -409,6 +414,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuModuleGetFunction@Base 169
  cuModuleGetGlobal@Base 169
  cuModuleGetGlobal_v2@Base 260
+ cuModuleGetLoadingMode@Base 515
  cuModuleGetSurfRef@Base 256
  cuModuleGetTexRef@Base 169
  cuModuleLoad@Base 169
@@ -440,6 +446,8 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuStreamAttachMemAsync_ptsz@Base 346
  cuStreamBatchMemOp@Base 361.42
  cuStreamBatchMemOp_ptsz@Base 361.42
+ cuStreamBatchMemOp_v2@Base 515
+ cuStreamBatchMemOp_v2_ptsz@Base 515
  cuStreamBeginCapture@Base 410
  cuStreamBeginCapture_ptsz@Base 410
  cuStreamBeginCapture_v2@Base 418
@@ -478,12 +486,20 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuStreamWaitEvent_ptsz@Base 346
  cuStreamWaitValue32@Base 361.42
  cuStreamWaitValue32_ptsz@Base 361.42
+ cuStreamWaitValue32_v2@Base 515
+ cuStreamWaitValue32_v2_ptsz@Base 515
  cuStreamWaitValue64@Base 384
  cuStreamWaitValue64_ptsz@Base 384
+ cuStreamWaitValue64_v2@Base 515
+ cuStreamWaitValue64_v2_ptsz@Base 515
  cuStreamWriteValue32@Base 361.42
  cuStreamWriteValue32_ptsz@Base 361.42
+ cuStreamWriteValue32_v2@Base 515
+ cuStreamWriteValue32_v2_ptsz@Base 515
  cuStreamWriteValue64@Base 384
  cuStreamWriteValue64_ptsz@Base 384
+ cuStreamWriteValue64_v2@Base 515
+ cuStreamWriteValue64_v2_ptsz@Base 515
  cuSurfObjectCreate@Base 304
  cuSurfObjectDestroy@Base 304
  cuSurfObjectGetResourceDesc@Base 304

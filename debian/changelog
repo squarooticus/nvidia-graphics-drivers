@@ -1,3 +1,39 @@
+nvidia-graphics-drivers (515.43.04-1) UNRELEASED; urgency=medium
+
+  * New upstream beta 515.43.04 (2022-05-11).
+    - Published the source code to a variant of the NVIDIA Linux kernel
+      modules dual-licensed as MIT/GPLv2. The source is available here:
+          https://github.com/NVIDIA/open-gpu-kernel-modules
+      and will be updated each driver release. Please see the "Open
+      Linux Kernel Modules" chapter in the README for details.
+    - Added support for the VK_EXT_external_memory_dma_buf and
+      VK_EXT_image_drm_format_modifier Vulkan extensions. To use this
+      functionality, the nvidia-drm kernel module must be loaded with DRM KMS
+      mode setting enabled. See the DRM KMS section of the README for guidance
+      on enabling mode setting.
+    - Changed nvidia-suspend.service, nvidia-resume.service, and
+      nvidia-hibernate.service to use WantedBy= rather than RequiredBy=
+      dependencies for systemd-suspend.service and systemd-hibernate.service.
+      This avoids a problem where suspend or hibernate fails if the NVIDIA
+      driver is uninstalled without disabling these services first.
+      See https://github.com/systemd/systemd/issues/21991
+      If these services were manually enabled, it may be necessary to update
+      their dependencies by running
+        sudo systemctl reenable nvidia-suspend.service \
+          nvidia-resume.service nvidia-hibernate.service
+    - Interlaced modes are now disabled when active stereo is enabled.
+    - Removed the warning message about mismatches between the compiler
+      used to build the Linux kernel and the compiler used to build the
+      NVIDIA kernel modules from nvidia-installer. Modern compilers are less
+      likely to cause problems when this type of mismatch occurs, and it has
+      become common in many distributions to build the Linux kernel with a
+      different compiler than the default system compiler.
+    - Updated the RTD3 Video Memory Utilization Threshold
+      (NVreg_DynamicPowerManagementVideoMemoryThreshold) maximum value from
+      200 MB to 1024 MB.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 28 Jun 2022 08:03:08 +0200
+
 nvidia-graphics-drivers (510.85.02-6) unstable; urgency=medium
 
   * Split firmware-nvidia-gsp from nvidia-kernel-support.

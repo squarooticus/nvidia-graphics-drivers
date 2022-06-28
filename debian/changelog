@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (510.73.08-4) UNRELEASED; urgency=medium
+
+  * Restrict watch file to releases from the 510.xx production branch.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 28 Jun 2022 08:08:37 +0200
+
 nvidia-graphics-drivers (510.73.08-3) experimental; urgency=medium
 
   * Merge changes from 470.129.06-5.

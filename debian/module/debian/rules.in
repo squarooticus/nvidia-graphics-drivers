@@ -49,7 +49,7 @@ ifneq (nvidia,$(MODULE))
 	mv nvidia.ko $(MODULE).ko
 	mv nvidia-modeset.ko $(MODULE)-modeset.ko
 	mv nvidia-drm.ko $(MODULE)-drm.ko
-#HAS_UVM#	mv nvidia-uvm.ko $(MODULE)-uvm.ko
+	mv nvidia-uvm.ko $(MODULE)-uvm.ko
 endif
 	touch $@
 

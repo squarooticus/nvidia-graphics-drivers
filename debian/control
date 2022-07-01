@@ -420,7 +420,6 @@ Multi-Arch: foreign
 Pre-Depends:
  nvidia-installer-cleanup,
 Depends:
- dkms,
  ${nvidia}-kernel-support--v1,
  ${misc:Depends}
 Recommends:

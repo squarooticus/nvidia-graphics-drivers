@@ -22,7 +22,6 @@ ARCH_LIST		?= amd64
 BLOB_ARCH_LIST		?= $(strip $(DEB_HOST_ARCH) $(ARCH_DEPS_$(DEB_HOST_ARCH)))
 NO_DRIVER_ARCH_LIST	?=
 NO_AUTOPKGTEST_ARCH_LIST?=
-NO_UVM_ARCH_LIST	?=
 NO_VULKAN_ARCH_LIST	?=
 
 NVIDIA_RELEASE		 = $(DEB_VERSION_UPSTREAM)
@@ -49,7 +48,6 @@ watch_pattern		 = $(or $(WATCH_PATTERN),$(if $(WATCH_VERSION),$(WATCH_VERSION)(?
 standards_version	:= $(shell sed -rn 's/Standards-Version: (.*)/\1/p' debian/control)
 debhelper_compat	:= $(shell sed -rn 's/.*debhelper-compat \(= ([0-9]+)\).*/\1/p' debian/control)
 has_driver		 = $(filter $(DEB_HOST_ARCH),$(filter-out $(NO_DRIVER_ARCH_LIST),$(ARCH_LIST)))
-has_uvm			 = $(filter $(DEB_HOST_ARCH),$(filter-out $(NO_UVM_ARCH_LIST),$(ARCH_LIST)))
 has_vulkan		 = $(filter $(DEB_HOST_ARCH),$(filter-out $(NO_VULKAN_ARCH_LIST),$(ARCH_LIST)))
 DRIVER_ARCH_LIST	 = $(filter-out $(NO_DRIVER_ARCH_LIST),$(ARCH_LIST))
 AUTOPKGTEST_ARCH_LIST	 = $(filter-out $(NO_AUTOPKGTEST_ARCH_LIST),$(DRIVER_ARCH_LIST))
@@ -59,7 +57,7 @@ unload_modules		 =
 unload_modules		+= nvidia-drm
 unload_modules		+= nvidia-modeset
 unload_modules		+= nvidia-peermem
-unload_modules		+= $(if $(has_uvm),nvidia-uvm)
+unload_modules		+= nvidia-uvm
 unload_modules		+= nvidia
 
 # system libdir
@@ -369,7 +367,6 @@ override_dh_strip_nondeterminism:
 	-e 's{#UNLOAD_MODULES#}{$(strip $(unload_modules))}g;' \
 	-e 's{#ARCH_LIST#}{$(DRIVER_ARCH_LIST)}g;' \
 	-e 's{#AUTOPKGTEST_ARCH_LIST#}{$(AUTOPKGTEST_ARCH_LIST)}g;' \
-	-e 's{#HAS_UVM#}{$(if $(has_uvm),,#)}g;' \
 	-e 's{#!arm64#}{$(if $(filter arm64,$(DEB_HOST_ARCH)),#)}g;' \
 	-e 's{#!ppc64el#}{$(if $(filter ppc64el,$(DEB_HOST_ARCH)),#)}g;' \
 	$(EXTRA_SUBSTITUTIONS) \

@@ -134,7 +134,6 @@ Multi-Arch: foreign
 Pre-Depends:
  nvidia-installer-cleanup,
 Depends:
- dkms,
  ${nvidia}-kernel-support--v1,
  ${misc:Depends}
 Recommends:
@@ -142,7 +141,7 @@ Recommends:
 Provides:
  ${nvidia}-kernel-${nvidia:Version},
 Description: NVIDIA binary kernel module DKMS source${nvidia:VariantDesc}
- This package builds the NVIDIA Xorg binary kernel module needed by
+ This package builds the NVIDIA binary kernel modules needed by
  ${nvidia}-driver, using DKMS.
  Provided that you have the kernel header packages installed, the kernel
  module will be built for your running kernel and automatically rebuilt for
@@ -178,7 +177,7 @@ Suggests:
 Breaks:
  module-assistant (<< 0.11.6~),
 Description: NVIDIA binary kernel module source${nvidia:VariantDesc}
- This package provides the source for the NVIDIA Xorg binary kernel module
+ This package provides the source for the NVIDIA binary kernel modules
  needed by ${nvidia}-driver in a form suitable
  for use by module-assistant or kernel-package.
  .

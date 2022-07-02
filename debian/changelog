@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (470.129.06-6) UNRELEASED; urgency=medium
+
+  * Minor packaging sync and cleanup.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 02 Jul 2022 18:19:13 +0200
+
 nvidia-graphics-drivers (470.129.06-5) unstable; urgency=medium
 
   * Update lintian overrides.

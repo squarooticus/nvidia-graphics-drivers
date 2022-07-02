@@ -3,6 +3,7 @@ nvidia-graphics-drivers (460.106.00-6) UNRELEASED; urgency=medium
   * Backport pci/dma, iosys_map, dma_set_coherent_mask, acpi_bus_get_device,
     cc_mkdec and drm_mode_config_has_allow_fb_modifiers changes from
     470.129.06 to fix kernel module build for Linux 5.18.
+  * Minor packaging sync and cleanup (470.129.06-6).
   * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 24 Jun 2022 15:51:57 +0200

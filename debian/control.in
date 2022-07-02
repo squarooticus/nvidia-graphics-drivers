@@ -128,7 +128,6 @@ Multi-Arch: foreign
 Pre-Depends:
  nvidia-installer-cleanup,
 Depends:
- dkms,
  ${nvidia}-kernel-support-${nvidia:Version},
  ${nvidia}-kernel-support--v1,
  ${misc:Depends}
@@ -138,7 +137,7 @@ Recommends:
 Provides:
  ${nvidia}-kernel-${nvidia:Version},
 Description: NVIDIA binary kernel module DKMS source${nvidia:VariantDesc}
- This package builds the NVIDIA Xorg binary kernel module needed by
+ This package builds the NVIDIA binary kernel modules needed by
  ${nvidia}-driver, using DKMS.
  Provided that you have the kernel header packages installed, the kernel
  module will be built for your running kernel and automatically rebuilt for
@@ -172,7 +171,7 @@ Recommends:
 Suggests:
  ${nvidia}-driver (>= ${nvidia:Version}),
 Description: NVIDIA binary kernel module source${nvidia:VariantDesc}
- This package provides the source for the NVIDIA Xorg binary kernel module
+ This package provides the source for the NVIDIA binary kernel modules
  needed by ${nvidia}-driver in a form suitable
  for use by module-assistant or kernel-package.
  .
@@ -868,7 +867,7 @@ Description: NVIDIA Management Library (NVML) runtime library${nvidia:VariantDes
 
 Package: nvidia-cuda-mps
 Section: non-free/utils
-Architecture: amd64 ${arch:arm64} ${arch:ppc64el}
+Architecture: #amd64 ${arch:arm64} ${arch:ppc64el}
 Depends:
  ${shlibs:Depends}, ${misc:Depends}
 Description: NVIDIA CUDA Multi Process Service (MPS)

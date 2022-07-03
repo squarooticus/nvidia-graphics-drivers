@@ -110,7 +110,7 @@ Depends:
 Provides:
  nvidia-kernel-support-any,
  ${nvidia}-kernel-support--v1,
- ${nvidia}-kernel-support-${nvidia:Version},
+ ${nvidia}-kernel-support-${nvidia:Version} [amd64],
  nvidia-firmware-${nvidia:Version} [amd64],
 Conflicts:
  nvidia-firmware-${nvidia:Version} [amd64],
@@ -128,7 +128,7 @@ Multi-Arch: foreign
 Pre-Depends:
  nvidia-installer-cleanup,
 Depends:
- ${nvidia}-kernel-support-${nvidia:Version},
+ ${nvidia}-kernel-support-${nvidia:Version} [amd64],
  ${nvidia}-kernel-support--v1,
  ${misc:Depends}
 Recommends:

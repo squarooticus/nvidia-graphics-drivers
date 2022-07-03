@@ -1,10 +1,10 @@
-nvidia-graphics-drivers (470.129.06-6) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.129.06-6) unstable; urgency=medium
 
   * Minor packaging sync and cleanup.
   * Disable building nvidia-cuda-mps, will be built from
     src:nvidia-graphics-drivers-tesla-${latest}.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 02 Jul 2022 18:19:13 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 03 Jul 2022 09:45:39 +0200
 
 nvidia-graphics-drivers (470.129.06-5) unstable; urgency=medium
 

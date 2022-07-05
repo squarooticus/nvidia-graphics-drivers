@@ -4,6 +4,10 @@ test -x /usr/bin/module-assistant || apt-get install module-assistant
 
 cd /usr/src
 
+summary=
+nl="
+"
+
 kernels=
 slenrek=
 failed=
@@ -11,6 +15,7 @@ for k in $(ls -dvr1 /lib/modules/*/build 2>/dev/null | cut -d/ -f4) ; do
 	case $k in
 		*-rt-*)
 			: # skip PREEMPT_RT kernel
+			summary="${summary}SKIP $k (PREEMPT_RT)${nl}"
 			;;
 		*)
 			kernels="$kernels $k"
@@ -18,11 +23,19 @@ for k in $(ls -dvr1 /lib/modules/*/build 2>/dev/null | cut -d/ -f4) ; do
 			;;
 	esac
 done
+
 modules=#NVIDIA#-kernel
 
 module-assistant clean $modules
 for k in $kernels ; do
-	module-assistant build --text-mode --force --kvers-list "$k" $modules || failed="$failed $k"
+	ret=0
+	module-assistant build --text-mode --force --kvers-list "$k" $modules || ret=$?
+	if [ "$ret" = 0 ]; then
+		summary="${summary}PASS $k${nl}"
+	else
+		failed="$failed $k"
+		summary="${summary}FAIL $k ($ret)${nl}"
+	fi
 done
 
 ls -l *.deb || true
@@ -33,6 +46,13 @@ for m in $modules ; do
 	done
 done
 
+if [ -n "$summary" ]; then
+	echo "Summary:"
+	echo -n "$summary"
+fi
+
 for k in $failed ; do
 	echo "$modules MODULE BUILD FAILED FOR $k"
 done
+
+test -z "$failed" || exit 1

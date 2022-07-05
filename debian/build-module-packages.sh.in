@@ -12,16 +12,15 @@ kernels=
 slenrek=
 failed=
 for k in $(ls -dvr1 /lib/modules/*/build 2>/dev/null | cut -d/ -f4) ; do
-	case $k in
-		*-rt-*)
-			: # skip PREEMPT_RT kernel
+	kconfig=/lib/modules/$k/build/.config
+	if [ -f "$kconfig" ]; then
+		if grep -q -E "^CONFIG_PREEMPT_RT=[ym]" $kconfig ; then
 			summary="${summary}SKIP $k (PREEMPT_RT)${nl}"
-			;;
-		*)
-			kernels="$kernels $k"
-			slenrek="$k $slenrek"
-			;;
-	esac
+			continue
+		fi
+	fi
+	kernels="$kernels $k"
+	slenrek="$k $slenrek"
 done
 
 modules=#NVIDIA#-kernel

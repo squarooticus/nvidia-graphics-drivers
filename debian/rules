@@ -83,6 +83,7 @@ AUTOGEN		+= debian/bug-control
 AUTOGEN		+= debian/substvars
 AUTOKEEP	 = debian/watch
 AUTOKEEP	+= debian/tests/autopkgtest-pkg-dkms.conf
+AUTOKEEP	+= debian/tests/control
 AUTOCLEAN	 = $(filter-out $(AUTOKEEP),$(AUTOGEN))
 
 empty		 =

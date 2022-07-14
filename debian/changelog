@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (470.129.06-7) UNRELEASED; urgency=medium
+
+  * More generic handling of architectures with gsp firmware.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 06 Jul 2022 14:48:27 +0200
+
 nvidia-graphics-drivers (470.129.06-6~deb11u1) bullseye; urgency=medium
 
   * Rebuild for bullseye.

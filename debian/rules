@@ -23,6 +23,7 @@ BLOB_ARCH_LIST		?= $(strip $(DEB_HOST_ARCH) $(ARCH_DEPS_$(DEB_HOST_ARCH)))
 NO_DRIVER_ARCH_LIST	?=
 NO_AUTOPKGTEST_ARCH_LIST?=
 NO_VULKAN_ARCH_LIST	?=
+NO_GSP_ARCH_LIST	?=
 
 NVIDIA_RELEASE		 = $(DEB_VERSION_UPSTREAM)
 version			 = $(NVIDIA_RELEASE)
@@ -51,6 +52,7 @@ has_driver		 = $(filter $(DEB_HOST_ARCH),$(filter-out $(NO_DRIVER_ARCH_LIST),$(A
 has_vulkan		 = $(filter $(DEB_HOST_ARCH),$(filter-out $(NO_VULKAN_ARCH_LIST),$(ARCH_LIST)))
 DRIVER_ARCH_LIST	 = $(filter-out $(NO_DRIVER_ARCH_LIST),$(ARCH_LIST))
 AUTOPKGTEST_ARCH_LIST	 = $(filter-out $(NO_AUTOPKGTEST_ARCH_LIST),$(DRIVER_ARCH_LIST))
+GSP_ARCH_LIST		 = $(filter-out $(NO_GSP_ARCH_LIST),$(DRIVER_ARCH_LIST))
 
 # this needs the internal names (i.e. upstream's names, not our renamed files)
 unload_modules		 =
@@ -322,6 +324,7 @@ override_dh_gencontrol:
 		$(foreach a,$(ARCH_CANDIDATES),-V'arch:$a=$(filter $a,$(DRIVER_ARCH_LIST))') \
 		-V'nvidia:arch:has-driver=$(if $(has_driver),,!)$(DEB_HOST_ARCH)' \
 		-V'nvidia:arch:has-no-driver=$(if $(has_driver),!,)$(DEB_HOST_ARCH)' \
+		-V'nvidia:arches:gsp=$(GSP_ARCH_LIST)' \
 		-V'nvidia:kmod:binary=$${nvidia}-kernel-dkms (= $${binary:Version}) [$${nvidia:arch:has-driver}] | $${nvidia}-kernel-$${nvidia:Version} [$${nvidia:arch:has-driver}]' \
 		-V'nvidia:kmod:source=$${nvidia}-kernel-dkms (>= $${nvidia:Version}) [$${nvidia:arch:has-driver}] | $${nvidia}-kernel-source (>= $${nvidia:Version}) [$${nvidia:arch:has-driver}]' \
 		-V'nvidia:kmod:tested:Linux=$(strip $(or $(LINUX_KMOD_TESTED_$(DEB_HOST_ARCH)),$(LINUX_KMOD_TESTED),???))' \
@@ -367,6 +370,7 @@ override_dh_strip_nondeterminism:
 	-e 's{#UNLOAD_MODULES#}{$(strip $(unload_modules))}g;' \
 	-e 's{#ARCH_LIST#}{$(DRIVER_ARCH_LIST)}g;' \
 	-e 's{#AUTOPKGTEST_ARCH_LIST#}{$(AUTOPKGTEST_ARCH_LIST)}g;' \
+	-e 's{#GSP_ARCH_LIST#}{$(GSP_ARCH_LIST)}g;' \
 	-e 's{#!arm64#}{$(if $(filter arm64,$(DEB_HOST_ARCH)),#)}g;' \
 	-e 's{#!ppc64el#}{$(if $(filter ppc64el,$(DEB_HOST_ARCH)),#)}g;' \
 	$(EXTRA_SUBSTITUTIONS) \

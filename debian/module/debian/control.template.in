@@ -12,7 +12,7 @@ Package: #NVIDIA#-kernel-#KVERS#
 Architecture: #ARCH_LIST#
 Provides: #NVIDIA#-kernel-#VERSION#
 Depends:
- #NVIDIA#-kernel-support-#VERSION# [amd64],
+ firmware-#NVIDIA#-gsp (= #VERSION#) [amd64] | firmware-nvidia-gsp-#VERSION# [amd64],
  #NVIDIA#-kernel-support--v1,
 Recommends: linux-image-#KVERS#
 Built-Using: ${built:using:kernel}, ${built:using:nvidia}

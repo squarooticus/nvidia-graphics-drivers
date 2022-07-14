@@ -110,9 +110,11 @@ Depends:
 Provides:
  nvidia-kernel-support-any,
  ${nvidia}-kernel-support--v1,
- ${nvidia}-kernel-support-${nvidia:Version} [amd64],
+ firmware-${nvidia}-gsp (= ${nvidia:Version}) [amd64],
+ firmware-nvidia-gsp-${nvidia:Version} [amd64],
  nvidia-firmware-${nvidia:Version} [amd64],
 Conflicts:
+ firmware-nvidia-gsp-${nvidia:Version} [amd64],
  nvidia-firmware-${nvidia:Version} [amd64],
 Description: NVIDIA binary kernel module support files${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
@@ -128,7 +130,7 @@ Multi-Arch: foreign
 Pre-Depends:
  nvidia-installer-cleanup,
 Depends:
- ${nvidia}-kernel-support-${nvidia:Version} [amd64],
+ firmware-${nvidia}-gsp (= ${nvidia:Version}) [amd64] | firmware-nvidia-gsp-${nvidia:Version} [amd64],
  ${nvidia}-kernel-support--v1,
  ${misc:Depends}
 Recommends:
@@ -167,6 +169,7 @@ Depends:
  ${misc:Depends}
 Recommends:
  module-assistant | kernel-package,
+ firmware-${nvidia}-gsp (= ${nvidia:Version}) [amd64] | firmware-nvidia-gsp-${nvidia:Version} [amd64],
  ${nvidia}-kernel-support,
 Suggests:
  ${nvidia}-driver (>= ${nvidia:Version}),

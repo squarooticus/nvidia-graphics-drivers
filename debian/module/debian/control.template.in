@@ -1,4 +1,4 @@
-Source: nvidia-graphics-drivers#VARIANT#
+Source: nvidia-graphics-drivers#LEGACY#
 Section: non-free/kernel
 Priority: optional
 Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>

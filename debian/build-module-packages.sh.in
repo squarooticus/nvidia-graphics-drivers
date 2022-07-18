@@ -15,7 +15,11 @@ for k in $(ls -dvr1 /lib/modules/*/build 2>/dev/null | cut -d/ -f4) ; do
 	kconfig=/lib/modules/$k/build/.config
 	if [ -f "$kconfig" ]; then
 		if grep -q -E "^CONFIG_PREEMPT_RT=[ym]" $kconfig ; then
-			summary="${summary}SKIP $k (PREEMPT_RT)${nl}"
+			summary="${summary}SKIP $k (CONFIG_PREEMPT_RT)${nl}"
+			continue
+		fi
+		if grep -q -E "^CONFIG_PREEMPT_RT_FULL=[ym]" $kconfig ; then
+			summary="${summary}SKIP $k (CONFIG_PREEMPT_RT_FULL)${nl}"
 			continue
 		fi
 	fi

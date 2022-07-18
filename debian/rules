@@ -36,7 +36,6 @@ legacy			 = $(if $(NVIDIA_LEGACY),-legacy-$(NVIDIA_LEGACY)xx)
 legacy_description	 = $(if $(NVIDIA_LEGACY), ($(NVIDIA_LEGACY)xx legacy version))
 legacy_description_short = $(if $(NVIDIA_LEGACY), ($(NVIDIA_LEGACY)xx legacy))
 watch_pattern		 = $(or $(WATCH_PATTERN),$(if $(WATCH_VERSION),$(WATCH_VERSION)(?:\.[\d\.\-]+)?),\d[\d\.\-]*)
-standards_version	:= $(shell sed -rn 's/Standards-Version: (.*)/\1/p' debian/control)
 DRIVER_ARCH_LIST	 = $(filter-out $(NO_DRIVER_ARCH_LIST),$(ARCH_LIST))
 AUTOPKGTEST_ARCH_LIST	 = $(filter-out $(NO_AUTOPKGTEST_ARCH_LIST),$(DRIVER_ARCH_LIST))
 
@@ -77,6 +76,7 @@ RENAMED_CONTROL	 = $(foreach f,$(RENAME_CONTROL),$(call applyprefixrenamelist,$f
 TEMPLATES	:= $(wildcard debian/*.in debian/module/debian/*.in debian/module/debian/patches/*.in debian/detect/*.in debian/tests/*.in)
 AUTOGEN		+= $(patsubst %.in,%,$(TEMPLATES))
 AUTOGEN		+= debian/module/debian/bug-control
+AUTOGEN		+= debian/module/debian/control.template
 AUTOGEN		+= $(patsubst %.in,%,$(RENAMED_CONTROL))
 AUTOGEN		+= debian/bug-control
 AUTOGEN		+= debian/substvars
@@ -213,6 +213,7 @@ override_dh_install:
 	  tar cfJ $(module_source_txz) \
 	    --owner=root --group=src -C $(module_source_pkg)/usr/src \
 	    --exclude '*.in' \
+	    --exclude '*.template.binary' \
 	    --no-recursion --null -T -
 	tar tfvJ $(module_source_txz)
 	$(RM) -r $(module_source_pkg)/usr/src/modules
@@ -291,7 +292,6 @@ override_dh_strip_nondeterminism:
 	-e 's{#LEGACY#}{$(legacy)}g;' \
 	-e 's{#MODULE#}{$(module)}g;' \
 	-e 's{#WATCH_PATTERN#}{$(subst \,\\,$(watch_pattern))}g;' \
-	-e 's{#STANDARDS_VERSION#}{$(standards_version)}g;' \
 	-e 's{#LIBDIR#}{$(libdir)}g;' \
 	-e 's{#PRIVATE#}{$(nvidia_private)}g;' \
 	-e 's{#UNLOAD_MODULES#}{$(strip $(unload_modules))}g;' \
@@ -307,6 +307,10 @@ override_dh_strip_nondeterminism:
 debian/module/debian/patches/series: EXTRA_SUBSTITUTIONS =
 debian/nvidia-kernel-dkms.dkms: debian/module/debian/patches/series
 debian/nvidia-kernel-dkms.dkms: EXTRA_SUBSTITUTIONS += -e 's{\#MODULE_PATCHES\#}{$(patsubst %,%,$(shell grep -v ^\# debian/module/debian/patches/series))}g;'
+
+debian/module/debian/control.template: debian/control debian/module/debian/control.template.binary
+	sed -n '0,/^$$/p' $< > $@
+	cat $(filter-out $<,$^) >> $@
 
 debian/module/debian/bug-control: debian/bug-control
 	cp $< $@

@@ -3,6 +3,7 @@
 export NV_VERBOSE := 1
 
 MODULE_BASENAME	 = #MODULE#
+MODSRCPKG	 = #NVIDIA#-kernel-source
 
 CFLAGS = -Wall -g
 ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
@@ -71,8 +72,8 @@ binary-arch: build-stamp
 	dh_strip
 	dh_installdeb
 	dh_gencontrol -- -v`cat debian/VERSION` \
-		-V'built:using:kernel=$(call get_built_using,linux-headers-$(KVERS))' \
-		-V'built:using:nvidia=$(call get_built_using,#NVIDIA#-kernel-source)'
+		-V'built-using:kernel=$(call get_built_using,linux-headers-$(KVERS))' \
+		-V'built-using:module=$(call get_built_using,$(MODSRCPKG))'
 	dh_md5sums
 	dh_builddeb --destdir=$(KPKG_DEST_DIR)
 

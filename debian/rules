@@ -203,19 +203,16 @@ module_source_txz	 = $(module_source_pkg)/usr/src/$(nvidia)-kernel.tar.xz
 override_dh_install:
 	dh_install
 
-	chmod a+x $(module_source_pkg)/usr/src/modules/$(nvidia)-kernel/debian/rules
-	find $(module_source_pkg)/usr/src/modules -depth -newermt '@$(SOURCE_DATE_EPOCH)' -print0 | \
-		xargs -0r touch --no-dereference --date='@$(SOURCE_DATE_EPOCH)'
-
-	# Build the tarball.
-	(cd $(module_source_pkg)/usr/src && find modules -print0) | \
-	  LC_ALL=C sort -z | \
-	  tar cfJ $(module_source_txz) \
-	    --owner=root --group=src -C $(module_source_pkg)/usr/src \
-	    --exclude '*.in' \
-	    --exclude '*.template.binary' \
-	    --no-recursion --null -T -
-	tar tfvJ $(module_source_txz)
+	find $(module_source_pkg) \( -name '*.binary' -o -name '*.in' -not -name '*.modules.in' \) -print -delete
+	tar c \
+		-C $(module_source_pkg)/usr/src \
+		--owner=root --group=root \
+		--mode=a=rX,u+w \
+		--sort=name \
+		--mtime='@$(SOURCE_DATE_EPOCH)' \
+		--clamp-mtime \
+		modules | xz -9 > $(module_source_txz)
+	tar tfv $(module_source_txz)
 	$(RM) -r $(module_source_pkg)/usr/src/modules
 
 kernel-source-tree: build-stamp $(AUTOGEN)

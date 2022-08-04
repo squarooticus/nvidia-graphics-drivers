@@ -1,4 +1,4 @@
-From 56ccf83b92aaf85f4e177c044062a7bcaa1bf91b Mon Sep 17 00:00:00 2001
+From 092386d4372f72bcd46c5ebe649cf967846811f4 Mon Sep 17 00:00:00 2001
 From: Jiri Palecek <jpalecek@web.de>
 Date: Sat, 16 May 2020 02:02:43 +0200
 Subject: [PATCH] fix conftest includes
@@ -33,7 +33,7 @@ Bug-Debian: https://bugs.debian.org/960735
  1 file changed, 9 insertions(+), 3 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 35f1e52..712fea5 100755
+index e5f9146..4f6648c 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -430,6 +430,8 @@ compile_test() {
@@ -63,7 +63,7 @@ index 35f1e52..712fea5 100755
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -1888,7 +1894,7 @@ compile_test() {
+@@ -1886,7 +1892,7 @@ compile_test() {
              # Determine if atomic_long_t and associated functions are defined
              # Added in 2.6.16 2006-01-06 d3cb487149bd706aa6aeb02042332a450978dc1c
              CODE="
@@ -72,7 +72,7 @@ index 35f1e52..712fea5 100755
              void conftest_atomic_long(void) {
                  atomic_long_t data;
                  atomic_long_read(&data);
-@@ -1902,7 +1908,7 @@ compile_test() {
+@@ -1900,7 +1906,7 @@ compile_test() {
          atomic64_type)
              # Determine if atomic64_t and associated functions are defined
              CODE="
@@ -81,7 +81,7 @@ index 35f1e52..712fea5 100755
              void conftest_atomic64(void) {
                  atomic64_t data;
                  atomic64_read(&data);
-@@ -3603,7 +3609,7 @@ compile_test() {
+@@ -3601,7 +3607,7 @@ compile_test() {
              #     2008-01-25  9ee85241fdaab358dff1d8647f20a478cfa512a1
              #
              CODE="

@@ -46,6 +46,9 @@ nvidia-graphics-drivers (390.154-1) UNRELEASED; urgency=medium
       https://nvidia.custhelp.com/app/answers/detail/a_id/5383
     * Improved compatibility with recent Linux kernels.
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Thu, 04 Aug 2022 01:58:02 +0200
 
 nvidia-graphics-drivers (390.151-2) UNRELEASED; urgency=medium

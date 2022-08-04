@@ -30,6 +30,14 @@ nvidia-graphics-drivers (390.154-1+git) UNRELEASED; urgency=medium
     module renaming. This is a slave alternative of the nvidia alternative
     (470.86-1).  (Closes: #999670)
   * Minor packaging sync and cleanup (470.129.06-6).
+  * Drop references to kernel-package and make-kpkg, gone since stretch
+    (470.141.03-1).
+  * Overhaul build-module-packages.sh (470.141.03-1).
+  * Add module-assistant based autopkgtest for the *-source package
+    (470.141.03-1).
+  * Simplify changelog management for the *-source package (470.141.03-1).
+  * Copy the Source stanza from d/control to the module control file
+    (470.141.03-1).
   * Update lintian overrides.
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.6.1. No changes needed.

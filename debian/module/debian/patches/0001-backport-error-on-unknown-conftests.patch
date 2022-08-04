@@ -1,4 +1,4 @@
-From db8f561f7e5e254b8db8fa7902e087a1c4aabbe4 Mon Sep 17 00:00:00 2001
+From 10f6a0f3ee40d5e25490a07e1cb01d0aa6b0167c Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 22 Sep 2021 08:49:14 +0200
 Subject: [PATCH 1/2] backport error on unknown conftests
@@ -10,11 +10,11 @@ for easier backporting of future conftest.sh changes
  2 files changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 627876a..35f1e52 100755
+index 1d142a1..e5f9146 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4551,6 +4551,17 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_ACPI_BUS_GET_DEVICE_PRESENT" "" "functions"
+@@ -4610,6 +4610,17 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_RESERVATION_OBJECT_RESERVE_SHARED_HAS_NUM_FENCES_ARG" "" "types"
          ;;
  
 +        # When adding a new conftest entry, please use the correct format for
@@ -32,7 +32,7 @@ index 627876a..35f1e52 100755
  }
  
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index f098edb..329d340 100644
+index e1596ce..2e8048f 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
 @@ -105,7 +105,7 @@ NV_OBJECTS_DEPEND_ON_CONFTEST += $(NVIDIA_OBJECTS)
@@ -46,7 +46,7 @@ index f098edb..329d340 100644
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += set_memory_uc
 @@ -127,7 +127,7 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += acpi_walk_namespace
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_domain_nr
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += pci_dma_mapping_error
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += dma_mapping_error
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += sg_alloc_table
 -NV_CONFTEST_FUNCTION_COMPILE_TESTS += sg_init_table
 +#NV_CONFTEST_FUNCTION_COMPILE_TESTS += sg_init_table

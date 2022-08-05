@@ -1,5 +1,11 @@
-nvidia-graphics-drivers (515.57-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (515.65.01-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 515.65.01 (2022-08-02).
+    - Fixed a bug that caused the X server to hang when VT-switching with
+      stereo enabled.
+    - Fixed an issue that caused OpenGL applications to be unresponsive in SLI
+      Mosaic mode with no monitors enabled on the primary GPU.
+    * Improved compatibility with recent Linux kernels.
   * New upstream production branch release 515.57 (2022-06-28).
     - Fixed a bug that could cause some graphics applications to crash when
       they are started while nvidia-drm.ko is not loaded.
@@ -18,7 +24,7 @@ nvidia-graphics-drivers (515.57-1) UNRELEASED; urgency=medium
   * Apply kernel module patches at package build time.
   * Add versioned Provides: nvidia-kernel-dkms-any.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 28 Jun 2022 08:03:08 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Aug 2022 18:01:06 +0200
 
 nvidia-graphics-drivers (515.48.07-3) experimental; urgency=medium
 

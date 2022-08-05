@@ -1,5 +1,13 @@
-nvidia-graphics-drivers (515.43.04-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (515.48.07-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 515.48.07 (2022-05-31).
+    - Improved performance of GLX and Vulkan applications running in
+      gamescope.
+    - Added a "kernelopen" feature tag to the supported-gpus.json file,
+      to indicate which GPUs are compatible with open-gpu-kernel-modules.
+    - Improved Vulkan swapchain creation failure reporting. Applications can
+      use the VK_EXT_debug_utils extension to receive additional information
+      when an error was encountered in vkCreateSwapchainKHR().
   * New upstream beta 515.43.04 (2022-05-11).
     - Published the source code to a variant of the NVIDIA Linux kernel
       modules dual-licensed as MIT/GPLv2. The source is available here:

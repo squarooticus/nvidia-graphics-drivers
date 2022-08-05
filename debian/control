@@ -113,10 +113,8 @@ Provides:
  ${nvidia}-kernel-support--v1,
  firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:arches:gsp}],
  firmware-nvidia-gsp-${nvidia:Version} [${nvidia:arches:gsp}],
- nvidia-firmware-${nvidia:Version} [amd64],
 Conflicts:
  firmware-nvidia-gsp-${nvidia:Version} [${nvidia:arches:gsp}],
- nvidia-firmware-${nvidia:Version} [amd64],
 Description: NVIDIA binary kernel module support files${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server

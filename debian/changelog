@@ -1,8 +1,15 @@
-nvidia-graphics-drivers (470.129.06-7) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.141.03-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 470.141.03 (2022-08-02).
+    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5383
+    - Added support for the following GPU: GeForce RTX 3050 OEM.
+    * Improved compatibility with recent Linux kernels.
+
+  [ Andreas Beckmann ]
   * More generic handling of architectures with gsp firmware.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 06 Jul 2022 14:48:27 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Aug 2022 10:54:19 +0200
 
 nvidia-graphics-drivers (470.129.06-6~deb11u1) bullseye; urgency=medium
 

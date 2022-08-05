@@ -3,15 +3,15 @@ libnvidia-allocator.so.1 #PACKAGE# #MINVER#
  NvRmShimAllocMem@Base 440
  NvRmShimCloseGpuInstance@Base 440
  NvRmShimDupMemContext@Base 440
-#MISSING: 515# NvRmShimExportMemContextToFd@Base 510.73.05
+ NvRmShimExportMemContextToFd@Base 510.73.05
  NvRmShimFlushCpuCache@Base 440
  NvRmShimFreeMem@Base 440
  NvRmShimGetVersion@Base 440
-#MISSING: 515# NvRmShimImportMemContextFromFd@Base 510.73.05
+ NvRmShimImportMemContextFromFd@Base 510.73.05
  NvRmShimMapMemory@Base 440
  NvRmShimMapMemoryDma@Base 510
  NvRmShimOpenGpuInstance@Base 440
-#MISSING: 515# NvRmShimQueryMemoryInfo@Base 510.73.05
+ NvRmShimQueryMemoryInfo@Base 510.73.05
  NvRmShimSessionCreate@Base 440
  NvRmShimSessionDestroy@Base 440
  NvRmShimUnMapMemory@Base 440

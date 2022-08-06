@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (418.226.00-6+git4deb10buster) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.226.00-7+git4deb10buster) UNRELEASED; urgency=medium
 
   * Generate tight dependencies on libnvidia*-glcore/libnvidia*-eglcore
     (470.57.02-3).
@@ -15,6 +15,12 @@ nvidia-graphics-drivers (418.226.00-6+git4deb10buster) UNRELEASED; urgency=mediu
   * Minor packaging sync and cleanup (470.129.06-6).
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.1. No changes needed.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
+
+nvidia-graphics-drivers (418.226.00-7) UNRELEASED; urgency=medium
+
+  * Backport nv_install_notifier changes from 470.141.03
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
 

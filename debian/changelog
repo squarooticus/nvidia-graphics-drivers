@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (450.191.01-2+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.191.01-3+git) UNRELEASED; urgency=medium
 
   * Switch to dh-sequence-dkms (460.56-1).
   * Simplify dh_dkms usage (460.56-1).
@@ -28,6 +28,13 @@ nvidia-graphics-drivers (450.191.01-2+git) UNRELEASED; urgency=medium
   * Minor packaging sync and cleanup (470.129.06-6).
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.1. No changes needed.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 20 May 2022 00:26:50 +0200
+
+nvidia-graphics-drivers (450.191.01-3) UNRELEASED; urgency=medium
+
+  * Replace obsolete pci_*() functions with their dma_*() counterparts in
+    ppc64el specific code paths to fix kernel module build for ppc64el.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 20 May 2022 00:26:50 +0200
 

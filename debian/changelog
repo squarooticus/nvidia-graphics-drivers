@@ -49,8 +49,6 @@ nvidia-graphics-drivers (450.203.03-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Replace obsolete pci_*() functions with their dma_*() counterparts in
     ppc64el specific code paths to fix kernel module build for ppc64el.
-  * Backport nv_install_notifier and dma_resv_add_fence changes from
-    450.203.03 to fix kernel module build for Linux 5.19.
   * Refresh patches.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 06 Aug 2022 18:39:42 +0200

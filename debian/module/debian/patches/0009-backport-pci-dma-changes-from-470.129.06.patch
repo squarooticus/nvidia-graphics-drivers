@@ -1,4 +1,4 @@
-From 15d59c7572901ea2a4314803871c1873fced37be Mon Sep 17 00:00:00 2001
+From e5bf46e55de28c29cbe6e35d8a46702f3b257a8a Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 10:14:54 +0200
 Subject: [PATCH 1/2] backport pci/dma changes from 470.129.06
@@ -6,8 +6,8 @@ Subject: [PATCH 1/2] backport pci/dma changes from 470.129.06
 ---
  nvidia/nv-dma.c | 20 ++++++++++----------
  nvidia/nv-vm.c  |  2 +-
- nvidia/nv.c     | 16 ++++++++--------
- 3 files changed, 19 insertions(+), 19 deletions(-)
+ nvidia/nv.c     | 18 +++++++++---------
+ 3 files changed, 20 insertions(+), 20 deletions(-)
 
 diff --git a/nvidia/nv-dma.c b/nvidia/nv-dma.c
 index cd1ad08..129b520 100644
@@ -85,7 +85,7 @@ index dccf59c..6cd9f1a 100644
   */
  static NV_STATUS nv_alloc_coherent_pages(
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 14239c5..8a51f1c 100644
+index 14239c5..854ff0f 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
 @@ -2964,7 +2964,7 @@ nv_set_dma_address_size(
@@ -106,7 +106,13 @@ index 14239c5..8a51f1c 100644
       */
      nvl = NV_GET_NVL_FROM_NV_STATE(nv);
      if ((nv_tce_bypass_mode == NV_TCE_BYPASS_MODE_DISABLE) ||
-@@ -4861,14 +4861,14 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4856,19 +4856,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+      * as the starting address for all DMA mappings.
+      */
+     saved_dma_mask = dev->dma_mask;
+-    if (pci_set_dma_mask(dev, DMA_BIT_MASK(64)) != 0)
++    if (dma_set_mask(&dev->dev, DMA_BIT_MASK(64)) != 0)
+     {
          goto done;
      }
  

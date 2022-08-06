@@ -1,4 +1,4 @@
-From 80f0d7c4d9a82e7d73efd1669ffd631c4b7110c3 Mon Sep 17 00:00:00 2001
+From c57ba2f1ab7ddeff83ef8ae474ef7b58e1f6e011 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Thu, 14 Apr 2022 22:34:31 +0200
 Subject: [PATCH] backport set_{memory,pages}{,_array}_uc changes from
@@ -9,10 +9,10 @@ Subject: [PATCH] backport set_{memory,pages}{,_array}_uc changes from
  1 file changed, 4 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index e831b64..471d55c 100755
+index 99739cd..90e95c4 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -466,6 +466,7 @@ compile_test() {
+@@ -479,6 +479,7 @@ compile_test() {
              # It does not exist on all architectures.
              #
              CODE="
@@ -20,7 +20,7 @@ index e831b64..471d55c 100755
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -487,6 +488,7 @@ compile_test() {
+@@ -500,6 +501,7 @@ compile_test() {
              # It does not exist on all architectures.
              #
              CODE="
@@ -28,7 +28,7 @@ index e831b64..471d55c 100755
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -543,6 +545,7 @@ compile_test() {
+@@ -556,6 +558,7 @@ compile_test() {
              # It does not exist on all architectures.
              #
              CODE="
@@ -36,7 +36,7 @@ index e831b64..471d55c 100755
              #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
-@@ -569,6 +572,7 @@ compile_test() {
+@@ -582,6 +585,7 @@ compile_test() {
              # 19 14:51:15 2009)
              #
              CODE="

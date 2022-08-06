@@ -1,7 +1,7 @@
 # kernel support
 0001-backport-error-on-unknown-conftests.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
-0003-fix-conftest-includes.patch
+0003-backport-set_-memory-pages-_array-_uc-changes-from-5.patch
 0004-backport-stdarg.h-changes-from-495.44.patch
 0005-backport-stddef.h-changes-from-495.44.patch
 0006-backport-pde_data-changes-from-470.103.01.patch
@@ -11,6 +11,8 @@
 0011-backport-iosys_map-changes-from-470.129.06.patch
 0012-backport-dma_set_coherent_mask-from-470.129.06.patch
 0013-backport-acpi_bus_get_device-changes-from-470.129.06.patch
+0016-backport-nv_install_notifier-changes-from-470.141.03.patch
+0017-backport-dma_resv_add_fence-changes-from-450.203.03.patch
 
 # build system updates
 bashisms.patch

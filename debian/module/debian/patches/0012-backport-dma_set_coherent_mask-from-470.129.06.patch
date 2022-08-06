@@ -1,4 +1,4 @@
-From 3132637f194daec80771314a41faefb41d40b8ae Mon Sep 17 00:00:00 2001
+From 3151477c12fc4f294b20aecc44c09e3c8852d551 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 11:14:33 +0200
 Subject: [PATCH 2/3] backport dma_set_coherent_mask from 470.129.06
@@ -10,10 +10,10 @@ Subject: [PATCH 2/3] backport dma_set_coherent_mask from 470.129.06
  3 files changed, 25 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 097725c..00641a7 100755
+index d62b35f..73f5f2b 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4118,6 +4118,22 @@ compile_test() {
+@@ -4114,6 +4114,22 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_DEVICE_HAS_PDEV" "" "types"
          ;;
  
@@ -37,7 +37,7 @@ index 097725c..00641a7 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 8a51f1c..a9ca565 100644
+index 854ff0f..57ba56e 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
 @@ -2970,7 +2970,11 @@ nv_set_dma_address_size(

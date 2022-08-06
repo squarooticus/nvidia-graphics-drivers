@@ -1,4 +1,4 @@
-From 2acf41f9bafc6157e550b9f600eb8074deb86ef1 Mon Sep 17 00:00:00 2001
+From 212fe75607345c4c791c307d421a80deba998c6d Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Dec 2021 14:39:02 +0100
 Subject: [PATCH] backport stdarg.h changes from 495.44
@@ -98,7 +98,7 @@ index 0d23da2..68fd38f 100644
  #include "nvipmi.h"
  
 diff --git a/conftest.sh b/conftest.sh
-index 8d90469..849998d 100755
+index 471d55c..d516163 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -135,6 +135,7 @@ test_headers() {

@@ -1,11 +1,11 @@
-nvidia-graphics-drivers (418.226.00-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.226.00-3) buster; urgency=medium
 
   The Tesla 418 driver series has been declared as End-of-Life by
   NVIDIA. No further updates fixing security issues, critical bugs, or
   adding support for new Xorg or Linux releases will be issued.
   https://docs.nvidia.com/datacenter/tesla/drivers/
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 06 Aug 2022 10:41:33 +0200
 
 nvidia-graphics-drivers (396.18-1) experimental; urgency=medium
 

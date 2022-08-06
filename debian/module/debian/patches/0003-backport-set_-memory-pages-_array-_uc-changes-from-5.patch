@@ -1,0 +1,41 @@
+From 591db873a33e781b159777b9b94a877e3616d200 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Thu, 14 Apr 2022 22:34:31 +0200
+Subject: [PATCH] backport set_{memory,pages}{,_array}_uc changes from
+ 510.39.01
+
+---
+ conftest.sh | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/conftest.sh b/conftest.sh
+index e5f9146..17f3d55 100755
+--- a/conftest.sh
++++ b/conftest.sh
+@@ -430,6 +430,7 @@ compile_test() {
+             # Determine if the set_memory_uc() function is present.
+             #
+             CODE="
++            #include <linux/types.h>
+             #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
+             #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
+             #include <asm/pgtable_types.h>
+@@ -450,6 +451,7 @@ compile_test() {
+             # Determine if the set_memory_array_uc() function is present.
+             #
+             CODE="
++            #include <linux/types.h>
+             #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
+             #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
+             #include <asm/pgtable_types.h>
+@@ -505,6 +507,7 @@ compile_test() {
+             # Determine if the set_pages_uc() function is present.
+             #
+             CODE="
++            #include <linux/types.h>
+             #if defined(NV_ASM_SET_MEMORY_H_PRESENT)
+             #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
+             #include <asm/pgtable_types.h>
+-- 
+2.20.1
+

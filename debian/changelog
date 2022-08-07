@@ -9,6 +9,7 @@ nvidia-graphics-drivers (470.141.03-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Replace obsolete pci_*() functions with their dma_*() counterparts in
     ppc64el specific code paths to fix kernel module build for ppc64el.
+  * Refresh patches.
   * Update nv-readme.ids.
   * More generic handling of architectures with gsp firmware.
   * Drop references to kernel-package and make-kpkg, gone since stretch.

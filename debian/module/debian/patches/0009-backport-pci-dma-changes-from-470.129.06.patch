@@ -1,4 +1,4 @@
-From ade81cb9adb29fe7dbe496b69b0747038638069f Mon Sep 17 00:00:00 2001
+From 18c29e265f2aa84519c9fff249aac6c55a44c403 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 10:14:54 +0200
 Subject: [PATCH] backport pci/dma changes from 470.129.06
@@ -8,19 +8,19 @@ Subject: [PATCH] backport pci/dma changes from 470.129.06
  1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 8adddbc..7ead8b6 100644
+index ab7d17c..02cc245 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -4358,7 +4358,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4478,7 +4478,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
       * Otherwise, the DMA start address only needs to be set once, and it
       * won't change afterward. Just return the cached value if asked again,
       * to avoid the kernel printing redundant messages to the kernel
 -     * log when we call pci_set_dma_mask().
 +     * log when we call dma_set_mask().
       */
-     nvl = NV_GET_NVL_FROM_NV_STATE(nv);
      if ((nv_tce_bypass_mode == NV_TCE_BYPASS_MODE_DISABLE) ||
-@@ -4409,19 +4409,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+         (nvl->tce_bypass_enabled))
+@@ -4528,19 +4528,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
       * as the starting address for all DMA mappings.
       */
      saved_dma_mask = pci_dev->dma_mask;
@@ -45,7 +45,7 @@ index 8adddbc..7ead8b6 100644
  
      /*
       * From IBM: "For IODA2, native DMA bypass or KVM TCE-based implementation
-@@ -4453,7 +4453,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4572,7 +4572,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
           */
          nv_printf(NV_DBG_WARNINGS,
              "NVRM: DMA window limited by platform\n");
@@ -54,7 +54,7 @@ index 8adddbc..7ead8b6 100644
          goto done;
      }
      else if ((dma_addr & saved_dma_mask) != 0)
-@@ -4472,7 +4472,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4591,7 +4591,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
               */
              nv_printf(NV_DBG_WARNINGS,
                  "NVRM: DMA window limited by memory size\n");

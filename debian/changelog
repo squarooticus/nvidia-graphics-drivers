@@ -1,3 +1,13 @@
+nvidia-graphics-drivers (470.141.03-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 470.141.03 (2022-08-02).
+    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5383
+    - Added support for the following GPU: GeForce RTX 3050 OEM.
+    * Improved compatibility with recent Linux kernels.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 08 Aug 2022 18:22:03 +0200
+
 nvidia-graphics-drivers (470.141.03-1) unstable; urgency=medium
 
   * New upstream production branch release 470.141.03 (2022-08-02).
@@ -60,7 +70,7 @@ nvidia-graphics-drivers (470.129.06-2) unstable; urgency=medium
 
 nvidia-graphics-drivers (470.129.06-1) UNRELEASED; urgency=medium
 
-  * New upstream production branch release 470.129.06 (2022-05-16).
+  * New upstream Tesla release 470.129.06 (2022-05-16).
     * Fixed CVE-2022-28181, CVE-2022-28183, CVE-2022-28184, CVE-2022-28185,
       CVE-2022-28191, CVE-2022-28192.
       https://nvidia.custhelp.com/app/answers/detail/a_id/5353

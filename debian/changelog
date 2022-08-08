@@ -1,10 +1,10 @@
-nvidia-graphics-drivers (470.141.03-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.141.03-1) unstable; urgency=medium
 
   * New upstream production branch release 470.141.03 (2022-08-02).
-    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615.
+    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615. (Closes: #1016614)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5383
     - Added support for the following GPU: GeForce RTX 3050 OEM.
-    * Improved compatibility with recent Linux kernels.
+    * Improved compatibility with recent Linux kernels.  (Closes: #1016736)
 
   [ Andreas Beckmann ]
   * Replace obsolete pci_*() functions with their dma_*() counterparts in
@@ -18,7 +18,7 @@ nvidia-graphics-drivers (470.141.03-1) UNRELEASED; urgency=medium
   * Simplify changelog management for the *-source package.
   * Copy the Source stanza from d/control to the module control file.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Aug 2022 10:54:19 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 08 Aug 2022 14:52:56 +0200
 
 nvidia-graphics-drivers (470.129.06-6~deb11u1) bullseye; urgency=medium
 
@@ -73,6 +73,7 @@ nvidia-graphics-drivers (470.129.06-1) unstable; urgency=medium
     - Fixed an issue where NvFBC was requesting Vulkan 1.0 while using
       Vulkan 1.1 core features. This caused NvFBC to fail to initialize with
       Vulkan loader versions 1.3.204 or newer.
+    * Improved compatibility with recent Linux kernels.  (Closes: #1013359)
 
   [ Andreas Beckmann ]
   * Refresh patches.

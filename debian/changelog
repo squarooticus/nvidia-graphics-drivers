@@ -1,8 +1,15 @@
-nvidia-graphics-drivers (510.73.08-4) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (510.85.02-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 510.85.02 (2022-08-02).
+    (Closes: #1012713, #1016614)
+    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5383
+    * Improved compatibility with recent Linux kernels.
+
+  [ Andreas Beckmann ]
   * Restrict watch file to releases from the 510.xx production branch.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 28 Jun 2022 08:08:37 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 09 Aug 2022 17:38:46 +0200
 
 nvidia-graphics-drivers (510.73.08-3) experimental; urgency=medium
 

@@ -8,6 +8,7 @@ nvidia-graphics-drivers (510.85.02-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Merge changes from 470.141.03-1.
+  * Refresh patches.
   * Restrict watch file to releases from the 510.xx production branch.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 09 Aug 2022 17:38:46 +0200

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (510.85.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (510.85.02-1) experimental; urgency=medium
 
   * New upstream production branch release 510.85.02 (2022-08-02).
     (Closes: #1012713, #1016614)
@@ -12,7 +12,7 @@ nvidia-graphics-drivers (510.85.02-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Restrict watch file to releases from the 510.xx production branch.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 09 Aug 2022 17:38:46 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 09 Aug 2022 23:44:14 +0200
 
 nvidia-graphics-drivers (510.73.08-3) experimental; urgency=medium
 

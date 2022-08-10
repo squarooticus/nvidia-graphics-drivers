@@ -511,6 +511,13 @@ nvidia-graphics-drivers (510.85.02-2) experimental; urgency=medium
 
 nvidia-graphics-drivers (510.85.02-1) UNRELEASED; urgency=medium
 
+  * Build the nvidia-powerd package, but ship the insecure nvidia-dbus.conf as
+    an example only.  (Closes: #1014283)
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 10 Aug 2022 19:00:36 +0200
+
+nvidia-graphics-drivers (510.85.02-1) UNRELEASED; urgency=medium
+
   * New upstream Tesla release 510.85.02 (2022-08-02).
     * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615. (Closes: #1016621)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5383

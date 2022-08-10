@@ -54,6 +54,8 @@ libOpenGL.so.0
 nvidia-cuda-mps-control
 nvidia-cuda-mps-control.1
 nvidia-cuda-mps-server
+nvidia-powerd
+nvidia-dbus.conf
 
 # not shipped
 
@@ -62,6 +64,3 @@ nvidia-ngx-updater
 libEGL.so.#VERSION#
 
 libnvidia-compiler-next.so.#VERSION#
-
-nvidia-powerd
-nvidia-dbus.conf

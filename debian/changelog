@@ -9,6 +9,7 @@ nvidia-graphics-drivers (418.226.00-7+git4deb10buster) UNRELEASED; urgency=mediu
   * Simplify changelog management for the *-source package (470.141.03-1).
   * Copy the Source stanza from d/control to the module control file
     (470.141.03-1).
+  * Add support for unversioned Tesla packages (510.85.02-2).
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
 

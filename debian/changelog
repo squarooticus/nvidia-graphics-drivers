@@ -8,6 +8,12 @@ nvidia-graphics-drivers (470.141.03-1) UNRELEASED; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 08 Aug 2022 18:22:03 +0200
 
+nvidia-graphics-drivers (470.141.03-1~deb11u1) bullseye; urgency=medium
+
+  * Rebuild for bullseye.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 02 Sep 2022 10:57:14 +0200
+
 nvidia-graphics-drivers (470.141.03-1) unstable; urgency=medium
 
   * New upstream production branch release 470.141.03 (2022-08-02).
@@ -171,6 +177,10 @@ nvidia-graphics-drivers (470.103.01-1) unstable; urgency=medium
       Blender, as described at https://developer.blender.org/T76874
     - Added support for the following GPUs: NVIDIA GeForce MX550,
       NVIDIA GeForce MX570, NVIDIA GeForce RTX 2050.
+    - Fixed a bug that could lead to a kernel panic, due to a failure to
+      release a spinlock under some conditions.
+    - Fixed a race condition which could lead to crashes when Xid errors
+      occur concurrently on multiple GPUs.
 
   [ Andreas Beckmann ]
   * Refresh patches.

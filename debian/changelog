@@ -24,6 +24,7 @@ nvidia-graphics-drivers (460.106.00-7+git) UNRELEASED; urgency=medium
   * Simplify changelog management for the *-source package (470.141.03-1).
   * Copy the Source stanza from d/control to the module control file
     (470.141.03-1).
+  * Add support for unversioned Tesla packages (510.85.02-2).
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.1. No changes needed.
 
@@ -37,7 +38,7 @@ nvidia-graphics-drivers (460.106.00-7) UNRELEASED; urgency=medium
     470.141.03 to fix kernel module build for Linux 5.19.
   * Refresh patches.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 07 Aug 2022 05:22:22 +0200
 
 nvidia-graphics-drivers (460.106.00-6) UNRELEASED; urgency=medium
 

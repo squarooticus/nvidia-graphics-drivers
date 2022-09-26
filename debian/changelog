@@ -34,6 +34,7 @@ nvidia-graphics-drivers (450.203.03-1+git) UNRELEASED; urgency=medium
   * Simplify changelog management for the *-source package (470.141.03-1).
   * Copy the Source stanza from d/control to the module control file
     (470.141.03-1).
+  * Add support for unversioned Tesla packages (510.85.02-2).
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.1. No changes needed.
 

@@ -85,8 +85,6 @@ Conflicts:
  libegl1-glvnd-nvidia,
  libgles1-glvnd-nvidia,
  libgles2-glvnd-nvidia,
-Breaks:
- nvidia-tesla-alternative (>> 0),
 Description: allows the selection of NVIDIA as GLX provider${nvidia:VariantDesc}
  In setups with several NVIDIA driver versions installed (e.g. current and
  legacy) this metapackage registers an alternative to allow easy switching
@@ -162,10 +160,10 @@ Section: non-free/kernel
 Architecture: amd64 arm64 ppc64el
 Depends:
  debhelper-compat (= ${nvidia:debhelper-compat}),
+ module-assistant,
  quilt,
  ${misc:Depends}
 Recommends:
- module-assistant,
  firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:arches:gsp}] | firmware-nvidia-gsp-${nvidia:Version} [${nvidia:arches:gsp}],
  ${nvidia}-kernel-support--v1,
 Suggests:

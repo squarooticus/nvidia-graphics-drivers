@@ -284,16 +284,16 @@ nvidia-graphics-drivers (460.27.04-1) experimental; urgency=medium
       VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO.
     - Increased the default size for new OpenGL/Vulkan Shader Disk Cache
       location to 1024MB. Note that caches with paths containing "/.nv/ will
-      continue to use the previous default of 128MB unless the size is manually
-      overridden. For more information see the "OpenGL Shader Disk Cache"
-      section in the "Specifying OpenGL Environment Variable Settings" chapter
-      of the README.
+      continue to use the previous default of 128MB unless the size is
+      manually overridden. For more information see the "OpenGL Shader Disk
+      Cache" section in the "Specifying OpenGL Environment Variable Settings"
+      chapter of the README.
     - Changed the default location for new OpenGL/Vulkan Shader Disk Caches.
-      If the location is not manually overridden and a cache is detected in the
-      previous default location, that location will be used instead of the new
-      default location. For more information see the "OpenGL Shader Disk Cache"
-      section in the "Specifying OpenGL Environment Variable Settings" chapter
-      of the README.
+      If the location is not manually overridden and a cache is detected in
+      the previous default location, that location will be used instead of the
+      new default location. For more information see the "OpenGL Shader Disk
+      Cache" section in the "Specifying OpenGL Environment Variable Settings"
+      chapter of the README.
     - Add support for the VK_EXT_shader_image_atomic_int64 extension.
     - Add support for the VK_KHR_copy_commands2 extension.
     - Allow importing cached memory via VK_EXT_external_memory_host.
@@ -336,8 +336,8 @@ nvidia-graphics-drivers (455.45.01-1) experimental; urgency=medium
   * New upstream short lived branch release 455.45.01 (2020-11-17).
     - Fixed an issue where Vulkan applications would fail to initialize if the
       connected X11 Server did not expose support for GLX.
-    - Fixed a bug in a Vulkan blending optimization that could produce incorrect
-      results. Some of the Vulkan titles affected by this bug were:
+    - Fixed a bug in a Vulkan blending optimization that could produce
+      incorrect results. Some of the Vulkan titles affected by this bug were:
       Life is Strange 2, Shadow of the Tomb Raider.
     - Fixed an issue that caused Vulkan swapchain creation to fail for
       full-screen windows when a G-SYNC monitor is connected.
@@ -379,7 +379,8 @@ nvidia-graphics-drivers (455.28-1) experimental; urgency=medium
 nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
 
   * New upstream beta 455.23.04 (2020-09-17).
-    - Added support for the following GPUs: GeForce RTX 3080, GeForce RTX 3090.
+    - Added support for the following GPUs: GeForce RTX 3080,
+      GeForce RTX 3090.
     - Fixed a bug that prevented 8K displays from being used in portrait
       orientation on Pascal and earlier GPUs.
     - Fixed a bug which caused excessive CPU usage in Vulkan applications
@@ -394,8 +395,8 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
       running on Wayland.
     - Fixed a bug that led to display corruption at some resolutions when
       using an NVIDIA-driven display as a PRIME Display Offload sink.
-    - Fixed a bug in a SPIR-V optimization that may cause conditional blocks to
-      not execute.
+    - Fixed a bug in a SPIR-V optimization that may cause conditional blocks
+      to not execute.
     - Fixed a bug where calls to vkGetRandROutputDisplayEXT with unexpected
       inputs would generate X11 protocol errors.
       (https://bugs.winehq.org/show_bug.cgi?id=49407)

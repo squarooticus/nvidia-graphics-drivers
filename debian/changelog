@@ -389,11 +389,12 @@ nvidia-graphics-drivers (418.43-1) experimental; urgency=medium
       can avoid the need for implicit surface structure conversion by
       the OpenGL implementation.
     - Added NVIDIA optical flow support.
-      A new library libnvidia-opticalflow.so is included in the driver package.
-      The NVIDIA optical flow library can be used for hardware-accelerated
-      computation of optical flow vectors and stereo disparity values.
-      The API header files, sample applications and documentation will be
-      available in a separate Optical Flow SDK package in Q1 2019.
+      A new library libnvidia-opticalflow.so is included in the driver
+      package.  The NVIDIA optical flow library can be used for
+      hardware-accelerated computation of optical flow vectors and stereo
+      disparity values. The API header files, sample applications and
+      documentation will be available in a separate Optical Flow SDK package
+      in Q1 2019.
       For more information and early access sign-up, refer to
         https://developer.nvidia.com/opticalflow-sdk
     - Removed libnvidia-wfb.so from the driver package.  This module was only
@@ -451,13 +452,13 @@ nvidia-graphics-drivers (415.27-1) experimental; urgency=medium
       "ModeValidation" X configuration option to reject non-EDID modes
       whose timings matched EDID modes.
     - Changed the NvEncCreateBitstreamBuffer API call in the NvEncodeAPI
-      library to return NV_ENC_ERR_UNIMPLEMENTED instead of NV_ENC_SUCCESS when
-      the encoder instance is configured to run in motion estimation-only mode.
-      As an indirect consequence of this change, users running the AppEncME
-      sample application from the Video Codec SDK prior to SDK version 8.2.16
-      will observe a segmentation fault due to bugs in the NvEncoder class. It
-      is recommended that users download the latest version of the SDK, where
-      these bugs have been fixed, from
+      library to return NV_ENC_ERR_UNIMPLEMENTED instead of NV_ENC_SUCCESS
+      when the encoder instance is configured to run in motion estimation-only
+      mode. As an indirect consequence of this change, users running the
+      AppEncME sample application from the Video Codec SDK prior to SDK
+      version 8.2.16 will observe a segmentation fault due to bugs in the
+      NvEncoder class. It is recommended that users download the latest
+      version of the SDK, where these bugs have been fixed, from
       https://developer.nvidia.com/nvidia-video-codec-sdk.
     - Fixed an OpenGL driver bug that caused the upper bounds of
       floating-point viewports, specified through the ARB_viewport_array
@@ -465,14 +466,15 @@ nvidia-graphics-drivers (415.27-1) experimental; urgency=medium
     - Added a new X configuration option "HardDPMS" which
       is disabled by default, but can be enabled to put displays to sleep with
       modesets rather than VESA DPMS. This may fix some displays that fail to
-      sleep when DPMS becomes active. "HardDPMS" will be enabled by default in a
-      future release.
+      sleep when DPMS becomes active. "HardDPMS" will be enabled by default in
+      a future release.
     - Raised the minimum supported X.Org xserver version to 1.5 (video driver
       ABI version 4).
-    - Enabled the NVreg_EnableBacklightHandler kernel module option by default.
-    - Removed the LinuxThreads version of the /usr/lib/libnvidia-tls.so library
-      and replaced it with the NPTL one that was previously installed in
-      /usr/lib/tls/. This fixes crashes on Debian systems when the
+    - Enabled the NVreg_EnableBacklightHandler kernel module option by
+      default.
+    - Removed the LinuxThreads version of the /usr/lib/libnvidia-tls.so
+      library and replaced it with the NPTL one that was previously installed
+      in /usr/lib/tls/. This fixes crashes on Debian systems when the
       /etc/ld.so.nohwcap file is present.
     - Changed the minimum required Linux kernel version from 2.6.9 to 2.6.32.
     - Fixed an OpenGL bug where conditional rendering (NV_conditional_render)
@@ -568,14 +570,14 @@ nvidia-graphics-drivers (410.78-1) experimental; urgency=medium
       __GL_SHOW_GRAPHICS_OSD environment variable, or the
       GLShowGraphicsOSD application profile.  See the README for more
       information.
-    - Added support for X11 RandR transformations on outputs where the NVIDIA X
-      driver is used as a synchronized RandR 1.4 output source (i.e., "PRIME
+    - Added support for X11 RandR transformations on outputs where the NVIDIA
+      X driver is used as a synchronized RandR 1.4 output source (i.e., "PRIME
       Sync").
     - Fixed a bug that caused OpenGL corruption on outputs where the NVIDIA X
       driver was used as an RandR 1.4 output source (i.e., "PRIME"), and the
       output sink required a software cursor.
-    - Fixed an X driver RandR output source (i.e., "PRIME") bug that could cause
-      a duplicate cursor to appear on such outputs.
+    - Fixed an X driver RandR output source (i.e., "PRIME") bug that could
+      cause a duplicate cursor to appear on such outputs.
     - Exposed EGL 1.5 in the EGL version string. This does not add
       any extra functionality to the EGL driver. All EGL 1.5 features
       were already supported through EGL 1.4 plus extensions.
@@ -671,9 +673,9 @@ nvidia-graphics-drivers (396.45-1) experimental; urgency=medium
     - Added support for the following GPU: TITAN V JHH Special Edition.
   * New upstream short lived branch release 396.24 (2018-05-02).
     - Fixed a regression that caused the current MetaMode's ViewPortIn and
-      ViewPortOut settings to be preserved across RandR modesets. The driver now
-      clears ViewPortIn and ViewPortOut when the mode is set through RandR,
-      restoring the behavior that existed prior to the regression.
+      ViewPortOut settings to be preserved across RandR modesets. The driver
+      now clears ViewPortIn and ViewPortOut when the mode is set through
+      RandR, restoring the behavior that existed prior to the regression.
     - Improved error reporting in the Vulkan driver if
       libnvidia-glvkspirv.so, the new Vulkan SPIR-V compiler added in
       396.18, cannot be found at run time.

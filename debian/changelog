@@ -19,6 +19,9 @@ nvidia-graphics-drivers (470.141.03-1) unstable; urgency=medium
     * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615. (Closes: #1016614)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5383
     - Added support for the following GPU: GeForce RTX 3050 OEM.
+    - Fixed an issue where HDMI audio output was not working in some cases,
+      especially with high display refresh rates (120Hz, 100Hz, etc.) using
+      Fixed Rate Link (FRL) transmission mode.
     * Improved compatibility with recent Linux kernels.  (Closes: #1016736)
 
   [ Andreas Beckmann ]

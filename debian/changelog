@@ -153,8 +153,8 @@ nvidia-graphics-drivers (450.119.03-1) UNRELEASED; urgency=medium
       candidates, where the NVIDIA kernel module failed to build with error
       "error: implicit declaration of function 'sys_close'".
     - Fixed a bug where calls to vkCreateDevice could fail on Ampere GPUs when
-      ray tracing extensions were enabled and the application was running within
-      the Steam Linux Runtime.
+      ray tracing extensions were enabled and the application was running
+      within the Steam Linux Runtime.
     - Fixed a regression that could cause display corruption when using
       a scaled resolution after resuming from power management suspend.
     - Fixed a bug that could intermittently cause NvFBC applications to fail
@@ -226,8 +226,8 @@ nvidia-graphics-drivers (450.66-1) unstable; urgency=medium
       EIZO Quadro MED-XN71, EIZO Quadro MED-XN72, EIZO Quadro MED-XN90,
       EIZO Quadro MED-XN91, EIZO Quadro MED-XN92, Matrox D-Series D1450,
       Matrox D-Series D1480
-    - Fixed triple buffering support of Vulkan X11 swapchains when applications
-      are syncing to vblank.
+    - Fixed triple buffering support of Vulkan X11 swapchains when
+      applications are syncing to vblank.
 
   [ Luca Boccassi ]
   * Update nv-readme.ids.
@@ -269,8 +269,8 @@ nvidia-graphics-drivers (450.57-1) experimental; urgency=medium
   * New upstream release 440 series.
     - Fixed a bug that could cause the X server to crash when using large
       cursor images with PRIME display offloading.
-    - Fixed an interaction problem with 5.4 and newer Linux kernels that caused
-      a performance regression when allocating system memory.
+    - Fixed an interaction problem with 5.4 and newer Linux kernels that
+      caused a performance regression when allocating system memory.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 22 Jul 2020 16:33:11 +0200
 
@@ -326,8 +326,8 @@ nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
       NVIDIA Video Codec SDK.
       See: https://developer.nvidia.com/nvidia-video-codec-sdk
     - Implemented support for NVIDIA NGX. A new library, libnvidia-ngx.so, has
-      been added to support the new functionality. This new library is needed by
-      applications which link against any of the following SDKs:
+      been added to support the new functionality. This new library is needed
+      by applications which link against any of the following SDKs:
       NVIDIA DLSS SDK, NVIDIA NGX SDK.
     - Fixed a bug which caused Vulkan applications to leak file descriptors
       when destroying Vulkan instances.
@@ -364,11 +364,13 @@ nvidia-graphics-drivers (450.51-1) experimental; urgency=medium
       VDP_YCBCR_FORMAT_P010 and VDP_YCBCR_FORMAT_P016 for accessing 16-bit
       surfaces via VdpVideoSurfaceGetBitsYCbCr() and
       VdpVideoSurfacePutBitsYCbCr() in the NVIDIA VDPAU driver.
-    - Added support to create 16-bit video surfaces in the NVIDIA VDPAU driver.
+    - Added support to create 16-bit video surfaces in the NVIDIA VDPAU
+      driver.
     - Modified nvidia-persistenced and libnvidia-ml (NVML) to use libtirpc for
       communication instead of relying on the deprecated glibc RPC
       implementation.
-    - Enabled GPU screens by default on X.Org xserver version 1.20.7 and higher.
+    - Enabled GPU screens by default on X.Org xserver version 1.20.7 and
+      higher.
     - Fixed a bug where rendering in a separate user namespace (unshare -U)
       would show black window and produce Xid 13 errors.
   * New upstream release 445 series.

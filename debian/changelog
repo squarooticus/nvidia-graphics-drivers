@@ -43,8 +43,9 @@ nvidia-graphics-drivers (510.73.08-1) experimental; urgency=medium
     * Fixed CVE-2022-28181, CVE-2022-28183, CVE-2022-28184, CVE-2022-28185,
       CVE-2022-28191, CVE-2022-28192.  (Closes: #1011140)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5353
-    - Added a new configuration option for NVIDIA NGX to allow disabling the DSO
-      signature check. See the "NGX" chapter of the README for more information.
+    - Added a new configuration option for NVIDIA NGX to allow disabling the
+      DSO signature check. See the "NGX" chapter of the README for more
+      information.
   * New upstream production branch release 510.68.02 (2022-04-26).
 
   [ Andreas Beckmann ]
@@ -97,10 +98,10 @@ nvidia-graphics-drivers (510.47.03-1) experimental; urgency=medium
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Added support for Vulkan 1.3.
   * New upstream beta 510.39.01 (2022-01-11).
-    - Added a new daemon, nvidia-powerd, to provide support for
-      the Dynamic Boost feature on supported systems. Dynamic Boost
-      balances power between the CPU and the GPU for improved performance.
-      For more details, see the "Dynamic Boost on Linux" chapter in the README.
+    - Added a new daemon, nvidia-powerd, to provide support for the Dynamic
+      Boost feature on supported systems. Dynamic Boost balances power between
+      the CPU and the GPU for improved performance. For more details, see the
+      "Dynamic Boost on Linux" chapter in the README.
     - Updated nvidia-bug-report.sh to search the systemd journal for
       nvidia-powerd logs.
     - Fixed several issues which caused the supported-gpus.json file to
@@ -169,8 +170,8 @@ nvidia-graphics-drivers (495.46-1) experimental; urgency=medium
 nvidia-graphics-drivers (495.44-1) experimental; urgency=medium
 
   * New upstream new feature branch release 495.44 (2021-10-26).
-    - Fixed a bug in the Vulkan driver where unused input attributes to a vertex
-      shader would corrupt the interpolation qualifiers for the shader.
+    - Fixed a bug in the Vulkan driver where unused input attributes to a
+      vertex shader would corrupt the interpolation qualifiers for the shader.
     - Fixed a bug in the Vulkan driver where individual components of
       barycentric inputs could not be read.
     - Added support for the VK_KHR_present_id extension.

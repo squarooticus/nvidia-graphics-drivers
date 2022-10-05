@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (510.85.02-3) unstable; urgency=medium
+
+  * Upload to unstable.  (Closes: #1020761)
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 05 Oct 2022 13:23:32 +0200
+
 nvidia-graphics-drivers (510.85.02-2) experimental; urgency=medium
 
   * Merge changes from 470.141.03-2.

@@ -1,9 +1,9 @@
-nvidia-graphics-drivers (510.85.02-4) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (510.85.02-4) unstable; urgency=medium
 
   * Set BUILD_EXCLUSIVE_CONFIG="!CONFIG_PREEMPT_RT" for
     module-assistant-autopkgtest, too.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 12 Oct 2022 10:40:27 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 12 Oct 2022 14:12:42 +0200
 
 nvidia-graphics-drivers (510.85.02-3) unstable; urgency=medium
 

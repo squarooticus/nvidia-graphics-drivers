@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (510.85.02-5) UNRELEASED; urgency=medium
+
+  * Restrict nvidia-legacy-check dependency to driver architectures.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 16 Oct 2022 23:02:47 +0200
+
 nvidia-graphics-drivers (510.85.02-4) unstable; urgency=medium
 
   * Set BUILD_EXCLUSIVE_CONFIG="!CONFIG_PREEMPT_RT" for

@@ -1,8 +1,8 @@
 nvidia-graphics-drivers (510.85.02-5) UNRELEASED; urgency=medium
 
   * Restrict nvidia-legacy-check dependency to driver architectures.
-  * Backport nv-acpi.c changes from 515.65.01 to fix kernel module build for
-    Linux 6.0.
+  * Backport nv-acpi.c changes from 515.65.01 and drm_frambuffer.h changes
+    from 515.76 to fix kernel module build for Linux 6.0.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 16 Oct 2022 23:02:47 +0200
 

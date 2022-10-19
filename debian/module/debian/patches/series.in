@@ -41,6 +41,7 @@ kernel-5.7.0-set-memory-array.patch
 0040-backport-acpi_bus_get_device-changes-from-470.129.06.patch
 0041-backport-nv_install_notifier-changes-from-470.141.03.patch
 0042-backport-acpi-changes-from-430.09.patch
+0043-backport-acpi-changes-from-455.23.04.patch
 
 # build system updates
 separate-makefile-kbuild.patch

@@ -39,6 +39,7 @@ kernel-5.7.0-set-memory-array.patch
 0038-backport-nvidia_stack_t-changes-from-346.16.patch
 0039-backport-nv_install_notifier-changes-from-418.30.patch
 0040-backport-acpi_bus_get_device-changes-from-470.129.06.patch
+0041-backport-nv_install_notifier-changes-from-470.141.03.patch
 
 # build system updates
 separate-makefile-kbuild.patch

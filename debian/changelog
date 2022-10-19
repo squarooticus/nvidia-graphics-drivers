@@ -124,7 +124,7 @@ nvidia-graphics-drivers (340.108-1~git4deb8jessie) UNRELEASED; urgency=medium
 
 nvidia-graphics-drivers (340.108-2) UNRELEASED; urgency=medium
 
-  * Backport nv_install_notifier changes from 418.30
+  * Backport nv_install_notifier changes from 418.30 and 470.141.03
 
   * Backport pci/dma and acpi_bus_get_device changes from 470.129.06 to fix
     kernel module build for Linux 5.18.

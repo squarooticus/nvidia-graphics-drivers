@@ -43,6 +43,7 @@ kernel-5.7.0-set-memory-array.patch
 0042-backport-acpi-changes-from-430.09.patch
 0043-backport-acpi-changes-from-455.23.04.patch
 0044-backport-acpi-changes-from-510.85.02.patch
+0045-backport-acpi-changes-from-515.65.01.patch
 
 # build system updates
 separate-makefile-kbuild.patch

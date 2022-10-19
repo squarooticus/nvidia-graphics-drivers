@@ -4,12 +4,55 @@ Date: Tue, 18 Oct 2022 22:32:41 +0200
 Subject: [PATCH] backport acpi changes from 510.85.02
 
 ---
- nv-acpi.c  | 434 -----------------------------------------------------
  nv-linux.h |  12 --
  nv-proto.h |   3 -
+ nv-acpi.c  | 434 -----------------------------------------------------
  nv.c       |  16 --
  4 files changed, 465 deletions(-)
 
+diff --git a/nv-linux.h b/nv-linux.h
+index 7c3478a..b787f5d 100644
+--- a/nv-linux.h
++++ b/nv-linux.h
+@@ -1762,24 +1762,12 @@ typedef struct nv_linux_state_s {
+  * and any other baggage we want to carry along
+  *
+  */
+-#define NV_MAXNUM_DISPLAY_DEVICES 8
+-
+-typedef struct
+-{
+-    acpi_handle dev_handle;
+-    int dev_id;
+-} nv_video_t;
+-
+ typedef struct
+ {
+     nv_stack_t *sp;
+     struct acpi_device *device;
+     struct acpi_handle *handle;
+-
+-    nv_video_t pNvVideo[NV_MAXNUM_DISPLAY_DEVICES];
+-
+     int notify_handler_installed;
+-    int default_display_mask;
+ } nv_acpi_t;
+ 
+ #endif
+diff --git a/nv-proto.h b/nv-proto.h
+index bf1d9b6..020b572 100644
+--- a/nv-proto.h
++++ b/nv-proto.h
+@@ -11,9 +11,6 @@
+ #ifndef _NV_PROTO_H_
+ #define _NV_PROTO_H_
+ 
+-int         nv_acpi_init                (void);
+-int         nv_acpi_uninit              (void);
+-
+ #if !defined(NV_IRQ_HANDLER_T_PRESENT) || (NV_IRQ_HANDLER_T_ARGUMENT_COUNT == 3)
+ irqreturn_t nv_gvi_kern_isr             (int, void *, struct pt_regs *);
+ #else
 diff --git a/nv-acpi.c b/nv-acpi.c
 index 05d6cc1..bc59932 100644
 --- a/nv-acpi.c
@@ -513,49 +556,6 @@ index 05d6cc1..bc59932 100644
  void NV_API_CALL nv_acpi_methods_init(NvU32 *handlePresent)
  {
      *handlePresent = 0;
-diff --git a/nv-linux.h b/nv-linux.h
-index 7c3478a..b787f5d 100644
---- a/nv-linux.h
-+++ b/nv-linux.h
-@@ -1762,24 +1762,12 @@ typedef struct nv_linux_state_s {
-  * and any other baggage we want to carry along
-  *
-  */
--#define NV_MAXNUM_DISPLAY_DEVICES 8
--
--typedef struct
--{
--    acpi_handle dev_handle;
--    int dev_id;
--} nv_video_t;
--
- typedef struct
- {
-     nv_stack_t *sp;
-     struct acpi_device *device;
-     struct acpi_handle *handle;
--
--    nv_video_t pNvVideo[NV_MAXNUM_DISPLAY_DEVICES];
--
-     int notify_handler_installed;
--    int default_display_mask;
- } nv_acpi_t;
- 
- #endif
-diff --git a/nv-proto.h b/nv-proto.h
-index bf1d9b6..020b572 100644
---- a/nv-proto.h
-+++ b/nv-proto.h
-@@ -11,9 +11,6 @@
- #ifndef _NV_PROTO_H_
- #define _NV_PROTO_H_
- 
--int         nv_acpi_init                (void);
--int         nv_acpi_uninit              (void);
--
- #if !defined(NV_IRQ_HANDLER_T_PRESENT) || (NV_IRQ_HANDLER_T_ARGUMENT_COUNT == 3)
- irqreturn_t nv_gvi_kern_isr             (int, void *, struct pt_regs *);
- #else
 diff --git a/nv.c b/nv.c
 index b1aec9b..8997b34 100644
 --- a/nv.c

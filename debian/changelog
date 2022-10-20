@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (418.226.00-7+git4deb10buster) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.226.00-8+git4deb10buster) UNRELEASED; urgency=medium
 
   * Minor packaging sync and cleanup (470.129.06-6).
   * Drop references to kernel-package and make-kpkg, gone since stretch
@@ -10,6 +10,14 @@ nvidia-graphics-drivers (418.226.00-7+git4deb10buster) UNRELEASED; urgency=mediu
   * Copy the Source stanza from d/control to the module control file
     (470.141.03-1).
   * Add support for unversioned Tesla packages (tesla 510.85.02-1).
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
+
+nvidia-graphics-drivers (418.226.00-8) UNRELEASED; urgency=medium
+
+  * Backport acpi changes from 430.09, 510.85.02 and 515.65.01,
+    drm_frambuffer.h changes from 515.76 to fix kernel module build for
+    Linux 6.0.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
 

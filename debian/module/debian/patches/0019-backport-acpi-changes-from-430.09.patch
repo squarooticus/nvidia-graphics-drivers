@@ -1,17 +1,17 @@
-From 39bf487ab7690432fdb9b2b11c8d489e6d190a16 Mon Sep 17 00:00:00 2001
+From 5d5ff8921ea0a8c72675d63b1caa9bc86394de03 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 19 Oct 2022 18:08:31 +0200
 Subject: [PATCH] backport acpi changes from 430.09
 
 ---
- nv-acpi.c | 48 +++---------------------------------------------
+ nvidia/nv-acpi.c | 48 +++---------------------------------------------
  1 file changed, 3 insertions(+), 45 deletions(-)
 
-diff --git a/nv-acpi.c b/nv-acpi.c
-index b8c9332..acce7c7 100644
---- a/nv-acpi.c
-+++ b/nv-acpi.c
-@@ -46,11 +46,6 @@ static NV_STATUS   nv_acpi_wmmx_method     (NvU32, NvU8 *, NvU16 *);
+diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
+index d311e85..423eb1d 100644
+--- a/nvidia/nv-acpi.c
++++ b/nvidia/nv-acpi.c
+@@ -37,11 +37,6 @@ static NV_STATUS   nv_acpi_wmmx_method     (NvU32, NvU8 *, NvU16 *);
  static NV_STATUS   nv_acpi_mxmi_method     (NvU8 *, NvU16 *);
  static NV_STATUS   nv_acpi_mxms_method     (NvU8 *, NvU16 *);
  
@@ -23,7 +23,7 @@ index b8c9332..acce7c7 100644
  static const struct acpi_device_id nv_video_device_ids[] = {
      { 
          .id          = ACPI_VIDEO_HID, 
-@@ -61,7 +56,6 @@ static const struct acpi_device_id nv_video_device_ids[] = {
+@@ -52,7 +47,6 @@ static const struct acpi_device_id nv_video_device_ids[] = {
          .driver_data = 0, 
      },
  };
@@ -31,7 +31,7 @@ index b8c9332..acce7c7 100644
  
  static struct acpi_driver *nv_acpi_driver;
  static acpi_handle nvif_handle = NULL;
-@@ -73,22 +67,13 @@ static acpi_handle mxms_handle = NULL;
+@@ -64,22 +58,13 @@ static acpi_handle mxms_handle = NULL;
  static const struct acpi_driver nv_acpi_driver_template = {
      .name = "NVIDIA ACPI Video Driver",
      .class = "video",
@@ -54,7 +54,7 @@ index b8c9332..acce7c7 100644
  #endif
      },
  };
-@@ -200,7 +185,7 @@ static int nv_acpi_add(struct acpi_device *device)
+@@ -228,7 +213,7 @@ static int nv_acpi_add(struct acpi_device *device)
      struct acpi_object_list control_argument_list = { 0, NULL };
      nvidia_stack_t *sp = NULL;
      struct list_head *node, *next;
@@ -62,8 +62,8 @@ index b8c9332..acce7c7 100644
 +    unsigned long long device_id = 0;
      int device_counter = 0;
  
-     NV_KMEM_CACHE_ALLOC_STACK(sp);
-@@ -370,7 +355,7 @@ static void nv_acpi_event(acpi_handle handle, u32 event_type, void *data)
+     status = nv_kmem_cache_alloc_stack(&sp);
+@@ -397,7 +382,7 @@ static void nv_acpi_event(acpi_handle handle, u32 event_type, void *data)
       */
      nv_acpi_t *pNvAcpiObject = data;
      u32 event_val = 0;
@@ -72,7 +72,7 @@ index b8c9332..acce7c7 100644
      int status = 0;
      int device_counter = 0;
  
-@@ -448,33 +433,6 @@ static void nv_acpi_event(acpi_handle handle, u32 event_type, void *data)
+@@ -475,33 +460,6 @@ static void nv_acpi_event(acpi_handle handle, u32 event_type, void *data)
      // unsubscribe.
  }
  
@@ -106,7 +106,7 @@ index b8c9332..acce7c7 100644
  /* Do the necessary allocations and install notifier "handler" on the device-node "device" */
  static nv_acpi_t* nv_install_notifier(struct acpi_handle *handle, acpi_notify_handler handler)
  {
-@@ -1201,7 +1159,7 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+@@ -1227,7 +1185,7 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
      union acpi_object ddc_arg0 = { ACPI_TYPE_INTEGER };
      struct acpi_object_list input = { 1, &ddc_arg0 };
      struct list_head *node, *next;

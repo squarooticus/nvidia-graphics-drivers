@@ -1,17 +1,17 @@
-From 1b088d016b8ecdf04bc863a9c287fbbd4e61499b Mon Sep 17 00:00:00 2001
+From ce2b65fcc7a5c2c235e3d2058e3e17e97b8b654a Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 19 Oct 2022 22:15:29 +0200
 Subject: [PATCH] backport acpi changes from 455.23.04
 
 ---
- nv-acpi.c | 22 ++++++++++++++--------
+ nvidia/nv-acpi.c | 22 ++++++++++++++--------
  1 file changed, 14 insertions(+), 8 deletions(-)
 
-diff --git a/nv-acpi.c b/nv-acpi.c
-index acce7c7..05d6cc1 100644
---- a/nv-acpi.c
-+++ b/nv-acpi.c
-@@ -1159,7 +1159,6 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
+index 423eb1d..78949af 100644
+--- a/nvidia/nv-acpi.c
++++ b/nvidia/nv-acpi.c
+@@ -1185,7 +1185,6 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
      union acpi_object ddc_arg0 = { ACPI_TYPE_INTEGER };
      struct acpi_object_list input = { 1, &ddc_arg0 };
      struct list_head *node, *next;
@@ -19,7 +19,7 @@ index acce7c7..05d6cc1 100644
      NvU32 i;
      acpi_handle dev_handle  = NULL;
      acpi_handle lcd_dev_handle  = NULL;
-@@ -1191,6 +1190,7 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+@@ -1217,6 +1216,7 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
  
      list_for_each_safe(node, next, &device->children) 
      {
@@ -27,7 +27,7 @@ index acce7c7..05d6cc1 100644
          struct acpi_device *dev =
              list_entry(node, struct acpi_device, node);
  
-@@ -1202,15 +1202,21 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+@@ -1228,15 +1228,21 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
              /* Couldnt query device_id for this device */
              continue;
  

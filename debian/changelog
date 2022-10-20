@@ -974,6 +974,7 @@ nvidia-graphics-drivers (418.226.00-8) UNRELEASED; urgency=medium
   * Backport acpi changes from 430.09, 510.85.02 and 515.65.01,
     drm_frambuffer.h changes from 515.76 to fix kernel module build for
     Linux 6.0.
+  * Add support for unversioned Tesla packages (tesla 510.85.02-1).
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 20 Oct 2022 17:05:18 +0200
 

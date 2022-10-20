@@ -1,20 +1,20 @@
-From 68015a6e4140435e846e77d763d90667569b3172 Mon Sep 17 00:00:00 2001
+From c0acc84e4ab2a0c13c16809a4db8b1268dad2287 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 18 Oct 2022 22:32:41 +0200
 Subject: [PATCH] backport acpi changes from 510.85.02
 
 ---
  common/inc/nv-linux.h |  12 --
- common/inc/nv-proto.h |   3 -
- nvidia/nv-acpi.c      | 451 ------------------------------------------
+ common/inc/nv-proto.h |   2 -
+ nvidia/nv-acpi.c      | 443 ------------------------------------------
  nvidia/nv.c           |  16 --
- 4 files changed, 482 deletions(-)
+ 4 files changed, 473 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index cbda4e2..774dc5b 100644
+index 826e6b8..faec524 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -1686,24 +1686,12 @@ extern NvBool nv_ats_supported;
+@@ -1622,24 +1622,12 @@ extern NvBool nv_ats_supported;
   * and any other baggage we want to carry along
   *
   */
@@ -40,24 +40,23 @@ index cbda4e2..774dc5b 100644
  
  #endif
 diff --git a/common/inc/nv-proto.h b/common/inc/nv-proto.h
-index 8c74cb8..0a2c708 100644
+index 8cf9275..74f3c63 100644
 --- a/common/inc/nv-proto.h
 +++ b/common/inc/nv-proto.h
-@@ -13,9 +13,6 @@
+@@ -23,8 +23,6 @@ extern nvidia_module_t nv_fops;
  
- #include "nv-misc.h"
- 
+ void        nv_acpi_register_notifier   (nv_linux_state_t *);
+ void        nv_acpi_unregister_notifier (nv_linux_state_t *);
 -int         nv_acpi_init                (void);
 -int         nv_acpi_uninit              (void);
--
- #if !defined(NV_IRQ_HANDLER_T_PRESENT) || (NV_IRQ_HANDLER_T_ARGUMENT_COUNT == 3)
- irqreturn_t nv_gvi_kern_isr             (int, void *, struct pt_regs *);
- #else
+ 
+ NvU8        nv_find_pci_capability      (struct pci_dev *, NvU8);
+ void *      nv_alloc_file_private       (void);
 diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
-index d00c857..c2b739f 100644
+index c69b813..78c81df 100644
 --- a/nvidia/nv-acpi.c
 +++ b/nvidia/nv-acpi.c
-@@ -21,15 +21,6 @@ static NV_STATUS   nv_acpi_extract_buffer  (const union acpi_object *, void *, N
+@@ -23,15 +23,6 @@ static NV_STATUS   nv_acpi_extract_buffer  (const union acpi_object *, void *, N
  static NV_STATUS   nv_acpi_extract_package (const union acpi_object *, void *, NvU32, NvU32 *);
  static NV_STATUS   nv_acpi_extract_object  (const union acpi_object *, void *, NvU32, NvU32 *);
  
@@ -73,18 +72,18 @@ index d00c857..c2b739f 100644
  static void        nv_acpi_powersource_hotplug_event(acpi_handle, u32, void *);
  static acpi_status nv_acpi_find_methods    (acpi_handle, u32, void *, void **);
  static NV_STATUS   nv_acpi_nvif_method     (NvU32, NvU32, void *, NvU16, NvU32 *, void *, NvU16 *);
-@@ -38,20 +29,7 @@ static NV_STATUS   nv_acpi_wmmx_method     (NvU32, NvU8 *, NvU16 *);
+@@ -40,20 +31,7 @@ static NV_STATUS   nv_acpi_wmmx_method     (NvU32, NvU8 *, NvU16 *);
  static NV_STATUS   nv_acpi_mxmi_method     (NvU8 *, NvU16 *);
  static NV_STATUS   nv_acpi_mxms_method     (NvU8 *, NvU16 *);
  
 -static const struct acpi_device_id nv_video_device_ids[] = {
--    { 
--        .id          = ACPI_VIDEO_HID, 
--        .driver_data = 0, 
+-    {
+-        .id          = ACPI_VIDEO_HID,
+-        .driver_data = 0,
 -    },
--    { 
+-    {
 -        .id          = "",
--        .driver_data = 0, 
+-        .driver_data = 0,
 -    },
 -};
 -
@@ -94,13 +93,13 @@ index d00c857..c2b739f 100644
  static acpi_handle wmmx_handle = NULL;
  static acpi_handle mxmi_handle = NULL;
  static acpi_handle mxms_handle = NULL;
-@@ -62,20 +40,6 @@ static acpi_handle psr_handle = NULL;
- static acpi_handle psr_device_handle = NULL;
- static nv_acpi_t  *psr_nv_acpi_object = NULL;
+@@ -74,20 +52,6 @@ static nv_acpi_t  *psr_nv_acpi_object = NULL;
+ #define ACPI_VIDEO_CLASS    "video"
+ #endif
  
 -static const struct acpi_driver nv_acpi_driver_template = {
 -    .name = "NVIDIA ACPI Video Driver",
--    .class = "video",
+-    .class = ACPI_VIDEO_CLASS,
 -    .ids = nv_video_device_ids,
 -    .ops = {
 -        .add = nv_acpi_add,
@@ -115,9 +114,9 @@ index d00c857..c2b739f 100644
  static int nv_acpi_get_device_handle(nv_state_t *nv, acpi_handle *dev_handle)
  {
      nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
-@@ -121,363 +85,6 @@ struct notifier_block acpi_nb = {
- };
- #endif
+@@ -148,355 +112,6 @@ void nv_acpi_unregister_notifier(nv_linux_state_t *nvl)
+     unregister_acpi_notifier(&nvl->acpi_nb);
+ }
  
 -int nv_acpi_init(void)
 -{
@@ -163,10 +162,6 @@ index d00c857..c2b739f 100644
 -        nv_acpi_driver = NULL;
 -    }
 -
--#if defined(NV_REGISTER_ACPI_NOTIFER_PRESENT)
--    register_acpi_notifier(&acpi_nb);
--#endif
--
 -    return status;
 -}
 -
@@ -177,10 +172,6 @@ index d00c857..c2b739f 100644
 -    NV_STATUS rmStatus;
 -    int rc;
 -
--#if defined(NV_REGISTER_ACPI_NOTIFER_PRESENT)
--    unregister_acpi_notifier(&acpi_nb);
--#endif
--
 -    rc = nv_kmem_cache_alloc_stack(&sp);
 -    if (rc != 0)
 -    {
@@ -190,7 +181,7 @@ index d00c857..c2b739f 100644
 -    rmStatus = rm_read_registry_dword(sp, NULL, "NVreg",
 -                   NV_REG_REGISTER_FOR_ACPI_EVENTS, &acpi_event_config);
 -    nv_kmem_cache_free_stack(sp);
--  
+-
 -    if ((rmStatus == NV_OK) && (acpi_event_config == 0))
 -        return 0;
 -
@@ -246,7 +237,7 @@ index d00c857..c2b739f 100644
 -
 -    // grab handles to all the important nodes representing devices
 -
--    list_for_each_safe(node, next, &device->children) 
+-    list_for_each_safe(node, next, &device->children)
 -    {
 -        struct acpi_device *dev =
 -            list_entry(node, struct acpi_device, node);
@@ -256,8 +247,8 @@ index d00c857..c2b739f 100644
 -
 -        if (device_counter == NV_MAXNUM_DISPLAY_DEVICES)
 -        {
--            nv_printf(NV_DBG_ERRORS, 
--                      "NVRM: nv_acpi_add: Total number of devices cannot exceed %d\n", 
+-            nv_printf(NV_DBG_ERRORS,
+-                      "NVRM: nv_acpi_add: Total number of devices cannot exceed %d\n",
 -                      NV_MAXNUM_DISPLAY_DEVICES);
 -            break;
 -        }
@@ -270,12 +261,12 @@ index d00c857..c2b739f 100644
 -
 -        device_id = (device_id & 0xffff);
 -
--        if ((device_id != 0x100) && /* Not a known CRT device-id */ 
--            (device_id != 0x200) && /* Not a known TV device-id */ 
+-        if ((device_id != 0x100) && /* Not a known CRT device-id */
+-            (device_id != 0x200) && /* Not a known TV device-id */
 -            (device_id != 0x0110) && (device_id != 0x0118) && (device_id != 0x0400) && /* Not an LCD*/
--            (device_id != 0x0111) && (device_id != 0x0120) && (device_id != 0x0300)) /* Not a known DVI device-id */ 
+-            (device_id != 0x0111) && (device_id != 0x0120) && (device_id != 0x0300)) /* Not a known DVI device-id */
 -        {
--            /* This isnt a known device Id. 
+-            /* This isnt a known device Id.
 -               Do default switching on this system. */
 -            pNvAcpiObject->default_display_mask = 1;
 -            break;
@@ -283,7 +274,7 @@ index d00c857..c2b739f 100644
 -
 -        pNvAcpiObject->pNvVideo[device_counter].dev_id = device_id;
 -        pNvAcpiObject->pNvVideo[device_counter].dev_handle = dev->handle;
--    
+-
 -        device_counter++;
 -
 -    }
@@ -405,29 +396,29 @@ index d00c857..c2b739f 100644
 -    if (event_type == NVIF_DISPLAY_DEVICE_CHANGE_EVENT)
 -    {
 -        /* We are getting NVIF events on this machine. We arent putting a very
--           extensive handling in-place to communicate back with SBIOS, know 
--           the next enabled devices, and then do the switch. We just 
--           pass a default display switch event, so that X-driver decides 
+-           extensive handling in-place to communicate back with SBIOS, know
+-           the next enabled devices, and then do the switch. We just
+-           pass a default display switch event, so that X-driver decides
 -           the switching policy itself. */
 -        rm_system_event(pNvAcpiObject->sp, NV_SYSTEM_ACPI_DISPLAY_SWITCH_EVENT, 0);
 -    }
 -    if (event_type == ACPI_DISPLAY_DEVICE_CHANGE_EVENT)
 -    {
--        if (pNvAcpiObject->default_display_mask != 1) 
+-        if (pNvAcpiObject->default_display_mask != 1)
 -        {
--            while ((device_counter < NV_MAXNUM_DISPLAY_DEVICES) && 
+-            while ((device_counter < NV_MAXNUM_DISPLAY_DEVICES) &&
 -                   (pNvAcpiObject->pNvVideo[device_counter].dev_handle))
 -            {
 -                acpi_handle dev_handle = pNvAcpiObject->pNvVideo[device_counter].dev_handle;
 -                int dev_id = pNvAcpiObject->pNvVideo[device_counter].dev_id;
--    
+-
 -                status = acpi_evaluate_integer(dev_handle,
--                                               "_DGS", 
--                                               NULL, 
+-                                               "_DGS",
+-                                               NULL,
 -                                               &state);
--                if (ACPI_FAILURE(status)) 
+-                if (ACPI_FAILURE(status))
 -                {
--                    nv_printf(NV_DBG_INFO, 
+-                    nv_printf(NV_DBG_INFO,
 -                    "NVRM: nv_acpi_event: failed to query _DGS method for display device 0x%x\n",
 -                    dev_id);
 -                }
@@ -465,7 +456,7 @@ index d00c857..c2b739f 100644
 -        }
 -
 -        nv_printf(NV_DBG_INFO,
--        "NVRM: nv_acpi_event: Event-type 0x%x, Event-val 0x%x\n", 
+-        "NVRM: nv_acpi_event: Event-type 0x%x, Event-val 0x%x\n",
 -        event_type, event_val);
 -
 -        rm_system_event(pNvAcpiObject->sp, NV_SYSTEM_ACPI_DISPLAY_SWITCH_EVENT, event_val);
@@ -476,10 +467,10 @@ index d00c857..c2b739f 100644
 -    // unsubscribe.
 -}
 -
- #define ACPI_POWER_SOURCE_CHANGE_EVENT       0x80
- static void nv_acpi_powersource_hotplug_event(acpi_handle handle, u32 event_type, void *data)
+ NV_STATUS NV_API_CALL nv_acpi_get_powersource(NvU32 *ac_plugged)
  {
-@@ -587,11 +194,6 @@ static void nv_uninstall_notifier(nv_acpi_t *pNvAcpiObject, acpi_notify_handler
+     unsigned long long val;
+@@ -618,11 +233,6 @@ static void nv_uninstall_notifier(nv_acpi_t *pNvAcpiObject, acpi_notify_handler
  
  void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
  {
@@ -491,7 +482,7 @@ index d00c857..c2b739f 100644
      if (!handlesPresent) // Caller passed us invalid pointer.
          return;
  
-@@ -603,32 +205,6 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
+@@ -634,32 +244,6 @@ void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
      if (nvif_handle)
      {
          *handlesPresent = NV_ACPI_NVIF_HANDLE_PRESENT;
@@ -500,7 +491,7 @@ index d00c857..c2b739f 100644
 -        {
 -            if (!nvif_parent_gpu_handle) /* unknown error */
 -                break;
--            
+-
 -            retVal = acpi_bus_get_device(nvif_parent_gpu_handle, &device);
 -
 -            if (ACPI_FAILURE(retVal) || !device)
@@ -509,7 +500,7 @@ index d00c857..c2b739f 100644
 -            if (device->driver_data)
 -            {
 -                nvif_parent_gpu_handle = NULL;
--                break;  /* Someone else has already populated this device 
+-                break;  /* Someone else has already populated this device
 -                           nodes' structures. So nothing more to be done */
 -            }
 -
@@ -524,7 +515,7 @@ index d00c857..c2b739f 100644
      }
  
      if (wmmx_handle)
-@@ -664,7 +240,6 @@ acpi_status nv_acpi_find_methods(
+@@ -695,7 +279,6 @@ acpi_status nv_acpi_find_methods(
      if (!acpi_get_handle(handle, "NVIF", &method_handle))
      {
          nvif_handle = method_handle;
@@ -532,7 +523,7 @@ index d00c857..c2b739f 100644
      }
  
      if (!acpi_get_handle(handle, "WMMX", &method_handle))
-@@ -693,8 +268,6 @@ acpi_status nv_acpi_find_methods(
+@@ -724,8 +307,6 @@ acpi_status nv_acpi_find_methods(
  
  void NV_API_CALL nv_acpi_methods_uninit(void)
  {
@@ -541,12 +532,12 @@ index d00c857..c2b739f 100644
      nvif_handle = NULL;
      wmmx_handle = NULL;
      mxmi_handle = NULL;
-@@ -708,20 +281,6 @@ void NV_API_CALL nv_acpi_methods_uninit(void)
+@@ -739,20 +320,6 @@ void NV_API_CALL nv_acpi_methods_uninit(void)
          psr_device_handle = NULL;
          psr_nv_acpi_object = NULL;
      }
 -
--    if (nvif_parent_gpu_handle == NULL) 
+-    if (nvif_parent_gpu_handle == NULL)
 -        return;
 -
 -#if defined(NV_ACPI_BUS_GET_DEVICE_PRESENT)
@@ -562,7 +553,7 @@ index d00c857..c2b739f 100644
  }
  
  static NV_STATUS nv_acpi_extract_integer(
-@@ -1599,16 +1158,6 @@ static NV_STATUS  nv_acpi_wmmx_method(
+@@ -1811,16 +1378,6 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
  
  #else // NV_LINUX_ACPI_EVENTS_SUPPORTED
  
@@ -580,10 +571,10 @@ index d00c857..c2b739f 100644
  {
      *handlePresent = 0;
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 57ba56e..a06b819 100644
+index 7ead8b6..5e5dc41 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -2830,7 +2830,6 @@ nvidia_ctl_open(
+@@ -2744,7 +2744,6 @@ nvidia_ctl_open(
      nv_linux_state_t *nvl = &nv_ctl_device;
      nv_state_t *nv = NV_STATE_PTR(nvl);
      nv_file_private_t *nvfp = NV_GET_FILE_PRIVATE(file);
@@ -591,7 +582,7 @@ index 57ba56e..a06b819 100644
  
      nv_printf(NV_DBG_INFO, "NVRM: nvidia_ctl_open\n");
  
-@@ -2844,13 +2843,6 @@ nvidia_ctl_open(
+@@ -2758,13 +2757,6 @@ nvidia_ctl_open(
          init_waitqueue_head(&nv_ctl_waitqueue);
  
          nv->flags |= (NV_FLAG_OPEN | NV_FLAG_CONTROL);
@@ -605,7 +596,7 @@ index 57ba56e..a06b819 100644
      }
  
      NV_ATOMIC_INC(nvl->usage_count);
-@@ -2874,7 +2866,6 @@ nvidia_ctl_close(
+@@ -2788,7 +2780,6 @@ nvidia_ctl_close(
      nv_state_t *nv = NV_STATE_PTR(nvl);
      nv_file_private_t *nvfp = NV_GET_FILE_PRIVATE(file);
      nvidia_stack_t *sp = nvfp->sp;
@@ -613,7 +604,7 @@ index 57ba56e..a06b819 100644
      unsigned int i;
  
      nv_printf(NV_DBG_INFO, "NVRM: nvidia_ctl_close\n");
-@@ -2891,13 +2882,6 @@ nvidia_ctl_close(
+@@ -2809,13 +2800,6 @@ nvidia_ctl_close(
      if (NV_ATOMIC_DEC_AND_TEST(nvl->usage_count))
      {
          nv->flags &= ~NV_FLAG_OPEN;

@@ -1,4 +1,4 @@
-From c0acc84e4ab2a0c13c16809a4db8b1268dad2287 Mon Sep 17 00:00:00 2001
+From 9bcb41b1306c50a9dea8ffb4e274b63fbe8627f0 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 18 Oct 2022 22:32:41 +0200
 Subject: [PATCH] backport acpi changes from 510.85.02
@@ -11,10 +11,10 @@ Subject: [PATCH] backport acpi changes from 510.85.02
  4 files changed, 473 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index 826e6b8..faec524 100644
+index 7b3273c..86771e9 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -1622,24 +1622,12 @@ extern NvBool nv_ats_supported;
+@@ -1638,24 +1638,12 @@ extern NvBool nv_ats_supported;
   * and any other baggage we want to carry along
   *
   */
@@ -40,7 +40,7 @@ index 826e6b8..faec524 100644
  
  #endif
 diff --git a/common/inc/nv-proto.h b/common/inc/nv-proto.h
-index 8cf9275..74f3c63 100644
+index f8c1e28..0025203 100644
 --- a/common/inc/nv-proto.h
 +++ b/common/inc/nv-proto.h
 @@ -23,8 +23,6 @@ extern nvidia_module_t nv_fops;
@@ -53,7 +53,7 @@ index 8cf9275..74f3c63 100644
  NvU8        nv_find_pci_capability      (struct pci_dev *, NvU8);
  void *      nv_alloc_file_private       (void);
 diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
-index c69b813..78c81df 100644
+index c5f76ff..d1a8539 100644
 --- a/nvidia/nv-acpi.c
 +++ b/nvidia/nv-acpi.c
 @@ -23,15 +23,6 @@ static NV_STATUS   nv_acpi_extract_buffer  (const union acpi_object *, void *, N
@@ -135,7 +135,7 @@ index c69b813..78c81df 100644
 -        return status;
 -    }
 -
--    rmStatus = rm_read_registry_dword(sp, NULL, "NVreg",
+-    rmStatus = rm_read_registry_dword(sp, NULL,
 -                   NV_REG_REGISTER_FOR_ACPI_EVENTS, &acpi_event_config);
 -    nv_kmem_cache_free_stack(sp);
 -
@@ -178,7 +178,7 @@ index c69b813..78c81df 100644
 -        return rc;
 -    }
 -
--    rmStatus = rm_read_registry_dword(sp, NULL, "NVreg",
+-    rmStatus = rm_read_registry_dword(sp, NULL,
 -                   NV_REG_REGISTER_FOR_ACPI_EVENTS, &acpi_event_config);
 -    nv_kmem_cache_free_stack(sp);
 -
@@ -553,7 +553,7 @@ index c69b813..78c81df 100644
  }
  
  static NV_STATUS nv_acpi_extract_integer(
-@@ -1811,16 +1378,6 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
+@@ -1815,16 +1382,6 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
  
  #else // NV_LINUX_ACPI_EVENTS_SUPPORTED
  
@@ -571,20 +571,20 @@ index c69b813..78c81df 100644
  {
      *handlePresent = 0;
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 7ead8b6..5e5dc41 100644
+index b7dcb89..a4ce42a 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -2744,7 +2744,6 @@ nvidia_ctl_open(
+@@ -2678,7 +2678,6 @@ nvidia_ctl_open(
      nv_linux_state_t *nvl = &nv_ctl_device;
      nv_state_t *nv = NV_STATE_PTR(nvl);
-     nv_file_private_t *nvfp = NV_GET_FILE_PRIVATE(file);
+     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
 -    static int count = 0;
  
      nv_printf(NV_DBG_INFO, "NVRM: nvidia_ctl_open\n");
  
-@@ -2758,13 +2757,6 @@ nvidia_ctl_open(
-         init_waitqueue_head(&nv_ctl_waitqueue);
- 
+@@ -2690,13 +2689,6 @@ nvidia_ctl_open(
+     if (NV_ATOMIC_READ(nvl->usage_count) == 0)
+     {
          nv->flags |= (NV_FLAG_OPEN | NV_FLAG_CONTROL);
 -
 -        if ((nv_acpi_init() < 0) &&
@@ -596,15 +596,15 @@ index 7ead8b6..5e5dc41 100644
      }
  
      NV_ATOMIC_INC(nvl->usage_count);
-@@ -2788,7 +2780,6 @@ nvidia_ctl_close(
+@@ -2720,7 +2712,6 @@ nvidia_ctl_close(
      nv_state_t *nv = NV_STATE_PTR(nvl);
-     nv_file_private_t *nvfp = NV_GET_FILE_PRIVATE(file);
-     nvidia_stack_t *sp = nvfp->sp;
+     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
+     nvidia_stack_t *sp = nvlfp->sp;
 -    static int count = 0;
      unsigned int i;
  
      nv_printf(NV_DBG_INFO, "NVRM: nvidia_ctl_close\n");
-@@ -2809,13 +2800,6 @@ nvidia_ctl_close(
+@@ -2729,13 +2720,6 @@ nvidia_ctl_close(
      if (NV_ATOMIC_DEC_AND_TEST(nvl->usage_count))
      {
          nv->flags &= ~NV_FLAG_OPEN;

@@ -1,4 +1,4 @@
-From 85931a9d6d5addeea5e202f6812fae914a5f822e Mon Sep 17 00:00:00 2001
+From d75564f1d4256594a0e0bb90c802ad8844600b6e Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 17 Oct 2022 03:35:02 +0200
 Subject: [PATCH] backport drm_frambuffer.h changes from 515.76
@@ -8,10 +8,10 @@ Subject: [PATCH] backport drm_frambuffer.h changes from 515.76
  1 file changed, 13 insertions(+)
 
 diff --git a/nvidia-drm/nvidia-drm-helper.c b/nvidia-drm/nvidia-drm-helper.c
-index 601a9c3..8b89afe 100644
+index 3831180..8fc8620 100644
 --- a/nvidia-drm/nvidia-drm-helper.c
 +++ b/nvidia-drm/nvidia-drm-helper.c
-@@ -39,6 +39,19 @@
+@@ -41,6 +41,19 @@
  #include <drm/drm_atomic_uapi.h>
  #endif
  

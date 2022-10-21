@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (460.106.00-7+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (460.106.00-8+git) UNRELEASED; urgency=medium
 
   * Generate tight dependencies on libnvidia*-glcore/libnvidia*-eglcore
     (470.57.02-3).
@@ -27,6 +27,14 @@ nvidia-graphics-drivers (460.106.00-7+git) UNRELEASED; urgency=medium
   * Add support for unversioned Tesla packages (tesla 510.85.02-1).
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.1. No changes needed.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
+
+nvidia-graphics-drivers (460.106.00-8) UNRELEASED; urgency=medium
+
+  * Backport acpi changes from
+    510.85.02 and 515.65.01, drm_frambuffer.h changes from 515.76 to fix
+    kernel module build for Linux 6.0.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
 

@@ -32,7 +32,7 @@ nvidia-graphics-drivers (460.106.00-8+git) UNRELEASED; urgency=medium
 
 nvidia-graphics-drivers (460.106.00-8) UNRELEASED; urgency=medium
 
-  * Backport acpi changes from
+  * Backport get_task_ioprio changes from 510.85.02, acpi changes from
     510.85.02 and 515.65.01, drm_frambuffer.h changes from 515.76 to fix
     kernel module build for Linux 6.0.
 

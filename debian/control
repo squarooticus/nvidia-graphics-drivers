@@ -87,8 +87,6 @@ Conflicts:
  libegl1-glvnd-nvidia,
  libgles1-glvnd-nvidia,
  libgles2-glvnd-nvidia,
-Breaks:
- nvidia-tesla-alternative (>> 0),
 Description: allows the selection of NVIDIA as GLX provider${nvidia:VariantDesc}
  In setups with several NVIDIA driver versions installed (e.g. current and
  legacy) this metapackage registers an alternative to allow easy switching
@@ -164,10 +162,10 @@ Section: non-free/kernel
 Architecture: amd64 arm64 ppc64el
 Depends:
  debhelper-compat (= ${nvidia:debhelper-compat}),
+ module-assistant,
  quilt,
  ${misc:Depends}
 Recommends:
- module-assistant,
  firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:arches:gsp}] | firmware-nvidia-gsp-${nvidia:Version} [${nvidia:arches:gsp}],
  ${nvidia}-kernel-support--v1,
 Suggests:
@@ -236,7 +234,7 @@ Pre-Depends:
  nvidia-installer-cleanup (>= 20151021),
 Depends:
  ${misc:Depends}
-Description: check for NVIDIA GPUs requiring a legacy driver
+Description: check for NVIDIA GPUs requiring a legacy driver${nvidia:VariantDesc}
  This package checks whether the system contains NVIDIA GPUs that are no longer
  supported by the main driver line and require a legacy driver.
  .

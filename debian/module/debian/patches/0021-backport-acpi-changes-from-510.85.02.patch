@@ -1,4 +1,4 @@
-From 9bcb41b1306c50a9dea8ffb4e274b63fbe8627f0 Mon Sep 17 00:00:00 2001
+From 0d454cca5682eb4fc821299a0cd81b10bc04717a Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 18 Oct 2022 22:32:41 +0200
 Subject: [PATCH] backport acpi changes from 510.85.02
@@ -11,10 +11,10 @@ Subject: [PATCH] backport acpi changes from 510.85.02
  4 files changed, 473 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index 7b3273c..86771e9 100644
+index 51a973b..22b05a0 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -1638,24 +1638,12 @@ extern NvBool nv_ats_supported;
+@@ -1627,24 +1627,12 @@ extern NvBool nv_ats_supported;
   * and any other baggage we want to carry along
   *
   */
@@ -40,10 +40,10 @@ index 7b3273c..86771e9 100644
  
  #endif
 diff --git a/common/inc/nv-proto.h b/common/inc/nv-proto.h
-index f8c1e28..0025203 100644
+index 79cccfa..aa8b285 100644
 --- a/common/inc/nv-proto.h
 +++ b/common/inc/nv-proto.h
-@@ -23,8 +23,6 @@ extern nvidia_module_t nv_fops;
+@@ -22,8 +22,6 @@ extern nvidia_module_t nv_fops;
  
  void        nv_acpi_register_notifier   (nv_linux_state_t *);
  void        nv_acpi_unregister_notifier (nv_linux_state_t *);
@@ -53,10 +53,10 @@ index f8c1e28..0025203 100644
  NvU8        nv_find_pci_capability      (struct pci_dev *, NvU8);
  void *      nv_alloc_file_private       (void);
 diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
-index c5f76ff..d1a8539 100644
+index 2b7b988..dcad96c 100644
 --- a/nvidia/nv-acpi.c
 +++ b/nvidia/nv-acpi.c
-@@ -23,15 +23,6 @@ static NV_STATUS   nv_acpi_extract_buffer  (const union acpi_object *, void *, N
+@@ -22,35 +22,13 @@ static NV_STATUS   nv_acpi_extract_buffer  (const union acpi_object *, void *, N
  static NV_STATUS   nv_acpi_extract_package (const union acpi_object *, void *, NvU32, NvU32 *);
  static NV_STATUS   nv_acpi_extract_object  (const union acpi_object *, void *, NvU32, NvU32 *);
  
@@ -72,9 +72,8 @@ index c5f76ff..d1a8539 100644
  static void        nv_acpi_powersource_hotplug_event(acpi_handle, u32, void *);
  static acpi_status nv_acpi_find_methods    (acpi_handle, u32, void *, void **);
  static NV_STATUS   nv_acpi_nvif_method     (NvU32, NvU32, void *, NvU16, NvU32 *, void *, NvU16 *);
-@@ -40,20 +31,7 @@ static NV_STATUS   nv_acpi_wmmx_method     (NvU32, NvU8 *, NvU16 *);
- static NV_STATUS   nv_acpi_mxmi_method     (NvU8 *, NvU16 *);
- static NV_STATUS   nv_acpi_mxms_method     (NvU8 *, NvU16 *);
+ 
+ static NV_STATUS   nv_acpi_wmmx_method     (NvU32, NvU8 *, NvU16 *);
  
 -static const struct acpi_device_id nv_video_device_ids[] = {
 -    {
@@ -91,9 +90,9 @@ index c5f76ff..d1a8539 100644
  static acpi_handle nvif_handle = NULL;
 -static acpi_handle nvif_parent_gpu_handle  = NULL;
  static acpi_handle wmmx_handle = NULL;
- static acpi_handle mxmi_handle = NULL;
- static acpi_handle mxms_handle = NULL;
-@@ -74,20 +52,6 @@ static nv_acpi_t  *psr_nv_acpi_object = NULL;
+ 
+ // Used for AC Power Source Hotplug Handling
+@@ -74,20 +52,6 @@ static NvBool battery_present = NV_FALSE;
  #define ACPI_VIDEO_CLASS    "video"
  #endif
  
@@ -515,7 +514,7 @@ index c5f76ff..d1a8539 100644
      }
  
      if (wmmx_handle)
-@@ -695,7 +279,6 @@ acpi_status nv_acpi_find_methods(
+@@ -691,7 +275,6 @@ acpi_status nv_acpi_find_methods(
      if (!acpi_get_handle(handle, "NVIF", &method_handle))
      {
          nvif_handle = method_handle;
@@ -523,7 +522,7 @@ index c5f76ff..d1a8539 100644
      }
  
      if (!acpi_get_handle(handle, "WMMX", &method_handle))
-@@ -724,8 +307,6 @@ acpi_status nv_acpi_find_methods(
+@@ -710,8 +293,6 @@ acpi_status nv_acpi_find_methods(
  
  void NV_API_CALL nv_acpi_methods_uninit(void)
  {
@@ -531,8 +530,8 @@ index c5f76ff..d1a8539 100644
 -
      nvif_handle = NULL;
      wmmx_handle = NULL;
-     mxmi_handle = NULL;
-@@ -739,20 +320,6 @@ void NV_API_CALL nv_acpi_methods_uninit(void)
+ 
+@@ -723,20 +304,6 @@ void NV_API_CALL nv_acpi_methods_uninit(void)
          psr_device_handle = NULL;
          psr_nv_acpi_object = NULL;
      }
@@ -553,7 +552,7 @@ index c5f76ff..d1a8539 100644
  }
  
  static NV_STATUS nv_acpi_extract_integer(
-@@ -1815,16 +1382,6 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
+@@ -1734,16 +1301,6 @@ NvBool NV_API_CALL nv_acpi_is_battery_present(void)
  
  #else // NV_LINUX_ACPI_EVENTS_SUPPORTED
  
@@ -571,10 +570,10 @@ index c5f76ff..d1a8539 100644
  {
      *handlePresent = 0;
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index b7dcb89..a4ce42a 100644
+index 2475b96..13d2614 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -2678,7 +2678,6 @@ nvidia_ctl_open(
+@@ -2694,7 +2694,6 @@ nvidia_ctl_open(
      nv_linux_state_t *nvl = &nv_ctl_device;
      nv_state_t *nv = NV_STATE_PTR(nvl);
      nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
@@ -582,7 +581,7 @@ index b7dcb89..a4ce42a 100644
  
      nv_printf(NV_DBG_INFO, "NVRM: nvidia_ctl_open\n");
  
-@@ -2690,13 +2689,6 @@ nvidia_ctl_open(
+@@ -2706,13 +2705,6 @@ nvidia_ctl_open(
      if (NV_ATOMIC_READ(nvl->usage_count) == 0)
      {
          nv->flags |= (NV_FLAG_OPEN | NV_FLAG_CONTROL);
@@ -596,7 +595,7 @@ index b7dcb89..a4ce42a 100644
      }
  
      NV_ATOMIC_INC(nvl->usage_count);
-@@ -2720,7 +2712,6 @@ nvidia_ctl_close(
+@@ -2736,7 +2728,6 @@ nvidia_ctl_close(
      nv_state_t *nv = NV_STATE_PTR(nvl);
      nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
      nvidia_stack_t *sp = nvlfp->sp;
@@ -604,7 +603,7 @@ index b7dcb89..a4ce42a 100644
      unsigned int i;
  
      nv_printf(NV_DBG_INFO, "NVRM: nvidia_ctl_close\n");
-@@ -2729,13 +2720,6 @@ nvidia_ctl_close(
+@@ -2745,13 +2736,6 @@ nvidia_ctl_close(
      if (NV_ATOMIC_DEC_AND_TEST(nvl->usage_count))
      {
          nv->flags &= ~NV_FLAG_OPEN;

@@ -1,4 +1,4 @@
-From d75564f1d4256594a0e0bb90c802ad8844600b6e Mon Sep 17 00:00:00 2001
+From 1d8c1a8fc7c278763f93f60e49f16fe9a70a0a6b Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 17 Oct 2022 03:35:02 +0200
 Subject: [PATCH] backport drm_frambuffer.h changes from 515.76

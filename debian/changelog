@@ -1,3 +1,11 @@
+nvidia-graphics-drivers (470.141.03-3) UNRELEASED; urgency=medium
+
+  * Backport get_task_ioprio changes from 510.85.02, acpi changes from
+    510.85.02 and 515.65.01, drm_frambuffer.h changes from 515.76 to fix
+    kernel module build for Linux 6.0.  (Closes: #1021974)
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 24 Oct 2022 14:11:42 +0200
+
 nvidia-graphics-drivers (470.141.03-2) unstable; urgency=medium
 
   * Add support for unversioned Tesla packages (tesla 510.85.02-1).

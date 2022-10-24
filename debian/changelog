@@ -492,7 +492,7 @@ nvidia-graphics-drivers (460.106.00-8) UNRELEASED; urgency=medium
     510.85.02 and 515.65.01, drm_frambuffer.h changes from 515.76 to fix
     kernel module build for Linux 6.0.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 24 Oct 2022 12:19:58 +0200
 
 nvidia-graphics-drivers (460.106.00-7) UNRELEASED; urgency=medium
 

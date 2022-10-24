@@ -234,7 +234,7 @@ Pre-Depends:
  nvidia-installer-cleanup (>= 20151021),
 Depends:
  ${misc:Depends}
-Description: check for NVIDIA GPUs requiring a legacy driver
+Description: check for NVIDIA GPUs requiring a legacy driver${nvidia:VariantDesc}
  This package checks whether the system contains NVIDIA GPUs that are no longer
  supported by the main driver line and require a legacy driver.
  .

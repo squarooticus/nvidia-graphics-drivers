@@ -84,6 +84,7 @@ CONTROL_PREFIXES	+= libnvcuvid1
 CONTROL_PREFIXES	+= libnvoptix1
 CONTROL_PREFIXES	+= nvidia-smi
 CONTROL_PREFIXES	+= nvidia-opencl-icd
+CONTROL_PREFIXES	+= nvidia-legacy-check
 RENAME_libcuda1		 = $(libcuda1)
 RENAME_libnvcuvid1	 = lib$(nvidia_if_variant)nvcuvid1
 RENAME_libnvoptix1	 = lib$(nvidia_if_variant)nvoptix1

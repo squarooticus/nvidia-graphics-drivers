@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (510.85.02-6) unstable; urgency=medium
+
+  * Split firmware-nvidia-gsp from nvidia-kernel-support.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 27 Oct 2022 10:29:39 +0200
+
 nvidia-graphics-drivers (510.85.02-5) unstable; urgency=medium
 
   * Restrict nvidia-legacy-check dependency to driver architectures.

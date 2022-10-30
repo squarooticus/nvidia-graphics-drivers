@@ -10,7 +10,7 @@ include debian/rules.defs
 NVIDIA_LEGACY		?=
 WATCH_VERSION		?= $(NVIDIA_LEGACY)
 WATCH_PATTERN		?=
-GIT_BRANCH		?= $(if $(variant),$(variant)/master)
+GIT_BRANCH		?= $(if $(variant),$(variant)/master,$(version_major))
 XORG_ABI_LIST		?=
 XORG_BOUND		?=
 LINUX_KMOD_TESTED	?=

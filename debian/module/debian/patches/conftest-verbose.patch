@@ -49,3 +49,21 @@ Description: dump the generated conftest headers
  
  clean-dirs := $(obj)/conftest
  
+@@ -232,7 +248,7 @@ BUILD_SANITY_CHECKS = \
+ .PHONY: $(BUILD_SANITY_CHECKS)
+ 
+ $(BUILD_SANITY_CHECKS):
+-	@$(NV_CONFTEST_CMD) $@ full_output
++	$(NV_CONFTEST_CMD) $@ full_output
+ 
+ # Perform all sanity checks before generating the conftest headers
+ 
+@@ -242,7 +258,7 @@ $(NV_CONFTEST_HEADERS): | $(BUILD_SANITY
+ 
+ $(obj)/conftest/uts_release: NV_GENERATE_UTS_RELEASE
+ 	@mkdir -p $(dir $@)
+-	@NV_UTS_RELEASE="// Kernel version: `$(NV_CONFTEST_CMD) compile_tests '$(NV_CONFTEST_CFLAGS)' uts_release`"; \
++	NV_UTS_RELEASE="// Kernel version: `$(NV_CONFTEST_CMD) compile_tests '$(NV_CONFTEST_CFLAGS)' uts_release`"; \
+ 	if ! [ -f "$@" ] || [ "$$NV_UTS_RELEASE" != "`cat $@`" ]; \
+ 	then echo "$$NV_UTS_RELEASE" > $@; fi
+ 

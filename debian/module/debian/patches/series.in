@@ -1,5 +1,6 @@
 # kernel support
 0001-bump-minimum-supported-kernel-version-to-3.10.patch
+0002-conftest.sh-remove-empty-lines-from-uts_release-outp.patch
 0009-backport-pci-dma-changes-from-470.129.06.patch
 0016-backport-nv_install_notifier-changes-from-470.141.03.patch
 0017-backport-dma_resv_add_fence-changes-from-450.203.03.patch

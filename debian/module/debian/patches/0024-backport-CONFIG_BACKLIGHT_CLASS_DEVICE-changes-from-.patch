@@ -1,4 +1,4 @@
-From f82001d0c92cd0ee95400b767f2422f26165f2ad Mon Sep 17 00:00:00 2001
+From 50a84b3b5a56f896e43695e286e5671c085faca8 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 31 Oct 2022 03:27:07 +0100
 Subject: [PATCH] backport CONFIG_BACKLIGHT_CLASS_DEVICE changes from 515.48.07

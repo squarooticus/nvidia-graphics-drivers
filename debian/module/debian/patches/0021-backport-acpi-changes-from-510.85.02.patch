@@ -1,4 +1,4 @@
-From 50320f505fb6831eee652d3c81f59b9320e2aa6e Mon Sep 17 00:00:00 2001
+From 40fe7ecd87fdbddde46a24b0dc9b3a040442d872 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 18 Oct 2022 22:32:41 +0200
 Subject: [PATCH] backport acpi changes from 510.85.02
@@ -11,7 +11,7 @@ Subject: [PATCH] backport acpi changes from 510.85.02
  4 files changed, 459 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index d3a39ad..eeba17d 100644
+index 35aec51..782e42a 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
 @@ -1647,24 +1647,12 @@ extern NvBool nv_ats_supported;

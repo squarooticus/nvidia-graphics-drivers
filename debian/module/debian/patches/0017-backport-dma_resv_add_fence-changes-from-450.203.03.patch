@@ -1,4 +1,4 @@
-From 56469f6a2405ea5dbac766ceba19f6557578c36b Mon Sep 17 00:00:00 2001
+From 5ba7c4c8328307b78d206f0027546173f267dd4c Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sat, 6 Aug 2022 08:51:38 +0200
 Subject: [PATCH] backport dma_resv_add_fence changes from 450.203.03
@@ -10,10 +10,10 @@ Subject: [PATCH] backport dma_resv_add_fence changes from 450.203.03
  3 files changed, 25 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 7676169..64b2f5f 100755
+index 68fb40d..bd91072 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4648,6 +4648,26 @@ compile_test() {
+@@ -5304,6 +5304,26 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_ACPI_BUS_GET_DEVICE_PRESENT" "" "functions"
          ;;
  
@@ -57,12 +57,12 @@ index ad8800d..44538f2 100644
      reservation_object_add_excl_fence(obj, fence);
  #endif
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 546cfa2..e5106fa 100644
+index 46615d6..43efdbd 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -112,3 +112,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_gem_object_vmap_has_map_arg
- NV_CONFTEST_TYPE_COMPILE_TESTS += drm_plane_atomic_check_has_atomic_state_arg
+@@ -115,3 +115,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_plane_atomic_check_has_atomic_state_arg
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_device_has_pdev
+ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_crtc_state_has_no_vblank
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_mode_config_has_allow_fb_modifiers
 +NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
 -- 

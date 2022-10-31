@@ -1,17 +1,17 @@
-From 1387a1c2162de450284ead5d91d71ff9ec1494e4 Mon Sep 17 00:00:00 2001
+From f9416eb6594c0d130584c21732fc49ffcb470771 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 17 Oct 2022 03:03:00 +0200
-Subject: [PATCH] backport nv-acpi.c changes from 515.65.01
+Subject: [PATCH] backport acpi changes from 515.65.01
 
 ---
  nvidia/nv-acpi.c | 65 +++++++++++++-----------------------------------
  1 file changed, 17 insertions(+), 48 deletions(-)
 
 diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
-index f4a256c..1062e12 100644
+index 6b8632a..96e31fa 100644
 --- a/nvidia/nv-acpi.c
 +++ b/nvidia/nv-acpi.c
-@@ -716,12 +716,11 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+@@ -715,12 +715,11 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
  )
  {
      acpi_status status;
@@ -25,7 +25,7 @@ index f4a256c..1062e12 100644
  
      if (!nv_acpi_get_device_handle(nv, &dev_handle))
          return NV_ERR_NOT_SUPPORTED;
-@@ -729,15 +728,6 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+@@ -728,15 +727,6 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
      if (!dev_handle)
          return NV_ERR_INVALID_ARGUMENT;
  
@@ -41,7 +41,7 @@ index f4a256c..1062e12 100644
      if (!NV_MAY_SLEEP())
      {
  #if defined(DEBUG)
-@@ -748,16 +738,16 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+@@ -747,16 +737,16 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
          return NV_ERR_NOT_SUPPORTED;
      }
  
@@ -64,7 +64,7 @@ index f4a256c..1062e12 100644
          if (ACPI_FAILURE(status))
              /* Couldnt query device_id for this device */
              continue;
-@@ -767,16 +757,13 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+@@ -766,16 +756,13 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
              case 0x0118:
              case 0x0400:
              case 0xA420:
@@ -82,7 +82,7 @@ index f4a256c..1062e12 100644
      }
  
      if (lcd_dev_handle == NULL)
-@@ -1126,15 +1113,14 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
+@@ -1125,15 +1112,14 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
  )
  {
      acpi_status status;
@@ -99,7 +99,7 @@ index f4a256c..1062e12 100644
  
      if ((strcmp(pMethodName, "MXDS") != 0)
          && (strcmp(pMethodName, "MXDM") != 0))
-@@ -1155,16 +1141,6 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
+@@ -1154,16 +1140,6 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
      if (!dev_handle)
          return NV_ERR_INVALID_ARGUMENT;
  
@@ -116,7 +116,7 @@ index f4a256c..1062e12 100644
      if (!NV_MAY_SLEEP())
      {
  #if defined(DEBUG)
-@@ -1173,23 +1149,16 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
+@@ -1172,23 +1148,16 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
          return NV_ERR_NOT_SUPPORTED;
      }
  

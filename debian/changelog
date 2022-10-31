@@ -39,6 +39,7 @@ nvidia-graphics-drivers (515.43.04-1) UNRELEASED; urgency=medium
   * Backport get_task_ioprio changes from 510.85.02, acpi changes from
     510.85.02 and 515.65.01, drm_frambuffer.h changes from 515.76 to fix
     kernel module build for Linux 6.0.
+  * Refresh patches.
   * Update symbols files.
   * Update lintian overrides.
 

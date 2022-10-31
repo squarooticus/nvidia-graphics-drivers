@@ -33,6 +33,7 @@ nvidia-graphics-drivers (515.43.04-1) UNRELEASED; urgency=medium
       200 MB to 1024 MB.
 
   [ Andreas Beckmann ]
+  * Bump minimum supported kernel version to 3.10.
   * Backport nv_install_notifier and dma_resv_add_fence changes from
     470.141.03 to fix kernel module build for Linux 5.19.
   * Backport get_task_ioprio changes from 510.85.02, acpi changes from

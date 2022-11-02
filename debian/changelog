@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (515.48.07-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (515.48.07-1) experimental; urgency=medium
 
   * New upstream production branch release 515.48.07 (2022-05-31).
     - Improved performance of GLX and Vulkan applications running in
@@ -48,8 +48,10 @@ nvidia-graphics-drivers (515.48.07-1) UNRELEASED; urgency=medium
   * Refresh patches.
   * Update symbols files.
   * Update lintian overrides.
+  * Restrict watch file to releases from the 515.xx production branch.
+  * Upload to experimental.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 28 Jun 2022 08:03:08 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Nov 2022 18:49:54 +0100
 
 nvidia-graphics-drivers (510.85.02-6) unstable; urgency=medium
 

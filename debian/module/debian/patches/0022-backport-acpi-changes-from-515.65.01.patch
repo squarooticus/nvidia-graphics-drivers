@@ -1,4 +1,4 @@
-From f9416eb6594c0d130584c21732fc49ffcb470771 Mon Sep 17 00:00:00 2001
+From 14ff6a61848d7ca0e440ac1de838dfdaab306f1f Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 17 Oct 2022 03:03:00 +0200
 Subject: [PATCH] backport acpi changes from 515.65.01

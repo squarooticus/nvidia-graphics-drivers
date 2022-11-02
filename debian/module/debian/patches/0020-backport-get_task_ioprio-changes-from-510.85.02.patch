@@ -1,4 +1,4 @@
-From 9d7cad2aae4301fb4dd6a2731b53a052e30339d7 Mon Sep 17 00:00:00 2001
+From ca950a3ac988e0cd235118305709a98e57c70113 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 19 Oct 2022 00:14:36 +0200
 Subject: [PATCH] backport get_task_ioprio changes from 510.85.02
@@ -10,11 +10,11 @@ Subject: [PATCH] backport get_task_ioprio changes from 510.85.02
  3 files changed, 30 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index bd91072..f0d939e 100755
+index b5e1788..e3b4080 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -5324,6 +5324,23 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_DMA_RESV_ADD_FENCE_PRESENT" "" "functions"
+@@ -5365,6 +5365,23 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_RESERVATION_OBJECT_RESERVE_SHARED_HAS_NUM_FENCES_ARG" "" "types"
          ;;
  
 +        get_task_ioprio)
@@ -38,10 +38,10 @@ index bd91072..f0d939e 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 2f82024..14e84dd 100644
+index 9e08aca..ce7296d 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -5452,7 +5452,19 @@ NvBool NV_API_CALL nv_s2idle_pm_configured(void)
+@@ -5443,7 +5443,19 @@ NvBool NV_API_CALL nv_s2idle_pm_configured(void)
          return NV_FALSE;
      }
  

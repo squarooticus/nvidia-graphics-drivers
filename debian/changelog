@@ -42,11 +42,9 @@ nvidia-graphics-drivers (515.48.07-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Bump minimum supported kernel version to 3.10.
-  * Backport nv_install_notifier and dma_resv_add_fence changes from
-    470.141.03 to fix kernel module build for Linux 5.19.
   * Backport get_task_ioprio changes from 510.85.02, acpi changes from
-    510.85.02 and 515.65.01, drm_frambuffer.h changes from 515.76 to fix
-    kernel module build for Linux 6.0.
+    515.65.01, drm_frambuffer.h changes from 515.76 to fix kernel module build
+    for Linux 6.0.
   * Refresh patches.
   * Update symbols files.
   * Update lintian overrides.

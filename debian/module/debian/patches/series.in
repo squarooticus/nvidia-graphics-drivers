@@ -2,13 +2,9 @@
 0001-bump-minimum-supported-kernel-version-to-3.10.patch
 0002-conftest.sh-remove-empty-lines-from-uts_release-outp.patch
 0009-backport-pci-dma-changes-from-470.129.06.patch
-0016-backport-nv_install_notifier-changes-from-470.141.03.patch
-0017-backport-dma_resv_add_fence-changes-from-450.203.03.patch
 0020-backport-get_task_ioprio-changes-from-510.85.02.patch
-0021-backport-acpi-changes-from-510.85.02.patch
 0022-backport-acpi-changes-from-515.65.01.patch
 0023-backport-drm_frambuffer.h-changes-from-515.76.patch
-0024-backport-CONFIG_BACKLIGHT_CLASS_DEVICE-changes-from-.patch
 
 # build system updates
 bashisms.patch

@@ -1,9 +1,26 @@
-nvidia-graphics-drivers (515.86.01-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (520.56.06-1) UNRELEASED; urgency=medium
+
+  * New upstream new feature branch release 520.56.06 (2022-10-12).
+    - Implemented support for over-the-air updates in the Proton and Wine
+      NVIDIA NGX build. This feature is disabled by default and can be enabled
+      by setting the "PROTON_ENABLE_NGX_UPDATER" environment variable to a
+      value of "1".
+    - Updated the Vulkan driver so that the following extensions no longer
+      depend on nvidia-uvm.ko being loaded at runtime:
+      VK_KHR_acceleration_structure, VK_KHR_deferred_host_operations,
+      VK_KHR_ray_query, VK_KHR_ray_tracing_pipeline, VK_NV_cuda_kernel_launch,
+      VK_NV_ray_tracing, VK_NV_ray_tracing_motion_blur, VK_NVX_binary_import,
+      VK_NVX_image_view_handle.
+    - Fixed a bug in the Vulkan driver which could lead to corruption in
+      geometry and tessellation control shaders.
+    - Added a new CUDA Debugger implementation for Pascal and newer
+      architectures as a part of the driver package: libcudadebugger.so
+      (previously released separately as "CUDA GDB Developer Preview").
 
   [ Andreas Beckmann ]
   * Update symbols files.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 17 Jan 2023 20:41:23 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 03 Nov 2022 00:16:08 +0100
 
 nvidia-graphics-drivers (515.76-1) experimental; urgency=medium
 

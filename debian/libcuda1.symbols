@@ -240,6 +240,8 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuLaunchHostFunc@Base 410
  cuLaunchHostFunc_ptsz@Base 410
  cuLaunchKernel@Base 270
+ cuLaunchKernelEx@Base 520
+ cuLaunchKernelEx_ptsz@Base 520
  cuLaunchKernel_ptsz@Base 346
  cuLinkAddData@Base 319
  cuLinkAddData_v2@Base 340
@@ -425,8 +427,10 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuOccupancyAvailableDynamicSMemPerBlock@Base 440
  cuOccupancyMaxActiveBlocksPerMultiprocessor@Base 340
  cuOccupancyMaxActiveBlocksPerMultiprocessorWithFlags@Base 346
+ cuOccupancyMaxActiveClusters@Base 520
  cuOccupancyMaxPotentialBlockSize@Base 340
  cuOccupancyMaxPotentialBlockSizeWithFlags@Base 346
+ cuOccupancyMaxPotentialClusterSize@Base 520
  cuParamSetSize@Base 169
  cuParamSetTexRef@Base 169
  cuParamSetf@Base 169
@@ -556,6 +560,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cudbgApiDetach@Base 331.20
  cudbgApiInit@Base 331.20
  cudbgAttachHandlerAvailable@Base 331.20
+ cudbgDebuggerCapabilities@Base 520
  cudbgDebuggerInitialized@Base 331.20
  cudbgDetachSuspendedDevicesMask@Base 331.20
  cudbgEnableIntegratedMemcheck@Base 331.20

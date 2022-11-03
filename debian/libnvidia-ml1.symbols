@@ -73,6 +73,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetFanSpeed@Base 270
  nvmlDeviceGetFanSpeed_v2@Base 418
  nvmlDeviceGetFieldValues@Base 384
+ nvmlDeviceGetGpcClkMinMaxVfOffset@Base 520
  nvmlDeviceGetGpcClkVfOffset@Base 515
  nvmlDeviceGetGpuInstanceById@Base 450
  nvmlDeviceGetGpuInstanceId@Base 450
@@ -112,6 +113,8 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetMaxMigDeviceCount@Base 450
  nvmlDeviceGetMaxPcieLinkGeneration@Base 295
  nvmlDeviceGetMaxPcieLinkWidth@Base 295
+ nvmlDeviceGetMemClkMinMaxVfOffset@Base 520
+ nvmlDeviceGetMemClkVfOffset@Base 520
  nvmlDeviceGetMemoryAffinity@Base 450
  nvmlDeviceGetMemoryBusWidth@Base 510
  nvmlDeviceGetMemoryErrorCounter@Base 304
@@ -211,6 +214,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceSetGpcClkVfOffset@Base 515
  nvmlDeviceSetGpuLockedClocks@Base 410
  nvmlDeviceSetGpuOperationMode@Base 304.48
+ nvmlDeviceSetMemClkVfOffset@Base 520
  nvmlDeviceSetMemoryLockedClocks@Base 465
  nvmlDeviceSetMigMode@Base 450
  nvmlDeviceSetNvLinkUtilizationControl@Base 361
@@ -233,6 +237,11 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlGetExcludedDeviceInfoByIndex@Base 465
  nvmlGetVgpuCompatibility@Base 375.26
  nvmlGetVgpuVersion@Base 410.66
+ nvmlGpmMetricsGet@Base 520
+ nvmlGpmQueryDeviceSupport@Base 520
+ nvmlGpmSampleAlloc@Base 520
+ nvmlGpmSampleFree@Base 520
+ nvmlGpmSampleGet@Base 520
  nvmlGpuInstanceCreateComputeInstance@Base 450
  nvmlGpuInstanceDestroy@Base 450
  nvmlGpuInstanceGetComputeInstanceById@Base 450

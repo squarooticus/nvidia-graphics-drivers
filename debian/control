@@ -736,6 +736,20 @@ Description: NVIDIA CUDA Driver Library${nvidia:VariantDesc}
  .
  ${nvidia:kmod:Description}
 
+Package: libcudadebugger1
+Architecture: amd64 arm64
+Multi-Arch: same
+Depends:
+ ${nvidia}-alternative (= ${binary:Version}),
+ ${shlibs:Depends}, ${misc:Depends}
+Homepage: https://www.nvidia.com/CUDA
+Description: NVIDIA CUDA Debugger Library${nvidia:VariantDesc}
+ The Compute Unified Device Architecture (CUDA) enables NVIDIA
+ graphics processing units (GPUs) to be used for massively parallel
+ general purpose computation.
+ .
+ This package contains the CUDA Debugger library for Pascal and later GPUs.
+
 Package: libnvidia-compiler
 Architecture: i386 amd64
 Multi-Arch: same

@@ -1,4 +1,4 @@
-From 4bbadbf6efb0ac97ac5ca335ff65f659fb288bc4 Mon Sep 17 00:00:00 2001
+From 2228333d68bacd9edbb0051a1659bc1c5fb874e9 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 6 Jan 2023 14:21:15 +0100
 Subject: [PATCH] backport drm_connector_has_override_edid changes from
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_connector_has_override_edid changes from
  4 files changed, 28 insertions(+), 4 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 75efeb7..ecc3848 100755
+index 85891a1..5e8ad31 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -5280,6 +5280,28 @@ compile_test() {
+@@ -5389,6 +5389,28 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_NUM_REGISTERED_FB_PRESENT" "" "types"
          ;;
  

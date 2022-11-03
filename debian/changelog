@@ -22,6 +22,7 @@ nvidia-graphics-drivers (520.56.06-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Update symbols files.
   * libcudadebugger1: New package for the CUDA Debugger library.
+  * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 03 Nov 2022 00:16:08 +0100
 

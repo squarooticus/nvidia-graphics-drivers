@@ -6,7 +6,9 @@ install nvidia-drm modprobe nvidia-modeset ; modprobe -i #MODULE#-drm $CMDLINE_O
 
 install nvidia-uvm modprobe nvidia ; modprobe -i #MODULE#-uvm $CMDLINE_OPTS
 
-remove nvidia modprobe -r -i #UNLOAD_MODULES#
+# unloading needs the internal names (i.e. upstream's names, not our renamed files)
+
+remove nvidia modprobe -r -i nvidia-drm nvidia-modeset nvidia-uvm nvidia
 
 remove nvidia-modeset modprobe -r -i nvidia-drm nvidia-modeset
 

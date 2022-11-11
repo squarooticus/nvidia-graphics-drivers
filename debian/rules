@@ -308,7 +308,7 @@ debian/nvidia-kernel-dkms.dkms: debian/module/debian/patches/series
 debian/nvidia-kernel-dkms.dkms: EXTRA_SUBSTITUTIONS += -e 's{\#MODULE_PATCHES\#}{$(patsubst %,%,$(shell grep -v ^\# debian/module/debian/patches/series))}g;'
 
 debian/module/debian/control.template: debian/control debian/module/debian/control.modules.in.binary
-	sed -n '0,/^$$/p' $< > $@
+	sed -n '/^#/d; 0,/^$$/p' $< > $@
 	cat $(filter-out $<,$^) >> $@
 
 debian/module/debian/bug-control: debian/bug-control

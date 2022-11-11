@@ -2,7 +2,7 @@
 
 export NV_VERBOSE := 1
 
-MODULE_BASENAME	 = #MODULE#
+MODULE		 = #MODULE#
 MODSRCPKG	 = #NVIDIA#-kernel-source
 
 CFLAGS = -Wall -g
@@ -44,9 +44,9 @@ build-stamp: configure-stamp
 	dh_quilt_patch
 	unset ARCH; $(MAKE) $(J_FLAG) modules $(KERNEL_SPEC)
 #HAS_UVM#	unset ARCH; $(MAKE) $(J_FLAG) -C uvm modules $(KERNEL_SPEC) KBUILD_EXTMOD=$(CURDIR)/uvm
-ifneq (nvidia,$(MODULE_BASENAME))
-	mv nvidia.ko $(MODULE_BASENAME).ko
-#HAS_UVM#	mv uvm/nvidia-uvm.ko uvm/$(MODULE_BASENAME)-uvm.ko
+ifneq (nvidia,$(MODULE))
+	mv nvidia.ko $(MODULE).ko
+#HAS_UVM#	mv uvm/nvidia-uvm.ko uvm/$(MODULE)-uvm.ko
 endif
 	touch $@
 

@@ -5,6 +5,7 @@
 0020-backport-get_task_ioprio-changes-from-510.85.02.patch
 0022-backport-acpi-changes-from-515.65.01.patch
 0023-backport-drm_frambuffer.h-changes-from-515.76.patch
+0024-backport-find_vma_intersection-changes-from-515.76.patch
 
 # build system updates
 bashisms.patch

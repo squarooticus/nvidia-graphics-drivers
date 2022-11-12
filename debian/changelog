@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (418.226.00-8+git4deb10buster) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.226.00-9+git4deb10buster) UNRELEASED; urgency=medium
 
   * Minor packaging sync and cleanup (470.129.06-6).
   * Drop references to kernel-package and make-kpkg, gone since stretch
@@ -12,6 +12,13 @@ nvidia-graphics-drivers (418.226.00-8+git4deb10buster) UNRELEASED; urgency=mediu
   * Add support for unversioned Tesla packages (tesla 510.85.02-1).
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
+
+nvidia-graphics-drivers (418.226.00-9) UNRELEASED; urgency=medium
+
+  * Backport find_vma_intersection changes from 450.203.08 to fix kernel
+    module build for Linux 6.1.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 12 Nov 2022 10:37:34 +0100
 
 nvidia-graphics-drivers (418.226.00-8) UNRELEASED; urgency=medium
 

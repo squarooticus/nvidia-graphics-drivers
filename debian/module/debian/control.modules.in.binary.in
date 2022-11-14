@@ -1,12 +1,12 @@
-Package: #NVIDIA#-kernel-#KVERS#
+Package: #NVIDIA-KERNEL#-#KVERS#
 Section: non-free/kernel
 Architecture: #ARCH_LIST#
 Depends:
- #NVIDIA#-kernel-support--v1,
+ #NVIDIA-KERNEL#-support--v1,
 Recommends:
  linux-image-#KVERS#,
 Provides:
- #NVIDIA#-kernel-#VERSION#,
+ #NVIDIA-KERNEL#-#VERSION#,
 Built-Using:
  ${built-using:kernel},
  ${built-using:module},

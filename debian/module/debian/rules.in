@@ -3,7 +3,9 @@
 export NV_VERBOSE := 1
 
 MODULE		 = #MODULE#
-MODSRCPKG	 = #NVIDIA#-kernel-source
+MODSRCPKG	 = $(PACKAGE)-source
+
+PACKAGE		 = #NVIDIA-KERNEL#
 
 CFLAGS = -Wall -g
 ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))

@@ -34,6 +34,7 @@ nvidia			 = nvidia$(-variant)
 nvidia_if_variant	 = $(if $(variant),$(nvidia)-)
 current			 = $(if $(variant),$(variant),current)
 module			 = nvidia-$(current)
+nvidia-kernel		 = $(nvidia)-kernel
 libcuda1		 = lib$(nvidia_if_variant)cuda1
 watch_pattern		 = $(or $(WATCH_PATTERN),$(if $(WATCH_VERSION),$(WATCH_VERSION)(?:\.[\d\.\-]+)?),\d[\d\.\-]*)
 has_uvm			 = $(filter $(DEB_HOST_ARCH),$(filter-out $(NO_UVM_ARCH_LIST),$(ARCH_LIST)))
@@ -198,8 +199,8 @@ override_dh_auto_install:
 	$(RM) -r debian/tmp
 	cp -al build/ debian/tmp
 
-module_source_pkg	 = debian/$(nvidia)-kernel-source
-module_source_txz	 = $(module_source_pkg)/usr/src/$(nvidia)-kernel.tar.xz
+module_source_pkg	 = debian/$(nvidia-kernel)-source
+module_source_txz	 = $(module_source_pkg)/usr/src/$(nvidia-kernel).tar.xz
 
 override_dh_install:
 	dh_install
@@ -248,14 +249,15 @@ override_dh_gencontrol:
 		-V'nvidia:xorgProvides=$(xorg_provides)' \
 		-V'nvidia=$(nvidia)' \
 		-V'nvidia-if-variant=$(nvidia_if_variant)' \
+		-V'nvidia-kernel=$(nvidia-kernel)' \
 		-V'nvidia:Variant=$(variant)' \
 		-V'nvidia:VariantDesc=$(variant_description)' \
 		-V'nvidia:VariantDescShort=$(variant_description_short)' \
 		-V'nvidia:legacy-check=$(NVIDIA_LEGACY_CHECK)' \
 		-V'libcuda1=$(libcuda1)' \
 		-V'nvidia-settings=$(NVIDIA_SETTINGS)' \
-		-V'nvidia:kmod:binary=$${nvidia}-kernel-dkms (= $${binary:Version}) | $${nvidia}-kernel-$${nvidia:Version}' \
-		-V'nvidia:kmod:source=$${nvidia}-kernel-dkms (>= $${nvidia:Version}) | $${nvidia}-kernel-source (>= $${nvidia:Version})' \
+		-V'nvidia:kmod:binary=$${nvidia-kernel}-dkms (= $${binary:Version}) | $${nvidia-kernel}-$${nvidia:Version}' \
+		-V'nvidia:kmod:source=$${nvidia-kernel}-dkms (>= $${nvidia:Version}) | $${nvidia-kernel}-source (>= $${nvidia:Version})' \
 		-V'nvidia:kmod:tested:Linux=$(strip $(or $(LINUX_KMOD_TESTED_$(DEB_HOST_ARCH)),$(LINUX_KMOD_TESTED),???))' \
 		-V'nvidia:kmod:blob:archlist=$(subst $(space),$(comma)$(space),$(BLOB_ARCH_LIST)) architecture$(if $(filter 1,$(words $(BLOB_ARCH_LIST))),,s)' \
 		-Vnvidia:kmod:Description="`cat debian/control.kmod`" \
@@ -289,6 +291,7 @@ override_dh_strip_nondeterminism:
 	-e 's{#MAJOR#}{$(version_major)}g;' \
 	-e 's{#NVIDIA#}{$(nvidia)}g;' \
 	-e 's{#VARIANT#}{$(-variant)}g;' \
+	-e 's{#NVIDIA-KERNEL#}{$(nvidia-kernel)}g;' \
 	-e 's{#MODULE#}{$(module)}g;' \
 	-e 's{#WATCH_PATTERN#}{$(subst \,\\,$(watch_pattern))}g;' \
 	-e 's{#LIBDIR#}{$(libdir)}g;' \
@@ -314,7 +317,7 @@ debian/module/debian/control.template: debian/control debian/module/debian/contr
 debian/module/debian/bug-control: debian/bug-control
 	cp $< $@
 	echo "" >> $@
-	echo "Submit-As: $(nvidia)-kernel-source" >> $@
+	echo "Submit-As: $(nvidia-kernel)-source" >> $@
 
 
 # Renaming control files for variant packaging

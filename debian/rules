@@ -233,7 +233,15 @@ kernel-source-tree: build-stamp $(AUTOGEN)
 	cd $@ && QUILT_PATCHES=../debian/module/debian/patches quilt --quiltrc /dev/null push -a || test $$? = 2
 
 # Test that the patches can be applied to the module source.
+override_dh_auto_test: J_FLAG ?= $(patsubst parallel=%,-j%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+override_dh_auto_test: TEST_KERNEL ?= $(shell ls -dvr1 /lib/modules/*/build 2>/dev/null | cut -d/ -f4 | head -n 1)
 override_dh_auto_test: kernel-source-tree
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	cd $< && $(MAKE) $(J_FLAG) NV_VERBOSE=1 KERNEL_UNAME=$(TEST_KERNEL)
+ifneq (,$(has_uvm))
+	cd $< && $(MAKE) $(J_FLAG) -C uvm NV_VERBOSE=1 KERNEL_UNAME=$(TEST_KERNEL) KBUILD_EXTMOD=$$(pwd)/uvm
+endif
+endif
 
 override_dh_installchangelogs:
 	dh_installchangelogs debian/tmp/NVIDIA_Changelog

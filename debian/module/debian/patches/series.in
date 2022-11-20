@@ -19,6 +19,7 @@
 0022-backport-acpi-changes-from-515.65.01.patch
 0023-backport-drm_frambuffer.h-changes-from-515.76.patch
 0024-backport-find_vma_intersection-changes-from-450.203..patch
+ppc64el.patch
 
 # build system updates
 bashisms.patch

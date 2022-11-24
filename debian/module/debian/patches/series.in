@@ -5,11 +5,6 @@ cc_version_check-gcc5.patch
 0003-backport-set_-memory-pages-_array-_uc-changes-from-5.patch
 0004-fix-conftest-includes.patch
 do-div-cast.patch
-0018-backport-nv_install_notifier-changes-from-418.30.patch
-0019-backport-acpi-changes-from-430.09.patch
-0020-backport-acpi-changes-from-455.23.04.patch
-0021-backport-acpi-changes-from-510.85.02.patch
-0022-backport-acpi-changes-from-515.65.01.patch
 
 # build system updates
 bashisms.patch

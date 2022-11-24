@@ -205,7 +205,6 @@ endif
 override_dh_auto_build: build-stamp
 
 override_dh_auto_install:
-	# "Install" into debian/tmp.
 	$(RM) -r debian/tmp
 	cp -al build/ debian/tmp
 
@@ -232,7 +231,8 @@ kernel-source-tree: build-stamp $(AUTOGEN)
 	cp -a build/kernel $@
 	cd $@ && QUILT_PATCHES=../debian/module/debian/patches quilt --quiltrc /dev/null push -a || test $$? = 2
 
-# Test that the patches can be applied to the module source.
+# Test that the patches can be applied to the module source
+# and a module can be built.
 override_dh_auto_test: J_FLAG ?= $(patsubst parallel=%,-j%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 override_dh_auto_test: TEST_KERNEL ?= $(shell ls -dvr1 /lib/modules/*/build 2>/dev/null | cut -d/ -f4 | head -n 1)
 override_dh_auto_test: kernel-source-tree

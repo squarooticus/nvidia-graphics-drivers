@@ -1,3 +1,4 @@
+cc_version_check-gcc5.patch
 # kernel support
 0001-backport-error-on-unknown-conftests.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
@@ -15,7 +16,6 @@ bashisms.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
 conftest-verbose.patch
-cc_version_check-gcc5.patch
 nvidia-use-ARCH.o_binary.patch
 nvidia-modeset-use-ARCH.o_binary.patch
 

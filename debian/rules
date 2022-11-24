@@ -39,6 +39,7 @@ module			 = nvidia-$(module-current)
 nvidia-kernel		 = $(nvidia)$(LINUX_KMOD_VARIANT)-kernel
 libcuda1		 = lib$(nvidia_if_variant)cuda1
 watch_pattern		 = $(or $(WATCH_PATTERN),$(if $(WATCH_VERSION),$(WATCH_VERSION)(?:\.[\d\.\-]+)?),\d[\d\.\-]*)
+has_driver		 = $(filter $(DEB_HOST_ARCH),$(DRIVER_ARCH_LIST))
 has_uvm			 = $(filter $(DEB_HOST_ARCH),$(filter-out $(NO_UVM_ARCH_LIST),$(ARCH_LIST)))
 DRIVER_ARCH_LIST	 = $(filter-out $(NO_DRIVER_ARCH_LIST),$(ARCH_LIST))
 AUTOPKGTEST_ARCH_LIST	 = $(filter-out $(NO_AUTOPKGTEST_ARCH_LIST),$(DRIVER_ARCH_LIST))
@@ -108,7 +109,9 @@ xorg_provides	 = xorg-driver-video
 .PHONY: autogen prepare patch
 autogen: $(AUTOGEN)
 prepare: autogen unpack-stamp
+ifneq (,$(has_driver))
 prepare: nvidia.ids compare-copyright-license
+endif
 patch: prepare
 
 NVIDIA-Linux-%:
@@ -122,8 +125,10 @@ unpack-stamp: $(patsubst %,NVIDIA-Linux-%,$(ARCH_LIST))
 	dh_testdir
 	$(RM) NVIDIA-Linux
 	ln -s NVIDIA-Linux-$(DEB_HOST_ARCH) NVIDIA-Linux
+ifneq (,$(has_driver))
 	QUILT_PATCHES=debian/patches QUILT_SERIES=series-postunpack quilt --quiltrc /dev/null push -a || test $$? = 2
 	sed -i 's/==/=/g' NVIDIA-Linux/nvidia-bug-report.sh
+endif
 	ls -al
 	touch $@
 
@@ -182,6 +187,7 @@ build-stamp: unpack-stamp
 	# Use the amd64 changelog for all architectures to be M-A:same safe.
 	cp -al NVIDIA-Linux-amd64/NVIDIA_Changelog build/
 	$(RM) -r build/32
+ifneq (,$(has_driver))
 	gzip -9fn build/nvidia-smi.1
 
 	# This copy of the changelog is going to be installed into the module
@@ -199,6 +205,7 @@ endif
 
 	# Fix permissions.
 	chmod -R a-sx,u=rwX,go=rX build/kernel
+endif
 
 	touch $@
 
@@ -211,6 +218,7 @@ override_dh_auto_install:
 module_source_pkg	 = debian/$(nvidia-kernel)-source
 module_source_txz	 = $(module_source_pkg)/usr/src/$(nvidia-kernel).tar.xz
 
+ifneq (,$(has_driver))
 override_dh_install:
 	dh_install
 
@@ -225,12 +233,14 @@ override_dh_install:
 		modules | xz -9 > $(module_source_txz)
 	tar tfv $(module_source_txz)
 	$(RM) -r $(module_source_pkg)/usr/src/modules
+endif
 
 kernel-source-tree: build-stamp $(AUTOGEN)
 	$(RM) -r $@
 	cp -a build/kernel $@
 	cd $@ && QUILT_PATCHES=../debian/module/debian/patches quilt --quiltrc /dev/null push -a || test $$? = 2
 
+ifneq (,$(has_driver))
 # Test that the patches can be applied to the module source
 # and a module can be built.
 override_dh_auto_test: J_FLAG ?= $(patsubst parallel=%,-j%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
@@ -240,6 +250,7 @@ ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	cd $< && $(MAKE) $(J_FLAG) NV_VERBOSE=1 KERNEL_UNAME=$(TEST_KERNEL)
 ifneq (,$(has_uvm))
 	cd $< && $(MAKE) $(J_FLAG) -C uvm NV_VERBOSE=1 KERNEL_UNAME=$(TEST_KERNEL) KBUILD_EXTMOD=$$(pwd)/uvm
+endif
 endif
 endif
 
@@ -297,6 +308,7 @@ debian/substvars:
 #
 # Stripping the binary modules would constitute modifying the binary files
 # in a way other than unzipping of compressed files.
+override_dh_dwz:
 override_dh_strip:
 override_dh_strip_nondeterminism:
 

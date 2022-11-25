@@ -75,7 +75,8 @@ binary-arch: build-stamp
 	dh_installdeb
 	dh_gencontrol -- -v`cat debian/VERSION` \
 		-V'built-using:kernel=$(call get_built_using,linux-headers-$(KVERS))' \
-		-V'built-using:module=$(call get_built_using,$(MODSRCPKG))'
+		-V'built-using:module=$(call get_built_using,$(MODSRCPKG))' \
+		-Vnvidia:Models="`cat debian/control.models`"
 	dh_md5sums
 	dh_builddeb --destdir=$(KPKG_DEST_DIR)
 

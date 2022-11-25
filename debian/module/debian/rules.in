@@ -79,6 +79,8 @@ binary-arch: build-stamp
 		-Vnvidia:Models="`cat debian/control.models`"
 	dh_md5sums
 	dh_builddeb --destdir=$(KPKG_DEST_DIR)
+	dpkg --info $(KPKG_DEST_DIR)/$(PACKAGE)-$(KVERS)_`cat debian/VERSION`_*.deb
+	dpkg --contents $(KPKG_DEST_DIR)/$(PACKAGE)-$(KVERS)_`cat debian/VERSION`_*.deb
 
 clean:
 	test -f debian/control || sed 's/#KVERS#/$(KVERS)/g' debian/control.template > debian/control

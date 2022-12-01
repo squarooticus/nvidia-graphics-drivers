@@ -3,33 +3,34 @@ Description: rename the ARCH variable
  the NVIDIA build systems reacts very fragile if this contains confusing
  values from different sources
 
---- a/nvidia-modules-common.mk
-+++ b/nvidia-modules-common.mk
-@@ -86,15 +86,15 @@ CC ?= cc
- HOST_CC ?= $(CC)
- LD ?= ld
+--- a/Makefile
++++ b/Makefile
+@@ -51,8 +51,8 @@ else
  
--ifndef ARCH
-- ARCH := $(shell uname -m | sed -e 's/i.86/i386/' \
-+ifndef nvkARCH
-+ nvkARCH := $(shell uname -m | sed -e 's/i.86/i386/' \
-  -e 's/armv[0-7]\w\+/arm/' \
-  -e 's/aarch64/arm64/' \
-  -e 's/ppc64le/powerpc/' \
-  )
- endif
+   CC ?= cc
  
--CONFTEST := /bin/sh $(src)/conftest.sh "$(CC)" "$(HOST_CC)" $(ARCH) $(KERNEL_SOURCES) $(KERNEL_OUTPUT)
-+CONFTEST := /bin/sh $(src)/conftest.sh "$(strip $(CC))" "$(strip $(HOST_CC))" $(nvkARCH) $(KERNEL_SOURCES) $(KERNEL_OUTPUT)
+-  ifndef ARCH
+-    ARCH := $(shell uname -m | sed -e 's/i.86/i386/' \
++  ifndef nvkARCH
++    nvkARCH := $(shell uname -m | sed -e 's/i.86/i386/' \
+       -e 's/armv[0-7]\w\+/arm/' \
+       -e 's/aarch64/arm64/' \
+       -e 's/ppc64le/powerpc/' \
+@@ -69,7 +69,7 @@ else
+     KBUILD_PARAMS += V=1
+   endif
+   KBUILD_PARAMS += -C $(KERNEL_SOURCES) M=$(CURDIR)
+-  KBUILD_PARAMS += ARCH=$(ARCH)
++  KBUILD_PARAMS += ARCH=$(nvkARCH)
+   KBUILD_PARAMS += NV_KERNEL_SOURCES=$(KERNEL_SOURCES)
+   KBUILD_PARAMS += NV_KERNEL_OUTPUT=$(KERNEL_OUTPUT)
+   KBUILD_PARAMS += NV_KERNEL_MODULES="$(NV_KERNEL_MODULES)"
+@@ -99,7 +99,7 @@ else
+   # and hence must be used whenever present.
  
- KERNEL_UNAME ?= $(shell $(CONFTEST) get_uname)
- MODULE_ROOT := /lib/modules/$(KERNEL_UNAME)/kernel/drivers
-@@ -179,7 +179,7 @@ endif
+   LD_SCRIPT ?= $(KERNEL_SOURCES)/scripts/module-common.lds      \
+-               $(KERNEL_SOURCES)/arch/$(ARCH)/kernel/module.lds \
++               $(KERNEL_SOURCES)/arch/$(nvkARCH)/kernel/module.lds \
+                $(KERNEL_OUTPUT)/scripts/module.lds
+   NV_MODULE_COMMON_SCRIPTS := $(foreach s, $(wildcard $(LD_SCRIPT)), -T $(s))
  
- KBUILD_PARAMS += KBUILD_VERBOSE=$(NV_VERBOSE)
- KBUILD_PARAMS += -C $(KERNEL_SOURCES) M=$(PWD)
--KBUILD_PARAMS += ARCH=$(ARCH)
-+KBUILD_PARAMS += ARCH=$(nvkARCH)
- 
- #
- # NVIDIA sanity checks.

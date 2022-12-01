@@ -1,4 +1,6 @@
 cc_version_check-gcc5.patch
+bashisms.patch
+
 # kernel support
 0001-backport-error-on-unknown-conftests.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
@@ -7,7 +9,7 @@ cc_version_check-gcc5.patch
 do-div-cast.patch
 
 # build system updates
-bashisms.patch
+fragile-ARCH.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
 conftest-verbose.patch

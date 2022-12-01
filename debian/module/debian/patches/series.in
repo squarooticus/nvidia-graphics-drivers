@@ -41,6 +41,7 @@ kernel-5.7.0-set-memory-array.patch
 0041-backport-acpi-changes-from-390.157.patch
 
 # build system updates
+fragile-ARCH.patch
 separate-makefile-kbuild.patch
 KERNEL_UNAME.patch
 use-kbuild-compiler.patch

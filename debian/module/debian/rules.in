@@ -44,8 +44,8 @@ build-arch: build-stamp
 build-indep:
 build-stamp: configure-stamp
 	dh_quilt_patch
-	unset ARCH; $(MAKE) $(J_FLAG) modules $(KERNEL_SPEC)
-#HAS_UVM#	unset ARCH; $(MAKE) $(J_FLAG) -C uvm modules $(KERNEL_SPEC) KBUILD_EXTMOD=$(CURDIR)/uvm
+	$(MAKE) $(J_FLAG) modules $(KERNEL_SPEC)
+#HAS_UVM#	$(MAKE) $(J_FLAG) -C uvm modules $(KERNEL_SPEC) KBUILD_EXTMOD=$(CURDIR)/uvm
 ifneq (nvidia,$(MODULE))
 	mv nvidia.ko $(MODULE).ko
 #HAS_UVM#	mv uvm/nvidia-uvm.ko uvm/$(MODULE)-uvm.ko

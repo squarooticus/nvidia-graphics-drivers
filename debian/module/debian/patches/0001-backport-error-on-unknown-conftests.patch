@@ -1,22 +1,23 @@
-From 10f6a0f3ee40d5e25490a07e1cb01d0aa6b0167c Mon Sep 17 00:00:00 2001
+From ff44f24377756e4163ca1c544c5d6335257aee1e Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 22 Sep 2021 08:49:14 +0200
 Subject: [PATCH 1/2] backport error on unknown conftests
 
 for easier backporting of future conftest.sh changes
 ---
- conftest.sh          | 11 +++++++++++
+ conftest.sh          | 12 ++++++++++++
  nvidia/nvidia.Kbuild |  4 ++--
- 2 files changed, 13 insertions(+), 2 deletions(-)
+ 2 files changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 1d142a1..e5f9146 100755
+index e19b0ac..0c091ea 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4610,6 +4610,17 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_RESERVATION_OBJECT_RESERVE_SHARED_HAS_NUM_FENCES_ARG" "" "types"
-         ;;
+@@ -4646,6 +4646,18 @@ compile_test() {
  
+             compile_check_conftest "$CODE" "NV_ACPI_VIDEO_BACKLIGHT_USE_NATIVE" "" "functions"
+         ;;
++
 +        # When adding a new conftest entry, please use the correct format for
 +        # specifying the relevant upstream Linux kernel commit.
 +        #
@@ -32,7 +33,7 @@ index 1d142a1..e5f9146 100755
  }
  
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index e1596ce..2e8048f 100644
+index d6995ca..39d8152 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
 @@ -105,7 +105,7 @@ NV_OBJECTS_DEPEND_ON_CONFTEST += $(NVIDIA_OBJECTS)

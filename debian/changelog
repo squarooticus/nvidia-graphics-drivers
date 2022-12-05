@@ -1001,6 +1001,8 @@ nvidia-graphics-drivers (418.226.00-9) UNRELEASED; urgency=medium
   * Add missing #includes to fix kernel module build for ppc64el.
   * Rename the internally used ARCH variable which might clash on externally
     set values.
+  * Use substitutions for ${nvidia-kernel} and friends (510.108.03-1).
+  * Try to compile a kernel module at package build time (510.108.03-1).
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 05 Dec 2022 02:32:10 +0100
 

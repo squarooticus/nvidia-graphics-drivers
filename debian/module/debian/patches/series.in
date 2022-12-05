@@ -16,8 +16,8 @@ bashisms.patch
 0013-backport-acpi_bus_get_device-changes-from-470.129.06.patch
 0016-backport-acpi-changes-from-390.157.patch
 0017-backport-dma_resv_add_fence-changes-from-450.203.03.patch
-0023-backport-drm_frambuffer.h-changes-from-515.76.patch
-0024-backport-find_vma_intersection-changes-from-450.203..patch
+0018-backport-drm_frambuffer.h-changes-from-515.76.patch
+0019-backport-find_vma_intersection-changes-from-450.203..patch
 ppc64el.patch
 
 # build system updates

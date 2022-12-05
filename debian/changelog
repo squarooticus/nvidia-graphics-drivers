@@ -24,7 +24,7 @@ nvidia-graphics-drivers (418.226.00-9) UNRELEASED; urgency=medium
   * Rename the internally used ARCH variable which might clash on externally
     set values.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 12 Nov 2022 10:37:34 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 05 Dec 2022 02:32:10 +0100
 
 nvidia-graphics-drivers (418.226.00-8) UNRELEASED; urgency=medium
 

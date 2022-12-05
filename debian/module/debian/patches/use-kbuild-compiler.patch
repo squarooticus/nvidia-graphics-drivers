@@ -20,12 +20,12 @@ Description: let Kbuild set the compiler version
  	      ./split-object-file.sh $$module.ko; \
 --- a/Kbuild
 +++ b/Kbuild
-@@ -99,7 +99,7 @@ NV_CONFTEST_SCRIPT := $(src)/conftest.sh
+@@ -103,7 +103,7 @@ NV_CONFTEST_SCRIPT := $(src)/conftest.sh
  NV_CONFTEST_HEADER := $(obj)/conftest/headers.h
  
  NV_CONFTEST_CMD := /bin/sh $(NV_CONFTEST_SCRIPT) \
-- "$(CC)" "$(HOST_CC)" $(ARCH) $(NV_KERNEL_SOURCES) $(NV_KERNEL_OUTPUT)
-+ "$(strip $(CC))" "$(strip $(HOST_CC))" $(ARCH) $(NV_KERNEL_SOURCES) $(NV_KERNEL_OUTPUT)
+- "$(CC)" $(ARCH) $(NV_KERNEL_SOURCES) $(NV_KERNEL_OUTPUT)
++ "$(strip $(CC))" $(ARCH) $(NV_KERNEL_SOURCES) $(NV_KERNEL_OUTPUT)
  
- NV_CONFTEST_CFLAGS := $(shell $(NV_CONFTEST_CMD) build_cflags)
+ NV_CFLAGS_FROM_CONFTEST := $(shell $(NV_CONFTEST_CMD) build_cflags)
  

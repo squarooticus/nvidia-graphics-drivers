@@ -18,3 +18,14 @@ Description: let Kbuild set the compiler version
  	  for module in $(NV_KERNEL_MODULES); do \
  	    if [ -x split-object-file.sh ]; then \
  	      ./split-object-file.sh $$module.ko; \
+--- a/Kbuild
++++ b/Kbuild
+@@ -99,7 +99,7 @@ NV_CONFTEST_SCRIPT := $(src)/conftest.sh
+ NV_CONFTEST_HEADER := $(obj)/conftest/headers.h
+ 
+ NV_CONFTEST_CMD := /bin/sh $(NV_CONFTEST_SCRIPT) \
+- "$(CC)" "$(HOST_CC)" $(ARCH) $(NV_KERNEL_SOURCES) $(NV_KERNEL_OUTPUT)
++ "$(strip $(CC))" "$(strip $(HOST_CC))" $(ARCH) $(NV_KERNEL_SOURCES) $(NV_KERNEL_OUTPUT)
+ 
+ NV_CONFTEST_CFLAGS := $(shell $(NV_CONFTEST_CMD) build_cflags)
+ 

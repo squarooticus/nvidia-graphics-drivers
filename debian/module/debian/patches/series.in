@@ -1,3 +1,6 @@
+cc_version_check-gcc5.patch
+bashisms.patch
+
 # kernel support
 0001-backport-error-on-unknown-conftests.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
@@ -11,19 +14,16 @@
 0011-backport-iosys_map-changes-from-470.129.06.patch
 0012-backport-dma_set_coherent_mask-from-470.129.06.patch
 0013-backport-acpi_bus_get_device-changes-from-470.129.06.patch
-0016-backport-nv_install_notifier-changes-from-470.141.03.patch
+0016-backport-acpi-changes-from-390.157.patch
 0017-backport-dma_resv_add_fence-changes-from-450.203.03.patch
-0019-backport-acpi-changes-from-430.09.patch
-0020-backport-acpi-changes-from-455.23.04.patch
-0021-backport-acpi-changes-from-510.85.02.patch
-0022-backport-acpi-changes-from-515.65.01.patch
-0023-backport-drm_frambuffer.h-changes-from-515.76.patch
+0018-backport-drm_frambuffer.h-changes-from-515.76.patch
+0019-backport-find_vma_intersection-changes-from-450.203..patch
+ppc64el.patch
 
 # build system updates
-bashisms.patch
+fragile-ARCH.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
 conftest-verbose.patch
-cc_version_check-gcc5.patch
 nvidia-use-ARCH.o_binary.patch
 nvidia-modeset-use-ARCH.o_binary.patch

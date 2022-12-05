@@ -8,7 +8,7 @@ Uploaders:
  Andreas Beckmann <anbe@debian.org>,
  Luca Boccassi <bluca@debian.org>,
 Vcs-Browser: https://salsa.debian.org/nvidia-team/nvidia-graphics-drivers
-Vcs-Git: https://salsa.debian.org/nvidia-team/nvidia-graphics-drivers.git
+Vcs-Git: https://salsa.debian.org/nvidia-team/nvidia-graphics-drivers.git -b 418
 Build-Depends:
  debhelper-compat (= 13),
  dh-sequence-dkms,
@@ -18,6 +18,8 @@ Build-Depends:
  po-debconf,
  quilt,
  xz-utils,
+ linux-headers-amd64 [amd64] <!nocheck>,
+ linux-headers-powerpc64le [ppc64el] <!nocheck>,
  libglvnd-dev,
 Rules-Requires-Root: no
 Standards-Version: 4.6.1
@@ -108,7 +110,7 @@ Depends:
  ${misc:Depends}
 Provides:
  nvidia-kernel-support-any,
- ${nvidia}-kernel-support--v1,
+ ${nvidia-kernel}-support--v1,
 Description: NVIDIA binary kernel module support files${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
@@ -123,13 +125,13 @@ Multi-Arch: foreign
 Pre-Depends:
  nvidia-installer-cleanup,
 Depends:
- ${nvidia}-kernel-support--v1,
+ ${nvidia-kernel}-support--v1,
  ${misc:Depends}
 Recommends:
  ${nvidia}-driver (>= ${nvidia:Version})
  | ${libcuda1} (>= ${nvidia:Version}),
 Provides:
- ${nvidia}-kernel-${nvidia:Version},
+ ${nvidia-kernel}-${nvidia:Version},
 Description: NVIDIA binary kernel module DKMS source${nvidia:VariantDesc}
  This package builds the NVIDIA binary kernel modules needed by
  ${nvidia}-driver, using DKMS.
@@ -143,7 +145,7 @@ Description: NVIDIA binary kernel module DKMS source${nvidia:VariantDesc}
  .
  ${nvidia:Models}
  .
- See /usr/share/doc/${nvidia}-kernel-dkms/README.txt.gz
+ See /usr/share/doc/${nvidia-kernel}-dkms/README.txt.gz
  for a complete list of supported GPUs and PCI IDs.
  .
  This package contains the blobs for building kernel modules for the
@@ -159,7 +161,7 @@ Depends:
  ${misc:Depends}
 Recommends:
  module-assistant,
- ${nvidia}-kernel-support--v1,
+ ${nvidia-kernel}-support--v1,
 Suggests:
  ${nvidia}-driver (>= ${nvidia:Version}),
 Description: NVIDIA binary kernel module source${nvidia:VariantDesc}
@@ -171,13 +173,13 @@ Description: NVIDIA binary kernel module source${nvidia:VariantDesc}
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
  .
- PLEASE read /usr/share/doc/${nvidia}-kernel-source/README.Debian.gz
+ PLEASE read /usr/share/doc/${nvidia-kernel}-source/README.Debian.gz
  for building information. If you want the kernel module to be automatically
- installed via DKMS, install ${nvidia}-kernel-dkms instead.
+ installed via DKMS, install ${nvidia-kernel}-dkms instead.
  .
  ${nvidia:Models}
  .
- See /usr/share/doc/${nvidia}-kernel-source/README.txt.gz
+ See /usr/share/doc/${nvidia-kernel}-source/README.txt.gz
  for a complete list of supported GPUs and PCI IDs.
  .
  This package contains the blobs for building kernel modules for the

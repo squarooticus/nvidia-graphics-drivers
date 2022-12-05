@@ -1,16 +1,15 @@
+cc_version_check-gcc5.patch
+bashisms.patch
+
 # kernel support
 0009-backport-pci-dma-changes-from-470.129.06.patch
-0020-backport-acpi-changes-from-455.23.04.patch
-0021-backport-acpi-changes-from-510.85.02.patch
-0022-backport-acpi-changes-from-515.65.01.patch
-0023-backport-drm_frambuffer.h-changes-from-515.76.patch
+ppc64el.patch
 
 # build system updates
-bashisms.patch
+fragile-ARCH.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
 conftest-verbose.patch
-cc_version_check-gcc5.patch
 nvidia-use-ARCH.o_binary.patch
 nvidia-modeset-use-ARCH.o_binary.patch
 conftest-prefer-arch-headers.patch

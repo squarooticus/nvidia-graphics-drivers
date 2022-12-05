@@ -1,0 +1,206 @@
+From ee0b6a3c9b3ff76aac1820beec4faf6d35d1a017 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Mon, 5 Dec 2022 01:16:25 +0100
+Subject: [PATCH] backport acpi changes from 470.161.03
+
+---
+ nvidia/nv-acpi.c | 84 +++++++++++++++---------------------------------
+ 1 file changed, 26 insertions(+), 58 deletions(-)
+
+diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
+index 5b2fe92..884efbd 100644
+--- a/nvidia/nv-acpi.c
++++ b/nvidia/nv-acpi.c
+@@ -238,9 +238,9 @@ static int nv_acpi_add(struct acpi_device *device)
+     union acpi_object control_argument_0 = { ACPI_TYPE_INTEGER };
+     struct acpi_object_list control_argument_list = { 0, NULL };
+     nvidia_stack_t *sp = NULL;
+-    struct list_head *node, *next;
+     unsigned long long device_id = 0;
+     int device_counter = 0;
++    acpi_handle handle = NULL;
+ 
+     status = nv_kmem_cache_alloc_stack(&sp);
+     if (status != 0)
+@@ -267,13 +267,12 @@ static int nv_acpi_add(struct acpi_device *device)
+ 
+     // grab handles to all the important nodes representing devices
+ 
+-    list_for_each_safe(node, next, &device->children)
++    do
+     {
+-        struct acpi_device *dev =
+-            list_entry(node, struct acpi_device, node);
+-
+-        if (!dev)
+-            continue;
++        status = acpi_get_next_object(ACPI_TYPE_DEVICE, device->handle,
++                                      handle, &handle);
++        if (ACPI_FAILURE(status) || (handle == NULL))
++            break;
+ 
+         if (device_counter == NV_MAXNUM_DISPLAY_DEVICES)
+         {
+@@ -284,7 +283,7 @@ static int nv_acpi_add(struct acpi_device *device)
+         }
+ 
+         status =
+-            acpi_evaluate_integer(dev->handle, "_ADR", NULL, &device_id);
++            acpi_evaluate_integer(handle, "_ADR", NULL, &device_id);
+         if (ACPI_FAILURE(status))
+             /* Couldnt query device_id for this device */
+             continue;
+@@ -303,11 +302,11 @@ static int nv_acpi_add(struct acpi_device *device)
+         }
+ 
+         pNvAcpiObject->pNvVideo[device_counter].dev_id = device_id;
+-        pNvAcpiObject->pNvVideo[device_counter].dev_handle = dev->handle;
++        pNvAcpiObject->pNvVideo[device_counter].dev_handle = handle;
+ 
+         device_counter++;
+ 
+-    }
++    } while (handle != NULL);
+ 
+     // arg 0, bits 1:0, 0 = enable events
+     control_argument_0.integer.type = ACPI_TYPE_INTEGER;
+@@ -1306,12 +1305,11 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+ )
+ {
+     acpi_status status;
+-    struct acpi_device *device = NULL;
+     union acpi_object *ddc = NULL;
+-    struct list_head *node, *next;
+     NvU32 i, largestEdidSize;
+     acpi_handle dev_handle  = NULL;
+     acpi_handle lcd_dev_handle  = NULL;
++    acpi_handle handle = NULL;
+ 
+     if (!nv_acpi_get_device_handle(nv, &dev_handle))
+         return NV_ERR_NOT_SUPPORTED;
+@@ -1319,15 +1317,6 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+     if (!dev_handle)
+         return NV_ERR_INVALID_ARGUMENT;
+ 
+-#if defined(NV_ACPI_BUS_GET_DEVICE_PRESENT)
+-    status = acpi_bus_get_device(dev_handle, &device);
+-#else
+-    return NV_ERR_NOT_SUPPORTED;
+-#endif
+-
+-    if (ACPI_FAILURE(status) || !device)
+-        return NV_ERR_INVALID_ARGUMENT;
+-
+     if (!NV_MAY_SLEEP())
+     {
+ #if defined(DEBUG)
+@@ -1338,16 +1327,16 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+         return NV_ERR_NOT_SUPPORTED;
+     }
+ 
+-    list_for_each_safe(node, next, &device->children)
++    while (lcd_dev_handle == NULL)
+     {
+         unsigned long long device_id = 0;
+-        struct acpi_device *dev =
+-            list_entry(node, struct acpi_device, node);
+ 
+-        if (!dev)
+-            continue;
++        status = acpi_get_next_object(ACPI_TYPE_DEVICE, dev_handle,
++                                      handle, &handle);
++        if (ACPI_FAILURE(status) || (handle == NULL))
++            break;
+ 
+-        status = acpi_evaluate_integer(dev->handle, "_ADR", NULL, &device_id);
++        status = acpi_evaluate_integer(handle, "_ADR", NULL, &device_id);
+         if (ACPI_FAILURE(status))
+             /* Couldnt query device_id for this device */
+             continue;
+@@ -1357,16 +1346,13 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
+             case 0x0118:
+             case 0x0400:
+             case 0xA420:
+-                lcd_dev_handle = dev->handle;
++                lcd_dev_handle = handle;
+                 nv_printf(NV_DBG_INFO, "NVRM: %s Found LCD: %x\n",
+                           __FUNCTION__, device_id);
+                 break;
+             default:
+                 break;
+         }
+-
+-        if (lcd_dev_handle != NULL)
+-            break;
+     }
+ 
+     if (lcd_dev_handle == NULL)
+@@ -1716,15 +1702,14 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
+ )
+ {
+     acpi_status status;
+-    struct acpi_device *device    = NULL;
+     struct acpi_buffer output     = { ACPI_ALLOCATE_BUFFER, NULL };
+     union acpi_object *mux        = NULL;
+     union acpi_object mux_arg     = { ACPI_TYPE_INTEGER };
+     struct acpi_object_list input = { 1, &mux_arg };
+     acpi_handle dev_handle        = NULL;
+     acpi_handle mux_dev_handle    = NULL;
++    acpi_handle handle            = NULL;
+     unsigned long long device_id  = 0;
+-    struct list_head *node, *next;
+ 
+     if ((strcmp(pMethodName, "MXDS") != 0)
+         && (strcmp(pMethodName, "MXDM") != 0))
+@@ -1745,16 +1730,6 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
+     if (!dev_handle)
+         return NV_ERR_INVALID_ARGUMENT;
+ 
+-#if defined(NV_ACPI_BUS_GET_DEVICE_PRESENT)
+-    status = acpi_bus_get_device(dev_handle, &device);
+-#else
+-    return NV_ERR_NOT_SUPPORTED;
+-#endif
+-
+-
+-    if (ACPI_FAILURE(status) || !device)
+-        return NV_ERR_INVALID_ARGUMENT;
+-
+     if (!NV_MAY_SLEEP())
+     {
+ #if defined(DEBUG)
+@@ -1763,23 +1738,16 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
+         return NV_ERR_NOT_SUPPORTED;
+     }
+ 
+-    list_for_each_safe(node, next, &device->children)
++    while (mux_dev_handle == NULL)
+     {
+-        struct acpi_device *dev = list_entry(node, struct acpi_device, node);
+-
+-        if (!dev)
+-            continue;
+-
+-        status = acpi_evaluate_integer(dev->handle, "_ADR", NULL, &device_id);
+-        if (ACPI_FAILURE(status))
+-            /* Could not query device_id for this device */
+-            continue;
+-
+-        if (device_id == muxAcpiId)
+-        {
+-            mux_dev_handle = dev->handle;
++        status = acpi_get_next_object(ACPI_TYPE_DEVICE, dev_handle,
++                                      handle, &handle);
++        if (ACPI_FAILURE(status) || (handle == NULL))
+             break;
+-        }
++
++        status = acpi_evaluate_integer(handle, "_ADR", NULL, &device_id);
++        if (ACPI_SUCCESS(status) && (device_id == muxAcpiId))
++            mux_dev_handle = handle;
+     }
+ 
+     if (mux_dev_handle == NULL)
+-- 
+2.20.1
+

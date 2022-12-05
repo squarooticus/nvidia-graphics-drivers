@@ -1,19 +1,24 @@
-From c5f761fc57891696e58c39e7004fc8c642bb0419 Mon Sep 17 00:00:00 2001
+From 7623a06647c184a491567c07defb570c8b89dfad Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
-Date: Sat, 12 Nov 2022 11:08:57 +0100
-Subject: [PATCH] backport find_vma_intersection changes from 450.203.08
+Date: Sat, 12 Nov 2022 10:26:50 +0100
+Subject: [PATCH] backport find_vma_intersection changes from 470.141.03
 
 ---
- nvidia-uvm/uvm8_migrate_pageable.c  | 13 +++++++------
- nvidia-uvm/uvm8_policy.c            |  2 +-
- nvidia-uvm/uvm8_populate_pageable.c |  2 +-
- 3 files changed, 9 insertions(+), 8 deletions(-)
+ nvidia-uvm/uvm_migrate_pageable.c  | 15 +++++++++------
+ nvidia-uvm/uvm_policy.c            |  2 +-
+ nvidia-uvm/uvm_populate_pageable.c |  4 +++-
+ 3 files changed, 13 insertions(+), 8 deletions(-)
 
-diff --git a/nvidia-uvm/uvm8_migrate_pageable.c b/nvidia-uvm/uvm8_migrate_pageable.c
-index 39be84b..a33f8a5 100644
---- a/nvidia-uvm/uvm8_migrate_pageable.c
-+++ b/nvidia-uvm/uvm8_migrate_pageable.c
-@@ -885,13 +885,14 @@ static NV_STATUS migrate_pageable(struct mm_struct *mm,
+diff --git a/nvidia-uvm/uvm_migrate_pageable.c b/nvidia-uvm/uvm_migrate_pageable.c
+index 6be4c4c..adcddd8 100644
+--- a/nvidia-uvm/uvm_migrate_pageable.c
++++ b/nvidia-uvm/uvm_migrate_pageable.c
+@@ -885,16 +885,19 @@ static NV_STATUS migrate_pageable(struct mm_struct *mm,
+     uvm_assert_mmap_lock_locked(mm);
+ 
+     vma = find_vma_intersection(mm, start, outer);
++    if (!vma || (start < vma->vm_start))
++        return NV_ERR_INVALID_ADDRESS;
  
      // VMAs are validated and migrated one at a time, since migrate_vma works
      // on one vma at a time
@@ -34,24 +39,30 @@ index 39be84b..a33f8a5 100644
          if (status == NV_WARN_NOTHING_TO_DO) {
              NV_STATUS populate_status = NV_OK;
  
-diff --git a/nvidia-uvm/uvm8_policy.c b/nvidia-uvm/uvm8_policy.c
-index 54c1ae2..9452e44 100644
---- a/nvidia-uvm/uvm8_policy.c
-+++ b/nvidia-uvm/uvm8_policy.c
-@@ -47,7 +47,7 @@ bool uvm_is_valid_vma_range(NvU64 start, NvU64 length)
+diff --git a/nvidia-uvm/uvm_policy.c b/nvidia-uvm/uvm_policy.c
+index a9d9b6a..581852a 100644
+--- a/nvidia-uvm/uvm_policy.c
++++ b/nvidia-uvm/uvm_policy.c
+@@ -46,7 +46,7 @@ bool uvm_is_valid_vma_range(struct mm_struct *mm, NvU64 start, NvU64 length)
          if (vma->vm_end >= end)
              return true;
          start = vma->vm_end;
 -        vma = vma->vm_next;
-+        vma = find_vma_intersection(current->mm, start, end);
++        vma = find_vma_intersection(mm, start, end);
      }
  
      return false;
-diff --git a/nvidia-uvm/uvm8_populate_pageable.c b/nvidia-uvm/uvm8_populate_pageable.c
-index f5d0411..546456d 100644
---- a/nvidia-uvm/uvm8_populate_pageable.c
-+++ b/nvidia-uvm/uvm8_populate_pageable.c
-@@ -102,7 +102,7 @@ NV_STATUS uvm_populate_pageable(struct mm_struct *mm,
+diff --git a/nvidia-uvm/uvm_populate_pageable.c b/nvidia-uvm/uvm_populate_pageable.c
+index 2f9e54c..af83240 100644
+--- a/nvidia-uvm/uvm_populate_pageable.c
++++ b/nvidia-uvm/uvm_populate_pageable.c
+@@ -101,11 +101,13 @@ NV_STATUS uvm_populate_pageable(struct mm_struct *mm,
+     uvm_assert_mmap_lock_locked(mm);
+ 
+     vma = find_vma_intersection(mm, start, outer);
++    if (!vma || (start < vma->vm_start))
++         return NV_ERR_INVALID_ADDRESS;
+ 
      // VMAs are validated and populated one at a time, since they may have
      // different protection flags
      // Validation of VM_SPECIAL flags is delegated to get_user_pages

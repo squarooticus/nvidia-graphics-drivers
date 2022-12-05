@@ -34,7 +34,7 @@ nvidia-graphics-drivers (460.106.00-9+git) UNRELEASED; urgency=medium
 
 nvidia-graphics-drivers (460.106.00-9) UNRELEASED; urgency=medium
 
-  * Backport find_vma_intersection changes from 450.203.08 to fix kernel
+  * Backport find_vma_intersection changes from 470.141.03 to fix kernel
     module build for Linux 6.1.
   * Backport acpi changes from 470.161.03, replacing earlier backports.
   * Add missing #includes to fix kernel module build for ppc64el.

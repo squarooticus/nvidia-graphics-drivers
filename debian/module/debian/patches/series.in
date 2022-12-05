@@ -18,7 +18,7 @@ bashisms.patch
 0016-backport-acpi-changes-from-470.161.03.patch
 0017-backport-dma_resv_add_fence-changes-from-450.203.03.patch
 0018-backport-drm_frambuffer.h-changes-from-515.76.patch
-0019-backport-find_vma_intersection-changes-from-450.203..patch
+0019-backport-find_vma_intersection-changes-from-470.141..patch
 0020-backport-get_task_ioprio-changes-from-510.85.02.patch
 ppc64el.patch
 

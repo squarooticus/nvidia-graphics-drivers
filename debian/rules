@@ -33,8 +33,7 @@ ifeq (yes,$(NVIDIA_TESLA))
 variant			 = $(if $(NVIDIA_TESLA),tesla)
 variant_description	 = $(if $(NVIDIA_TESLA), (Tesla version))
 variant_description_short= $(if $(NVIDIA_TESLA), (Tesla version))
-else
-ifneq (,$(NVIDIA_TESLA))
+else ifneq (,$(NVIDIA_TESLA))
 variant			 = $(if $(NVIDIA_TESLA),tesla-$(NVIDIA_TESLA))
 variant_description	 = $(if $(NVIDIA_TESLA), (Tesla $(NVIDIA_TESLA) version))
 variant_description_short= $(if $(NVIDIA_TESLA), (Tesla $(NVIDIA_TESLA)))
@@ -42,7 +41,6 @@ else
 variant			 = $(if $(NVIDIA_LEGACY),legacy-$(NVIDIA_LEGACY)xx)
 variant_description	 = $(if $(NVIDIA_LEGACY), ($(NVIDIA_LEGACY)xx legacy version))
 variant_description_short= $(if $(NVIDIA_LEGACY), ($(NVIDIA_LEGACY)xx legacy))
-endif
 endif
 -variant		 = $(if $(variant),-$(variant))
 trailing_minus		 = $(if $(filter %0 %1 %2 %3 %4 %5 %6 %7 %8 %9,$(variant)),-)

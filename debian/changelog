@@ -12,6 +12,11 @@ nvidia-graphics-drivers (470.161.03-1) UNRELEASED; urgency=medium
     * Improved compatibility with recent Linux kernels.
   * New upstream Tesla release (amd64 only) 470.141.10 (2022-10-19).
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+  * Add missing #includes to fix kernel module build for ppc64el.
+  * Rename the internally used ARCH variable which might clash on externally
+    set values.
   * Use substitutions for ${nvidia-kernel} and friends (510.108.03-1).
   * Try to compile a kernel module at package build time (510.108.03-1).
 

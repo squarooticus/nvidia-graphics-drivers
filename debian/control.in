@@ -1164,7 +1164,7 @@ Description: NVIDIA OpenCL installable client driver (ICD)${nvidia:VariantDesc}
  CPUs, GPUs and other processors.
  .
  This package provides the NVIDIA installable client driver (ICD) for OpenCL
- which supports NVIDIA GPUs. This ICD supports OpenCL 1.x only.
+ which supports NVIDIA GPUs.
 
 Package: nvidia-libopencl1
 Architecture: i386 amd64 ${arch:arm64} ${arch:ppc64el}
@@ -1197,8 +1197,7 @@ Description: NVIDIA OpenCL ICD Loader library
  (ICD) that can be from any vendor. At least one ICD (and the corresponding
  hardware) is required to run OpenCL applications.
  .
- This package contains the ICD Loader library provided by NVIDIA. This library
- supports OpenCL 1.x and 2.0 only.
+ This package contains the ICD Loader library provided by NVIDIA.
 
 Package: nvidia-detect
 Section: non-free/x11

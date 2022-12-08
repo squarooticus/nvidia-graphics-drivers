@@ -3,6 +3,7 @@ nvidia-graphics-drivers (510.108.03-1) UNRELEASED; urgency=medium
   * New upstream production branch release 510.108.03 (2022-11-22).
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * Update nv-readme.ids.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 08 Dec 2022 18:18:14 +0100

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (510.108.03-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (510.108.03-1) unstable; urgency=medium
 
   * New upstream production branch release 510.108.03 (2022-11-22).
     * Fixed CVE-2022-34670, CVE-2022-34674, CVE-2022-34675, CVE-2022-34677,
@@ -18,7 +18,7 @@ nvidia-graphics-drivers (510.108.03-1) UNRELEASED; urgency=medium
   * Use substitutions for ${nvidia-kernel} and friends.
   * Try to compile a kernel module at package build time.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 08 Dec 2022 18:18:14 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 10 Dec 2022 03:43:21 +0100
 
 nvidia-graphics-drivers (510.85.02-6) unstable; urgency=medium
 

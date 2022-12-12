@@ -20,7 +20,7 @@ nvidia-graphics-drivers (470.161.03-1) UNRELEASED; urgency=medium
   * Use substitutions for ${nvidia-kernel} and friends (510.108.03-1).
   * Try to compile a kernel module at package build time (510.108.03-1).
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 05 Dec 2022 04:24:05 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 08 Dec 2022 15:18:42 +0100
 
 nvidia-graphics-drivers (470.161.03-1) bullseye; urgency=medium
 

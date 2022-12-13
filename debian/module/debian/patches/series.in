@@ -1,3 +1,6 @@
+cc_version_check-gcc5.patch
+bashisms.patch
+
 # kernel support
 0001-bump-minimum-supported-kernel-version-to-3.10.patch
 0002-conftest.sh-remove-empty-lines-from-uts_release-outp.patch
@@ -7,13 +10,13 @@
 0023-backport-drm_frambuffer.h-changes-from-515.76.patch
 0024-backport-find_vma_intersection-changes-from-515.76.patch
 0025-backport-num_registered_fb-changes-from-515.76.patch
+ppc64el.patch
 
 # build system updates
-bashisms.patch
+fragile-ARCH.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
 conftest-verbose.patch
-cc_version_check-gcc5.patch
 nvidia-use-ARCH.o_binary.patch
 nvidia-modeset-use-ARCH.o_binary.patch
 conftest-prefer-arch-headers.patch

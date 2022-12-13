@@ -82,6 +82,7 @@ Depends:
 Provides:
  nvidia-alternative-any,
  ${nvidia}-alternative--kmod-alias,
+ ${nvidia}-alternative-${nvidia:Version},
 Conflicts:
  libglvnd0-nvidia,
  libopengl0-glvnd-nvidia,

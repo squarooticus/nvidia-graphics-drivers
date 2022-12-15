@@ -1,8 +1,8 @@
 nvidia-graphics-drivers (515.48.07-2) experimental; urgency=medium
 
   * Merge changes from 510.108.03-1.
-  * Backport find_vma_intersection and num_registered_fb changes from 515.76
-    to fix kernel module build for Linux 6.1.
+  * Backport find_vma_intersection from 515.57 and num_registered_fb changes
+    from 515.76 to fix kernel module build for Linux 6.1.
   * libcuda1: Add Provides: libcuda-11.7-1{,-i386}.
   * Put the kernel module patches under Expat license.
 

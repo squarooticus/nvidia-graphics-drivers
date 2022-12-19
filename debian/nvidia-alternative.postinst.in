@@ -82,8 +82,6 @@ if [ "$1" = "triggered" ]; then
 	fi
 	if echo "$slaves" | grep -q "slave" ; then
 		update-alternatives --install /usr/lib/nvidia/nvidia nvidia /usr/lib/#PRIVATE# #MAJOR# $slaves $conf_slaves $libnvidia_ml_so_slave
-		# work around #916799 and re-register the alternative to clean-up leftover slaves
-		update-alternatives --install /usr/lib/nvidia/nvidia nvidia /usr/lib/#PRIVATE# #MAJOR# $slaves $conf_slaves $libnvidia_ml_so_slave
 	else
 		update-alternatives --remove nvidia /usr/lib/#PRIVATE#
 	fi

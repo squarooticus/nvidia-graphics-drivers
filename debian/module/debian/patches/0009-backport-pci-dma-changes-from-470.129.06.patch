@@ -1,13 +1,13 @@
-From e5bf46e55de28c29cbe6e35d8a46702f3b257a8a Mon Sep 17 00:00:00 2001
+From 327db26e2b58f86706dca14b7471538f12f4cbc8 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 10:14:54 +0200
-Subject: [PATCH 1/2] backport pci/dma changes from 470.129.06
+Subject: [PATCH 1/3] backport pci/dma changes from 470.129.06
 
 ---
  nvidia/nv-dma.c | 20 ++++++++++----------
  nvidia/nv-vm.c  |  2 +-
- nvidia/nv.c     | 18 +++++++++---------
- 3 files changed, 20 insertions(+), 20 deletions(-)
+ nvidia/nv.c     |  2 +-
+ 3 files changed, 12 insertions(+), 12 deletions(-)
 
 diff --git a/nvidia/nv-dma.c b/nvidia/nv-dma.c
 index cd1ad08..129b520 100644
@@ -85,7 +85,7 @@ index dccf59c..6cd9f1a 100644
   */
  static NV_STATUS nv_alloc_coherent_pages(
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 14239c5..854ff0f 100644
+index 14239c5..ac066d9 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
 @@ -2964,7 +2964,7 @@ nv_set_dma_address_size(
@@ -97,58 +97,6 @@ index 14239c5..854ff0f 100644
          /* Certain kernels have a bug which causes pci_set_consistent_dma_mask
           * to call GPL sme_active symbol, this bug has already been fixed in a
           * minor release update but detect the failure scenario here to prevent
-@@ -4805,7 +4805,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
-      * Otherwise, the DMA start address only needs to be set once, and it
-      * won't change afterward. Just return the cached value if asked again,
-      * to avoid the kernel printing redundant messages to the kernel
--     * log when we call pci_set_dma_mask().
-+     * log when we call dma_set_mask().
-      */
-     nvl = NV_GET_NVL_FROM_NV_STATE(nv);
-     if ((nv_tce_bypass_mode == NV_TCE_BYPASS_MODE_DISABLE) ||
-@@ -4856,19 +4856,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
-      * as the starting address for all DMA mappings.
-      */
-     saved_dma_mask = dev->dma_mask;
--    if (pci_set_dma_mask(dev, DMA_BIT_MASK(64)) != 0)
-+    if (dma_set_mask(&dev->dev, DMA_BIT_MASK(64)) != 0)
-     {
-         goto done;
-     }
- 
--    dma_addr = pci_map_single(dev, NULL, 1, DMA_BIDIRECTIONAL);
--    if (pci_dma_mapping_error(dev, dma_addr))
-+    dma_addr = dma_map_single(&dev->dev, NULL, 1, DMA_BIDIRECTIONAL);
-+    if (dma_mapping_error(&dev->dev, dma_addr))
-     {
--        pci_set_dma_mask(dev, saved_dma_mask);
-+        dma_set_mask(&dev->dev, saved_dma_mask);
-         goto done;
-     }
- 
--    pci_unmap_single(dev, dma_addr, 1, DMA_BIDIRECTIONAL);
-+    dma_unmap_single(&dev->dev, dma_addr, 1, DMA_BIDIRECTIONAL);
- 
-     /*
-      * From IBM: "For IODA2, native DMA bypass or KVM TCE-based implementation
-@@ -4900,7 +4900,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
-          */
-         nv_printf(NV_DBG_WARNINGS,
-             "NVRM: DMA window limited by platform\n");
--        pci_set_dma_mask(dev, saved_dma_mask);
-+        dma_set_mask(&dev->dev, saved_dma_mask);
-         goto done;
-     }
-     else if ((dma_addr & saved_dma_mask) != 0)
-@@ -4919,7 +4919,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
-              */
-             nv_printf(NV_DBG_WARNINGS,
-                 "NVRM: DMA window limited by memory size\n");
--            pci_set_dma_mask(dev, saved_dma_mask);
-+            dma_set_mask(&dev->dev, saved_dma_mask);
-             goto done;
-         }
-     }
 -- 
 2.20.1
 

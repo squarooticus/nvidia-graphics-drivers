@@ -3,14 +3,15 @@ bashisms.patch
 
 # kernel support
 0001-backport-error-on-unknown-conftests.patch
-#HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
+0002-backport-error-on-unknown-conftests-uvm-part.patch
 0003-backport-set_-memory-pages-_array-_uc-changes-from-5.patch
 0004-backport-stdarg.h-changes-from-495.44.patch
 0005-backport-stddef.h-changes-from-495.44.patch
 0006-backport-pde_data-changes-from-470.103.01.patch
 0007-backport-linker-scripts-changes-from-510.60.02.patch
 0009-backport-pci-dma-changes-from-470.129.06.patch
-#HAS_UVM#0010-backport-pci-dma-changes-from-470.129.06-uvm-part.patch
+0010-backport-pci-dma-changes-from-470.129.06-uvm-part.patch
+0010-backport-pci-dma-changes-for-ppc64el.patch
 0011-backport-iosys_map-changes-from-470.129.06.patch
 0012-backport-dma_set_coherent_mask-from-470.129.06.patch
 0013-backport-acpi_bus_get_device-changes-from-470.129.06.patch

@@ -23,7 +23,6 @@ ARCH_LIST		?= amd64
 BLOB_ARCH_LIST		?= $(strip $(DEB_HOST_ARCH) $(ARCH_DEPS_$(DEB_HOST_ARCH)))
 NO_DRIVER_ARCH_LIST	?=
 NO_AUTOPKGTEST_ARCH_LIST?=
-NO_VULKAN_ARCH_LIST	?=
 NO_GSP_ARCH_LIST	?=
 
 NVIDIA_RELEASE		 = $(DEB_VERSION_UPSTREAM)
@@ -55,7 +54,6 @@ libcuda1		 = lib$(nvidia_if_variant)cuda1
 watch_pattern		 = $(or $(WATCH_PATTERN),$(if $(WATCH_VERSION),$(WATCH_VERSION)(?:\.[\d\.\-]+)?),\d[\d\.\-]*)
 debhelper_compat	:= $(shell sed -rn 's/.*debhelper-compat \(= ([0-9]+)\).*/\1/p' debian/control)
 has_driver		 = $(filter $(DEB_HOST_ARCH),$(DRIVER_ARCH_LIST))
-has_vulkan		 = $(filter $(DEB_HOST_ARCH),$(filter-out $(NO_VULKAN_ARCH_LIST),$(ARCH_LIST)))
 DRIVER_ARCH_LIST	 = $(filter-out $(NO_DRIVER_ARCH_LIST),$(ARCH_LIST))
 AUTOPKGTEST_ARCH_LIST	 = $(filter-out $(NO_AUTOPKGTEST_ARCH_LIST),$(DRIVER_ARCH_LIST))
 GSP_ARCH_LIST		 = $(filter-out $(NO_GSP_ARCH_LIST),$(DRIVER_ARCH_LIST))

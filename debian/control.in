@@ -755,13 +755,16 @@ Suggests:
  | nvidia-tesla-418-nonglvnd-vulkan-icd [i386 amd64 ppc64el]
  | nvidia-legacy-390xx-nonglvnd-vulkan-icd [i386 amd64],
 Conflicts:
- libgl1-${nvidia}-glvnd-glx,
+ libgl1-nvidia-glvnd-glx,
+ libgl1-nvidia-tesla-glvnd-glx,
+ libgl1-nvidia-tesla-510-glvnd-glx,
  libgl1-nvidia-tesla-470-glvnd-glx,
  libgl1-nvidia-tesla-460-glvnd-glx,
  libgl1-nvidia-tesla-450-glvnd-glx,
  libgl1-nvidia-tesla-440-glvnd-glx,
  libgl1-nvidia-tesla-418-glvnd-glx,
  libgl1-nvidia-legacy-390xx-glvnd-glx,
+ libgl1-${nvidia}-glvnd-glx,
  nvidia-vulkan-common,
 Description: NVIDIA Vulkan driver - common files (non-GLVND variant)
  Vulkan is a multivendor open standard by the Khronos Group for 3D graphics.

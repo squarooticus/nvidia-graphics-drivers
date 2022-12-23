@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (510.108.03-2) UNRELEASED; urgency=medium
+
+  * nvidia-detect: Restrict support to driver series in bookworm.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Dec 2022 05:02:43 +0100
+
 nvidia-graphics-drivers (510.108.03-1) unstable; urgency=medium
 
   * New upstream production branch release 510.108.03 (2022-11-22).

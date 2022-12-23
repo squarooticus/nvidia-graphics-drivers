@@ -320,7 +320,6 @@ override_dh_gencontrol:
 		-V'nvidia:debhelper-compat=$(debhelper_compat)' \
 		$(foreach a,$(ARCH_CANDIDATES),-V'arch:$a=$(filter $a,$(DRIVER_ARCH_LIST))') \
 		-V'nvidia:arch:has-driver=$(if $(has_driver),,!)$(DEB_HOST_ARCH)' \
-		-V'nvidia:arch:has-no-driver=$(if $(has_driver),!,)$(DEB_HOST_ARCH)' \
 		-V'nvidia:arches:gsp=$(GSP_ARCH_LIST)' \
 		-V'nvidia:kmod:binary=$${nvidia-kernel}-dkms (= $${binary:Version}) [$${nvidia:arch:has-driver}] | $${nvidia-kernel}-$${nvidia:Version} [$${nvidia:arch:has-driver}]' \
 		-V'nvidia:kmod:source=$${nvidia-kernel}-dkms (>= $${nvidia:Version}) [$${nvidia:arch:has-driver}] | $${nvidia-kernel}-source (>= $${nvidia:Version}) [$${nvidia:arch:has-driver}]' \
@@ -358,6 +357,7 @@ override_dh_strip_nondeterminism:
 	-e 's{#MAJOR#}{$(version_major)}g;' \
 	-e 's{#NVIDIA#}{$(nvidia)}g;' \
 	-e 's{#VARIANT#}{$(-variant)}g;' \
+	-e 's{#CURRENT#}{$(current)}g;' \
 	-e 's{#NVIDIA-KERNEL#}{$(nvidia-kernel)}g;' \
 	-e 's{#MODULE#}{$(module)}g;' \
 	-e 's{#MODULE_CURRENT#}{$(module-current)}g;' \
@@ -367,8 +367,6 @@ override_dh_strip_nondeterminism:
 	-e 's{#ARCH_LIST#}{$(DRIVER_ARCH_LIST)}g;' \
 	-e 's{#AUTOPKGTEST_ARCH_LIST#}{$(AUTOPKGTEST_ARCH_LIST)}g;' \
 	-e 's{#GSP_ARCH_LIST#}{$(GSP_ARCH_LIST)}g;' \
-	-e 's{#!arm64#}{$(if $(filter arm64,$(DEB_HOST_ARCH)),#)}g;' \
-	-e 's{#!ppc64el#}{$(if $(filter ppc64el,$(DEB_HOST_ARCH)),#)}g;' \
 	$(EXTRA_SUBSTITUTIONS) \
 	< $< > $@
 	chmod --reference=$< $@

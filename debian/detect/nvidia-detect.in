@@ -108,6 +108,11 @@ then
 	VERSIONS[471]=470.57.02
 fi
 
+if grep -q -i $NVGA $IDLISTDIR/nvidia-open.ids 2>/dev/null
+then
+	VERSIONS[990]=515.48.07
+fi
+
 if grep -q -i $NVGA $IDLISTDIR/nvidia-tesla-510.ids 2>/dev/null
 then
 	VERSIONS[511]=510.47.03
@@ -315,6 +320,9 @@ fi
 			echo "Uh oh. Your card is only supported by the 71.86 legacy drivers series, which is not in any current Debian suite."
 		else
 			echo "Oops. Internal error 12 ($NVGA)"
+		fi
+		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-open-driver" ] && [[ -n ${VERSIONS[990]} ]]; then
+			echo "Your card is also supported by the NVIDIA Linux Open GPU Kernel Module."
 		fi
 		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-tesla-510-driver" ] && [[ -n ${VERSIONS[511]} ]]; then
 			echo "Your card is also supported by the Tesla 510 drivers series."

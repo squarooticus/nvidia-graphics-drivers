@@ -2,6 +2,7 @@ nvidia-graphics-drivers (510.108.03-2) UNRELEASED; urgency=medium
 
   * nvidia-detect: Add support for Tesla drivers.
   * nvidia-detect: Restrict support to driver series in bookworm.
+  * Stop building the nvidia-nonglvnd-vulkan-common package.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 23 Dec 2022 05:02:43 +0100
 

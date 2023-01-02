@@ -20,7 +20,7 @@ Build-Depends:
  linux-headers-686 [i386] <!nocheck>,
  linux-headers-armmp [armhf] <!nocheck>,
 Rules-Requires-Root: no
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2
 Homepage: https://www.nvidia.com
 Testsuite: autopkgtest-pkg-dkms
 XS-Autobuild: yes

@@ -111,10 +111,10 @@ Depends:
 Provides:
  nvidia-kernel-support-any,
  ${nvidia-kernel}-support--v1,
- firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:arches:gsp}],
- firmware-nvidia-gsp-${nvidia:Version} [${nvidia:arches:gsp}],
+ firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:archlist:gsp}],
+ firmware-nvidia-gsp-${nvidia:Version} [${nvidia:archlist:gsp}],
 Conflicts:
- firmware-nvidia-gsp-${nvidia:Version} [${nvidia:arches:gsp}],
+ firmware-nvidia-gsp-${nvidia:Version} [${nvidia:archlist:gsp}],
 Description: NVIDIA binary kernel module support files${nvidia:VariantDesc}
  The NVIDIA binary driver provides optimized hardware acceleration of
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
@@ -129,7 +129,7 @@ Multi-Arch: foreign
 Pre-Depends:
  nvidia-installer-cleanup,
 Depends:
- firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:arches:gsp}] | firmware-nvidia-gsp-${nvidia:Version} [${nvidia:arches:gsp}],
+ firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:archlist:gsp}] | firmware-nvidia-gsp-${nvidia:Version} [${nvidia:archlist:gsp}],
  ${nvidia-kernel}-support--v1,
  ${misc:Depends}
 Recommends:
@@ -166,7 +166,7 @@ Depends:
  quilt,
  ${misc:Depends}
 Recommends:
- firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:arches:gsp}] | firmware-nvidia-gsp-${nvidia:Version} [${nvidia:arches:gsp}],
+ firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:archlist:gsp}] | firmware-nvidia-gsp-${nvidia:Version} [${nvidia:archlist:gsp}],
  ${nvidia-kernel}-support--v1,
 Suggests:
  ${nvidia}-driver (>= ${nvidia:Version}),

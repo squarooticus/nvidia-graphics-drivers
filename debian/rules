@@ -332,7 +332,7 @@ override_dh_gencontrol:
 		-V'nvidia:debhelper-compat=$(debhelper_compat)' \
 		$(foreach a,$(ARCH_CANDIDATES),-V'arch:$a=$(filter $a,$(DRIVER_ARCH_LIST))') \
 		-V'nvidia:arch:has-driver=$(if $(has_driver),,!)$(DEB_HOST_ARCH)' \
-		-V'nvidia:arches:gsp=$(GSP_ARCH_LIST)' \
+		-V'nvidia:archlist:gsp=$(GSP_ARCH_LIST)' \
 		-V'nvidia:kmod:binary=$${nvidia-kernel}-dkms (= $${binary:Version}) [$${nvidia:arch:has-driver}] | $${nvidia-kernel}-$${nvidia:Version} [$${nvidia:arch:has-driver}]' \
 		-V'nvidia:kmod:source=$${nvidia-kernel}-dkms (>= $${nvidia:Version}) [$${nvidia:arch:has-driver}] | $${nvidia-kernel}-source (>= $${nvidia:Version}) [$${nvidia:arch:has-driver}]' \
 		-V'nvidia:kmod:tested:Linux=$(strip $(or $(LINUX_KMOD_TESTED_$(DEB_HOST_ARCH)),$(LINUX_KMOD_TESTED),???))' \

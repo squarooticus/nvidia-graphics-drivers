@@ -1,19 +1,19 @@
-From a92a1efa54cf27edadc14cbcd948c974ce48b118 Mon Sep 17 00:00:00 2001
+From 27ff29e27d4f77a4c00b60f06ffaeacfdb4acea7 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 3 Jan 2023 21:20:42 +0100
 Subject: [PATCH] support acpi_op_remove callback returning void
 
 returns void instead of int since 6c0eb5ba3500f (in v6.2-rc1)
 ---
- conftest.sh | 18 ++++++++++++++++++
- nv-acpi.c   |  6 ++++++
+ conftest.sh      | 18 ++++++++++++++++++
+ nvidia/nv-acpi.c |  6 ++++++
  2 files changed, 24 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 873c566..71fbbac 100755
+index 88c7eb1..b9574f9 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -815,6 +815,24 @@ compile_test() {
+@@ -863,6 +863,24 @@ compile_test() {
                  return
              fi
  
@@ -38,10 +38,10 @@ index 873c566..71fbbac 100755
              CODE="
              #include <linux/acpi.h>
  
-diff --git a/nv-acpi.c b/nv-acpi.c
-index 8bde56e..0895c6e 100644
---- a/nv-acpi.c
-+++ b/nv-acpi.c
+diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
+index da9fbc9..06709e6 100644
+--- a/nvidia/nv-acpi.c
++++ b/nvidia/nv-acpi.c
 @@ -25,6 +25,8 @@ static int         nv_acpi_add             (struct acpi_device *);
  
  #if !defined(NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT) || (NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT == 2)
@@ -51,7 +51,7 @@ index 8bde56e..0895c6e 100644
  #else
  static int         nv_acpi_remove_one_arg(struct acpi_device *device);
  #endif
-@@ -297,6 +299,8 @@ static int nv_acpi_add(struct acpi_device *device)
+@@ -333,6 +335,8 @@ static int nv_acpi_add(struct acpi_device *device)
  
  #if !defined(NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT) || (NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT == 2)
  static int nv_acpi_remove_two_args(struct acpi_device *device, int type)
@@ -60,7 +60,7 @@ index 8bde56e..0895c6e 100644
  #else
  static int nv_acpi_remove_one_arg(struct acpi_device *device)
  #endif
-@@ -349,7 +353,9 @@ static int nv_acpi_remove_one_arg(struct acpi_device *device)
+@@ -385,7 +389,9 @@ static int nv_acpi_remove_one_arg(struct acpi_device *device)
          device->driver_data = NULL;
      }
  

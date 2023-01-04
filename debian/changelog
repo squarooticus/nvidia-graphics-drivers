@@ -4,6 +4,8 @@ nvidia-graphics-drivers (515.48.07-3) UNRELEASED; urgency=medium
   * Extract nv-readme-open.ids from README.
   * nvidia-detect: Report GPUs that can be used with the open kernel module.
   * Allow nvidia-open-kernel-dkms as alternative to nvidia-kernel-dkms.
+  * nvidia-alternative: Register another alternative if
+    nvidia-open-kernel-dkms is available.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 19 Dec 2022 15:51:28 +0100
 

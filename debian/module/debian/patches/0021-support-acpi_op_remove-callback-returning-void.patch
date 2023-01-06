@@ -1,4 +1,4 @@
-From f91a2a3f1be6d774430a1ddcca20088e77050247 Mon Sep 17 00:00:00 2001
+From b2012a7b90864181f2f74356e22091d6c43cd059 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 3 Jan 2023 21:20:42 +0100
 Subject: [PATCH] support acpi_op_remove callback returning void
@@ -10,10 +10,10 @@ returns void instead of int since 6c0eb5ba3500f (in v6.2-rc1)
  2 files changed, 24 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 19f83b8..1c238d9 100755
+index 75a6ecc..adc5372 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -752,6 +752,24 @@ compile_test() {
+@@ -650,6 +650,24 @@ compile_test() {
                  return
              fi
  
@@ -39,10 +39,10 @@ index 19f83b8..1c238d9 100755
              #include <linux/acpi.h>
  
 diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
-index 828c314..9f72835 100644
+index d5b8aa9..fd554dc 100644
 --- a/nvidia/nv-acpi.c
 +++ b/nvidia/nv-acpi.c
-@@ -25,6 +25,8 @@ static int         nv_acpi_add             (struct acpi_device *);
+@@ -27,6 +27,8 @@ static int         nv_acpi_add             (struct acpi_device *);
  
  #if !defined(NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT) || (NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT == 2)
  static int         nv_acpi_remove_two_args(struct acpi_device *device, int type);
@@ -51,7 +51,7 @@ index 828c314..9f72835 100644
  #else
  static int         nv_acpi_remove_one_arg(struct acpi_device *device);
  #endif
-@@ -340,6 +342,8 @@ static int nv_acpi_add(struct acpi_device *device)
+@@ -344,6 +346,8 @@ static int nv_acpi_add(struct acpi_device *device)
  
  #if !defined(NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT) || (NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT == 2)
  static int nv_acpi_remove_two_args(struct acpi_device *device, int type)
@@ -60,7 +60,7 @@ index 828c314..9f72835 100644
  #else
  static int nv_acpi_remove_one_arg(struct acpi_device *device)
  #endif
-@@ -392,7 +396,9 @@ static int nv_acpi_remove_one_arg(struct acpi_device *device)
+@@ -396,7 +400,9 @@ static int nv_acpi_remove_one_arg(struct acpi_device *device)
          device->driver_data = NULL;
      }
  

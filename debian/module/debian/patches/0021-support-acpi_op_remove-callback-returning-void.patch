@@ -1,4 +1,4 @@
-From 361b40a2661815eb6237862b7d84d6d717337737 Mon Sep 17 00:00:00 2001
+From c46384e0710020ecc1c8e6fe1eb7afad5b04d95b Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 3 Jan 2023 21:20:42 +0100
 Subject: [PATCH] support acpi_op_remove callback returning void
@@ -10,10 +10,10 @@ returns void instead of int since 6c0eb5ba3500f (in v6.2-rc1)
  2 files changed, 24 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 176c4bf..50b7f8c 100755
+index 1f45c87..63155c1 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -719,6 +719,24 @@ compile_test() {
+@@ -657,6 +657,24 @@ compile_test() {
                  return
              fi
  
@@ -39,10 +39,10 @@ index 176c4bf..50b7f8c 100755
              #include <linux/acpi.h>
  
 diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
-index 884efbd..9cc28cb 100644
+index 07501eb..3ec577c 100644
 --- a/nvidia/nv-acpi.c
 +++ b/nvidia/nv-acpi.c
-@@ -27,6 +27,8 @@ static int         nv_acpi_add             (struct acpi_device *);
+@@ -26,6 +26,8 @@ static int         nv_acpi_add             (struct acpi_device *);
  
  #if !defined(NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT) || (NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT == 2)
  static int         nv_acpi_remove_two_args(struct acpi_device *device, int type);

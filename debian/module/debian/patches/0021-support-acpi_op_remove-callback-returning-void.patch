@@ -1,4 +1,4 @@
-From b2012a7b90864181f2f74356e22091d6c43cd059 Mon Sep 17 00:00:00 2001
+From 361b40a2661815eb6237862b7d84d6d717337737 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 3 Jan 2023 21:20:42 +0100
 Subject: [PATCH] support acpi_op_remove callback returning void
@@ -10,10 +10,10 @@ returns void instead of int since 6c0eb5ba3500f (in v6.2-rc1)
  2 files changed, 24 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 75a6ecc..adc5372 100755
+index 176c4bf..50b7f8c 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -650,6 +650,24 @@ compile_test() {
+@@ -719,6 +719,24 @@ compile_test() {
                  return
              fi
  
@@ -39,7 +39,7 @@ index 75a6ecc..adc5372 100755
              #include <linux/acpi.h>
  
 diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
-index d5b8aa9..fd554dc 100644
+index 884efbd..9cc28cb 100644
 --- a/nvidia/nv-acpi.c
 +++ b/nvidia/nv-acpi.c
 @@ -27,6 +27,8 @@ static int         nv_acpi_add             (struct acpi_device *);

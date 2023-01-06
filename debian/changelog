@@ -47,6 +47,9 @@ nvidia-graphics-drivers (390.157-1+git) UNRELEASED; urgency=medium
   [ Vincent Cheng ]
   * Remove myself from Uploaders.
 
+  * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
+    kernel module build for Linux 6.2.
+
  -- Andreas Beckmann <anbe@debian.org>  Wed, 23 Nov 2022 23:52:39 +0100
 
 nvidia-graphics-drivers (390.157-1) UNRELEASED; urgency=medium

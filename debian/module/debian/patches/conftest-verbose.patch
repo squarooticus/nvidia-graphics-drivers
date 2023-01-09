@@ -49,7 +49,7 @@ Description: dump the generated conftest headers
  
  clean-dirs := $(obj)/conftest
  
-@@ -295,7 +312,8 @@ BUILD_SANITY_CHECKS = \
+@@ -232,7 +248,8 @@ BUILD_SANITY_CHECKS = \
  
  .PHONY: $(BUILD_SANITY_CHECKS)
  
@@ -59,7 +59,7 @@ Description: dump the generated conftest headers
  	@$(NV_CONFTEST_CMD) $@ full_output
  
  # Perform all sanity checks before generating the conftest headers
-@@ -241,11 +257,13 @@ $(NV_CONFTEST_HEADERS): | $(BUILD_SANITY
+@@ -241,11 +258,13 @@ $(NV_CONFTEST_HEADERS): | $(BUILD_SANITY
  
  # Make the conftest headers depend on the kernel version string
  

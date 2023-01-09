@@ -1,4 +1,4 @@
-From d91e64b40620c9d3ec92949aab02d2f620b2a742 Mon Sep 17 00:00:00 2001
+From 90a0be267294a210ee214144e5eebd18ed446fce Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 6 Jan 2023 14:21:15 +0100
 Subject: [PATCH] backport drm_connector_has_override_edid changes from
@@ -12,11 +12,11 @@ Subject: [PATCH] backport drm_connector_has_override_edid changes from
  4 files changed, 28 insertions(+), 4 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index cd97bac..bd63e0d 100755
+index f925aa5..e410d11 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -5223,6 +5223,28 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_ACPI_VIDEO_BACKLIGHT_USE_NATIVE" "" "functions"
+@@ -5399,6 +5399,28 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_NUM_REGISTERED_FB_PRESENT" "" "types"
          ;;
  
 +        drm_connector_has_override_edid)

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nvidia-graphics-drivers_510.108.03-2\n"
 "Report-Msgid-Bugs-To: nvidia-graphics-drivers@packages.debian.org\n"
-"POT-Creation-Date: 2016-02-12 01:57+0100\n"
+"POT-Creation-Date: 2023-01-09 15:40+0100\n"
 "PO-Revision-Date: 2023-01-08 14:19-0300\n"
 "Last-Translator: Paulo Henrique de Lima Santana (phls) <phls@debian.org>\n"
 "Language-Team: Brazilian Portuguese <debian-l10n-portuguese@lists.debian."
@@ -21,6 +21,9 @@ msgstr ""
 
 #. Type: boolean
 #. Description
+#. Translators, please only translate this file in src:nvidia-graphics-drivers.
+#. From there it will be merged into all other src:nvidia-graphics-drivers-*
+#. packages.
 #. Translators, do not translate the ${substitution} ${variables}.
 #. ${vendor} will be substituted with 'NVIDIA' or 'Fglrx' (without quotes, of
 #. course), ${free_name} will become 'Nouveau' or 'Radeon' (no quotes, again)

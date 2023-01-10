@@ -1,8 +1,12 @@
-nvidia-graphics-drivers (515.65.07-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (515.76-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 515.76 (2022-09-20).
+    - Turing and later: fixed possible excessive GPU power draw on an idle
+      X11 or Wayland desktop when driving high resolutions or refresh rates.
+    * Improved compatibility with recent Linux kernels.
   * New upstream Tesla release (amd64 only) 515.65.07 (2022-10-19).
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 05 Nov 2022 11:37:20 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 10 Jan 2023 01:36:06 +0100
 
 nvidia-graphics-drivers (515.65.01-1) experimental; urgency=medium
 

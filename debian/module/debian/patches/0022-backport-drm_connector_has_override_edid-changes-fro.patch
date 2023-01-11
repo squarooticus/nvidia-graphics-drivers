@@ -1,4 +1,4 @@
-From ae84e5aa73b193369808ef1699fb11a0dbfb38d5 Mon Sep 17 00:00:00 2001
+From 6f284434d8c1b593a207ee4f0a86a9219025df65 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 6 Jan 2023 14:21:15 +0100
 Subject: [PATCH] backport drm_connector_has_override_edid changes from
@@ -12,11 +12,11 @@ Subject: [PATCH] backport drm_connector_has_override_edid changes from
  4 files changed, 28 insertions(+), 4 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index adc5372..2f80ee8 100755
+index 50b7f8c..93dce3d 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4384,6 +4384,28 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_RESERVATION_OBJECT_RESERVE_SHARED_HAS_NUM_FENCES_ARG" "" "types"
+@@ -4703,6 +4703,28 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_GET_TASK_IOPRIO_PRESENT" "" "functions"
          ;;
  
 +        drm_connector_has_override_edid)
@@ -69,10 +69,10 @@ index 6fbcd63..fe838ef 100644
  
          if (edid->length <= sizeof(pDetectParams->edid.buffer)) {
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 7118a64..fdb6694 100644
+index 6d6a078..7f50eff 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -239,10 +239,6 @@ nv_drm_init_mode_config(struct nv_drm_device *nv_dev,
+@@ -240,10 +240,6 @@ nv_drm_init_mode_config(struct nv_drm_device *nv_dev,
      dev->mode_config.preferred_depth = 24;
      dev->mode_config.prefer_shadow = 1;
  
@@ -80,17 +80,17 @@ index 7118a64..fdb6694 100644
 -
 -    dev->mode_config.fb_base = 0;
 -
-     dev->mode_config.async_page_flip = false;
- 
-     /* Initialize output polling support */
+ #if defined(NV_DRM_CRTC_STATE_HAS_ASYNC_FLIP) || \
+     defined(NV_DRM_CRTC_STATE_HAS_PAGEFLIP_FLAGS)
+     dev->mode_config.async_page_flip = true;
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 312c515..ec7c710 100644
+index e5106fa..3771ea2 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -107,3 +107,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_device_has_pdev
+@@ -113,3 +113,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_plane_atomic_check_has_atomic_state_arg
+ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_device_has_pdev
+ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_mode_config_has_allow_fb_modifiers
  NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
- NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_reserve_fences
- NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fences_arg
 +NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
 -- 
 2.20.1

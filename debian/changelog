@@ -26,6 +26,16 @@ nvidia-graphics-drivers (418.226.00-9+git4deb10buster) UNRELEASED; urgency=mediu
   * Add support for unversioned Tesla packages (tesla 510.85.02-1).
   * Use substitutions for ${nvidia-kernel} and friends (510.108.03-1).
   * Try to compile a kernel module at package build time (510.108.03-1).
+  * nvidia-alternative: Access kmod config files over a versioned
+    symlink (510.108.03-3).
+  * New Brazilian Portuguese (pt_BR) debconf translations by Paulo Henrique de
+    Lima Santana.
+  * Bump Standards-Version to 4.6.2. No changes needed.
+
+  * Support acpi_op_remove callback returning void to fix kernel module build
+    for Linux 6.2.
+  * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
+    kernel module build for Linux 6.2.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
 
@@ -3550,6 +3560,9 @@ nvidia-graphics-drivers (343.22-1) experimental; urgency=medium
  -- Andreas Beckmann <anbe@debian.org>  Mon, 20 Oct 2014 19:04:58 +0200
 
 nvidia-graphics-drivers (340.108-2) UNRELEASED; urgency=medium
+
+  * Support acpi_op_remove callback returning void to fix kernel module build
+    for Linux 6.2.
 
   * Update o_binary patch to fix kernel module build for Linux 6.1.
   * Backport acpi changes from 390.157, replacing earlier backports.

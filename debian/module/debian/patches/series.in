@@ -3,6 +3,8 @@ bashisms.patch
 
 # kernel support
 0010-backport-pci-dma-changes-for-ppc64el.patch
+0021-support-acpi_op_remove-callback-returning-void.patch
+0022-backport-drm_connector_has_override_edid-changes-fro.patch
 ppc64el.patch
 
 # build system updates

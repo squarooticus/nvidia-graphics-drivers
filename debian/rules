@@ -120,6 +120,11 @@ xorg_depends	 = $(foreach abi, $(XORG_ABI_LIST), xorg-video-abi-$(abi) [$${nvidi
 xorg_depends	+= $(comma) xserver-xorg-core $(XORG_BOUND) [$${nvidia:arch:has-driver}]
 xorg_provides	 = xorg-driver-video [$${nvidia:arch:has-driver}]
 
+deps_nvidia_kmod_binary	 = $${nvidia-kernel}-dkms (= $${binary:Version})                [$${nvidia:archlist:driver}] |
+deps_nvidia_kmod_binary	+= $${nvidia-kernel}-$${nvidia:Version}                         [$${nvidia:archlist:driver}] |
+deps_nvidia_kmod_source	 = $${nvidia-kernel}-dkms (>= $${nvidia:Version})               [$${nvidia:archlist:driver}] |
+deps_nvidia_kmod_source	+= $${nvidia-kernel}-source (>= $${nvidia:Version})             [$${nvidia:archlist:driver}] |
+
 
 .PHONY: autogen prepare patch
 autogen: debian/control $(AUTOGEN)
@@ -344,8 +349,8 @@ override_dh_gencontrol:
 		-V'nvidia:archlist:driver=$(DRIVER_ARCH_LIST)' \
 		-V'nvidia:arch:has-driver=$(if $(has_driver),,!)$(DEB_HOST_ARCH)' \
 		-V'nvidia:arch:has-no-driver=$(if $(has_driver),!,)$(DEB_HOST_ARCH)' \
-		-V'nvidia:kmod:binary=$${nvidia-kernel}-dkms (= $${binary:Version}) [$${nvidia:archlist:driver}] | $${nvidia-kernel}-$${nvidia:Version} [$${nvidia:archlist:driver}]' \
-		-V'nvidia:kmod:source=$${nvidia-kernel}-dkms (>= $${nvidia:Version}) [$${nvidia:archlist:driver}] | $${nvidia-kernel}-source (>= $${nvidia:Version}) [$${nvidia:archlist:driver}]' \
+		-V'nvidia:kmod:binary=$(deps_nvidia_kmod_binary)' \
+		-V'nvidia:kmod:source=$(deps_nvidia_kmod_source)' \
 		-V'nvidia:kmod:tested:Linux=$(strip $(or $(LINUX_KMOD_TESTED_$(DEB_HOST_ARCH)),$(LINUX_KMOD_TESTED),???))' \
 		-V'nvidia:kmod:blob:archlist=$(subst $(space),$(comma)$(space),$(BLOB_ARCH_LIST)) architecture$(if $(filter 1,$(words $(BLOB_ARCH_LIST))),,s)' \
 		-Vnvidia:kmod:Description="`cat debian/control.kmod`" \

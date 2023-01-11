@@ -6,6 +6,8 @@ bashisms.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
 0003-backport-set_-memory-pages-_array-_uc-changes-from-5.patch
 0004-fix-conftest-includes.patch
+0021-support-acpi_op_remove-callback-returning-void.patch
+0022-backport-drm_connector_has_override_edid-changes-fro.patch
 do-div-cast.patch
 
 # build system updates

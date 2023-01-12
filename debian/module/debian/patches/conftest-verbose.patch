@@ -49,21 +49,18 @@ Description: dump the generated conftest headers
  
  clean-dirs := $(obj)/conftest
  
-@@ -233,7 +249,7 @@ BUILD_SANITY_CHECKS = \
- .PHONY: $(BUILD_SANITY_CHECKS)
+@@ -241,11 +257,13 @@ $(NV_CONFTEST_HEADERS): | $(BUILD_SANITY
  
- $(BUILD_SANITY_CHECKS):
--	@$(NV_CONFTEST_CMD) $@ full_output
-+	$(NV_CONFTEST_CMD) $@ full_output
+ # Make the conftest headers depend on the kernel version string
  
- # Perform all sanity checks before generating the conftest headers
- 
-@@ -243,7 +259,7 @@ $(NV_CONFTEST_HEADERS): | $(BUILD_SANITY
- 
- $(obj)/conftest/uts_release: NV_GENERATE_UTS_RELEASE
+-$(obj)/conftest/uts_release: NV_GENERATE_UTS_RELEASE
++$(obj)/conftest/uts_release: NV_GENERATE_UTS_RELEASE | conftest-verbose
  	@mkdir -p $(dir $@)
--	@NV_UTS_RELEASE="// Kernel version: `$(NV_CONFTEST_CMD) compile_tests '$(NV_CONFTEST_CFLAGS)' uts_release`"; \
-+	NV_UTS_RELEASE="// Kernel version: `$(NV_CONFTEST_CMD) compile_tests '$(NV_CONFTEST_CFLAGS)' uts_release`"; \
+ 	@NV_UTS_RELEASE="// Kernel version: `$(NV_CONFTEST_CMD) compile_tests '$(NV_CONFTEST_CFLAGS)' uts_release`"; \
  	if ! [ -f "$@" ] || [ "$$NV_UTS_RELEASE" != "`cat $@`" ]; \
  	then echo "$$NV_UTS_RELEASE" > $@; fi
++	@echo " CONFTEST $(notdir $@):"
++	@cat $@
+ 
+ .PHONY: NV_GENERATE_UTS_RELEASE
  

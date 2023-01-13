@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (510.108.03-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (510.108.03-3) unstable; urgency=medium
 
   * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
     kernel module build for Linux 6.2.  (Closes: #1027790)
@@ -7,7 +7,7 @@ nvidia-graphics-drivers (510.108.03-3) UNRELEASED; urgency=medium
   * New Brazilian Portuguese (pt_BR) debconf translations by Paulo Henrique de
     Lima Santana.  (Closes: #1028259)
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 11 Jan 2023 23:03:25 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 13 Jan 2023 22:20:56 +0100
 
 nvidia-graphics-drivers (510.108.03-2) unstable; urgency=medium
 

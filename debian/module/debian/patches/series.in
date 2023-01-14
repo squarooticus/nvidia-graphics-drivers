@@ -18,6 +18,4 @@ fragile-ARCH.patch
 use-kbuild-compiler.patch
 use-kbuild-flags.patch
 conftest-verbose.patch
-nvidia-use-ARCH.o_binary.patch
-nvidia-modeset-use-ARCH.o_binary.patch
 conftest-prefer-arch-headers.patch

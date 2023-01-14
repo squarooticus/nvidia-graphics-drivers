@@ -1,4 +1,4 @@
-From 6f284434d8c1b593a207ee4f0a86a9219025df65 Mon Sep 17 00:00:00 2001
+From d91e64b40620c9d3ec92949aab02d2f620b2a742 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 6 Jan 2023 14:21:15 +0100
 Subject: [PATCH] backport drm_connector_has_override_edid changes from
@@ -12,11 +12,11 @@ Subject: [PATCH] backport drm_connector_has_override_edid changes from
  4 files changed, 28 insertions(+), 4 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 50b7f8c..93dce3d 100755
+index cd97bac..bd63e0d 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4703,6 +4703,28 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_GET_TASK_IOPRIO_PRESENT" "" "functions"
+@@ -5223,6 +5223,28 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_ACPI_VIDEO_BACKLIGHT_USE_NATIVE" "" "functions"
          ;;
  
 +        drm_connector_has_override_edid)
@@ -69,7 +69,7 @@ index 6fbcd63..fe838ef 100644
  
          if (edid->length <= sizeof(pDetectParams->edid.buffer)) {
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 6d6a078..7f50eff 100644
+index cf2080d..218983a 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
 @@ -240,10 +240,6 @@ nv_drm_init_mode_config(struct nv_drm_device *nv_dev,
@@ -84,13 +84,13 @@ index 6d6a078..7f50eff 100644
      defined(NV_DRM_CRTC_STATE_HAS_PAGEFLIP_FLAGS)
      dev->mode_config.async_page_flip = true;
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index e5106fa..3771ea2 100644
+index e1ddf45..6e1c3dc 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -113,3 +113,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_plane_atomic_check_has_atomic_state_arg
- NV_CONFTEST_TYPE_COMPILE_TESTS += drm_device_has_pdev
- NV_CONFTEST_TYPE_COMPILE_TESTS += drm_mode_config_has_allow_fb_modifiers
+@@ -118,3 +118,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_mode_config_has_allow_fb_modifiers
  NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
+ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_reserve_fences
+ NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fences_arg
 +NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
 -- 
 2.20.1

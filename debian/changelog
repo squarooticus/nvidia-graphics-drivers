@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (515.48.07-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (515.48.07-3) experimental; urgency=medium
 
   * Merge changes from 510.108.03-3.
   * Extract nv-readme-open.ids from README.
@@ -7,7 +7,7 @@ nvidia-graphics-drivers (515.48.07-3) UNRELEASED; urgency=medium
   * nvidia-alternative: Register another alternative if
     nvidia-open-kernel-dkms is available.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 19 Dec 2022 15:51:28 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 15 Jan 2023 02:46:43 +0100
 
 nvidia-graphics-drivers (515.48.07-2) experimental; urgency=medium
 

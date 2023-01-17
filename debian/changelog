@@ -14,6 +14,7 @@ nvidia-graphics-drivers (515.86.01-1) UNRELEASED; urgency=medium
       with Xid 13 errors on Turing and later.
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * Update symbols files.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 17 Jan 2023 20:41:23 +0100

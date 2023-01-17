@@ -137,7 +137,7 @@ nvidia-graphics-drivers (450.172.01-2) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (450.172.01-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.172.01 (2022-01-31).
-    * Fixed CVE‑2022‑21813, CVE‑2022‑21814.
+    * Fixed CVE-2022-21813, CVE-2022-21814.
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Fixed a bug that caused nvidia-drm.ko to crash when loading with
       DRM-KMS enabled (modeset=1) on Linux v5.14.

@@ -1,4 +1,4 @@
-From 88aa9892cbc05da4faa7de485f3da6c318965706 Mon Sep 17 00:00:00 2001
+From 8a3ad3182d59e9640a4d6170b66be2a416978e61 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 6 Jan 2023 14:21:15 +0100
 Subject: [PATCH] backport drm_connector_has_override_edid changes from
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_connector_has_override_edid changes from
  4 files changed, 28 insertions(+), 4 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 8560281..8d84085 100755
+index e525c59..f250cef 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -5305,6 +5305,28 @@ compile_test() {
+@@ -5404,6 +5404,28 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_ACPI_VIDEO_BACKLIGHT_USE_NATIVE" "" "functions"
          ;;
  
@@ -45,7 +45,7 @@ index 8560281..8d84085 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia-drm/nvidia-drm-connector.c b/nvidia-drm/nvidia-drm-connector.c
-index 6fbcd63..fe838ef 100644
+index 77a6120..2b893c5 100644
 --- a/nvidia-drm/nvidia-drm-connector.c
 +++ b/nvidia-drm/nvidia-drm-connector.c
 @@ -42,6 +42,7 @@
@@ -69,10 +69,10 @@ index 6fbcd63..fe838ef 100644
  
          if (edid->length <= sizeof(pDetectParams->edid.buffer)) {
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index cf2080d..218983a 100644
+index ac504ec..cc6626a 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -240,10 +240,6 @@ nv_drm_init_mode_config(struct nv_drm_device *nv_dev,
+@@ -257,10 +257,6 @@ nv_drm_init_mode_config(struct nv_drm_device *nv_dev,
      dev->mode_config.preferred_depth = 24;
      dev->mode_config.prefer_shadow = 1;
  
@@ -84,10 +84,10 @@ index cf2080d..218983a 100644
      defined(NV_DRM_CRTC_STATE_HAS_PAGEFLIP_FLAGS)
      dev->mode_config.async_page_flip = true;
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index e1ddf45..6e1c3dc 100644
+index 4d012be..6eef7f5 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -118,3 +118,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_mode_config_has_allow_fb_modifiers
+@@ -123,3 +123,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_has_hdr_output_metadata
  NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
  NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_reserve_fences
  NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fences_arg

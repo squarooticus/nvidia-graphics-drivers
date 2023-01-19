@@ -11,6 +11,7 @@ nvidia-graphics-drivers (525.78.01-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Refresh patches.
+  * Update nv-readme.ids.  (Closes: #1028496)
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 19 Jan 2023 13:53:44 +0100
 

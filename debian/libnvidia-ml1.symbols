@@ -189,9 +189,9 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetVgpuCapabilities@Base 525
  nvmlDeviceGetVgpuMetadata@Base 375.26
  nvmlDeviceGetVgpuProcessUtilization@Base 384
- nvmlDeviceGetVgpuSchedulerCapabilities@Base 525
- nvmlDeviceGetVgpuSchedulerLog@Base 525
- nvmlDeviceGetVgpuSchedulerState@Base 525
+#MISSING: 525.60# nvmlDeviceGetVgpuSchedulerCapabilities@Base 525
+#MISSING: 525.60# nvmlDeviceGetVgpuSchedulerLog@Base 525
+#MISSING: 525.60# nvmlDeviceGetVgpuSchedulerState@Base 525
  nvmlDeviceGetVgpuUtilization@Base 375
  nvmlDeviceGetViolationStatus@Base 340
  nvmlDeviceGetVirtualizationMode@Base 361.28
@@ -231,7 +231,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceSetPersistenceMode@Base 270
  nvmlDeviceSetPowerManagementLimit@Base 304
  nvmlDeviceSetTemperatureThreshold@Base 460
- nvmlDeviceSetVgpuSchedulerState@Base 525
+#MISSING: 525.60# nvmlDeviceSetVgpuSchedulerState@Base 525
  nvmlDeviceSetVirtualizationMode@Base 361.28
  nvmlDeviceValidateInforom@Base 304
  nvmlErrorString@Base 280

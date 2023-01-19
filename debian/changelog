@@ -1,9 +1,27 @@
+nvidia-graphics-drivers (525.60.11-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 525.60.11 (2022-11-28).
+    (Closes: #1025883)
+    * Fixed CVE-2022-34670, CVE-2022-34673, CVE-2022-34674, CVE-2022-34675,
+      CVE-2022-34677, CVE-2022-34679, CVE-2022-34680, CVE-2022-34682,
+      CVE-2022-34684, CVE-2022-42254, CVE-2022-42255, CVE-2022-42256,
+      CVE-2022-42257, CVE-2022-42258, CVE-2022-42259, CVE-2022-42263,
+      CVE-2022-42264, CVE-2022-42265.  (Closes: #1025279)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5415
+    - Improved the performance of PRIME render-offloaded applications.
+    - Fixed a bug which caused suspend to fail on systems running GNOME 3
+      as a Wayland compositor with NVreg_PreserveVideoMemoryAllocations
+      enabled.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 19 Jan 2023 01:40:35 +0100
+
 nvidia-graphics-drivers (525.53-1) experimental; urgency=medium
 
   * New upstream beta 525.53 (2022-11-10).
     - Fixed a bug which caused Dynamic Boost to not engage on certain Ampere
       GPU based notebooks.
     - Added support for Dynamic Boost on notebooks with AMD CPUs.
+    - Fixed a regression that prevented Warp & Blend from working correctly.
     - Fixed a bug that resulted in stutter when moving windows in GNOME.
     - Added support for the EGL_MESA_platform_surfaceless extension.
     - Updated the open kernel modules to support Quadro Sync, Stereo,
@@ -13,7 +31,7 @@ nvidia-graphics-drivers (525.53-1) experimental; urgency=medium
   * Refresh patches.
   * Update symbols files.
   * libnvidia-api1: New package for the NVIDIA API runtime library.
-  * firmware-nvidia-gsp: Move to Section: non-free-firmware.
+  * firmware-nvidia-gsp: Move non-free-firmware archive area.
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 03 Feb 2023 01:13:56 +0100
@@ -140,6 +158,7 @@ nvidia-graphics-drivers (515.48.07-2) experimental; urgency=medium
 nvidia-graphics-drivers (515.48.07-1) experimental; urgency=medium
 
   * New upstream production branch release 515.48.07 (2022-05-31).
+    (Closes: #1012815)
     - Improved performance of GLX and Vulkan applications running in
       gamescope.
     - Added a "kernelopen" feature tag to the supported-gpus.json file,

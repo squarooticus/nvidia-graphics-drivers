@@ -1,5 +1,6 @@
-nvidia-graphics-drivers (525.60.11-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.60.13-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 525.60.13 (2022-12-05).
   * New upstream production branch release 525.60.11 (2022-11-28).
     (Closes: #1025883)
     * Fixed CVE-2022-34670, CVE-2022-34673, CVE-2022-34674, CVE-2022-34675,
@@ -16,7 +17,7 @@ nvidia-graphics-drivers (525.60.11-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Update nv-readme.ids.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 19 Jan 2023 01:40:35 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 19 Jan 2023 09:33:23 +0100
 
 nvidia-graphics-drivers (525.53-1) experimental; urgency=medium
 

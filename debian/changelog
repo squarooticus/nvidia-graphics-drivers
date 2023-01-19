@@ -1,3 +1,16 @@
+nvidia-graphics-drivers (525.78.01-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 525.78.01 (2023-01-05).
+    - Fixed a regression that prevented the G-SYNC/G-SYNC Compatible Visual
+      Indicator from being displayed when running Vulkan X11 applications.
+    - Fixed a bug where usage of VK_KHR_present_id could cause applications to
+      crash with Xid 32 errors.
+    - Fixed excess CPU usage in hybrid graphics configurations where an
+      external display is connected to an NVIDIA discrete GPU and configured
+      as a PRIME Display Offload sink (also known as "Reverse Prime").
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 19 Jan 2023 13:53:44 +0100
+
 nvidia-graphics-drivers (525.60.13-1) experimental; urgency=medium
 
   * New upstream production branch release 525.60.13 (2022-12-05).

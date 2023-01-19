@@ -9,6 +9,9 @@ nvidia-graphics-drivers (525.78.01-1) UNRELEASED; urgency=medium
       external display is connected to an NVIDIA discrete GPU and configured
       as a PRIME Display Offload sink (also known as "Reverse Prime").
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Thu, 19 Jan 2023 13:53:44 +0100
 
 nvidia-graphics-drivers (525.60.13-1) experimental; urgency=medium
@@ -28,6 +31,7 @@ nvidia-graphics-drivers (525.60.13-1) experimental; urgency=medium
       enabled.
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * Update nv-readme.ids.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 05 Feb 2023 14:07:07 +0100

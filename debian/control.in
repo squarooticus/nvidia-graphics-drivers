@@ -178,7 +178,6 @@ Architecture: amd64 ${arch:arm64} ${arch:ppc64el}
 Depends:
  debhelper-compat (= ${nvidia:debhelper-compat}),
  module-assistant,
- quilt,
  ${misc:Depends}
 Recommends:
  firmware-${nvidia}-gsp (= ${nvidia:Version}) [${nvidia:archlist:gsp}] | firmware-nvidia-gsp-${nvidia:Version} [${nvidia:archlist:gsp}],

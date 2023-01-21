@@ -1,5 +1,11 @@
-nvidia-graphics-drivers (525.78.01-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.85.05-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 525.85.05 (2023-01-19).
+    - Improved the reliability of suspend and resume on UEFI systems
+      when using certain display panels.
+    - Fixed a bug that could cause VK_ERROR_DEVICE_LOST when using
+      VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT to allocate
+      memory.
   * New upstream production branch release 525.78.01 (2023-01-05).
     - Fixed a regression that prevented the G-SYNC/G-SYNC Compatible Visual
       Indicator from being displayed when running Vulkan X11 applications.
@@ -8,13 +14,16 @@ nvidia-graphics-drivers (525.78.01-1) UNRELEASED; urgency=medium
     - Fixed excess CPU usage in hybrid graphics configurations where an
       external display is connected to an NVIDIA discrete GPU and configured
       as a PRIME Display Offload sink (also known as "Reverse Prime").
+  * New upstream release 470 series.
+    - Disabled Fixed Rate Link (FRL) when using passive DisplayPort
+      to HDMI dongles, which are incompatible with FRL.
 
   [ Andreas Beckmann ]
   * Refresh patches.
   * Update nv-readme.ids.  (Closes: #1028496)
   * libcuda1: Add Provides: libcuda-12.0-1.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 19 Jan 2023 13:53:44 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 20 Jan 2023 20:23:31 +0100
 
 nvidia-graphics-drivers (525.60.13-1) experimental; urgency=medium
 

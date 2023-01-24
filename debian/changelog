@@ -108,6 +108,7 @@ nvidia-graphics-drivers (340.108-1~git4deb9stretch) UNRELEASED; urgency=medium
   * Try to compile a kernel module at package build time (510.108.03-1).
   * nvidia-alternative: Access kmod config files over a versioned
     symlink (510.108.03-3).
+  * Add versioned Provides: nvidia-kernel-dkms-any (515.65.01-1).
   * New Brazilian Portuguese (pt_BR) debconf translations by Paulo Henrique de
     Lima Santana.
   * Update lintian overrides.

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (515.65.01-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (515.65.01-1) experimental; urgency=medium
 
   * New upstream production branch release 515.65.01 (2022-08-02).
     - Fixed a bug that caused the X server to hang when VT-switching with
@@ -24,7 +24,7 @@ nvidia-graphics-drivers (515.65.01-1) UNRELEASED; urgency=medium
   * Apply kernel module patches at package build time.
   * Add versioned Provides: nvidia-kernel-dkms-any.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Aug 2022 18:01:06 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 24 Jan 2023 15:28:09 +0100
 
 nvidia-graphics-drivers (515.48.07-3) experimental; urgency=medium
 

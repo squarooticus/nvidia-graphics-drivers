@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (515.86.01-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (515.86.01-1) unstable; urgency=medium
 
   * New upstream production branch release 515.86.01 (2022-11-22).
     * Fixed CVE-2022-34670, CVE-2022-34673, CVE-2022-34674, CVE-2022-34675,
@@ -16,8 +16,9 @@ nvidia-graphics-drivers (515.86.01-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.
   * Update symbols files.
+  * Upload to unstable.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 17 Jan 2023 20:41:23 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 27 Jan 2023 12:00:08 +0100
 
 nvidia-graphics-drivers (515.76-1) experimental; urgency=medium
 

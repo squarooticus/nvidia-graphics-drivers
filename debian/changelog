@@ -33,6 +33,28 @@ nvidia-graphics-drivers (520.56.06-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 28 Jan 2023 02:34:45 +0100
 
+nvidia-graphics-drivers (515.86.01-1) unstable; urgency=medium
+
+  * New upstream production branch release 515.86.01 (2022-11-22).
+    * Fixed CVE-2022-34670, CVE-2022-34673, CVE-2022-34674, CVE-2022-34675,
+      CVE-2022-34677, CVE-2022-34679, CVE-2022-34680, CVE-2022-34682,
+      CVE-2022-34684, CVE-2022-42254, CVE-2022-42255, CVE-2022-42256,
+      CVE-2022-42257, CVE-2022-42258, CVE-2022-42259, CVE-2022-42263,
+      CVE-2022-42264, CVE-2022-42265.  (Closes: #1025279)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5415
+    - Fixed a regression in 515.76 that caused blank screens and hangs when
+      starting an X server on RTX 30 series GPUs in some configurations where
+      the boot display is connected via HDMI.
+    - Fixed a bug where Marvel's Spider-Man Remastered would sometimes crash
+      with Xid 13 errors on Turing and later.
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+  * Update symbols files.
+  * Upload to unstable.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 27 Jan 2023 12:00:08 +0100
+
 nvidia-graphics-drivers (515.76-1) experimental; urgency=medium
 
   * New upstream production branch release 515.76 (2022-09-20).
@@ -316,7 +338,7 @@ nvidia-graphics-drivers (510.54-1) experimental; urgency=medium
 nvidia-graphics-drivers (510.47.03-1) experimental; urgency=medium
 
   * New upstream production branch release 510.47.03 (2022-02-01).
-    * Fixed CVE‑2022‑21813, CVE‑2022‑21814.  (Closes: #1004847)
+    * Fixed CVE-2022-21813, CVE-2022-21814.  (Closes: #1004847)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Added support for Vulkan 1.3.
   * New upstream beta 510.39.01 (2022-01-11).
@@ -620,7 +642,7 @@ nvidia-graphics-drivers (470.103.01-2) unstable; urgency=medium
 nvidia-graphics-drivers (470.103.01-1) unstable; urgency=medium
 
   * New upstream production branch release 470.103.01 (2022-01-31).
-    * Fixed CVE‑2022‑21813, CVE‑2022‑21814.  (Closes: #1004847)
+    * Fixed CVE-2022-21813, CVE-2022-21814.  (Closes: #1004847)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Added an application profile to avoid an image corruption issue in
       Blender, as described at https://developer.blender.org/T76874
@@ -1456,7 +1478,7 @@ nvidia-graphics-drivers (450.172.01-2) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (450.172.01-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.172.01 (2022-01-31).
-    * Fixed CVE‑2022‑21813, CVE‑2022‑21814.
+    * Fixed CVE-2022-21813, CVE-2022-21814.
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Fixed a bug that caused nvidia-drm.ko to crash when loading with
       DRM-KMS enabled (modeset=1) on Linux v5.14.

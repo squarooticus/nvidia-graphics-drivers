@@ -13,6 +13,7 @@ nvidia-graphics-drivers (525.53-1) UNRELEASED; urgency=medium
   * Refresh patches.
   * Update symbols files.
   * libnvidia-api1: New package for the NVIDIA API runtime library.
+  * firmware-nvidia-gsp: Move to Section: non-free-firmware.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 13 Nov 2022 15:03:27 +0100
 

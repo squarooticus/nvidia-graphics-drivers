@@ -97,7 +97,7 @@ TEMPLATE_DIRS	+= debian/module/debian
 TEMPLATE_DIRS	+= debian/module/debian/patches
 TEMPLATE_DIRS	+= debian/detect
 TEMPLATE_DIRS	+= debian/tests
-TEMPLATES	:= $(wildcard $(addsuffix /*.in,$(TEMPLATE_DIRS)))
+TEMPLATES	:= $(filter-out %.modules.in,$(wildcard $(addsuffix /*.in,$(TEMPLATE_DIRS))))
 
 AUTOGEN		 = $(TEMPLATES:.in=)
 AUTOGEN		+= $(RENAMED_CONTROL:.in=)

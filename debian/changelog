@@ -288,7 +288,7 @@ nvidia-graphics-drivers (510.54-1) experimental; urgency=medium
 nvidia-graphics-drivers (510.47.03-1) experimental; urgency=medium
 
   * New upstream production branch release 510.47.03 (2022-02-01).
-    * Fixed CVE‑2022‑21813, CVE‑2022‑21814.  (Closes: #1004847)
+    * Fixed CVE-2022-21813, CVE-2022-21814.  (Closes: #1004847)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Added support for Vulkan 1.3.
   * New upstream beta 510.39.01 (2022-01-11).
@@ -592,7 +592,7 @@ nvidia-graphics-drivers (470.103.01-2) unstable; urgency=medium
 nvidia-graphics-drivers (470.103.01-1) unstable; urgency=medium
 
   * New upstream production branch release 470.103.01 (2022-01-31).
-    * Fixed CVE‑2022‑21813, CVE‑2022‑21814.  (Closes: #1004847)
+    * Fixed CVE-2022-21813, CVE-2022-21814.  (Closes: #1004847)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Added an application profile to avoid an image corruption issue in
       Blender, as described at https://developer.blender.org/T76874
@@ -1428,7 +1428,7 @@ nvidia-graphics-drivers (450.172.01-2) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (450.172.01-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.172.01 (2022-01-31).
-    * Fixed CVE‑2022‑21813, CVE‑2022‑21814.
+    * Fixed CVE-2022-21813, CVE-2022-21814.
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Fixed a bug that caused nvidia-drm.ko to crash when loading with
       DRM-KMS enabled (modeset=1) on Linux v5.14.

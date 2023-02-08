@@ -28,6 +28,7 @@ nvidia-graphics-drivers (418.226.00-9+git4deb10buster) UNRELEASED; urgency=mediu
   * Try to compile a kernel module at package build time (510.108.03-1).
   * nvidia-alternative: Access kmod config files over a versioned
     symlink (510.108.03-3).
+  * Add versioned Provides: nvidia-kernel-dkms-any (515.65.01-1).
   * New Brazilian Portuguese (pt_BR) debconf translations by Paulo Henrique de
     Lima Santana.
   * Bump Standards-Version to 4.6.2. No changes needed.

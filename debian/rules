@@ -226,8 +226,7 @@ override_dh_auto_clean:
 	$(RM) LICENSE.txt LICENSE.tmp copyright.tmp
 	test ! -d debian/po || debconf-updatepo
 
-override_dh_clean:
-	dh_clean
+execute_after_dh_clean:
 	$(RM) $(AUTOCLEAN)
 	$(MAKE) -f debian/rules $(AUTOKEEP)
 # this will fail unless debian/control{,.md5sum} is up-to-date

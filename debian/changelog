@@ -42,6 +42,7 @@ nvidia-graphics-drivers (525.53-1) experimental; urgency=medium
 
 nvidia-graphics-drivers (520.56.06-2) unstable; urgency=medium
 
+  * libcuda1: Add Provides: libcuda-11.8-1.
   * Upload to unstable.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 02 Feb 2023 10:51:07 +0100

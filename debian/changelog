@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (525.85.12-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.85.12-1) unstable; urgency=medium
 
   * New upstream production branch release 525.85.12 (2023-01-30).
   * New upstream production branch release 525.85.05 (2023-01-19).
@@ -23,8 +23,9 @@ nvidia-graphics-drivers (525.85.12-1) UNRELEASED; urgency=medium
   * Refresh patches.
   * Update nv-readme.ids.  (Closes: #1028496)
   * libcuda1: Add Provides: libcuda-12.0-1.
+  * Upload to unstable.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 06 Feb 2023 01:19:40 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 09 Feb 2023 10:30:00 +0100
 
 nvidia-graphics-drivers (525.60.13-1) experimental; urgency=medium
 

@@ -2,6 +2,7 @@ nvidia-graphics-drivers (515.86.01-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Update symbols files.
+  * nvidia-opencl-icd: Add dependency on libnvidia-nvvm4.  (Closes: #1031080)
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 17 Jan 2023 20:41:23 +0100
 

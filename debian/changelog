@@ -1,9 +1,14 @@
-nvidia-graphics-drivers (525.85.12-2) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.89.02-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 525.89.02 (2023-02-08).
+    - Fixed a bug that could cause banding or flickering of color
+      gradients on DisplayPort monitors.
+
+  [ Andreas Beckmann ]
   * Fix nvngx.dll install location.  (Closes: #1031185)
   * nvidia-opencl-icd: Add dependency on libnvidia-nvvm4.  (Closes: #1031080)
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 13 Feb 2023 03:30:02 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 27 Feb 2023 00:47:50 +0100
 
 nvidia-graphics-drivers (525.85.12-1) unstable; urgency=medium
 

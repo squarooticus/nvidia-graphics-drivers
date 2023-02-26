@@ -5,6 +5,7 @@ nvidia-graphics-drivers (525.89.02-1) UNRELEASED; urgency=medium
       gradients on DisplayPort monitors.
 
   [ Andreas Beckmann ]
+  * Update nv-readme.ids.
   * Fix nvngx.dll install location.  (Closes: #1031185)
   * nvidia-opencl-icd: Add dependency on libnvidia-nvvm4.  (Closes: #1031080)
 

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (525.89.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.89.02-1) unstable; urgency=medium
 
   * The firmware-nvidia-gsp package has been moved to the newly created
     'non-free-firmware' archive area. This area needs to be enabled in
@@ -15,7 +15,7 @@ nvidia-graphics-drivers (525.89.02-1) UNRELEASED; urgency=medium
   * Fix nvngx.dll install location.  (Closes: #1031185)
   * nvidia-opencl-icd: Add dependency on libnvidia-nvvm4.  (Closes: #1031080)
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 27 Feb 2023 00:47:50 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 27 Feb 2023 01:27:21 +0100
 
 nvidia-graphics-drivers (525.85.12-1) unstable; urgency=medium
 

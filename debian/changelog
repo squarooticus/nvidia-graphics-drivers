@@ -1,5 +1,11 @@
 nvidia-graphics-drivers (525.89.02-1) UNRELEASED; urgency=medium
 
+  * The firmware-nvidia-gsp package has been moved to the newly created
+    'non-free-firmware' archive area. This area needs to be enabled in
+    /etc/apt/sources.list (/etc/apt/sources.list.d/*.list) in addition to
+    'non-free' in order to upgrade to the 525 driver series.
+    https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.en.html#non-free-split
+
   * New upstream production branch release 525.89.02 (2023-02-08).
     - Fixed a bug that could cause banding or flickering of color
       gradients on DisplayPort monitors.

@@ -1,8 +1,24 @@
-nvidia-graphics-drivers (525.89.02-2) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (530.30.02-1) UNRELEASED; urgency=medium
 
-  * Restrict watch file to releases from the 525.xx production branch.
+  * New upstream beta 530.30.02 (2023-02-28).  (Closes: #1032647)
+    - Added an application profile to avoid performance problems in Xfce 4
+      when the OpenGL compositor backend is enabled along with G-SYNC.
+    - Added support for suspend and resume when using GSP firmware.
+    - Fixed a bug that prevented PRIME render offload from working for
+      Wayland applications when running on a system with an AMD iGPU.
+    - Changed the behavior of glXGetRefreshRateSGI() for non-integer
+      refresh rates to round to the nearest whole number rather than
+      truncating.
+    - Changed the compression format of the .run installer package from xz
+      to zstd. This results in a smaller compressed package, and faster
+      decompression performance. A fallback zstd decompressor is embedded
+      into the installer package for systems which do not already have a
+      zstd decompression program installed.
+  * New upstream release 525 series.
+    - Added compatibility for Linux kernels with Indirect Branch Tracking
+      IBT).
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 03 Mar 2023 02:57:36 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 02 Mar 2023 22:55:29 +0100
 
 nvidia-graphics-drivers (525.89.02-1) unstable; urgency=medium
 

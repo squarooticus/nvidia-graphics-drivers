@@ -19,6 +19,7 @@ Build-Depends-Arch:
  po-debconf,
  quilt,
  xz-utils,
+ zstd,
  linux-headers-amd64 [amd64] <!nocheck>,
  linux-headers-arm64 [arm64] <!nocheck>,
  linux-headers-powerpc64le [ppc64el] <!nocheck>,

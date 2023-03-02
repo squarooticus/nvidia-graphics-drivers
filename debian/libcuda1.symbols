@@ -14,6 +14,10 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuArrayGetMemoryRequirements@Base 510
  cuArrayGetPlane@Base 460
  cuArrayGetSparseProperties@Base 455
+ cuCoredumpGetAttribute@Base 530
+ cuCoredumpGetAttributeGlobal@Base 530
+ cuCoredumpSetAttribute@Base 530
+ cuCoredumpSetAttributeGlobal@Base 530
  cuCtxAttach@Base 169
  cuCtxCreate@Base 169
  cuCtxCreate_v2@Base 260
@@ -40,6 +44,7 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuCtxResetPersistingL2Cache@Base 450
  cuCtxSetCacheConfig@Base 260
  cuCtxSetCurrent@Base 270
+ cuCtxSetFlags@Base 530
  cuCtxSetLimit@Base 256
  cuCtxSetSharedMemConfig@Base 295.33
  cuCtxSynchronize@Base 169
@@ -446,6 +451,12 @@ libcuda.so.1 #PACKAGE# #MINVER# | libcuda.so.1 #MINVER#
  cuModuleLoadDataEx@Base 180
  cuModuleLoadFatBinary@Base 169
  cuModuleUnload@Base 169
+ cuMulticastAddDevice@Base 530
+ cuMulticastBindAddr@Base 530
+ cuMulticastBindMem@Base 530
+ cuMulticastCreate@Base 530
+ cuMulticastGetGranularity@Base 530
+ cuMulticastUnbind@Base 530
  cuOccupancyAvailableDynamicSMemPerBlock@Base 440
  cuOccupancyMaxActiveBlocksPerMultiprocessor@Base 340
  cuOccupancyMaxActiveBlocksPerMultiprocessorWithFlags@Base 346

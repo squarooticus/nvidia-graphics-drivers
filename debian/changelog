@@ -23,6 +23,7 @@ nvidia-graphics-drivers (530.30.02-1) UNRELEASED; urgency=medium
   * Refresh patches.
   * Update nv-readme.ids.
   * Update symbols files.
+  * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 02 Mar 2023 22:55:29 +0100
 

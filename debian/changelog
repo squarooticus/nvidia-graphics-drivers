@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (530.30.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (530.30.02-1) experimental; urgency=medium
 
   * New upstream beta 530.30.02 (2023-02-28).  (Closes: #1032647)
     - Added an application profile to avoid performance problems in Xfce 4
@@ -24,8 +24,9 @@ nvidia-graphics-drivers (530.30.02-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Update symbols files.
   * Update lintian overrides.
+  * Upload to experimental.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 02 Mar 2023 22:55:29 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 13 Mar 2023 23:48:29 +0100
 
 nvidia-graphics-drivers (525.89.02-1) unstable; urgency=medium
 

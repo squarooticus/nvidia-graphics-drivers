@@ -20,6 +20,7 @@ nvidia-graphics-drivers (530.30.02-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Add Build-Depends: zstd.
+  * Refresh patches.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 02 Mar 2023 22:55:29 +0100
 

@@ -1,6 +1,7 @@
 nvidia-graphics-drivers (525.89.02-2) UNRELEASED; urgency=medium
 
   * Add libnvidia-nvvm.so.#VERSION# alternative, needed by nvidia-opencl-icd.
+  * Prevent co-installation with EoL drivers.
   * Restrict watch file to releases from the 525.xx production branch.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 03 Mar 2023 02:57:36 +0100

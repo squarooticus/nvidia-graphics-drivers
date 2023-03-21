@@ -1,10 +1,11 @@
-nvidia-graphics-drivers (525.89.02-2) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.89.02-2) unstable; urgency=medium
 
   * Add libnvidia-nvvm.so.#VERSION# alternative, needed by nvidia-opencl-icd.
+    (Closes: #1030336)
   * Prevent co-installation with EoL drivers.
   * Restrict watch file to releases from the 525.xx production branch.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 03 Mar 2023 02:57:36 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 21 Mar 2023 14:44:12 +0100
 
 nvidia-graphics-drivers (525.89.02-1) unstable; urgency=medium
 
@@ -13,6 +14,7 @@ nvidia-graphics-drivers (525.89.02-1) unstable; urgency=medium
     /etc/apt/sources.list (/etc/apt/sources.list.d/*.list) in addition to
     'non-free' in order to upgrade to the 525 driver series.
     https://www.debian.org/releases/bookworm/amd64/release-notes/ch-information.en.html#non-free-split
+    (Closes: #1030981)
 
   * New upstream production branch release 525.89.02 (2023-02-08).
     - Fixed a bug that could cause banding or flickering of color
@@ -158,6 +160,7 @@ nvidia-graphics-drivers (515.86.01-1) unstable; urgency=medium
 nvidia-graphics-drivers (515.76-1) experimental; urgency=medium
 
   * New upstream production branch release 515.76 (2022-09-20).
+    (Closes: #1022165)
     - Turing and later: fixed possible excessive GPU power draw on an idle
       X11 or Wayland desktop when driving high resolutions or refresh rates.
     * Improved compatibility with recent Linux kernels.

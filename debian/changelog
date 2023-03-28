@@ -1,6 +1,28 @@
+nvidia-graphics-drivers (530.41.03-1) UNRELEASED; urgency=medium
+
+  * New upstream release 530.41.03 (2023-03-23).
+    - Added NV-CONTROL attributes NV_CTRL_FRAMELOCK_MULTIPLY_DIVIDE_MODE
+      and NV_CTRL_FRAMELOCK_MULTIPLY_DIVIDE_VALUE to allow syncing a
+      Quadro Sync II card to different House Sync signal rates. This
+      feature requires firmware version 2.18 or later; to download the
+      latest firmware version, please visit:
+      https://www.nvidia.com/en-us/drivers/firmware/quadro-sync-firmware-driver/
+  * New upstream release 525 series.
+    - Fixed a bug that could cause the nvidia-settings control panel to
+      crash when resetting the display layout.
+    - Fixed a bug that could cause excessive GPU power consumption at idle
+      when driving multiple displays with a high refresh rate.
+    - Fixed a bug in nvidia-powerd which could cause excessive CPU usage.
+    - Fixed an issue which could cause applications to run at 1 FPS when
+      using an NVIDIA PRIME Display Offload sink as the only active display.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 28 Mar 2023 15:19:50 +0200
+
 nvidia-graphics-drivers (530.30.02-1) experimental; urgency=medium
 
   * New upstream beta 530.30.02 (2023-02-28).  (Closes: #1032647)
+    - Added support for the VK_KHR_video_queue, VK_KHR_video_decode_queue,
+      VK_KHR_video_decode_h264 and VK_KHR_video_decode_h265 extensions.
     - Added an application profile to avoid performance problems in Xfce 4
       when the OpenGL compositor backend is enabled along with G-SYNC.
     - Added support for suspend and resume when using GSP firmware.
@@ -16,7 +38,7 @@ nvidia-graphics-drivers (530.30.02-1) experimental; urgency=medium
       zstd decompression program installed.
   * New upstream release 525 series.
     - Added compatibility for Linux kernels with Indirect Branch Tracking
-      IBT).
+      (IBT).
 
   [ Andreas Beckmann ]
   * Add Build-Depends: zstd.

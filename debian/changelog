@@ -16,6 +16,9 @@ nvidia-graphics-drivers (530.41.03-1) UNRELEASED; urgency=medium
     - Fixed an issue which could cause applications to run at 1 FPS when
       using an NVIDIA PRIME Display Offload sink as the only active display.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Tue, 28 Mar 2023 15:19:50 +0200
 
 nvidia-graphics-drivers (530.30.02-1) experimental; urgency=medium

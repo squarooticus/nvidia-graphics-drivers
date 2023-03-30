@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (525.89.02-3) UNRELEASED; urgency=medium
+
+  * Updated Turkish (tr) debconf translations by Atila KOÇ.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 30 Mar 2023 10:28:54 +0200
+
 nvidia-graphics-drivers (525.89.02-2) unstable; urgency=medium
 
   * Add libnvidia-nvvm.so.#VERSION# alternative, needed by nvidia-opencl-icd.

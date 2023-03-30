@@ -42,6 +42,7 @@ nvidia-graphics-drivers (450.216.04-1+git) UNRELEASED; urgency=medium
   * Add versioned Provides: nvidia-kernel-dkms-any (515.65.01-1).
   * New Brazilian Portuguese (pt_BR) debconf translations by Paulo Henrique de
     Lima Santana.
+  * Updated Turkish (tr) debconf translations by Atila KOÇ.
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.2. No changes needed.
 

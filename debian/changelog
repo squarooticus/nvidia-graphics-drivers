@@ -1,6 +1,6 @@
-nvidia-graphics-drivers (530.41.03-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (530.41.03-1) experimental; urgency=medium
 
-  * New upstream release 530.41.03 (2023-03-23).
+  * New upstream release 530.41.03 (2023-03-23).  (Closes: #1033602)
     - Added NV-CONTROL attributes NV_CTRL_FRAMELOCK_MULTIPLY_DIVIDE_MODE
       and NV_CTRL_FRAMELOCK_MULTIPLY_DIVIDE_VALUE to allow syncing a
       Quadro Sync II card to different House Sync signal rates. This
@@ -20,7 +20,7 @@ nvidia-graphics-drivers (530.41.03-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Updated Turkish (tr) debconf translations by Atila KOÇ.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 28 Mar 2023 15:19:50 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 30 Mar 2023 20:05:17 +0200
 
 nvidia-graphics-drivers (530.30.02-1) experimental; urgency=medium
 

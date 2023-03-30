@@ -3,6 +3,7 @@ Upstream-Name: NVIDIA Linux Display Drivers
 Upstream-Contact: NVIDIA Corporation <linux-bugs@nvidia.com>
 Source:
  https://download.nvidia.com/XFree86/Linux-x86_64/
+ https://download.nvidia.com/XFree86/Linux-aarch64/
 Disclaimer:
  This package is not part of the GNU/Linux Debian distribution.  It is
  provided in the non-free archive area as a convenience to Debian users.

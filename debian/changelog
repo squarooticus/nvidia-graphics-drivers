@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (450.216.04-1+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.236.01-1+git) UNRELEASED; urgency=medium
 
   * Switch to dh-sequence-dkms (460.56-1).
   * Simplify dh_dkms usage (460.56-1).
@@ -46,16 +46,25 @@ nvidia-graphics-drivers (450.216.04-1+git) UNRELEASED; urgency=medium
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.2. No changes needed.
 
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 01 Apr 2023 11:27:35 +0200
+
+nvidia-graphics-drivers (450.236.01-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.236.01 (2023-03-30).
+    * Fixed CVE-2023-0184, CVE-2023-0189, CVE-2023-0180, CVE-2023-0185,
+      CVE-2023-0198, CVE-2023-0199, CVE-2023-0188, CVE-2023-0190,
+      CVE-2023-0194, CVE-2023-0195, CVE-2023-0191.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5452
+
+  [ Andreas Beckmann ]
   * Support acpi_op_remove callback returning void to fix kernel module build
     for Linux 6.2.
-  * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
-    kernel module build for Linux 6.2.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 05 Dec 2022 00:05:49 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 01 Apr 2023 11:27:35 +0200
 
 nvidia-graphics-drivers (450.216.04-1) UNRELEASED; urgency=medium
 
-  * New upstream Tesla release 450.203.03 (2022-11-22).
+  * New upstream Tesla release 450.216.04 (2022-11-22).
     * Fixed CVE-2022-34670, CVE-2022-34674, CVE-2022-34675, CVE-2022-34677,
       CVE-2022-34679, CVE-2022-34680, CVE-2022-34682, CVE-2022-42254,
       CVE-2022-42256, CVE-2022-42257, CVE-2022-42258, CVE-2022-42259,

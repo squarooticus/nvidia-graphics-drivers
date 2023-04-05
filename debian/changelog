@@ -57,6 +57,7 @@ nvidia-graphics-drivers (450.236.01-1) UNRELEASED; urgency=medium
       https://nvidia.custhelp.com/app/answers/detail/a_id/5452
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * Support acpi_op_remove callback returning void to fix kernel module build
     for Linux 6.2.
 

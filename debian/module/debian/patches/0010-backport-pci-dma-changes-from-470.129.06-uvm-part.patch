@@ -1,7 +1,7 @@
-From 8bab77d3d2f2696a5b306f234b1ca71c27504cff Mon Sep 17 00:00:00 2001
+From 52d90656f499b67f8bc84066f50e4e5b3065371f Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 10:14:54 +0200
-Subject: [PATCH 2/2] backport pci/dma changes from 470.129.06 (uvm part)
+Subject: [PATCH 2/3] backport pci/dma changes from 470.129.06 (uvm part)
 
 ---
  nvidia-uvm/uvm8_gpu.c | 12 ++++++------

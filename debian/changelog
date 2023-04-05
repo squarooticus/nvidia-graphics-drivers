@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (418.226.00-9+git4deb10buster) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.226.00-10+git4deb10buster) UNRELEASED; urgency=medium
 
   * Minor packaging sync and cleanup (470.129.06-6).
   * Drop references to kernel-package and make-kpkg, gone since stretch
@@ -20,12 +20,16 @@ nvidia-graphics-drivers (418.226.00-9+git4deb10buster) UNRELEASED; urgency=mediu
   * Updated Turkish (tr) debconf translations by Atila KOÇ.
   * Bump Standards-Version to 4.6.2. No changes needed.
 
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
+
+nvidia-graphics-drivers (418.226.00-10) UNRELEASED; urgency=medium
+
   * Support acpi_op_remove callback returning void to fix kernel module build
     for Linux 6.2.
   * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
     kernel module build for Linux 6.2.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 05 Apr 2023 10:00:34 +0200
 
 nvidia-graphics-drivers (418.226.00-9) UNRELEASED; urgency=medium
 

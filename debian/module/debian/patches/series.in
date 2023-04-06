@@ -2,7 +2,8 @@ cc_version_check-gcc5.patch
 bashisms.patch
 
 # kernel support
-0009-backport-pci-dma-changes-from-470.129.06.patch
+0010-backport-pci-dma-changes-for-ppc64el.patch
+0021-support-acpi_op_remove-callback-returning-void.patch
 ppc64el.patch
 
 # build system updates

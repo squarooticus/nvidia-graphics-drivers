@@ -55,13 +55,14 @@ nvidia-graphics-drivers (450.236.01-1) UNRELEASED; urgency=medium
       CVE-2023-0198, CVE-2023-0199, CVE-2023-0188, CVE-2023-0190,
       CVE-2023-0194, CVE-2023-0195, CVE-2023-0191.
       https://nvidia.custhelp.com/app/answers/detail/a_id/5452
+    * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
   * Refresh patches.
   * Support acpi_op_remove callback returning void to fix kernel module build
     for Linux 6.2.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 01 Apr 2023 11:27:35 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 06 Apr 2023 09:17:36 +0200
 
 nvidia-graphics-drivers (450.216.04-1) UNRELEASED; urgency=medium
 

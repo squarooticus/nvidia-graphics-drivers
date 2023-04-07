@@ -24,7 +24,7 @@ nvidia-graphics-drivers (418.226.00-10+git4deb10buster) UNRELEASED; urgency=medi
 
 nvidia-graphics-drivers (418.226.00-10) UNRELEASED; urgency=medium
 
-  * Support acpi_op_remove callback returning void to fix kernel module build
+  * Backport acpi_op_remove changes from 470.182.03 to fix kernel module build
     for Linux 6.2.
   * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
     kernel module build for Linux 6.2.
@@ -773,7 +773,7 @@ nvidia-graphics-drivers (396.18-1) experimental; urgency=medium
 
 nvidia-graphics-drivers (390.157-2) UNRELEASED; urgency=medium
 
-  * Support acpi_op_remove callback returning void to fix kernel module build
+  * Backport acpi_op_remove changes from 470.182.03 to fix kernel module build
     for Linux 6.2.
   * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
     kernel module build for Linux 6.2.
@@ -3562,7 +3562,7 @@ nvidia-graphics-drivers (343.22-1) experimental; urgency=medium
 
 nvidia-graphics-drivers (340.108-2) UNRELEASED; urgency=medium
 
-  * Support acpi_op_remove callback returning void to fix kernel module build
+  * Backport acpi_op_remove changes from 470.182.03 to fix kernel module build
     for Linux 6.2.
 
   * Update o_binary patch to fix kernel module build for Linux 6.1.

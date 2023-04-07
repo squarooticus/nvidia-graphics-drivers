@@ -1,4 +1,4 @@
-From b01a98d4f1004fbf1709f66b4c2c8c2b4291bc8f Mon Sep 17 00:00:00 2001
+From 9d30e34e3da9fec1d716ce14e9a6fd896fa40c4f Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 7 Apr 2023 12:24:09 +0200
 Subject: [PATCH] backport acpi_op_remove changes from 470.182.03
@@ -9,23 +9,23 @@ Subject: [PATCH] backport acpi_op_remove changes from 470.182.03
  2 files changed, 18 insertions(+), 11 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 88c7eb1..b291ddf 100755
+index 19f83b8..ada78b8 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -844,6 +844,11 @@ compile_test() {
-             # Determine the number of arguments to pass to the
-             # 'acpi_op_remove' routine.
+@@ -734,6 +734,11 @@ compile_test() {
+             # ("ACPI: Remove useless type argument of driver .remove()
+             # operation") in v3.9
              #
 +            # acpi_op_remove() return type was changed to void by commit
 +            # 6c0eb5ba3500 (“ACPI: make remove callback of ACPI driver void”)
 +            # in v6.2-rc1 (11-14-2022). NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT
 +            # will be undefined for this case.
 +            #
- 
              echo "$CONFTEST_PREAMBLE
              #include <linux/acpi.h>
+ 
 diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
-index da9fbc9..23a71c1 100644
+index 828c314..d6b28d5 100644
 --- a/nvidia/nv-acpi.c
 +++ b/nvidia/nv-acpi.c
 @@ -23,10 +23,12 @@ static NV_STATUS   nv_acpi_extract_object  (const union acpi_object *, void *, N
@@ -44,7 +44,7 @@ index da9fbc9..23a71c1 100644
  #endif
  
  static void        nv_acpi_event           (acpi_handle, u32, void *);
-@@ -73,11 +75,7 @@ static const struct acpi_driver nv_acpi_driver_template = {
+@@ -80,11 +82,7 @@ static const struct acpi_driver nv_acpi_driver_template = {
  #endif
      .ops = {
          .add = nv_acpi_add,
@@ -57,7 +57,7 @@ index da9fbc9..23a71c1 100644
  #if defined(NV_ACPI_DEVICE_OPS_HAS_MATCH)
          .match = nv_acpi_match,
  #endif
-@@ -331,10 +329,12 @@ static int nv_acpi_add(struct acpi_device *device)
+@@ -338,10 +336,12 @@ static int nv_acpi_add(struct acpi_device *device)
      return 0;
  }
  
@@ -73,7 +73,7 @@ index da9fbc9..23a71c1 100644
  #endif
  {
      /*
-@@ -385,7 +385,9 @@ static int nv_acpi_remove_one_arg(struct acpi_device *device)
+@@ -392,7 +392,9 @@ static int nv_acpi_remove_one_arg(struct acpi_device *device)
          device->driver_data = NULL;
      }
  
@@ -82,7 +82,7 @@ index da9fbc9..23a71c1 100644
 +#endif
  }
  
- static void nv_acpi_event(acpi_handle handle, u32 event_type, void *data)
+ /*
 -- 
 2.20.1
 

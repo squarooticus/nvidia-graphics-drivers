@@ -1,18 +1,18 @@
-From 40d1ff7da4d7e069e98ff1a9100317977a2ab6c9 Mon Sep 17 00:00:00 2001
+From b01a98d4f1004fbf1709f66b4c2c8c2b4291bc8f Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 7 Apr 2023 12:24:09 +0200
 Subject: [PATCH] backport acpi_op_remove changes from 470.182.03
 
 ---
- conftest.sh |  5 +++++
- nv-acpi.c   | 24 +++++++++++++-----------
+ conftest.sh      |  5 +++++
+ nvidia/nv-acpi.c | 24 +++++++++++++-----------
  2 files changed, 18 insertions(+), 11 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 873c566..56cfb88 100755
+index 88c7eb1..b291ddf 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -796,6 +796,11 @@ compile_test() {
+@@ -844,6 +844,11 @@ compile_test() {
              # Determine the number of arguments to pass to the
              # 'acpi_op_remove' routine.
              #
@@ -24,11 +24,11 @@ index 873c566..56cfb88 100755
  
              echo "$CONFTEST_PREAMBLE
              #include <linux/acpi.h>
-diff --git a/nv-acpi.c b/nv-acpi.c
-index 8bde56e..550ea6f 100644
---- a/nv-acpi.c
-+++ b/nv-acpi.c
-@@ -23,10 +23,12 @@ static RM_STATUS   nv_acpi_extract_object  (const union acpi_object *, void *, N
+diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
+index da9fbc9..23a71c1 100644
+--- a/nvidia/nv-acpi.c
++++ b/nvidia/nv-acpi.c
+@@ -23,10 +23,12 @@ static NV_STATUS   nv_acpi_extract_object  (const union acpi_object *, void *, N
  
  static int         nv_acpi_add             (struct acpi_device *);
  
@@ -57,7 +57,7 @@ index 8bde56e..550ea6f 100644
  #if defined(NV_ACPI_DEVICE_OPS_HAS_MATCH)
          .match = nv_acpi_match,
  #endif
-@@ -295,10 +293,12 @@ static int nv_acpi_add(struct acpi_device *device)
+@@ -331,10 +329,12 @@ static int nv_acpi_add(struct acpi_device *device)
      return 0;
  }
  
@@ -73,7 +73,7 @@ index 8bde56e..550ea6f 100644
  #endif
  {
      /*
-@@ -349,7 +349,9 @@ static int nv_acpi_remove_one_arg(struct acpi_device *device)
+@@ -385,7 +385,9 @@ static int nv_acpi_remove_one_arg(struct acpi_device *device)
          device->driver_data = NULL;
      }
  

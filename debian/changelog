@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.182.03-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.182.03-1) bullseye; urgency=medium
 
   * New upstream production branch release 470.182.03 (2023-03-30).
     * Fixed CVE-2023-0184, CVE-2023-0189, CVE-2023-0180, CVE-2023-0185,
@@ -20,8 +20,9 @@ nvidia-graphics-drivers (470.182.03-1) UNRELEASED; urgency=medium
     Lima Santana.
   * Updated Turkish (tr) debconf translations by Atila KOÇ.
   * Bump Standards-Version to 4.6.2. No changes needed.
+  * Upload to bullseye.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 08 Apr 2023 12:08:32 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 08 Apr 2023 20:16:20 +0200
 
 nvidia-graphics-drivers (470.161.03-2) UNRELEASED; urgency=medium
 

@@ -1,4 +1,4 @@
-From 208c7391b61910671126f58d05bc5e0b59bc69e2 Mon Sep 17 00:00:00 2001
+From 507de271fdf3d3c6649369efa1e681026f1695c1 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 10:14:54 +0200
 Subject: [PATCH] backport pci/dma changes for ppc64el
@@ -8,10 +8,10 @@ Subject: [PATCH] backport pci/dma changes for ppc64el
  1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 2d270f7..5bfe8a7 100644
+index dd57639..17e835f 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -4483,7 +4483,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4520,7 +4520,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
       * Otherwise, the DMA start address only needs to be set once, and it
       * won't change afterward. Just return the cached value if asked again,
       * to avoid the kernel printing redundant messages to the kernel
@@ -20,7 +20,7 @@ index 2d270f7..5bfe8a7 100644
       */
      if ((nv_tce_bypass_mode == NV_TCE_BYPASS_MODE_DISABLE) ||
          (nvl->tce_bypass_enabled))
-@@ -4533,19 +4533,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4570,19 +4570,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
       * as the starting address for all DMA mappings.
       */
      saved_dma_mask = pci_dev->dma_mask;
@@ -45,7 +45,7 @@ index 2d270f7..5bfe8a7 100644
  
      /*
       * From IBM: "For IODA2, native DMA bypass or KVM TCE-based implementation
-@@ -4577,7 +4577,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4614,7 +4614,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
           */
          nv_printf(NV_DBG_WARNINGS,
              "NVRM: DMA window limited by platform\n");
@@ -54,7 +54,7 @@ index 2d270f7..5bfe8a7 100644
          goto done;
      }
      else if ((dma_addr & saved_dma_mask) != 0)
-@@ -4596,7 +4596,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4633,7 +4633,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
               */
              nv_printf(NV_DBG_WARNINGS,
                  "NVRM: DMA window limited by memory size\n");

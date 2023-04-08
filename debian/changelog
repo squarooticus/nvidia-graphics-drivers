@@ -9,6 +9,7 @@ nvidia-graphics-drivers (470.182.03-1) UNRELEASED; urgency=medium
     * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * nvidia-detect: Drop support for stretch(-lts) (EoL).
   * Drop support for building modules for non-native kernel architectures.
   * nvidia-alternative: Access kmod config files over a versioned

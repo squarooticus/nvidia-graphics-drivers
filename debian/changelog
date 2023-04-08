@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (460.106.00-9+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (460.106.00-10+git) UNRELEASED; urgency=medium
 
   * Generate tight dependencies on libnvidia*-glcore/libnvidia*-eglcore
     (470.57.02-3).
@@ -35,12 +35,17 @@ nvidia-graphics-drivers (460.106.00-9+git) UNRELEASED; urgency=medium
   * Updated Turkish (tr) debconf translations by Atila KOÇ.
   * Update lintian overrides.
   * Bump Standards-Version to 4.6.2. No changes needed.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
+
+nvidia-graphics-drivers (460.106.00-10) UNRELEASED; urgency=medium
+
   * Backport acpi_op_remove changes from 470.182.03 to fix kernel module build
     for Linux 6.2.
   * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
     kernel module build for Linux 6.2.
 
- -- Andreas Beckmann <anbe@debian.org>  Mon, 01 Nov 2021 11:23:02 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 08 Apr 2023 10:01:24 +0200
 
 nvidia-graphics-drivers (460.106.00-9) UNRELEASED; urgency=medium
 

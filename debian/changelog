@@ -602,6 +602,13 @@ nvidia-graphics-drivers (460.106.00-10) UNRELEASED; urgency=medium
     for Linux 6.2.
   * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
     kernel module build for Linux 6.2.
+  * nvidia-alternative: Access kmod config files over a versioned
+    symlink (510.108.03-3).
+  * Add versioned Provides: nvidia-kernel-dkms-any (515.65.01-1).
+  * New Brazilian Portuguese (pt_BR) debconf translations by Paulo Henrique de
+    Lima Santana.  (Closes: #1028262)
+  * Updated Turkish (tr) debconf translations by Atila KOÇ. (Closes: #1033419)
+  * Bump Standards-Version to 4.6.2. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 08 Apr 2023 10:01:24 +0200
 
@@ -687,7 +694,7 @@ nvidia-graphics-drivers (460.106.00-2) UNRELEASED; urgency=medium
   * Backport stdarg.h and stddef.h changes from 495.44 to fix kernel module
     build for Linux 5.16.
   * Backport pde_data changes from 470.103.01 to fix kernel module build for
-    Linux 5.17.
+    Linux 5.17.  (Closes: #1005406)
   * nvidia-kernel-support: Provide
     /etc/modprobe.d/nvidia-options.conf as a template taking into account the
     module renaming. This is a slave alternative of the nvidia alternative
@@ -729,7 +736,7 @@ nvidia-graphics-drivers (460.91.03-2) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (460.91.03-1) UNELEASED; urgency=medium
 
   * New upstream production branch release 460.91.03 (2021-07-20).
-    * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.
+    * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.  (Closes: #991357)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5211
     - Added support for the following GPUs: GeForce RTX 3070 Ti, CMP 50HX.
     * Fixed crash with certain DisplayPort devices.  (Closes: #989069)
@@ -1101,7 +1108,7 @@ nvidia-graphics-drivers (450.236.01-1) UNRELEASED; urgency=medium
   * New upstream Tesla release 450.236.01 (2023-03-30).
     * Fixed CVE-2023-0184, CVE-2023-0189, CVE-2023-0180, CVE-2023-0185,
       CVE-2023-0198, CVE-2023-0199, CVE-2023-0188, CVE-2023-0190,
-      CVE-2023-0194, CVE-2023-0195, CVE-2023-0191.
+      CVE-2023-0194, CVE-2023-0195, CVE-2023-0191.  (Closes: #1033778)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5452
     * Improved compatibility with recent Linux kernels.
 
@@ -1109,6 +1116,13 @@ nvidia-graphics-drivers (450.236.01-1) UNRELEASED; urgency=medium
   * Refresh patches.
   * Backport acpi_op_remove changes from 470.182.03 to fix kernel module build
     for Linux 6.2.
+  * nvidia-alternative: Access kmod config files over a versioned
+    symlink (510.108.03-3).
+  * Add versioned Provides: nvidia-kernel-dkms-any (515.65.01-1).
+  * New Brazilian Portuguese (pt_BR) debconf translations by Paulo Henrique de
+    Lima Santana.  (Closes: #1028265)
+  * Updated Turkish (tr) debconf translations by Atila KOÇ. (Closes: #1033544)
+  * Bump Standards-Version to 4.6.2. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 06 Apr 2023 09:17:36 +0200
 
@@ -1119,7 +1133,7 @@ nvidia-graphics-drivers (450.216.04-1) UNRELEASED; urgency=medium
       CVE-2022-34679, CVE-2022-34680, CVE-2022-34682, CVE-2022-42254,
       CVE-2022-42256, CVE-2022-42257, CVE-2022-42258, CVE-2022-42259,
       CVE-2022-42260, CVE-2022-42261, CVE-2022-42262, CVE-2022-42263,
-      CVE-2022-42264.
+      CVE-2022-42264.  (Closes: #1025283)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5415
     - Improved performance on GPUs which are experiencing a high number
       of correctable ECC memory errors.
@@ -1147,7 +1161,7 @@ nvidia-graphics-drivers (450.203.03-2) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (450.203.03-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.203.03 (2022-08-02).
-    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615.
+    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615. (Closes: #1016618)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5383
     * Improved compatibility with recent Linux kernels.
 
@@ -1170,7 +1184,7 @@ nvidia-graphics-drivers (450.191.01-2) UNRELEASED; urgency=medium
 
   * Backport pci/dma, iosys_map, dma_set_coherent_mask, acpi_bus_get_device
     and cc_mkdec changes from 470.129.06 to fix kernel module build for
-    Linux 5.18.
+    Linux 5.18.  (Closes: #1013130)
   * Minor packaging sync and cleanup (470.129.06-6).
   * Update lintian overrides.
 
@@ -1179,7 +1193,7 @@ nvidia-graphics-drivers (450.191.01-2) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (450.191.01-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.191.01 (2022-05-16).
-    * Fixed CVE-2022-28181, CVE-2022-28185, CVE-2022-28192.
+    * Fixed CVE-2022-28181, CVE-2022-28185, CVE-2022-28192. (Closes: #1011144)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5353
 
   [ Andreas Beckmann ]
@@ -1193,7 +1207,7 @@ nvidia-graphics-drivers (450.172.01-3) UNRELEASED; urgency=medium
   * Update 0003-fix-conftest-includes.patch to fix kernel module build for
     ppc64el.  (Closes: #976901)
   * Backport mt_device_gre changes from 510.39.01 to fix kernel module build
-    for arm64.
+    for arm64.  (Closes: #1009740)
   * Refresh patches.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 15 Apr 2022 22:28:22 +0200
@@ -1201,6 +1215,7 @@ nvidia-graphics-drivers (450.172.01-3) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (450.172.01-2) UNRELEASED; urgency=medium
 
   * Add xorg-video-abi-25 (Xorg Xserver 21) as alternative dependency.
+    (Closes: #1005932)
   * Backport pde_data changes from 470.103.01 to fix kernel module build for
     Linux 5.17.
   * dkms.conf: Use a BUILD_EXCLUSIVE equivalent hack to skip building for -rt
@@ -1212,7 +1227,7 @@ nvidia-graphics-drivers (450.172.01-2) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (450.172.01-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.172.01 (2022-01-31).
-    * Fixed CVE-2022-21813, CVE-2022-21814.
+    * Fixed CVE-2022-21813, CVE-2022-21814.  (Closes: #1004851)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5312
     - Fixed a bug that caused nvidia-drm.ko to crash when loading with
       DRM-KMS enabled (modeset=1) on Linux v5.14.
@@ -2113,6 +2128,13 @@ nvidia-graphics-drivers (418.226.00-10) UNRELEASED; urgency=medium
     for Linux 6.2.
   * Backport drm_connector_has_override_edid changes from 525.78.01 to fix
     kernel module build for Linux 6.2.
+  * nvidia-alternative: Access kmod config files over a versioned
+    symlink (510.108.03-3).
+  * Add versioned Provides: nvidia-kernel-dkms-any (515.65.01-1).
+  * New Brazilian Portuguese (pt_BR) debconf translations by Paulo Henrique de
+    Lima Santana.  (Closes: #1028264)
+  * Updated Turkish (tr) debconf translations by Atila KOÇ. (Closes: #1033545)
+  * Bump Standards-Version to 4.6.2. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 05 Apr 2023 10:00:34 +0200
 
@@ -2224,7 +2246,7 @@ nvidia-graphics-drivers (418.226.00-2) UNRELEASED; urgency=medium
   * Backport stdarg.h and stddef.h changes from 495.44 to fix kernel module
     build for Linux 5.16.
   * Backport pde_data changes from 470.103.01 to fix kernel module build for
-    Linux 5.17.
+    Linux 5.17.  (Closes: #1005405)
   * nvidia-kernel-support: Provide
     /etc/modprobe.d/nvidia-options.conf as a template taking into account the
     module renaming. This is a slave alternative of the nvidia alternative

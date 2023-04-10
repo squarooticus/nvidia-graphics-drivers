@@ -78,11 +78,11 @@ nvidia-graphics-drivers (510.85.02-2) experimental; urgency=medium
 nvidia-graphics-drivers (510.85.02-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 510.85.02 (2022-08-02).
-    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615.
+    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615. (Closes: #1016621)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5383
     * Improved compatibility with recent Linux kernels.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 10 Aug 2022 06:30:37 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 10 Aug 2022 07:24:37 +0200
 
 nvidia-graphics-drivers (510.85.02-1) experimental; urgency=medium
 
@@ -120,7 +120,7 @@ nvidia-graphics-drivers (510.73.08-1) UNRELEASED; urgency=medium
   * New upstream Tesla release 510.73.08 (2022-05-23).
   * New upstream production branch release 510.73.05 (2022-05-16).
     * Fixed CVE-2022-28181, CVE-2022-28183, CVE-2022-28184, CVE-2022-28185,
-      CVE-2022-28191, CVE-2022-28192.
+      CVE-2022-28191, CVE-2022-28192.  (Closes: #1011147)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5353
     - Added a new configuration option for NVIDIA NGX to allow disabling the DSO
       signature check. See the "NGX" chapter of the README for more information.

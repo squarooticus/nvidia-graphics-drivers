@@ -15,6 +15,7 @@ nvidia-graphics-drivers (525.105.17-1) UNRELEASED; urgency=medium
       (IBT).
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * Updated Turkish (tr) debconf translations by Atila KOÇ.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 11 Apr 2023 04:47:44 +0200

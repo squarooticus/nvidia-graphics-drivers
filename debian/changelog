@@ -1,8 +1,23 @@
-nvidia-graphics-drivers (525.89.02-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.105.17-1) UNRELEASED; urgency=medium
 
+  * New upstream production branch release 525.105.17 (2023-03-30).
+    * Fixed CVE-2023-0184, CVE-2023-0189, CVE-2023-0180, CVE-2023-0183,
+      CVE-2023-0185, CVE-2023-0187, CVE-2023-0198, CVE-2023-0199,
+      CVE-2023-0188, CVE-2023-0190, CVE-2023-0194, CVE-2023-0195,
+      CVE-2023-0191.  (Closes: #1033774)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5452
+    - Fixed a bug that could cause excessive GPU power consumption at idle
+      when driving multiple displays with a high refresh rate.
+    - Fixed a bug in nvidia-powerd which could cause excessive CPU usage.
+    - Fixed an issue which could cause applications to run at 1 FPS when
+      using an NVIDIA PRIME Display Offload sink as the only active display.
+    - Added compatibility for Linux kernels with Indirect Branch Tracking
+      (IBT).
+
+  [ Andreas Beckmann ]
   * Updated Turkish (tr) debconf translations by Atila KOÇ.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 30 Mar 2023 10:28:54 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 11 Apr 2023 04:47:44 +0200
 
 nvidia-graphics-drivers (525.89.02-2) unstable; urgency=medium
 

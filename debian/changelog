@@ -9,6 +9,9 @@ nvidia-graphics-drivers (525.116.03-1) UNRELEASED; urgency=medium
     - Fixed a regression that caused brightness control to not vary
       smoothly across the range of values.
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Thu, 27 Apr 2023 09:37:33 +0200
 
 nvidia-graphics-drivers (525.105.17-2) unstable; urgency=medium

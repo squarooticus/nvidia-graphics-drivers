@@ -133,6 +133,9 @@ nvidia-graphics-drivers (340.108-1~git4deb8jessie) UNRELEASED; urgency=medium
 
 nvidia-graphics-drivers (340.108-2) UNRELEASED; urgency=medium
 
+  * Backport vm_area_struct_has_const_vm_flags changes from 525.105.17 to fix
+    kernel module build for Linux 6.3.
+
   * Backport acpi_op_remove changes from 470.182.03 to fix kernel module build
     for Linux 6.2.
 

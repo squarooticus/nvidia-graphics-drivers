@@ -1,37 +1,55 @@
-From 0a52436bdc1cf7fedbd6ae6ad3321b54382676ce Mon Sep 17 00:00:00 2001
+From 1d00409332099693a9bc4f3fe573611b67b921a3 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 24 May 2023 12:21:16 +0200
-Subject: [PATCH] backport vm_area_struct_has_const_vm_flags changes from
+Subject: [PATCH 1/2] backport vm_area_struct_has_const_vm_flags changes from
  525.105.17
 
 ---
- Makefile               |  1 +
- conftest.sh            | 19 +++++++++++++++++++
- nv-linux.h             | 22 ++++++++++++++++++++++
- nv-mmap.c              | 10 +++++-----
- uvm/Makefile           |  1 +
- uvm/nvidia_uvm_linux.h | 22 ++++++++++++++++++++++
- uvm/nvidia_uvm_lite.c  | 16 ++++++++--------
- 7 files changed, 78 insertions(+), 13 deletions(-)
+ common/inc/nv-mm.h   | 24 ++++++++++++++++++++++++
+ conftest.sh          | 19 +++++++++++++++++++
+ nvidia/nv-mmap.c     | 10 +++++-----
+ nvidia/nvidia.Kbuild |  1 +
+ 4 files changed, 49 insertions(+), 5 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index 7ce41f8..a17d609 100644
---- a/Makefile
-+++ b/Makefile
-@@ -167,6 +167,7 @@ COMPILE_TESTS = \
- 	drm_driver_has_gem_prime_callbacks \
- 	drm_device_has_pdev \
- 	acpi_bus_get_device \
-+	vm_area_struct_has_const_vm_flags \
+diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
+index aec55b0..91843b8 100644
+--- a/common/inc/nv-mm.h
++++ b/common/inc/nv-mm.h
+@@ -282,4 +282,28 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)
+ #endif
+ }
  
- #
- # CFLAGS dependent on the type of builds (e.g. single/muliple module, debug)
++#include <linux/version.h>
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 0, 0)
++typedef unsigned long vm_flags_t;
++#endif
++
++static inline void nv_vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
++{
++#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
++    vm_flags_set(vma, flags);
++#else
++    vma->vm_flags |= flags;
++#endif
++}
++
++static inline void nv_vm_flags_clear(struct vm_area_struct *vma, vm_flags_t flags)
++{
++#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
++    vm_flags_clear(vma, flags);
++#else
++    vma->vm_flags &= ~flags;
++#endif
++}
++
+ #endif // __NV_MM_H__
 diff --git a/conftest.sh b/conftest.sh
-index 56cfb88..57d5c82 100755
+index 921490a..054937a 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2557,6 +2557,25 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_ACPI_BUS_GET_DEVICE_PRESENT" "" "functions"
+@@ -4677,6 +4677,25 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_DRM_CONNECTOR_HAS_OVERRIDE_EDID" "" "types"
          ;;
  
 +        vm_area_struct_has_const_vm_flags)
@@ -56,43 +74,12 @@ index 56cfb88..57d5c82 100755
          # When adding a new conftest entry, please use the correct format for
          # specifying the relevant upstream Linux kernel commit.
          #
-diff --git a/nv-linux.h b/nv-linux.h
-index 49c7973..2520d2d 100644
---- a/nv-linux.h
-+++ b/nv-linux.h
-@@ -2276,4 +2276,26 @@ static inline NvU64 nv_node_end_pfn(int nid)
-     #endif
- #endif
- 
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 0, 0)
-+typedef unsigned long vm_flags_t;
-+#endif
-+
-+static inline void nv_vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
-+{
-+#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
-+    vm_flags_set(vma, flags);
-+#else
-+    vma->vm_flags |= flags;
-+#endif
-+}
-+
-+static inline void nv_vm_flags_clear(struct vm_area_struct *vma, vm_flags_t flags)
-+{
-+#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
-+    vm_flags_clear(vma, flags);
-+#else
-+    vma->vm_flags &= ~flags;
-+#endif
-+}
-+
- #endif  /* _NV_LINUX_H_ */
-diff --git a/nv-mmap.c b/nv-mmap.c
-index fb27c79..473d5fa 100644
---- a/nv-mmap.c
-+++ b/nv-mmap.c
-@@ -312,7 +312,7 @@ int nvidia_mmap(
-             goto done;
+diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
+index 0b0a6f2..3be5079 100644
+--- a/nvidia/nv-mmap.c
++++ b/nvidia/nv-mmap.c
+@@ -471,7 +471,7 @@ int nvidia_mmap_helper(
+             }
          }
  
 -        vma->vm_flags |= VM_IO;
@@ -100,7 +87,7 @@ index fb27c79..473d5fa 100644
      }
      else
      {
-@@ -363,8 +363,8 @@ int nvidia_mmap(
+@@ -533,15 +533,15 @@ int nvidia_mmap_helper(
  
          NV_PRINT_AT(NV_DBG_MEMINFO, at);
  
@@ -110,112 +97,28 @@ index fb27c79..473d5fa 100644
 +        nv_vm_flags_set(vma, VM_DONTEXPAND | VM_DONTDUMP);
      }
  
-     if (status == 0)
-@@ -374,8 +374,8 @@ int nvidia_mmap(
-         if ((prot & NV_PROTECT_WRITEABLE) == 0)
-         {
-             vma->vm_page_prot = NV_PGPROT_READ_ONLY(vma->vm_page_prot);
--            vma->vm_flags &= ~VM_WRITE;
--            vma->vm_flags &= ~VM_MAYWRITE;
-+            nv_vm_flags_clear(vma, VM_WRITE);
-+            nv_vm_flags_clear(vma, VM_MAYWRITE);
-         }
- 
-         vma->vm_ops = &nv_vm_ops;
-diff --git a/uvm/Makefile b/uvm/Makefile
-index 14cd218..b86e215 100644
---- a/uvm/Makefile
-+++ b/uvm/Makefile
-@@ -175,6 +175,7 @@ COMPILE_TESTS = \
- 	proc_ops \
- 	timeval \
- 	mm_has_mmap_lock \
-+	vm_area_struct_has_const_vm_flags \
- 
- MODULE_NAME:= nvidia-uvm
- 
-diff --git a/uvm/nvidia_uvm_linux.h b/uvm/nvidia_uvm_linux.h
-index 9c1c3a8..7dc8847 100644
---- a/uvm/nvidia_uvm_linux.h
-+++ b/uvm/nvidia_uvm_linux.h
-@@ -445,5 +445,27 @@ static inline const char *kbasename(const char *str)
- #define mmap_sem mmap_lock
- #endif
- 
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 0, 0)
-+typedef unsigned long vm_flags_t;
-+#endif
-+
-+static inline void nv_vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
-+{
-+#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
-+    vm_flags_set(vma, flags);
-+#else
-+    vma->vm_flags |= flags;
-+#endif
-+}
-+
-+static inline void nv_vm_flags_clear(struct vm_area_struct *vma, vm_flags_t flags)
-+{
-+#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
-+    vm_flags_clear(vma, flags);
-+#else
-+    vma->vm_flags &= ~flags;
-+#endif
-+}
-+
- #endif // _NVIDIA_UVM_LINUX_H
- 
-diff --git a/uvm/nvidia_uvm_lite.c b/uvm/nvidia_uvm_lite.c
-index c2abbc3..61a2bd9 100644
---- a/uvm/nvidia_uvm_lite.c
-+++ b/uvm/nvidia_uvm_lite.c
-@@ -1537,9 +1537,9 @@ static int uvmlite_mmap(struct file * filp, struct vm_area_struct * vma)
-         vma->vm_ops   = &uvmlite_vma_ops;
- 
-         // Prohibit copying the vma on fork().
--        vma->vm_flags |= VM_DONTCOPY;
-+        nv_vm_flags_set(vma, VM_DONTCOPY);
-         // Prohibt mremap() that would expand the vma.
--        vma->vm_flags |= VM_DONTEXPAND;
-+        nv_vm_flags_set(vma, VM_DONTEXPAND);
- 
-         // Other cases of vma modification are detected in _mmap_open().
- 
-@@ -1558,9 +1558,9 @@ static int uvmlite_mmap(struct file * filp, struct vm_area_struct * vma)
-             return -EINVAL;
- 
-         vma->vm_ops = &counters_vma_ops;
+     if ((prot & NV_PROTECT_WRITEABLE) == 0)
+     {
+         vma->vm_page_prot = NV_PGPROT_READ_ONLY(vma->vm_page_prot);
+-        vma->vm_flags &= ~VM_WRITE;
 -        vma->vm_flags &= ~VM_MAYWRITE;
++        nv_vm_flags_clear(vma, VM_WRITE);
 +        nv_vm_flags_clear(vma, VM_MAYWRITE);
-         // prevent vm_insert_page from modifying the vma's flags:
--        vma->vm_flags |= VM_MIXEDMAP;
-+        nv_vm_flags_set(vma, VM_MIXEDMAP);
-         ret = 0;
      }
-     UVM_DBG_PRINT_RL("vma 0x%p [0x%p, 0x%p) ret %d pgoff"
-@@ -2539,8 +2539,8 @@ static void _set_vma_inaccessible(struct vm_area_struct * vma)
-     // Subsequent access from userspace after the pages are unmapped will cause
-     // a SIGSEGV.
-     //
--    vma->vm_flags &= ~(VM_READ|VM_MAYREAD);
--    vma->vm_flags &= ~(VM_WRITE|VM_MAYWRITE);
-+    nv_vm_flags_clear(vma, VM_READ|VM_MAYREAD);
-+    nv_vm_flags_clear(vma, VM_WRITE|VM_MAYWRITE);
- }
  
- //
-@@ -2548,8 +2548,8 @@ static void _set_vma_inaccessible(struct vm_area_struct * vma)
- //
- static void _set_vma_accessible(struct vm_area_struct * vma)
- {
--    vma->vm_flags |= (VM_READ|VM_MAYREAD);
--    vma->vm_flags |= (VM_WRITE|VM_MAYWRITE);
-+    nv_vm_flags_set(vma, VM_READ|VM_MAYREAD);
-+    nv_vm_flags_set(vma, VM_WRITE|VM_MAYWRITE);
- }
+     vma->vm_ops = &nv_vm_ops;
+diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
+index 39d8152..468655f 100644
+--- a/nvidia/nvidia.Kbuild
++++ b/nvidia/nvidia.Kbuild
+@@ -209,6 +209,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += sysfs_slab_unlink
+ NV_CONFTEST_TYPE_COMPILE_TESTS += vmalloc_has_pgprot_t_arg
+ NV_CONFTEST_TYPE_COMPILE_TESTS += pci_dev_has_skip_bus_pm
+ NV_CONFTEST_TYPE_COMPILE_TESTS += pci_channel_state
++NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
  
- //
+ NV_CONFTEST_GENERIC_COMPILE_TESTS += dom0_kernel_present
+ NV_CONFTEST_GENERIC_COMPILE_TESTS += nvidia_vgpu_kvm_build
 -- 
 2.20.1
 

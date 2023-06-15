@@ -1,4 +1,4 @@
-From 7f7eb228085984c6814e104f4fcb6e52e70331a6 Mon Sep 17 00:00:00 2001
+From 15aadd787b64faba4878bbd72d83edf131b84abb Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 6 Jan 2023 14:21:15 +0100
 Subject: [PATCH] backport drm_connector_has_override_edid changes from
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_connector_has_override_edid changes from
  4 files changed, 28 insertions(+), 4 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 1c238d9..f9c9e3a 100755
+index ada78b8..4b9ee38 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4184,6 +4184,28 @@ compile_test() {
+@@ -4171,6 +4171,28 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DMA_RESV_ADD_FENCE_PRESENT" "" "functions"
          ;;
  

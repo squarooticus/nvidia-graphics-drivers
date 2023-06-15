@@ -4,6 +4,8 @@ bashisms.patch
 # kernel support
 0010-backport-pci-dma-changes-for-ppc64el.patch
 0021-backport-acpi_op_remove-changes-from-470.182.03.patch
+0023-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
+0024-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
 ppc64el.patch
 
 # build system updates

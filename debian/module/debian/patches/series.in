@@ -6,8 +6,11 @@ bashisms.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
 0003-backport-set_-memory-pages-_array-_uc-changes-from-5.patch
 0004-fix-conftest-includes.patch
-0021-support-acpi_op_remove-callback-returning-void.patch
+0008-backport-nvidia-drm-helper.h-inclusion-from-450.51.patch
+0021-backport-acpi_op_remove-changes-from-470.182.03.patch
 0022-backport-drm_connector_has_override_edid-changes-fro.patch
+0023-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
+#HAS_UVM#0024-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
 do-div-cast.patch
 
 # build system updates

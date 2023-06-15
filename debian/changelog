@@ -60,7 +60,7 @@ nvidia-graphics-drivers (390.157-3) UNRELEASED; urgency=medium
   * Backport vm_area_struct_has_const_vm_flags changes from 525.105.17 to fix
     kernel module build for Linux 6.3.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 25 May 2023 13:39:21 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 15 Jun 2023 10:01:34 +0200
 
 nvidia-graphics-drivers (390.157-2) UNRELEASED; urgency=medium
 

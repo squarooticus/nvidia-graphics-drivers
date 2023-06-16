@@ -1,4 +1,4 @@
-From aa36c4614e88cc3e2084404a65751bd33436d3f5 Mon Sep 17 00:00:00 2001
+From 160417cafe4223835fcc166ce99966297a83bfc9 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 31 May 2023 12:25:55 +0200
 Subject: [PATCH 2/2] backport vm_area_struct_has_const_vm_flags changes from
@@ -10,10 +10,10 @@ Subject: [PATCH 2/2] backport vm_area_struct_has_const_vm_flags changes from
  2 files changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/nvidia-uvm/nvidia-uvm.Kbuild b/nvidia-uvm/nvidia-uvm.Kbuild
-index 7501eed..7500825 100644
+index c6743bb..c9e8740 100644
 --- a/nvidia-uvm/nvidia-uvm.Kbuild
 +++ b/nvidia-uvm/nvidia-uvm.Kbuild
-@@ -124,3 +124,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += mmu_notifier_ops_invalidate_range
+@@ -117,3 +117,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += mmu_notifier_ops_invalidate_range
  NV_CONFTEST_TYPE_COMPILE_TESTS += proc_ops
  NV_CONFTEST_TYPE_COMPILE_TESTS += timespec64
  NV_CONFTEST_TYPE_COMPILE_TESTS += mm_has_mmap_lock

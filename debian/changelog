@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (418.226.00-11+git4deb10buster) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.226.00-12+git4deb10buster) UNRELEASED; urgency=medium
 
   * Minor packaging sync and cleanup (470.129.06-6).
   * Drop references to kernel-package and make-kpkg, gone since stretch
@@ -21,6 +21,13 @@ nvidia-graphics-drivers (418.226.00-11+git4deb10buster) UNRELEASED; urgency=medi
   * Bump Standards-Version to 4.6.2. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Apr 2022 17:51:34 +0200
+
+nvidia-graphics-drivers (418.226.00-12) UNRELEASED; urgency=medium
+
+  * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
+    module build for Linux 6.4.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 16 Jun 2023 17:43:27 +0200
 
 nvidia-graphics-drivers (418.226.00-11) UNRELEASED; urgency=medium
 
@@ -777,6 +784,13 @@ nvidia-graphics-drivers (396.18-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 22 Apr 2018 13:59:45 +0200
+
+nvidia-graphics-drivers (390.157-4) UNRELEASED; urgency=medium
+
+  * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
+    module build for Linux 6.4.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 16 Jun 2023 17:29:02 +0200
 
 nvidia-graphics-drivers (390.157-3) UNRELEASED; urgency=medium
 

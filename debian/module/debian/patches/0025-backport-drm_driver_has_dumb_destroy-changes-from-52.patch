@@ -1,4 +1,4 @@
-From 4a3b09a4cdd40cffafdc92ca39d4284dc8e7d1f7 Mon Sep 17 00:00:00 2001
+From f88956f55ea90ddff5705512ca6c5d55d022d18b Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 16 Jun 2023 16:33:58 +0200
 Subject: [PATCH] backport drm_driver_has_dumb_destroy changes from 525.116.03
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_driver_has_dumb_destroy changes from 525.116.03
  5 files changed, 31 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 3476202..8c0cfae 100755
+index b0cf6c2..2a65e39 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4212,6 +4212,30 @@ compile_test() {
+@@ -4448,6 +4448,30 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS" "" "types"
          ;;
  
@@ -47,24 +47,24 @@ index 3476202..8c0cfae 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 3f045a9..cb51464 100644
+index fdb6694..a183aa3 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -761,7 +761,9 @@ static void nv_drm_update_drm_driver_features(void)
+@@ -805,7 +805,9 @@ static void nv_drm_update_drm_driver_features(void)
  
      nv_drm_driver.dumb_create      = nv_drm_dumb_create;
      nv_drm_driver.dumb_map_offset  = nv_drm_dumb_map_offset;
 +#if defined(NV_DRM_DRIVER_HAS_DUMB_DESTROY)
      nv_drm_driver.dumb_destroy     = nv_drm_dumb_destroy;
 +#endif /* NV_DRM_DRIVER_HAS_DUMB_DESTROY */
+ #endif /* NV_DRM_ATOMIC_MODESET_AVAILABLE */
+ }
  
- #if defined(NV_DRM_DRIVER_HAS_GEM_PRIME_CALLBACKS)
-     nv_drm_driver.gem_vm_ops       = &nv_drm_gem_vma_ops;
 diff --git a/nvidia-drm/nvidia-drm-gem-nvkms-memory.c b/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
-index 5eb07fb..d127a3e 100644
+index 0ca35da..ad83621 100644
 --- a/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
 +++ b/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
-@@ -334,12 +334,14 @@ done:
+@@ -501,11 +501,13 @@ int nv_drm_dumb_map_offset(struct drm_file *file,
      return ret;
  }
  
@@ -77,13 +77,12 @@ index 5eb07fb..d127a3e 100644
  }
 +#endif /* NV_DRM_DRIVER_HAS_DUMB_DESTROY */
  
- /* XXX Move these vma operations to os layer */
- 
+ #endif
 diff --git a/nvidia-drm/nvidia-drm-gem-nvkms-memory.h b/nvidia-drm/nvidia-drm-gem-nvkms-memory.h
-index e203359..925bead 100644
+index a496e56..72692b3 100644
 --- a/nvidia-drm/nvidia-drm-gem-nvkms-memory.h
 +++ b/nvidia-drm/nvidia-drm-gem-nvkms-memory.h
-@@ -92,9 +92,11 @@ int nv_drm_dumb_map_offset(struct drm_file *file,
+@@ -96,9 +96,11 @@ int nv_drm_dumb_map_offset(struct drm_file *file,
                             struct drm_device *dev, uint32_t handle,
                             uint64_t *offset);
  
@@ -96,13 +95,13 @@ index e203359..925bead 100644
  struct drm_gem_object *nv_drm_gem_nvkms_prime_import(
      struct drm_device *dev,
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 7bfa426..937d44f 100644
+index 1900ab2..a5e2eed 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -105,3 +105,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_plane_atomic_check_has_atomic_state_arg
- NV_CONFTEST_TYPE_COMPILE_TESTS += drm_device_has_pdev
- NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
+@@ -109,3 +109,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_reserve_fences
+ NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fences_arg
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
+ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
 +NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_has_dumb_destroy
 -- 
 2.20.1

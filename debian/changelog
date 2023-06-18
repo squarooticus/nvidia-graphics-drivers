@@ -5,7 +5,7 @@ nvidia-graphics-drivers (470.182.03-2) UNRELEASED; urgency=medium
   * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
     module build for Linux 6.4.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 16 Jun 2023 19:11:13 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 18 Jun 2023 14:02:19 +0200
 
 nvidia-graphics-drivers (470.182.03-1) bullseye; urgency=medium
 

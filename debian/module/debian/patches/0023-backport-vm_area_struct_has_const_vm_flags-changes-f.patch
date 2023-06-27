@@ -1,4 +1,4 @@
-From 4f0464d801bbadc08c9b3dbc4cccf597c5330bc8 Mon Sep 17 00:00:00 2001
+From a887b0c0b81c1d6739e3789f51a8a60514393e90 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 27 Jun 2023 22:26:21 +0200
 Subject: [PATCH] backport vm_area_struct_has_const_vm_flags changes from
@@ -45,7 +45,7 @@ index 54f6f60..46d09ca 100644
 +
  #endif // __NV_MM_H__
 diff --git a/conftest.sh b/conftest.sh
-index 4fd8e86..b0cf6c2 100755
+index 173eb54..2a65e39 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -4429,6 +4429,25 @@ compile_test() {
@@ -71,9 +71,9 @@ index 4fd8e86..b0cf6c2 100755
 +            compile_check_conftest "$CODE" "NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS" "" "types"
 +        ;;
 +
-         # When adding a new conftest entry, please use the correct format for
-         # specifying the relevant upstream Linux kernel commit.
-         #
+         drm_driver_has_dumb_destroy)
+             #
+             # Determine if the 'drm_driver' structure has a 'dumb_destroy'
 diff --git a/nvidia-drm/nvidia-drm-gem-user-memory.c b/nvidia-drm/nvidia-drm-gem-user-memory.c
 index 4229459..9f0b99e 100644
 --- a/nvidia-drm/nvidia-drm-gem-user-memory.c
@@ -92,14 +92,15 @@ index 4229459..9f0b99e 100644
      return true;
  }
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index ec7c710..1900ab2 100644
+index d520d4f..a5e2eed 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -108,3 +108,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
+@@ -108,4 +108,5 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
  NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_reserve_fences
  NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fences_arg
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
 +NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
+ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_has_dumb_destroy
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
 index 0dc2396..c56b5c6 100644
 --- a/nvidia/nv-mmap.c

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (525.116.04-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.116.04-1) unstable; urgency=medium
 
   * New upstream production branch release 525.116.04 (2023-05-09).
   * New upstream production branch release 525.116.03 (2023-04-25).
@@ -14,7 +14,7 @@ nvidia-graphics-drivers (525.116.04-1) UNRELEASED; urgency=medium
   * Refresh patches.
   * Update nv-readme.ids.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Jun 2023 18:35:23 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 28 Jun 2023 01:19:51 +0200
 
 nvidia-graphics-drivers (525.105.17-2) unstable; urgency=medium
 

@@ -1,53 +1,51 @@
-From 96e3c2dd88c4c06dcf591683c83dbfab39e0b325 Mon Sep 17 00:00:00 2001
+From a887b0c0b81c1d6739e3789f51a8a60514393e90 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
-Date: Wed, 24 May 2023 12:21:16 +0200
-Subject: [PATCH 1/2] backport vm_area_struct_has_const_vm_flags changes from
- 525.105.17
+Date: Tue, 27 Jun 2023 22:26:21 +0200
+Subject: [PATCH] backport vm_area_struct_has_const_vm_flags changes from
+ 470.199.02
 
 ---
- common/inc/nv-mm.h                      | 24 ++++++++++++++++++++++++
+ common/inc/nv-mm.h                      | 22 ++++++++++++++++++++++
  conftest.sh                             | 19 +++++++++++++++++++
  nvidia-drm/nvidia-drm-gem-user-memory.c |  6 +++---
  nvidia-drm/nvidia-drm.Kbuild            |  1 +
  nvidia/nv-mmap.c                        | 12 ++++++------
  nvidia/nvidia.Kbuild                    |  1 +
- 6 files changed, 54 insertions(+), 9 deletions(-)
+ 6 files changed, 52 insertions(+), 9 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index 54f6f60..479ac13 100644
+index 54f6f60..46d09ca 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
-@@ -270,4 +270,28 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)
+@@ -270,4 +270,26 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)
  #endif
  }
  
-+#include <linux/version.h>
-+
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 0, 0)
-+typedef unsigned long vm_flags_t;
-+#endif
-+
++#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
 +static inline void nv_vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
 +{
-+#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
 +    vm_flags_set(vma, flags);
-+#else
-+    vma->vm_flags |= flags;
-+#endif
 +}
 +
 +static inline void nv_vm_flags_clear(struct vm_area_struct *vma, vm_flags_t flags)
 +{
-+#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
 +    vm_flags_clear(vma, flags);
-+#else
-+    vma->vm_flags &= ~flags;
-+#endif
 +}
++#else
++static inline void nv_vm_flags_set(struct vm_area_struct *vma, unsigned long flags)
++{
++    vma->vm_flags |= flags;
++}
++
++static inline void nv_vm_flags_clear(struct vm_area_struct *vma, unsigned long flags)
++{
++    vma->vm_flags &= ~flags;
++}
++#endif
 +
  #endif // __NV_MM_H__
 diff --git a/conftest.sh b/conftest.sh
-index 4fd8e86..b0cf6c2 100755
+index 173eb54..2a65e39 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -4429,6 +4429,25 @@ compile_test() {
@@ -73,9 +71,9 @@ index 4fd8e86..b0cf6c2 100755
 +            compile_check_conftest "$CODE" "NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS" "" "types"
 +        ;;
 +
-         # When adding a new conftest entry, please use the correct format for
-         # specifying the relevant upstream Linux kernel commit.
-         #
+         drm_driver_has_dumb_destroy)
+             #
+             # Determine if the 'drm_driver' structure has a 'dumb_destroy'
 diff --git a/nvidia-drm/nvidia-drm-gem-user-memory.c b/nvidia-drm/nvidia-drm-gem-user-memory.c
 index 4229459..9f0b99e 100644
 --- a/nvidia-drm/nvidia-drm-gem-user-memory.c
@@ -94,14 +92,15 @@ index 4229459..9f0b99e 100644
      return true;
  }
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index ec7c710..1900ab2 100644
+index d520d4f..a5e2eed 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -108,3 +108,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
+@@ -108,4 +108,5 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
  NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_reserve_fences
  NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fences_arg
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
 +NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
+ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_has_dumb_destroy
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
 index 0dc2396..c56b5c6 100644
 --- a/nvidia/nv-mmap.c

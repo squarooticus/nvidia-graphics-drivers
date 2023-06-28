@@ -996,6 +996,18 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Sep 2020 21:52:54 +0200
 
+nvidia-graphics-drivers (450.248.02-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 450.248.02 (2023-06-26).
+    * Fixed CVE-2023-25515, CVE-2023-25516.
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5468
+    * Improved compatibility with recent Linux kernels.
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 28 Jun 2023 20:01:45 +0200
+
 nvidia-graphics-drivers (450.236.01-3) UNRELEASED; urgency=medium
 
   * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel

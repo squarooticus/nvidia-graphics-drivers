@@ -35,6 +35,7 @@ Upstream support timeframes
     Tesla 510 (PB)      01/2023 EoL
     Tesla 515 (PB)      05/2023 EoL
     Tesla 525 (PB)      12/2023
+    Tesla 535 (LTSB)    06/2026
 
 
 The branch structure in the GIT repository
@@ -70,9 +71,12 @@ The branch structure in the GIT repository
     470                       bullseye            525, 470-tesla
     470-tesla                 (bullseye)          525-tesla, tesla-470/main
     tesla-470/main            bullseye,bookworm,sid tesla/525
-    525                       bookworm,sid        YYY, 525-tesla
-    525-tesla                 (bookworm)          ZZZ-tesla, tesla/525
-    tesla/525                 bookworm,sid        tesla/ZZZ
+    525                       bookworm,sid        535, 525-tesla
+    525-tesla                 (bookworm)          535-tesla, tesla/525
+    tesla/525                 bookworm,sid        tesla/535
+    535                       bookworm,sid        YYY, 535-tesla
+    535-tesla                 (bookworm)          ZZZ-tesla, tesla/535
+    tesla/535                 bookworm,sid        tesla/ZZZ
     main                      sid                 YYY
     tesla/main                sid
     YYY                       experimental        ZZZ, (main)

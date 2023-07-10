@@ -1,4 +1,4 @@
-From 1ade494f02abbc51abf9c46d4de0b46f0d3d76ef Mon Sep 17 00:00:00 2001
+From 369eb68e65325f8decdb328ac434ef7295df54df Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 27 Jun 2023 22:26:21 +0200
 Subject: [PATCH] backport vm_area_struct_has_const_vm_flags changes from
@@ -15,7 +15,7 @@ Subject: [PATCH] backport vm_area_struct_has_const_vm_flags changes from
  7 files changed, 53 insertions(+), 10 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index 0b70f30..eb8a249 100644
+index 0b70f30..8717286 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
 @@ -270,4 +270,26 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)

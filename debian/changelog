@@ -1,3 +1,15 @@
+nvidia-graphics-drivers (470.199.02-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 470.199.02 (2023-06-26).
+    * Fixed CVE-2023-25515, CVE-2023-25516.  (Closes: #1039684)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5468
+    * Improved compatibility with recent Linux kernels.
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 10 Jul 2023 15:06:22 +0200
+
 nvidia-graphics-drivers (470.199.02-1) bullseye; urgency=medium
 
   * New upstream production branch release 470.199.02 (2023-06-26).

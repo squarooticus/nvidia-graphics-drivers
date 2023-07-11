@@ -4,6 +4,9 @@ nvidia-graphics-drivers (525.125.06-1) UNRELEASED; urgency=medium
     - Fixed a bug which prevented running a Wayland compositor in headless
       mode on GPUs without display hardware.
 
+  [ Andreas Beckmann ]
+  * Update nv-readme.ids.
+
  -- Andreas Beckmann <anbe@debian.org>  Tue, 11 Jul 2023 10:35:06 +0200
 
 nvidia-graphics-drivers (525.116.04-1) unstable; urgency=medium

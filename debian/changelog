@@ -27,6 +27,7 @@ nvidia-graphics-drivers (535.43.02-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Update d/copyright with new NVIDIA Driver License Agreement.
   * Refresh patches.
+  * Drop the libnvidia-compiler package.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Aug 2023 18:49:16 +0200
 

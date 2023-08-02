@@ -1,47 +1,45 @@
-From 1d00409332099693a9bc4f3fe573611b67b921a3 Mon Sep 17 00:00:00 2001
+From 04c222c33afa638366967d029f2961ef1bb1d460 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
-Date: Wed, 24 May 2023 12:21:16 +0200
-Subject: [PATCH 1/2] backport vm_area_struct_has_const_vm_flags changes from
- 525.105.17
+Date: Tue, 27 Jun 2023 22:26:21 +0200
+Subject: [PATCH] backport vm_area_struct_has_const_vm_flags changes from
+ 470.199.02
 
 ---
- common/inc/nv-mm.h   | 24 ++++++++++++++++++++++++
+ common/inc/nv-mm.h   | 22 ++++++++++++++++++++++
  conftest.sh          | 19 +++++++++++++++++++
  nvidia/nv-mmap.c     | 10 +++++-----
  nvidia/nvidia.Kbuild |  1 +
- 4 files changed, 49 insertions(+), 5 deletions(-)
+ 4 files changed, 47 insertions(+), 5 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index aec55b0..91843b8 100644
+index aec55b0..1f1e8c1 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
-@@ -282,4 +282,28 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)
+@@ -282,4 +282,26 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)
  #endif
  }
  
-+#include <linux/version.h>
-+
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 0, 0)
-+typedef unsigned long vm_flags_t;
-+#endif
-+
++#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
 +static inline void nv_vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
 +{
-+#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
 +    vm_flags_set(vma, flags);
-+#else
-+    vma->vm_flags |= flags;
-+#endif
 +}
 +
 +static inline void nv_vm_flags_clear(struct vm_area_struct *vma, vm_flags_t flags)
 +{
-+#if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
 +    vm_flags_clear(vma, flags);
-+#else
-+    vma->vm_flags &= ~flags;
-+#endif
 +}
++#else
++static inline void nv_vm_flags_set(struct vm_area_struct *vma, unsigned long flags)
++{
++    vma->vm_flags |= flags;
++}
++
++static inline void nv_vm_flags_clear(struct vm_area_struct *vma, unsigned long flags)
++{
++    vma->vm_flags &= ~flags;
++}
++#endif
 +
  #endif // __NV_MM_H__
 diff --git a/conftest.sh b/conftest.sh

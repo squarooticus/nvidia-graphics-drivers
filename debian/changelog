@@ -4,6 +4,8 @@ nvidia-graphics-drivers (530.41.03-2) UNRELEASED; urgency=medium
   * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
     module build for Linux 6.4.  (Closes: #1042081, #1041991)
   * libcuda1: Add Provides: libcuda-12.1-1.
+  * nvidia-suspend-common: New package for the systemd power management
+    integration scripts.  (Closes: #1038006)
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 14 Apr 2023 15:44:18 +0200
 

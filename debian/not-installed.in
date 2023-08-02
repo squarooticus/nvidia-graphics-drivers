@@ -57,6 +57,7 @@ nvidia-cuda-mps-control.1
 nvidia-cuda-mps-server
 nvidia-powerd
 nvidia-dbus.conf
+systemd/system/nvidia-powerd.service
 
 # not shipped
 

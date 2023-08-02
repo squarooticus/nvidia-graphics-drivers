@@ -1,3 +1,31 @@
+nvidia-graphics-drivers (535.43.02-1) UNRELEASED; urgency=medium
+
+  * New upstream beta 535.43.02 (2023-05-30).  (Closes: #1053562)
+    - Added support for the VK_EXT_memory_priority, and
+      VK_EXT_pageable_device_memory extensions for Turing+ GPUs.
+    - Improved the performance of Minecraft Java Edition on RTX 3000
+      series GPUs.
+    - Fixed a memory leak in the NVIDIA GLX driver, as reported at:
+      https://forums.developer.nvidia.com/t/222697
+    - Added support for driving very high pixel clock mode timings such as 8K @
+      60Hz.  Please see the "MaxOneHardwareHead" X11 ModeValidation token in the
+      README for details.  (Closes: #1050809)
+    - Extended Dynamic Boost support on notebooks to include older Renoir
+      and Cezanne chipsets, in addition to Rembrandt and newer AMD chipsets.
+    - Fixed a bug that caused Vulkan X11 swapchain creation to fail on GPUs
+      without a display engine when the VK_KHR_present_id extension is used.
+    - Fixed console restore on legacy VGA consoles when using the NVIDIA
+      Open GPU Kernel Modules.
+    - Added nvoptix.bin to the driver package.  This data file is used by the
+      OptiX ray tracing engine library, libnvoptix.so.1.
+    - Removed libnvidia-compiler.so.VERSION from the driver package.  This
+      functionality is now provided by other driver libraries.
+    - Updated NV_CTRL_GPU_POWER_SOURCE NV-CONTROL API to report undersized
+      power source.
+    - Add support for version 4 of the linux-dmabuf wayland protocol.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Aug 2023 18:49:16 +0200
+
 nvidia-graphics-drivers (530.41.03-4) UNRELEASED; urgency=medium
 
   * Merge changes from 525.125.06-3.

@@ -1,4 +1,4 @@
-From 99b1601ad92797ead7544789a3c4244c76bc5dfe Mon Sep 17 00:00:00 2001
+From 3bd6c5c06408a02c190afffd00fe9237f0fe0da1 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 1 Nov 2023 10:30:50 +0100
 Subject: [PATCH] backport asm/page.h changes from 470.223.02
@@ -9,10 +9,10 @@ Subject: [PATCH] backport asm/page.h changes from 470.223.02
  2 files changed, 13 insertions(+)
 
 diff --git a/Kbuild b/Kbuild
-index de8e19d..4af63d5 100644
+index 9bf03fc..ae2a4ba 100644
 --- a/Kbuild
 +++ b/Kbuild
-@@ -273,6 +273,7 @@ NV_HEADER_PRESENCE_TESTS = \
+@@ -275,6 +275,7 @@ NV_HEADER_PRESENCE_TESTS = \
   asm/opal-api.h \
   sound/hdaudio.h \
   asm/pgtable_types.h \
@@ -21,7 +21,7 @@ index de8e19d..4af63d5 100644
   linux/dma-map-ops.h \
   rdma/peer_mem.h \
 diff --git a/conftest.sh b/conftest.sh
-index 2ad8a33..a740d2a 100755
+index b77e4e3..71ce78b 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -445,6 +445,9 @@ compile_test() {

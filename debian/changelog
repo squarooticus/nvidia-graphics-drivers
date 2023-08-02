@@ -23,6 +23,7 @@ nvidia-graphics-drivers (530.41.03-1) experimental; urgency=medium
       https://www.nvidia.com/en-us/drivers/firmware/quadro-sync-firmware-driver/
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * Update nv-readme.ids.
   * Updated Turkish (tr) debconf translations by Atila KOÇ.
 

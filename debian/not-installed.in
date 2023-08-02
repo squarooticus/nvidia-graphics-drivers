@@ -59,6 +59,7 @@ nvidia-cuda-mps-server
 # shipped in nvidia-powerd from src:nvidia-graphics-drivers-tesla
 nvidia-powerd
 nvidia-dbus.conf
+systemd/system/nvidia-powerd.service
 
 # not shipped
 

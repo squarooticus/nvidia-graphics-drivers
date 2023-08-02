@@ -1,4 +1,4 @@
-From 3b4681b74b719e28ac70427935d23631c182c3b2 Mon Sep 17 00:00:00 2001
+From 66418c19f76c9015e883c2ee47014986d169f3ea Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 16 Jun 2023 16:33:58 +0200
 Subject: [PATCH] backport drm_driver_has_dumb_destroy changes from 525.116.03
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_driver_has_dumb_destroy changes from 525.116.03
  5 files changed, 31 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 60bbd3d..fea44b9 100755
+index ef0a3e5..a4403db 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -5494,6 +5494,30 @@ compile_test() {
+@@ -5699,6 +5699,30 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS" "" "types"
          ;;
  
@@ -47,10 +47,10 @@ index 60bbd3d..fea44b9 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index cc6626a..8756890 100644
+index e48378f..1a3542a 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -921,7 +921,9 @@ static void nv_drm_update_drm_driver_features(void)
+@@ -1436,7 +1436,9 @@ static void nv_drm_update_drm_driver_features(void)
  
      nv_drm_driver.dumb_create      = nv_drm_dumb_create;
      nv_drm_driver.dumb_map_offset  = nv_drm_dumb_map_offset;
@@ -95,12 +95,12 @@ index 7ecbb94..ea218a0 100644
  struct drm_gem_object *nv_drm_gem_nvkms_prime_import(
      struct drm_device *dev,
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 0423346..a114b23 100644
+index d386793..1ef7e7b 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -125,3 +125,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_reserve_fences
- NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fences_arg
- NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
+@@ -130,3 +130,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_modeset_lock_all_end
+ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_lookup
+ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_put
  NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
 +NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_has_dumb_destroy
 -- 

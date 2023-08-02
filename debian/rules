@@ -371,14 +371,19 @@ debian/substvars:
 	echo 'nvidia:VariantDesc=$(variant_description)' > $@
 	echo 'nvidia:VariantDescShort=$(variant_description_short)' >> $@
 
-# Do not run dh_strip here.  The NVIDIA license says:
+# Do not run dh_strip here. The NVIDIA Driver License Agreement says:
 #
-#     2.1.2 Linux/FreeBSD Exception.  Notwithstanding the foregoing terms of
-#     Section 2.1.1, SOFTWARE designed exclusively for use on the Linux or
-#     FreeBSD operating systems, or other operating systems derived from the
-#     source code to these operating systems, may be copied and
-#     redistributed, provided that the binary files thereof are not modified
-#     in any way (except for unzipping of compressed files).
+#   1. License.
+#
+#   1.1 Subject to the terms of this Agreement, NVIDIA grants you a non-exclusive,
+#   revocable, non-transferable and non-sublicensable (except as expressly provided
+#   in this Agreement) license to:
+#   ...
+#   d. Distribute the SOFTWARE provided for use with operating systems distributed
+#   under the terms of an OSI-approved open source license as listed by the Open
+#   Source Initiative at http://opensource.org, provided that (i) the binary files
+#   thereof are not modified in any way (except for uncompressing of compressed
+#   files) and (ii) this Agreement is provided to each SOFTWARE recipient.
 #
 # Stripping the binary modules would constitute modifying the binary files
 # in a way other than unzipping of compressed files.

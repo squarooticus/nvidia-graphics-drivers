@@ -73,3 +73,5 @@ systemd/nvidia-sleep.sh
 nvidia-ngx-updater
 
 libEGL.so.#VERSION#
+
+libnvidia-pkcs11.so.#VERSION#

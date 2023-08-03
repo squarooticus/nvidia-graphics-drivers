@@ -696,6 +696,7 @@ Depends:
  nvidia-support,
  ${nvidia}-alternative (= ${binary:Version}),
  lib${nvidia}-ptxjitcompiler1 (= ${binary:Version}),
+ lib${nvidia}-pkcs11-openssl3 (= ${binary:Version}) [amd64],
  ${shlibs:Depends}, ${misc:Depends}
 Recommends:
  ${nvidia:kmod:binary},
@@ -750,6 +751,24 @@ Description: NVIDIA CUDA Driver Library${nvidia:VariantDesc}
  series, as well as the Tesla computing processors.
  .
  ${nvidia:kmod:Description}
+
+Package: libnvidia-pkcs11-openssl3
+Architecture: amd64
+Multi-Arch: same
+Depends:
+ ${nvidia}-alternative (= ${binary:Version}),
+ ${shlibs:Depends}, ${misc:Depends}
+Provides:
+ libnvidia-pkcs11-openssl3-${nvidia:Version},
+Conflicts:
+ libnvidia-pkcs11-openssl3-${nvidia:Version},
+Homepage: https://www.nvidia.com/CUDA
+Description: NVIDIA PKCS #11 Library (OpenSSL 3)${nvidia:VariantDesc}
+ The Compute Unified Device Architecture (CUDA) enables NVIDIA
+ graphics processing units (GPUs) to be used for massively parallel
+ general purpose computation.
+ .
+ This package contains the NVIDIA PKCS #11 library with OpenSSL 3 backend.
 
 Package: libcudadebugger1
 Architecture: amd64 arm64

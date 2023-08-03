@@ -28,6 +28,8 @@ nvidia-graphics-drivers (535.43.02-1) UNRELEASED; urgency=medium
   * Update d/copyright with new NVIDIA Driver License Agreement.
   * Refresh patches.
   * Drop the libnvidia-compiler package.
+  * libnvidia-pkcs11-openssl3: New package for the NVIDIA PKCS #11 library
+    with OpenSSL 3 backend.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Aug 2023 18:49:16 +0200
 

@@ -12,6 +12,7 @@ nvidia-graphics-drivers (535.54.03-1) UNRELEASED; urgency=medium
   * Merge changes from 525.147.05-6.
   * Apply pfn_valid patch from gentoo to fix kernel module build for
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.  (Closes: #1063363, #1062932)
+  * Update symbols files.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Aug 2023 10:30:18 +0200
 

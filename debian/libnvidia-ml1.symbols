@@ -9,8 +9,8 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlComputeInstanceDestroy@Base 450
  nvmlComputeInstanceGetInfo@Base 450
  nvmlComputeInstanceGetInfo_v2@Base 450.80.02
- nvmlDeviceCcuGetStreamState@Base 525
- nvmlDeviceCcuSetStreamState@Base 525
+#MISSING: 535.54# nvmlDeviceCcuGetStreamState@Base 525
+#MISSING: 535.54# nvmlDeviceCcuSetStreamState@Base 525
  nvmlDeviceClearAccountingPids@Base 319
  nvmlDeviceClearCpuAffinity@Base 340
  nvmlDeviceClearEccErrorCounts@Base 270
@@ -263,9 +263,11 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlGpmMetricsGet@Base 520
  nvmlGpmMigSampleGet@Base 525
  nvmlGpmQueryDeviceSupport@Base 520
+ nvmlGpmQueryIfStreamingEnabled@Base 535.54
  nvmlGpmSampleAlloc@Base 520
  nvmlGpmSampleFree@Base 520
  nvmlGpmSampleGet@Base 520
+ nvmlGpmSetStreamingEnabled@Base 535.54
  nvmlGpuInstanceCreateComputeInstance@Base 450
  nvmlGpuInstanceCreateComputeInstanceWithPlacement@Base 525
  nvmlGpuInstanceDestroy@Base 450

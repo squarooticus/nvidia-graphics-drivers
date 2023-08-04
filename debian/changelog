@@ -1,3 +1,14 @@
+nvidia-graphics-drivers (535.54.03-1) UNRELEASED; urgency=medium
+
+  * New upstream long term support branch release 535.54.03 (2023-06-14).
+    - Fixed a bug that caused modesets to fail in some Wayland configurations.
+    - Fixed a bug that caused head-mounted displays (HMDs) to display black
+      after a modeset.
+    - Fixed a bug that could cause image corruption when unbinding Vulkan
+      sparse textures.
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Aug 2023 10:30:18 +0200
+
 nvidia-graphics-drivers (535.43.02-1) experimental; urgency=medium
 
   * New upstream beta 535.43.02 (2023-05-30).  (Closes: #1053562)

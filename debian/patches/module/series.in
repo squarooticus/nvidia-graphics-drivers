@@ -8,7 +8,6 @@ bashisms.patch
 0030-backport-get_user_pages-vmas-parameter-changes-from-.patch
 0031-backport-asm-page.h-changes-from-470.223.02.patch
 0032-backport-drm_gem_prime_handle_to_fd-changes-from-470.patch
-0033-backport-nv_drm_gem_res_obj-changes-from-535.54.03.patch
 ppc64el.patch
 
 # build system updates

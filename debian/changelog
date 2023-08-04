@@ -16,6 +16,9 @@ nvidia-graphics-drivers (535.86.05-1) UNRELEASED; urgency=medium
     - Fixed a video memory leak observed when turning off a connected
       monitor while using certain Wayland compositors.
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Aug 2023 18:23:13 +0200
 
 nvidia-graphics-drivers (535.54.03-1) experimental; urgency=medium

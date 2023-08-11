@@ -2,6 +2,7 @@ cc_version_check-gcc5.patch
 bashisms.patch
 
 # kernel support
+do-div-cast.patch
 0001-backport-error-on-unknown-conftests.patch
 #HAS_UVM#0002-backport-error-on-unknown-conftests-uvm-part.patch
 0003-backport-set_-memory-pages-_array-_uc-changes-from-5.patch
@@ -12,7 +13,10 @@ bashisms.patch
 0023-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
 #HAS_UVM#0024-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
 0025-backport-drm_driver_has_dumb_destroy-changes-from-52.patch
-do-div-cast.patch
+0044-backport-get_user_pages-changes-from-418.30.patch
+0045-backport-get_user_pages-changes-from-520.56.06.patch
+0046-backport-get_user_pages-pin_user_pages-changes-from-.patch
+0047-backport-get_user_pages-vmas-parameter-changes-from-.patch
 
 # build system updates
 fragile-ARCH.patch

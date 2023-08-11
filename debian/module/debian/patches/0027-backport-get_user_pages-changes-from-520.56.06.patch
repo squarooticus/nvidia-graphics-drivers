@@ -1,18 +1,18 @@
-From 6c222dc058e39b644ab30e50fbca9299c0cb19a1 Mon Sep 17 00:00:00 2001
+From 61ec8b4970f46a4f43939f524484f7b33e7f00a1 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 18:45:02 +0200
-Subject: [PATCH 2/4] backport get_user_pages changes from 520.56.06
+Subject: [PATCH 2/5] backport get_user_pages changes from 520.56.06
 
 ---
- nv-linux.h  | 100 +++++++++++++++-----------------------
- conftest.sh | 137 ++++++++++++++++++++++++++++++++++++++++------------
- 2 files changed, 144 insertions(+), 93 deletions(-)
+ common/inc/nv-mm.h |  99 +++++++++++++--------------------
+ conftest.sh        | 136 +++++++++++++++++++++++++++++++++++----------
+ 2 files changed, 144 insertions(+), 91 deletions(-)
 
-diff --git a/nv-linux.h b/nv-linux.h
-index 1fd4fd9..2aa2e77 100644
---- a/nv-linux.h
-+++ b/nv-linux.h
-@@ -2126,56 +2126,37 @@ static inline NvU64 nv_node_end_pfn(int nid)
+diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
+index 70b3814..c008d46 100644
+--- a/common/inc/nv-mm.h
++++ b/common/inc/nv-mm.h
+@@ -47,55 +47,37 @@ typedef int vm_fault_t;
   *
   */
  
@@ -37,12 +37,30 @@ index 1fd4fd9..2aa2e77 100644
 -                flags |= FOLL_WRITE;
 -            if (force)
 -                flags |= FOLL_FORCE;
+-
+-            return get_user_pages(current, current->mm, start, nr_pages, flags,
+-                                  pages, vmas);
+-        }
+-    #endif
 +#if defined(NV_GET_USER_PAGES_HAS_ARGS_WRITE_FORCE)
 +    #define NV_GET_USER_PAGES get_user_pages
 +#elif defined(NV_GET_USER_PAGES_HAS_ARGS_TSK_WRITE_FORCE)
 +    #define NV_GET_USER_PAGES(start, nr_pages, write, force, pages, vmas) \
 +        get_user_pages(current, current->mm, start, nr_pages, write, force, pages, vmas)
-+#else
+ #else
+-    #if defined(NV_GET_USER_PAGES_HAS_WRITE_AND_FORCE_ARGS)
+-        #define NV_GET_USER_PAGES get_user_pages
+-    #else
+-        #include <linux/mm.h>
+-
+-        static inline long NV_GET_USER_PAGES(unsigned long start,
+-                                             unsigned long nr_pages,
+-                                             int write,
+-                                             int force,
+-                                             struct page **pages,
+-                                             struct vm_area_struct **vmas)
+-        {
+-            unsigned int flags = 0;
 +    #include <linux/mm.h>
 +    #include <linux/sched.h>
 +
@@ -55,40 +73,21 @@ index 1fd4fd9..2aa2e77 100644
 +    {
 +        unsigned int flags = 0;
  
--            return get_user_pages(current, current->mm, start, nr_pages, flags,
--                                  pages, vmas);
--        }
+-            if (write)
+-                flags |= FOLL_WRITE;
+-            if (force)
+-                flags |= FOLL_FORCE;
 +        if (write)
 +            flags |= FOLL_WRITE;
 +        if (force)
 +            flags |= FOLL_FORCE;
  
--    #endif
--#else
--    #if defined(NV_GET_USER_PAGES_HAS_WRITE_AND_FORCE_ARGS)
--        #define NV_GET_USER_PAGES get_user_pages
+-            return get_user_pages(start, nr_pages, flags, pages, vmas);
+-        }
 +    #if defined(NV_GET_USER_PAGES_HAS_ARGS_TSK_FLAGS)
 +        return get_user_pages(current, current->mm, start, nr_pages, flags,
 +                              pages, vmas);
-     #else
--        #include <linux/mm.h>
--
--        static inline long NV_GET_USER_PAGES(unsigned long start,
--                                             unsigned long nr_pages,
--                                             int write,
--                                             int force,
--                                             struct page **pages,
--                                             struct vm_area_struct **vmas)
--        {
--            unsigned int flags = 0;
--
--            if (write)
--                flags |= FOLL_WRITE;
--            if (force)
--                flags |= FOLL_FORCE;
--
--            return get_user_pages(start, nr_pages, flags, pages, vmas);
--        }
++    #else
 +        // remaining defination(NV_GET_USER_PAGES_HAS_ARGS_FLAGS)
 +        return get_user_pages(start, nr_pages, flags, pages, vmas);
      #endif
@@ -96,16 +95,16 @@ index 1fd4fd9..2aa2e77 100644
  #endif
  
  /*
-@@ -2211,7 +2192,7 @@ static inline NvU64 nv_node_end_pfn(int nid)
+@@ -131,7 +113,7 @@ typedef int vm_fault_t;
   */
  
  #if defined(NV_GET_USER_PAGES_REMOTE_PRESENT)
--    #if defined (NV_GET_USER_PAGES_REMOTE_HAS_WRITE_AND_FORCE_ARGS)
+-    #if defined(NV_GET_USER_PAGES_REMOTE_HAS_WRITE_AND_FORCE_ARGS)
 +    #if defined(NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_WRITE_FORCE)
-         #define NV_GET_USER_PAGES_REMOTE get_user_pages_remote
+         #define NV_GET_USER_PAGES_REMOTE    get_user_pages_remote
      #else
          static inline long NV_GET_USER_PAGES_REMOTE(struct task_struct *tsk,
-@@ -2230,26 +2211,21 @@ static inline NvU64 nv_node_end_pfn(int nid)
+@@ -150,26 +132,21 @@ typedef int vm_fault_t;
              if (force)
                  flags |= FOLL_FORCE;
  
@@ -143,12 +142,12 @@ index 1fd4fd9..2aa2e77 100644
      #else
          #include <linux/mm.h>
 diff --git a/conftest.sh b/conftest.sh
-index b98c048..4d7fe13 100755
+index 121bf87..264ca33 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -1877,10 +1877,41 @@ compile_test() {
+@@ -3009,10 +3009,41 @@ compile_test() {
              # linux-4.4.168 cherry-picked commit 768ae309a961 without
-             # c12d2da56d0e which is covered in Conftest #3
+             # c12d2da56d0e which is covered in Conftest #3.
              #
 +
 +            #
@@ -189,7 +188,7 @@ index b98c048..4d7fe13 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              long get_user_pages(unsigned long start,
-@@ -1895,8 +1926,7 @@ compile_test() {
+@@ -3027,8 +3058,7 @@ compile_test() {
              $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
              rm -f conftest$$.c
              if [ -f conftest$$.o ]; then
@@ -199,7 +198,7 @@ index b98c048..4d7fe13 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -1921,8 +1951,7 @@ compile_test() {
+@@ -3053,8 +3083,7 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -209,7 +208,7 @@ index b98c048..4d7fe13 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -1949,15 +1978,12 @@ compile_test() {
+@@ -3081,14 +3110,12 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -220,14 +219,13 @@ index b98c048..4d7fe13 100755
                  return
              fi
  
--            
 -            echo "#define NV_GET_USER_PAGES_HAS_WRITE_AND_FORCE_ARGS" | append_conftest "functions"
 -            echo "#define NV_GET_USER_PAGES_HAS_TASK_STRUCT" | append_conftest "functions"
 +            set_get_user_pages_defines "NV_GET_USER_PAGES_HAS_ARGS_TSK_WRITE_FORCE"
  
              return
          ;;
-@@ -1984,10 +2010,47 @@ compile_test() {
+@@ -3115,10 +3142,47 @@ compile_test() {
              # commit 64019a2e467a ("mm/gup: remove task_struct pointer for
              # all gup code") in v5.9-rc1 (2020-08-11).
              #
@@ -276,7 +274,7 @@ index b98c048..4d7fe13 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              void conftest_get_user_pages_remote(void) {
-@@ -1998,10 +2061,7 @@ compile_test() {
+@@ -3129,10 +3193,7 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -288,7 +286,7 @@ index b98c048..4d7fe13 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -2011,7 +2071,6 @@ compile_test() {
+@@ -3142,7 +3203,6 @@ compile_test() {
              # force arguments. Return if these arguments are present
              # Fall through to conftest #3 if these args are absent.
              #
@@ -296,7 +294,7 @@ index b98c048..4d7fe13 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              long get_user_pages_remote(struct task_struct *tsk,
-@@ -2029,18 +2088,40 @@ compile_test() {
+@@ -3160,18 +3220,40 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -343,7 +341,7 @@ index b98c048..4d7fe13 100755
              # if these args are absent.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -2060,14 +2141,13 @@ compile_test() {
+@@ -3191,14 +3273,13 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -360,7 +358,7 @@ index b98c048..4d7fe13 100755
              # tsk argument.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -2086,13 +2166,8 @@ compile_test() {
+@@ -3217,13 +3298,8 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then

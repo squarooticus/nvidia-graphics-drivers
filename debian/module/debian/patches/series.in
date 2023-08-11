@@ -16,6 +16,7 @@ do-div-cast.patch
 0026-backport-get_user_pages-changes-from-418.30.patch
 0027-backport-get_user_pages-changes-from-520.56.06.patch
 0028-backport-get_user_pages-pin_user_pages-changes-from-.patch
+#HAS_UVM#0029-backport-get_user_pages-pin_user_pages-changes-from-.patch
 0030-backport-get_user_pages-vmas-parameter-changes-from-.patch
 
 # build system updates

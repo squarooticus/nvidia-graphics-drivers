@@ -4,10 +4,23 @@ Date: Fri, 11 Aug 2023 10:27:27 +0200
 Subject: [PATCH 1/4] backport get_user_pages changes from 418.30
 
 ---
- conftest.sh | 46 +++++++++++++++++++++++++++-------------------
  nv-linux.h  |  2 +-
+ conftest.sh | 46 +++++++++++++++++++++++++++-------------------
  2 files changed, 28 insertions(+), 20 deletions(-)
 
+diff --git a/nv-linux.h b/nv-linux.h
+index 1c95b1e..1fd4fd9 100644
+--- a/nv-linux.h
++++ b/nv-linux.h
+@@ -2250,7 +2250,7 @@ static inline NvU64 nv_node_end_pfn(int nid)
+     #endif
+ #else
+     #if defined(NV_GET_USER_PAGES_HAS_WRITE_AND_FORCE_ARGS)
+-        #define NV_GET_USER_PAGES_REMOTE    NV_GET_USER_PAGES
++        #define NV_GET_USER_PAGES_REMOTE    get_user_pages
+     #else
+         #include <linux/mm.h>
+         #include <linux/sched.h>
 diff --git a/conftest.sh b/conftest.sh
 index 57d5c82..b98c048 100755
 --- a/conftest.sh
@@ -119,19 +132,6 @@ index 57d5c82..b98c048 100755
              echo "#define NV_GET_USER_PAGES_REMOTE_PRESENT" | append_conftest "functions"
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
-diff --git a/nv-linux.h b/nv-linux.h
-index 1c95b1e..1fd4fd9 100644
---- a/nv-linux.h
-+++ b/nv-linux.h
-@@ -2250,7 +2250,7 @@ static inline NvU64 nv_node_end_pfn(int nid)
-     #endif
- #else
-     #if defined(NV_GET_USER_PAGES_HAS_WRITE_AND_FORCE_ARGS)
--        #define NV_GET_USER_PAGES_REMOTE    NV_GET_USER_PAGES
-+        #define NV_GET_USER_PAGES_REMOTE    get_user_pages
-     #else
-         #include <linux/mm.h>
-         #include <linux/sched.h>
 -- 
 2.20.1
 

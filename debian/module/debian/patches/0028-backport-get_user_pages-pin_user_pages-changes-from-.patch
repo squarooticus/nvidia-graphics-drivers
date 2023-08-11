@@ -5,131 +5,12 @@ Subject: [PATCH 3/4] backport get_user_pages/pin_user_pages changes from
  525.53
 
 ---
- Makefile    |   2 +
- conftest.sh |  95 +++++++++++++++++++++++++++++++
  nv-linux.h  | 159 ++++++++++++++++++++++++++++------------------------
+ conftest.sh |  95 +++++++++++++++++++++++++++++++
+ Makefile    |   2 +
  os-mlock.c  |  10 ++--
  4 files changed, 189 insertions(+), 77 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index a17d609..6707dac 100644
---- a/Makefile
-+++ b/Makefile
-@@ -143,6 +143,8 @@ COMPILE_TESTS = \
- 	node_end_pfn \
- 	get_user_pages \
- 	get_user_pages_remote \
-+	pin_user_pages \
-+	pin_user_pages_remote \
- 	register_cpu_notifier \
- 	cpuhp_setup_state \
- 	vm_fault_present \
-diff --git a/conftest.sh b/conftest.sh
-index 4d7fe13..6227ffd 100755
---- a/conftest.sh
-+++ b/conftest.sh
-@@ -2171,6 +2171,101 @@ compile_test() {
-             fi
-         ;;
- 
-+        pin_user_pages)
-+            #
-+            # Determine if the function pin_user_pages() is present.
-+            # Presence of pin_user_pages() also implies the presence of
-+            # unpin-user_page(). Both were added in the v5.6-rc1
-+            #
-+            # pin_user_pages() was added by commit eddb1c228f7951d399240
-+            # ("mm/gup: introduce pin_user_pages*() and FOLL_PIN") in
-+            # v5.6-rc1 (2020-01-30)
-+
-+            # conftest #1: check if pin_user_pages() is available
-+            # return if not available.
-+            #
-+            CODE="
-+            #include <linux/mm.h>
-+            void conftest_pin_user_pages(void) {
-+                pin_user_pages();
-+            }"
-+
-+            compile_check_conftest "$CODE" "NV_PIN_USER_PAGES_PRESENT" "" "functions"
-+        ;;
-+
-+        pin_user_pages_remote)
-+            # Determine if the function pin_user_pages_remote() is present
-+            #
-+            # pin_user_pages_remote() was added by commit eddb1c228f7951d399240
-+            # ("mm/gup: introduce pin_user_pages*() and FOLL_PIN")
-+            # in v5.6 (2020-01-30)
-+
-+            # pin_user_pages_remote() removed 'tsk' parameter by
-+            # commit 64019a2e467a ("mm/gup: remove task_struct pointer for
-+            # all gup code") in v5.9-rc1 (2020-08-11).
-+
-+            #
-+            # This function sets the NV_PIN_USER_PAGES_REMOTE_* macros as per
-+            # the below passing conftest's
-+            #
-+            set_pin_user_pages_remote_defines () {
-+                if [ "$1" = "" ]; then
-+                    echo "#undef NV_PIN_USER_PAGES_REMOTE_PRESENT" | append_conftest "functions"
-+                else
-+                    echo "#define NV_PIN_USER_PAGES_REMOTE_PRESENT" | append_conftest "functions"
-+                fi
-+
-+                if [ "$1" = "NV_PIN_USER_PAGES_REMOTE_HAS_ARGS_TSK" ]; then
-+                    echo "#define NV_PIN_USER_PAGES_REMOTE_HAS_ARGS_TSK" | append_conftest "functions"
-+                else
-+                    echo "#undef NV_PIN_USER_PAGES_REMOTE_HAS_ARGS_TSK" | append_conftest "functions"
-+                fi
-+            }
-+
-+            # conftest #1: check if pin_user_pages_remote() is available
-+            # return if not available.
-+            # Fall through to conftest #2 if it is present
-+            #
-+            echo "$CONFTEST_PREAMBLE
-+            #include <linux/mm.h>
-+            void conftest_pin_user_pages_remote(void) {
-+                pin_user_pages_remote();
-+            }" > conftest$$.c
-+
-+            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
-+            rm -f conftest$$.c
-+
-+            if [ -f conftest$$.o ]; then
-+                set_pin_user_pages_remote_defines ""
-+                rm -f conftest$$.o
-+                return
-+            fi
-+
-+            # conftest #2: Check if pin_user_pages_remote() has tsk argument
-+            echo "$CONFTEST_PREAMBLE
-+            #include <linux/mm.h>
-+            long pin_user_pages_remote(struct task_struct *tsk,
-+                                       struct mm_struct *mm,
-+                                       unsigned long start,
-+                                       unsigned long nr_pages,
-+                                       unsigned int gup_flags,
-+                                       struct page **pages,
-+                                       struct vm_area_struct **vmas,
-+                                       int *locked) {
-+                return 0;
-+            }" > conftest$$.c
-+
-+            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
-+            rm -f conftest$$.c
-+
-+            if [ -f conftest$$.o ]; then
-+                set_pin_user_pages_remote_defines "NV_PIN_USER_PAGES_REMOTE_HAS_ARGS_TSK"
-+                rm -f conftest$$.o
-+            else
-+                set_pin_user_pages_remote_defines "NV_PIN_USER_PAGES_REMOTE_PRESENT"
-+            fi
-+        ;;
-+
-         drm_driver_unload_has_int_return_type)
-             #
-             # Determine if drm_driver::unload() returns integer value, which has
 diff --git a/nv-linux.h b/nv-linux.h
 index 2aa2e77..4c62962 100644
 --- a/nv-linux.h
@@ -346,6 +227,125 @@ index 2aa2e77..4c62962 100644
  
  #if defined(NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS)
  static inline void nv_vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
+diff --git a/conftest.sh b/conftest.sh
+index 4d7fe13..6227ffd 100755
+--- a/conftest.sh
++++ b/conftest.sh
+@@ -2171,6 +2171,101 @@ compile_test() {
+             fi
+         ;;
+ 
++        pin_user_pages)
++            #
++            # Determine if the function pin_user_pages() is present.
++            # Presence of pin_user_pages() also implies the presence of
++            # unpin-user_page(). Both were added in the v5.6-rc1
++            #
++            # pin_user_pages() was added by commit eddb1c228f7951d399240
++            # ("mm/gup: introduce pin_user_pages*() and FOLL_PIN") in
++            # v5.6-rc1 (2020-01-30)
++
++            # conftest #1: check if pin_user_pages() is available
++            # return if not available.
++            #
++            CODE="
++            #include <linux/mm.h>
++            void conftest_pin_user_pages(void) {
++                pin_user_pages();
++            }"
++
++            compile_check_conftest "$CODE" "NV_PIN_USER_PAGES_PRESENT" "" "functions"
++        ;;
++
++        pin_user_pages_remote)
++            # Determine if the function pin_user_pages_remote() is present
++            #
++            # pin_user_pages_remote() was added by commit eddb1c228f7951d399240
++            # ("mm/gup: introduce pin_user_pages*() and FOLL_PIN")
++            # in v5.6 (2020-01-30)
++
++            # pin_user_pages_remote() removed 'tsk' parameter by
++            # commit 64019a2e467a ("mm/gup: remove task_struct pointer for
++            # all gup code") in v5.9-rc1 (2020-08-11).
++
++            #
++            # This function sets the NV_PIN_USER_PAGES_REMOTE_* macros as per
++            # the below passing conftest's
++            #
++            set_pin_user_pages_remote_defines () {
++                if [ "$1" = "" ]; then
++                    echo "#undef NV_PIN_USER_PAGES_REMOTE_PRESENT" | append_conftest "functions"
++                else
++                    echo "#define NV_PIN_USER_PAGES_REMOTE_PRESENT" | append_conftest "functions"
++                fi
++
++                if [ "$1" = "NV_PIN_USER_PAGES_REMOTE_HAS_ARGS_TSK" ]; then
++                    echo "#define NV_PIN_USER_PAGES_REMOTE_HAS_ARGS_TSK" | append_conftest "functions"
++                else
++                    echo "#undef NV_PIN_USER_PAGES_REMOTE_HAS_ARGS_TSK" | append_conftest "functions"
++                fi
++            }
++
++            # conftest #1: check if pin_user_pages_remote() is available
++            # return if not available.
++            # Fall through to conftest #2 if it is present
++            #
++            echo "$CONFTEST_PREAMBLE
++            #include <linux/mm.h>
++            void conftest_pin_user_pages_remote(void) {
++                pin_user_pages_remote();
++            }" > conftest$$.c
++
++            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
++            rm -f conftest$$.c
++
++            if [ -f conftest$$.o ]; then
++                set_pin_user_pages_remote_defines ""
++                rm -f conftest$$.o
++                return
++            fi
++
++            # conftest #2: Check if pin_user_pages_remote() has tsk argument
++            echo "$CONFTEST_PREAMBLE
++            #include <linux/mm.h>
++            long pin_user_pages_remote(struct task_struct *tsk,
++                                       struct mm_struct *mm,
++                                       unsigned long start,
++                                       unsigned long nr_pages,
++                                       unsigned int gup_flags,
++                                       struct page **pages,
++                                       struct vm_area_struct **vmas,
++                                       int *locked) {
++                return 0;
++            }" > conftest$$.c
++
++            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
++            rm -f conftest$$.c
++
++            if [ -f conftest$$.o ]; then
++                set_pin_user_pages_remote_defines "NV_PIN_USER_PAGES_REMOTE_HAS_ARGS_TSK"
++                rm -f conftest$$.o
++            else
++                set_pin_user_pages_remote_defines "NV_PIN_USER_PAGES_REMOTE_PRESENT"
++            fi
++        ;;
++
+         drm_driver_unload_has_int_return_type)
+             #
+             # Determine if drm_driver::unload() returns integer value, which has
+diff --git a/Makefile b/Makefile
+index a17d609..6707dac 100644
+--- a/Makefile
++++ b/Makefile
+@@ -143,6 +143,8 @@ COMPILE_TESTS = \
+ 	node_end_pfn \
+ 	get_user_pages \
+ 	get_user_pages_remote \
++	pin_user_pages \
++	pin_user_pages_remote \
+ 	register_cpu_notifier \
+ 	cpuhp_setup_state \
+ 	vm_fault_present \
 diff --git a/os-mlock.c b/os-mlock.c
 index 8a1fa2f..87d7cf6 100644
 --- a/os-mlock.c

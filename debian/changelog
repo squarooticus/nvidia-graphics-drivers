@@ -60,14 +60,14 @@ nvidia-graphics-drivers (390.157-5) UNRELEASED; urgency=medium
   * Backport get_user_pages changes from 418.30, 520.56.06, 525.53 and
     535.86.05 to fix kernel module build for Linux 6.5.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 11 Aug 2023 13:39:36 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 14 Aug 2023 02:18:45 +0200
 
 nvidia-graphics-drivers (390.157-4) UNRELEASED; urgency=medium
 
   * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
     module build for Linux 6.4.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 16 Jun 2023 17:29:02 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Aug 2023 17:08:58 +0200
 
 nvidia-graphics-drivers (390.157-3) UNRELEASED; urgency=medium
 

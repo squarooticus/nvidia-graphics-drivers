@@ -6,6 +6,10 @@ bashisms.patch
 0021-backport-acpi_op_remove-changes-from-470.182.03.patch
 0023-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
 0024-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
+0027-backport-get_user_pages-changes-from-520.56.06.patch
+0028-backport-get_user_pages-pin_user_pages-changes-from-.patch
+0029-backport-get_user_pages-pin_user_pages-changes-from-.patch
+0030-backport-get_user_pages-vmas-parameter-changes-from-.patch
 ppc64el.patch
 
 # build system updates

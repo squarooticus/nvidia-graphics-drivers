@@ -1,0 +1,49 @@
+From 1aff6b84eec430e44459f227bb47768101876dd8 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Sun, 6 Aug 2023 17:18:58 +0200
+Subject: [PATCH 4/5] backport get_user_pages/pin_user_pages changes from
+ 525.53 (uvm part)
+
+---
+ nvidia-uvm/nvidia-uvm.Kbuild | 2 ++
+ nvidia-uvm/uvm8_tools.c      | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/nvidia-uvm/nvidia-uvm.Kbuild b/nvidia-uvm/nvidia-uvm.Kbuild
+index 370c6d8..20f3742 100644
+--- a/nvidia-uvm/nvidia-uvm.Kbuild
++++ b/nvidia-uvm/nvidia-uvm.Kbuild
+@@ -126,6 +126,8 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += backing_dev_info
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mm_context_t
+ NV_CONFTEST_TYPE_COMPILE_TESTS += get_user_pages_remote
+ NV_CONFTEST_TYPE_COMPILE_TESTS += get_user_pages
++NV_CONFTEST_TYPE_COMPILE_TESTS += pin_user_pages_remote
++NV_CONFTEST_TYPE_COMPILE_TESTS += pin_user_pages
+ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_has_address
+ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_fault_present
+ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_ops_fault_removed_vma_arg
+diff --git a/nvidia-uvm/uvm8_tools.c b/nvidia-uvm/uvm8_tools.c
+index 1dc7c97..9a057a2 100644
+--- a/nvidia-uvm/uvm8_tools.c
++++ b/nvidia-uvm/uvm8_tools.c
+@@ -207,7 +207,7 @@ static void uvm_put_user_pages_dirty(struct page **pages, NvU64 page_count)
+ 
+     for (i = 0; i < page_count; i++) {
+         set_page_dirty(pages[i]);
+-        put_page(pages[i]);
++        NV_UNPIN_USER_PAGE(pages[i]);
+     }
+ }
+ 
+@@ -251,7 +251,7 @@ static NV_STATUS map_user_pages(NvU64 user_va, NvU64 size, void **addr, struct p
+     }
+ 
+     nv_mmap_read_lock(current->mm);
+-    ret = NV_GET_USER_PAGES(user_va, num_pages, 1, 0, *pages, vmas);
++    ret = NV_PIN_USER_PAGES(user_va, num_pages, FOLL_WRITE, *pages, vmas);
+     nv_mmap_read_unlock(current->mm);
+     if (ret != num_pages) {
+         status = NV_ERR_INVALID_ARGUMENT;
+-- 
+2.20.1
+

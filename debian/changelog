@@ -24,6 +24,8 @@ nvidia-graphics-drivers (418.226.00-12+git4deb10buster) UNRELEASED; urgency=medi
 
 nvidia-graphics-drivers (418.226.00-12) UNRELEASED; urgency=medium
 
+  * Backport get_user_pages changes from 520.56.06, 525.53 and 535.86.05 to
+    fix kernel module build for Linux 6.5.
   * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
     module build for Linux 6.4.
 

@@ -1,7 +1,7 @@
-From 61ec8b4970f46a4f43939f524484f7b33e7f00a1 Mon Sep 17 00:00:00 2001
+From 87181811412838543526f189be7c4ae8758a6ae7 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 18:45:02 +0200
-Subject: [PATCH 2/5] backport get_user_pages changes from 520.56.06
+Subject: [PATCH 1/4] backport get_user_pages changes from 520.56.06
 
 ---
  common/inc/nv-mm.h |  99 +++++++++++++--------------------
@@ -142,10 +142,10 @@ index 70b3814..c008d46 100644
      #else
          #include <linux/mm.h>
 diff --git a/conftest.sh b/conftest.sh
-index 121bf87..264ca33 100755
+index 8c0cfae..887fc0e 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -3009,10 +3009,41 @@ compile_test() {
+@@ -2587,10 +2587,41 @@ compile_test() {
              # linux-4.4.168 cherry-picked commit 768ae309a961 without
              # c12d2da56d0e which is covered in Conftest #3.
              #
@@ -188,7 +188,7 @@ index 121bf87..264ca33 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              long get_user_pages(unsigned long start,
-@@ -3027,8 +3058,7 @@ compile_test() {
+@@ -2605,8 +2636,7 @@ compile_test() {
              $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
              rm -f conftest$$.c
              if [ -f conftest$$.o ]; then
@@ -198,7 +198,7 @@ index 121bf87..264ca33 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -3053,8 +3083,7 @@ compile_test() {
+@@ -2631,8 +2661,7 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -208,7 +208,7 @@ index 121bf87..264ca33 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -3081,14 +3110,12 @@ compile_test() {
+@@ -2659,14 +2688,12 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -225,7 +225,7 @@ index 121bf87..264ca33 100755
  
              return
          ;;
-@@ -3115,10 +3142,47 @@ compile_test() {
+@@ -2693,10 +2720,47 @@ compile_test() {
              # commit 64019a2e467a ("mm/gup: remove task_struct pointer for
              # all gup code") in v5.9-rc1 (2020-08-11).
              #
@@ -274,7 +274,7 @@ index 121bf87..264ca33 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              void conftest_get_user_pages_remote(void) {
-@@ -3129,10 +3193,7 @@ compile_test() {
+@@ -2707,10 +2771,7 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -286,7 +286,7 @@ index 121bf87..264ca33 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -3142,7 +3203,6 @@ compile_test() {
+@@ -2720,7 +2781,6 @@ compile_test() {
              # force arguments. Return if these arguments are present
              # Fall through to conftest #3 if these args are absent.
              #
@@ -294,7 +294,7 @@ index 121bf87..264ca33 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              long get_user_pages_remote(struct task_struct *tsk,
-@@ -3160,18 +3220,40 @@ compile_test() {
+@@ -2738,18 +2798,40 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -341,7 +341,7 @@ index 121bf87..264ca33 100755
              # if these args are absent.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -3191,14 +3273,13 @@ compile_test() {
+@@ -2769,14 +2851,13 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -358,7 +358,7 @@ index 121bf87..264ca33 100755
              # tsk argument.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -3217,13 +3298,8 @@ compile_test() {
+@@ -2795,13 +2876,8 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then

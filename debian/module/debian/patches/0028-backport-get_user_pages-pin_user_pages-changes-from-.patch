@@ -1,4 +1,4 @@
-From 0897ecea855d9a060e28a7be794ebacd4ce07581 Mon Sep 17 00:00:00 2001
+From 58bf72e9d1292b28924a4271b0fc8a3bd8cc4630 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 17:18:58 +0200
 Subject: [PATCH 2/4] backport get_user_pages/pin_user_pages changes from
@@ -231,10 +231,10 @@ index a93079b..8e033cd 100644
  /*
   * The .virtual_address field was effectively renamed to .address, by these
 diff --git a/conftest.sh b/conftest.sh
-index ad4dd50..762377f 100755
+index bee077f..df45f06 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2766,6 +2766,101 @@ compile_test() {
+@@ -2863,6 +2863,101 @@ compile_test() {
              fi
          ;;
  
@@ -337,10 +337,10 @@ index ad4dd50..762377f 100755
              #
              # Determine if the function usleep_range() is present.
 diff --git a/nvidia-drm/nvidia-drm-linux.c b/nvidia-drm/nvidia-drm-linux.c
-index 8f2ad0b..ee07283 100644
+index f8fcde4..79d5f5c 100644
 --- a/nvidia-drm/nvidia-drm-linux.c
 +++ b/nvidia-drm/nvidia-drm-linux.c
-@@ -103,8 +103,6 @@ int nv_drm_lock_user_pages(unsigned long address,
+@@ -93,8 +93,6 @@ int nv_drm_lock_user_pages(unsigned long address,
  {
      struct mm_struct *mm = current->mm;
      struct page **user_pages;
@@ -349,7 +349,7 @@ index 8f2ad0b..ee07283 100644
      int pages_pinned;
  
      user_pages = nv_drm_calloc(pages_count, sizeof(*user_pages));
-@@ -115,7 +113,7 @@ int nv_drm_lock_user_pages(unsigned long address,
+@@ -105,7 +103,7 @@ int nv_drm_lock_user_pages(unsigned long address,
  
      nv_mmap_read_lock(mm);
  
@@ -358,7 +358,7 @@ index 8f2ad0b..ee07283 100644
                                       user_pages, NULL);
      nv_mmap_read_unlock(mm);
  
-@@ -133,7 +131,7 @@ failed:
+@@ -123,7 +121,7 @@ failed:
          int i;
  
          for (i = 0; i < pages_pinned; i++) {
@@ -367,7 +367,7 @@ index 8f2ad0b..ee07283 100644
          }
      }
  
-@@ -148,8 +146,7 @@ void nv_drm_unlock_user_pages(unsigned long  pages_count, struct page **pages)
+@@ -138,8 +136,7 @@ void nv_drm_unlock_user_pages(unsigned long  pages_count, struct page **pages)
  
      for (i = 0; i < pages_count; i++) {
          set_page_dirty_lock(pages[i]);
@@ -378,10 +378,10 @@ index 8f2ad0b..ee07283 100644
  
      nv_drm_free(pages);
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index a5e2eed..8b52b1b 100644
+index ed74f4f..9fa711b 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -58,6 +58,8 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_dev_unref
+@@ -59,6 +59,8 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_dev_unref
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_reinit_primary_mode_group
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += get_user_pages_remote
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += get_user_pages
@@ -391,10 +391,10 @@ index a5e2eed..8b52b1b 100644
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_atomic_state_ref_counting
  NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_driver_has_gem_prime_res_obj
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 1b98d85..c2e9f01 100644
+index 91f1516..d57cae7 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -206,6 +206,8 @@ NV_CONFTEST_GENERIC_COMPILE_TESTS += nvidia_grid_build
+@@ -222,6 +222,8 @@ NV_CONFTEST_GENERIC_COMPILE_TESTS += nvidia_grid_build
  NV_CONFTEST_GENERIC_COMPILE_TESTS += nvidia_grid_csp_build
  NV_CONFTEST_GENERIC_COMPILE_TESTS += get_user_pages
  NV_CONFTEST_GENERIC_COMPILE_TESTS += get_user_pages_remote
@@ -404,19 +404,19 @@ index 1b98d85..c2e9f01 100644
  NV_CONFTEST_GENERIC_COMPILE_TESTS += vm_fault_t
  NV_CONFTEST_GENERIC_COMPILE_TESTS += pci_class_multimedia_hd_audio
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index fcedb9a..99d28e0 100644
+index a23995c..cb80121 100644
 --- a/nvidia/os-mlock.c
 +++ b/nvidia/os-mlock.c
-@@ -102,7 +102,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
+@@ -210,7 +210,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
      struct mm_struct *mm = current->mm;
      struct page **user_pages;
      NvU64 i, pinned;
--    NvBool write = 1, force = 0;
-+    unsigned int gup_flags = 1 ? FOLL_WRITE : 0;
+-    NvBool write = DRF_VAL(_LOCK_USER_PAGES, _FLAGS, _WRITE, flags), force = 0;
++    unsigned int gup_flags = DRF_VAL(_LOCK_USER_PAGES, _FLAGS, _WRITE, flags) ? FOLL_WRITE : 0;
      int ret;
  
      if (!NV_MAY_SLEEP())
-@@ -122,8 +122,8 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
+@@ -230,8 +230,8 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
      }
  
      nv_mmap_read_lock(mm);
@@ -427,7 +427,7 @@ index fcedb9a..99d28e0 100644
      nv_mmap_read_unlock(mm);
      pinned = ret;
  
-@@ -135,7 +135,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
+@@ -243,7 +243,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
      else if (pinned < page_count)
      {
          for (i = 0; i < pinned; i++)
@@ -436,7 +436,7 @@ index fcedb9a..99d28e0 100644
          os_free_mem(user_pages);
          return NV_ERR_INVALID_ADDRESS;
      }
-@@ -158,7 +158,7 @@ NV_STATUS NV_API_CALL os_unlock_user_pages(
+@@ -266,7 +266,7 @@ NV_STATUS NV_API_CALL os_unlock_user_pages(
      {
          if (write)
              set_page_dirty_lock(user_pages[i]);

@@ -1,4 +1,4 @@
-From 0f6bb48af6e936d047430ac30dab2ad02455f7b6 Mon Sep 17 00:00:00 2001
+From 76df11a9e32c30c1d69901e6702ecfccf915d6e4 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 14:17:05 +0200
 Subject: [PATCH 4/4] backport get_user_pages vmas parameter changes from
@@ -152,10 +152,10 @@ index 8e033cd..72f3aea 100644
  
  /*
 diff --git a/conftest.sh b/conftest.sh
-index df45f06..04b17b0 100755
+index 5b62697..31b9eec 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2566,6 +2566,10 @@ compile_test() {
+@@ -2536,6 +2536,10 @@ compile_test() {
              # commit 768ae309a961 ("mm: replace get_user_pages() write/force
              # parameters with gup_flags") in v4.9 (2016-10-13)
              #
@@ -166,7 +166,7 @@ index df45f06..04b17b0 100755
              # linux-4.4.168 cherry-picked commit 768ae309a961 without
              # c12d2da56d0e which is covered in Conftest #3.
              #
-@@ -2575,22 +2579,28 @@ compile_test() {
+@@ -2545,22 +2549,28 @@ compile_test() {
              # passing conftest's
              #
              set_get_user_pages_defines () {
@@ -204,7 +204,7 @@ index df45f06..04b17b0 100755
                  fi
  
                  if [ "$1" = "NV_GET_USER_PAGES_HAS_ARGS_FLAGS" ]; then
-@@ -2598,6 +2608,7 @@ compile_test() {
+@@ -2568,6 +2578,7 @@ compile_test() {
                  else
                      echo "#undef NV_GET_USER_PAGES_HAS_ARGS_FLAGS" | append_conftest "functions"
                  fi
@@ -212,7 +212,7 @@ index df45f06..04b17b0 100755
              }
  
              # Conftest #1: Check if get_user_pages accepts 6 arguments.
-@@ -2618,14 +2629,15 @@ compile_test() {
+@@ -2588,14 +2599,15 @@ compile_test() {
              $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
              rm -f conftest$$.c
              if [ -f conftest$$.o ]; then
@@ -230,7 +230,7 @@ index df45f06..04b17b0 100755
              # Return if available.
              # Fall through to conftest #3 on failure.
  
-@@ -2643,16 +2655,17 @@ compile_test() {
+@@ -2613,16 +2625,17 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -252,7 +252,7 @@ index df45f06..04b17b0 100755
  
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
-@@ -2670,12 +2683,35 @@ compile_test() {
+@@ -2640,12 +2653,35 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -290,7 +290,7 @@ index df45f06..04b17b0 100755
  
              return
          ;;
-@@ -2702,6 +2738,10 @@ compile_test() {
+@@ -2672,6 +2708,10 @@ compile_test() {
              # commit 64019a2e467a ("mm/gup: remove task_struct pointer for
              # all gup code") in v5.9-rc1 (2020-08-11).
              #
@@ -301,7 +301,7 @@ index df45f06..04b17b0 100755
  
              #
              # This function sets the NV_GET_USER_PAGES_REMOTE_* macros as per
-@@ -2714,22 +2754,28 @@ compile_test() {
+@@ -2684,22 +2724,28 @@ compile_test() {
                      echo "#define NV_GET_USER_PAGES_REMOTE_PRESENT" | append_conftest "functions"
                  fi
  
@@ -339,7 +339,7 @@ index df45f06..04b17b0 100755
                  fi
  
                  if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED" ]; then
-@@ -2737,6 +2783,7 @@ compile_test() {
+@@ -2707,6 +2753,7 @@ compile_test() {
                  else
                      echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED" | append_conftest "functions"
                  fi
@@ -347,7 +347,7 @@ index df45f06..04b17b0 100755
              }
  
              # conftest #1: check if get_user_pages_remote() is available
-@@ -2759,8 +2806,8 @@ compile_test() {
+@@ -2729,8 +2776,8 @@ compile_test() {
              fi
  
              #
@@ -358,7 +358,7 @@ index df45f06..04b17b0 100755
              # Fall through to conftest #3 if these args are absent.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -2780,14 +2827,14 @@ compile_test() {
+@@ -2750,14 +2797,14 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -376,7 +376,7 @@ index df45f06..04b17b0 100755
              # Fall through to conftest #4 if these args are absent.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -2806,13 +2853,14 @@ compile_test() {
+@@ -2776,13 +2823,14 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -393,7 +393,7 @@ index df45f06..04b17b0 100755
              # Return if these arguments are present. Fall through to conftest #5
              # if these args are absent.
              #
-@@ -2833,7 +2881,7 @@ compile_test() {
+@@ -2803,7 +2851,7 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -402,7 +402,7 @@ index df45f06..04b17b0 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -2857,10 +2905,34 @@ compile_test() {
+@@ -2827,10 +2875,34 @@ compile_test() {
              $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
              rm -f conftest$$.c
  
@@ -437,7 +437,7 @@ index df45f06..04b17b0 100755
          ;;
  
          pin_user_pages)
-@@ -2872,17 +2944,65 @@ compile_test() {
+@@ -2842,17 +2914,65 @@ compile_test() {
              # pin_user_pages() was added by commit eddb1c228f7951d399240
              # ("mm/gup: introduce pin_user_pages*() and FOLL_PIN") in
              # v5.6-rc1 (2020-01-30)
@@ -506,7 +506,7 @@ index df45f06..04b17b0 100755
          ;;
  
          pin_user_pages_remote)
-@@ -2895,6 +3015,10 @@ compile_test() {
+@@ -2865,6 +2985,10 @@ compile_test() {
              # pin_user_pages_remote() removed 'tsk' parameter by
              # commit 64019a2e467a ("mm/gup: remove task_struct pointer for
              # all gup code") in v5.9-rc1 (2020-08-11).
@@ -517,7 +517,7 @@ index df45f06..04b17b0 100755
  
              #
              # This function sets the NV_PIN_USER_PAGES_REMOTE_* macros as per
-@@ -2907,10 +3031,16 @@ compile_test() {
+@@ -2877,10 +3001,16 @@ compile_test() {
                      echo "#define NV_PIN_USER_PAGES_REMOTE_PRESENT" | append_conftest "functions"
                  fi
  
@@ -537,7 +537,7 @@ index df45f06..04b17b0 100755
                  fi
              }
  
-@@ -2933,7 +3063,11 @@ compile_test() {
+@@ -2903,7 +3033,11 @@ compile_test() {
                  return
              fi
  
@@ -550,7 +550,7 @@ index df45f06..04b17b0 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              long pin_user_pages_remote(struct task_struct *tsk,
-@@ -2951,11 +3085,34 @@ compile_test() {
+@@ -2921,11 +3055,34 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then

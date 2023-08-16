@@ -5,6 +5,10 @@ bashisms.patch
 0001-bump-minimum-supported-kernel-version-to-3.10.patch
 0002-conftest.sh-remove-empty-lines-from-uts_release-outp.patch
 0010-backport-pci-dma-changes-for-ppc64el.patch
+0027-backport-get_user_pages-changes-from-520.56.06.patch
+0028-backport-get_user_pages-pin_user_pages-changes-from-.patch
+0029-backport-get_user_pages-pin_user_pages-changes-from-.patch
+0030-backport-get_user_pages-vmas-parameter-changes-from-.patch
 ppc64el.patch
 
 # build system updates

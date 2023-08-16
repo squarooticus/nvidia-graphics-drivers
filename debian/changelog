@@ -1,9 +1,9 @@
 nvidia-graphics-drivers (510.108.03-4) UNRELEASED; urgency=medium
 
-  * Backport vm_area_struct_has_const_vm_flags changes from 470.199.02 to fix
-    kernel module build for Linux 6.3.
   * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
     module build for Linux 6.4.
+  * Backport vm_area_struct_has_const_vm_flags changes from 470.199.02 to fix
+    kernel module build for Linux 6.3.
   * Add versioned Provides: nvidia-kernel-dkms-any (515.65.01-1).
   * Fix nvngx.dll install location (525.89.02-1).  (Closes: #1031185)
   * Updated Turkish (tr) debconf translations by Atila KOÇ.

@@ -20,10 +20,10 @@ nvidia-graphics-drivers (515.105.01-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.
   * Update nv-readme.ids.
-  * Backport vm_area_struct_has_const_vm_flags changes from 470.199.02 to fix
-    kernel module build for Linux 6.3.
   * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
     module build for Linux 6.4.
+  * Backport vm_area_struct_has_const_vm_flags changes from 470.199.02 to fix
+    kernel module build for Linux 6.3.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 11 Apr 2023 01:30:05 +0200
 

@@ -64,5 +64,3 @@ systemd/system/nvidia-powerd.service
 nvidia-ngx-updater
 
 libEGL.so.#VERSION#
-
-libnvidia-compiler-next.so.#VERSION#

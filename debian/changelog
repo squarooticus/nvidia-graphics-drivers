@@ -1,6 +1,8 @@
 nvidia-graphics-drivers (530.41.03-3) UNRELEASED; urgency=medium
 
   * Merge changes from 525.125.06-2.
+  * Backport get_user_pages changes from 535.86.05 to fix kernel module build
+    for Linux 6.5.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Aug 2023 03:53:51 +0200
 

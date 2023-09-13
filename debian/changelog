@@ -1,10 +1,10 @@
-nvidia-graphics-drivers (530.41.03-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (530.41.03-3) experimental; urgency=medium
 
   * Merge changes from 525.125.06-2.
   * Backport get_user_pages changes from 535.86.05 to fix kernel module build
-    for Linux 6.5.
+    for Linux 6.5.  (Closes: #1050935)
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Aug 2023 03:53:51 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Sep 2023 23:21:21 +0200
 
 nvidia-graphics-drivers (530.41.03-2) experimental; urgency=medium
 

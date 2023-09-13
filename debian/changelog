@@ -18,6 +18,7 @@ nvidia-graphics-drivers (525.125.06-1) unstable; urgency=medium
       https://nvidia.custhelp.com/app/answers/detail/a_id/5468
     - Fixed a bug which prevented running a Wayland compositor in headless
       mode on GPUs without display hardware.
+    * Fixed undisclosed bugs.  (Closes: #1037468)
 
   [ Andreas Beckmann ]
   * Update nv-readme.ids.

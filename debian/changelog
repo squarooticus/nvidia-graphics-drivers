@@ -32,6 +32,7 @@ nvidia-graphics-drivers (535.43.02-1) UNRELEASED; urgency=medium
     with OpenSSL 3 backend.
   * libnvoptix1: Ship nvoptix.bin.
   * Update symbols files.
+  * libcuda1: Add Provides: libcuda-12.2-1.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Aug 2023 18:49:16 +0200
 

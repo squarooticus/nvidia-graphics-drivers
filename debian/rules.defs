@@ -1,8 +1,8 @@
 # If needed, set to the major part of the upstream version number.
 #NVIDIA_LEGACY		 =
-WATCH_VERSION		 = 340
+WATCH_VERSION		 = $(NVIDIA_MAJOR)
 
-NVIDIA_SETTINGS		 = nvidia-settings (>= $(version_major))
+NVIDIA_SETTINGS		 = nvidia-settings (>= $(NVIDIA_MAJOR))
 NVIDIA_LEGACY_CHECK	 = nvidia-legacy-check (>= 310)
 
 DEB_VERSION_AFTER_jessie = 340.101-2~

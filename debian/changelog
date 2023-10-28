@@ -170,7 +170,7 @@ nvidia-graphics-drivers (510.54-1) experimental; urgency=medium
     kernels, not supported upstream.
   * Declare Testsuite: autopkgtest-pkg-dkms.
   * Disable building nvidia-cuda-mps, will be built from
-    src:nvidia-graphics-drivers-tesla.
+    src:nvidia-graphics-drivers-tesla-${latest}.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Mar 2022 12:00:52 +0100
 

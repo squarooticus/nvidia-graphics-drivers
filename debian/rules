@@ -211,6 +211,8 @@ override_dh_auto_clean:
 override_dh_clean:
 	dh_clean
 	$(RM) $(AUTOCLEAN)
+	md5sum --check debian/control.md5sum --status || \
+		touch debian/rules.defs
 	$(MAKE) -f debian/rules $(AUTOKEEP)
 # this will fail unless debian/control{,.md5sum} is up-to-date
 	md5sum --check debian/control.md5sum --status || \

@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (530.41.03-4) UNRELEASED; urgency=medium
+
+  * Restrict watch file to releases from the 530.xx short lived branch.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 28 Oct 2023 19:39:53 +0200
+
 nvidia-graphics-drivers (530.41.03-3) experimental; urgency=medium
 
   * Merge changes from 525.125.06-2.

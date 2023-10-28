@@ -3,7 +3,7 @@
 #NVIDIA_TESLA		 = yes
 #NVIDIA_TESLA		 = $(TESLA_MAJOR)
 #NVIDIA_LEGACY		 =
-#WATCH_VERSION		 = $(NVIDIA_MAJOR)
+WATCH_VERSION		 = $(NVIDIA_MAJOR)
 
 NVIDIA_SETTINGS		 = nvidia-settings (>= $(NVIDIA_MAJOR))
 NVIDIA_LEGACY_CHECK	 = $${nvidia}-legacy-check (>= 495) [$${nvidia:archlist:driver}]

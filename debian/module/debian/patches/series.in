@@ -37,11 +37,11 @@ buildfix_kernel_5.2.patch
 0034-backport-stdarg.h-changes-from-470.82.00.patch
 0035-backport-pde_data-changes-from-470.103.01.patch
 0036-backport-pci-dma-changes-from-470.129.06.patch
-0040-backport-acpi_bus_get_device-changes-from-470.129.06.patch
-0041-backport-acpi-changes-from-390.157.patch
-0042-backport-acpi_op_remove-changes-from-470.182.03.patch
-0043-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
-0044-backport-get_user_pages-changes-from-418.30.patch
+0037-backport-acpi_bus_get_device-changes-from-470.129.06.patch
+0038-backport-acpi-changes-from-390.157.patch
+0039-backport-acpi_op_remove-changes-from-470.182.03.patch
+0040-backport-vm_area_struct_has_const_vm_flags-changes-f.patch
+0041-backport-get_user_pages-changes-from-418.30.patch
 0045-backport-get_user_pages-changes-from-520.56.06.patch
 0046-backport-get_user_pages-pin_user_pages-changes-from-.patch
 0047-backport-get_user_pages-vmas-parameter-changes-from-.patch

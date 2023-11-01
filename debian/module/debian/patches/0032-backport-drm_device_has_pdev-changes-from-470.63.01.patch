@@ -1,4 +1,4 @@
-From fbb8d0e78a8e4a23588ed4956a6084a0a4b4aca6 Mon Sep 17 00:00:00 2001
+From 1b74ef42e5a36610625f0a3a6cbeba0e16f4f50d Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 19 Sep 2021 15:19:46 +0200
 Subject: [PATCH 32/34] backport drm_device_has_pdev changes from 470.63.01
@@ -24,10 +24,10 @@ index 8c0bfc2..8b64faa 100644
  #
  # CFLAGS dependent on the type of builds (e.g. single/muliple module, debug)
 diff --git a/conftest.sh b/conftest.sh
-index 425a067..07253b5 100755
+index 0206074..eb2eba6 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2471,6 +2471,29 @@ compile_test() {
+@@ -2475,6 +2475,29 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_DRIVER_HAS_GEM_PRIME_CALLBACKS" "" "types"
          ;;
  

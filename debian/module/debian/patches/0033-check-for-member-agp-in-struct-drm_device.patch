@@ -1,4 +1,4 @@
-From 957fc42099c8ec231664201735f207aa1ee75798 Mon Sep 17 00:00:00 2001
+From a64f7eee9c41223301cc569d2a8eba1787afb045 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 21 Dec 2021 15:12:55 +0100
 Subject: [PATCH 33/34] check for member agp in struct drm_device
@@ -9,10 +9,10 @@ Subject: [PATCH 33/34] check for member agp in struct drm_device
  2 files changed, 30 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 07253b5..aa25f7d 100755
+index eb2eba6..228df72 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2494,6 +2494,30 @@ compile_test() {
+@@ -2498,6 +2498,30 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_DEVICE_HAS_PDEV" "" "types"
          ;;
  

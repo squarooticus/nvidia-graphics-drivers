@@ -1,0 +1,88 @@
+From 6cb543fbdb636e5dab92dda0da48d0e6ed01dcde Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Thu, 2 Nov 2023 16:46:12 +0100
+Subject: [PATCH] backport selected pci_dev changes from 430.09
+
+---
+ nvidia/nv.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/nvidia/nv.c b/nvidia/nv.c
+index 14239c5..84bf71e 100644
+--- a/nvidia/nv.c
++++ b/nvidia/nv.c
+@@ -4794,7 +4794,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+     NvU64 start = 0;
+ #if defined(NVCPU_PPC64LE)
+     nv_linux_state_t      *nvl;
+-    struct pci_dev        *dev;
++    struct pci_dev        *pci_dev;
+     dma_addr_t             dma_addr;
+     NvU64                  saved_dma_mask;
+ 
+@@ -4814,7 +4814,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+         return nv->dma_addressable_start;
+     }
+ 
+-    dev = nvl->dev;
++    pci_dev = nvl->dev;
+ 
+     /*
+      * Linux on IBM POWER8 offers 2 different DMA set-ups, sometimes
+@@ -4855,20 +4855,20 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+      * If the linear mapping is present and sane then return the offset
+      * as the starting address for all DMA mappings.
+      */
+-    saved_dma_mask = dev->dma_mask;
+-    if (pci_set_dma_mask(dev, DMA_BIT_MASK(64)) != 0)
++    saved_dma_mask = pci_dev->dma_mask;
++    if (pci_set_dma_mask(pci_dev, DMA_BIT_MASK(64)) != 0)
+     {
+         goto done;
+     }
+ 
+-    dma_addr = pci_map_single(dev, NULL, 1, DMA_BIDIRECTIONAL);
+-    if (pci_dma_mapping_error(dev, dma_addr))
++    dma_addr = pci_map_single(pci_dev, NULL, 1, DMA_BIDIRECTIONAL);
++    if (pci_dma_mapping_error(pci_dev, dma_addr))
+     {
+-        pci_set_dma_mask(dev, saved_dma_mask);
++        pci_set_dma_mask(pci_dev, saved_dma_mask);
+         goto done;
+     }
+ 
+-    pci_unmap_single(dev, dma_addr, 1, DMA_BIDIRECTIONAL);
++    pci_unmap_single(pci_dev, dma_addr, 1, DMA_BIDIRECTIONAL);
+ 
+     /*
+      * From IBM: "For IODA2, native DMA bypass or KVM TCE-based implementation
+@@ -4900,7 +4900,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+          */
+         nv_printf(NV_DBG_WARNINGS,
+             "NVRM: DMA window limited by platform\n");
+-        pci_set_dma_mask(dev, saved_dma_mask);
++        pci_set_dma_mask(pci_dev, saved_dma_mask);
+         goto done;
+     }
+     else if ((dma_addr & saved_dma_mask) != 0)
+@@ -4919,7 +4919,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+              */
+             nv_printf(NV_DBG_WARNINGS,
+                 "NVRM: DMA window limited by memory size\n");
+-            pci_set_dma_mask(dev, saved_dma_mask);
++            pci_set_dma_mask(pci_dev, saved_dma_mask);
+             goto done;
+         }
+     }
+@@ -4928,7 +4928,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+     start = dma_addr & ~(saved_dma_mask);
+ 
+     /* Update the coherent mask to match */
+-    dma_set_coherent_mask(&dev->dev, dev->dma_mask);
++    dma_set_coherent_mask(&pci_dev->dev, pci_dev->dma_mask);
+ 
+ done:
+ #endif
+-- 
+2.20.1
+

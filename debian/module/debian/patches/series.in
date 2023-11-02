@@ -10,9 +10,10 @@ bashisms.patch
 0006-backport-pde_data-changes-from-470.103.01.patch
 0007-backport-linker-scripts-changes-from-510.60.02.patch
 0008-backport-nvidia-drm-helper.h-inclusion-from-450.51.patch
+0009-backport-selected-pci_dev-changes-from-430.09.patch
 0009-backport-pci-dma-changes-from-470.129.06.patch
 0010-backport-pci-dma-changes-from-470.129.06-uvm-part.patch
-0010-backport-pci-dma-changes-for-ppc64el.patch
+0010-backport-pci-dma-changes-for-ppc64el-from-470.223.02.patch
 0011-backport-iosys_map-changes-from-470.129.06.patch
 0012-backport-dma_set_coherent_mask-from-470.129.06.patch
 0013-backport-acpi_bus_get_device-changes-from-470.129.06.patch

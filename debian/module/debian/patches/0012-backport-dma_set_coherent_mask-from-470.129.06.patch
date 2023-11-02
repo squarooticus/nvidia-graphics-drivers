@@ -1,7 +1,7 @@
-From 3151477c12fc4f294b20aecc44c09e3c8852d551 Mon Sep 17 00:00:00 2001
+From 7d2bd7deb641f8d059f929f92e58d54f8ffe4a71 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 20 Jun 2022 11:14:33 +0200
-Subject: [PATCH 2/3] backport dma_set_coherent_mask from 470.129.06
+Subject: [PATCH] backport dma_set_coherent_mask from 470.129.06
 
 ---
  conftest.sh          | 16 ++++++++++++++++
@@ -37,7 +37,7 @@ index d62b35f..73f5f2b 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 854ff0f..57ba56e 100644
+index c5b7da4..35a3802 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
 @@ -2970,7 +2970,11 @@ nv_set_dma_address_size(
@@ -57,9 +57,9 @@ index 854ff0f..57ba56e 100644
  
      /* Update the coherent mask to match */
 +#if defined(NV_DMA_SET_COHERENT_MASK_PRESENT)
-     dma_set_coherent_mask(&dev->dev, dev->dma_mask);
+     dma_set_coherent_mask(&pci_dev->dev, pci_dev->dma_mask);
 +#else
-+    pci_set_consistent_dma_mask(dev, dev->dma_mask);
++    pci_set_consistent_dma_mask(pci_dev, pci_dev->dma_mask);
 +#endif
  
  done:

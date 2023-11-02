@@ -1,4 +1,4 @@
-From 1494fab36305ce89d51a959b3babc5de4226d5e7 Mon Sep 17 00:00:00 2001
+From 319d7ca867f04c2f2583f70f2e10500a7bdd4ca6 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Thu, 2 Nov 2023 15:57:00 +0100
 Subject: [PATCH] backport pci/dma changes for ppc64el from 470.223.02
@@ -8,10 +8,10 @@ Subject: [PATCH] backport pci/dma changes for ppc64el from 470.223.02
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index e3e2fb6..c5b7da4 100644
+index 9f0f6c4..96a8d37 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -4856,19 +4856,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4451,19 +4451,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
       * as the starting address for all DMA mappings.
       */
      saved_dma_mask = pci_dev->dma_mask;
@@ -36,7 +36,7 @@ index e3e2fb6..c5b7da4 100644
  
      /*
       * From IBM: "For IODA2, native DMA bypass or KVM TCE-based implementation
-@@ -4900,7 +4900,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4495,7 +4495,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
           */
          nv_printf(NV_DBG_WARNINGS,
              "NVRM: DMA window limited by platform\n");
@@ -45,7 +45,7 @@ index e3e2fb6..c5b7da4 100644
          goto done;
      }
      else if ((dma_addr & saved_dma_mask) != 0)
-@@ -4919,7 +4919,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4514,7 +4514,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
               */
              nv_printf(NV_DBG_WARNINGS,
                  "NVRM: DMA window limited by memory size\n");

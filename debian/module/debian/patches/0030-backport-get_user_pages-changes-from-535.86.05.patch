@@ -1,4 +1,4 @@
-From 002c43f0a9b9cbff1a179c1770cc202fa97fb08f Mon Sep 17 00:00:00 2001
+From 049e081787816659999a4ebbbf6006d00600e458 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 14:17:05 +0200
 Subject: [PATCH] backport get_user_pages changes from 535.86.05
@@ -9,7 +9,7 @@ Subject: [PATCH] backport get_user_pages changes from 535.86.05
  2 files changed, 130 insertions(+), 43 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index 8e033cd..72f3aea 100644
+index c4efd11..d5290aa 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
 @@ -47,11 +47,18 @@ typedef int vm_fault_t;
@@ -102,7 +102,7 @@ index 8e033cd..72f3aea 100644
  
  /*
 diff --git a/conftest.sh b/conftest.sh
-index 762377f..b9bf49e 100755
+index ad4dd50..e14c700 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -2469,6 +2469,10 @@ compile_test() {

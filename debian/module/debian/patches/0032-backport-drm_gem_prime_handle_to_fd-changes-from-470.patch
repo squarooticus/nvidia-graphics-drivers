@@ -1,4 +1,4 @@
-From 33d52db35013be6781b6df78d9a0d60e8ea87382 Mon Sep 17 00:00:00 2001
+From 07186b31772ab28b990e4c5a9a6794c12c31dad8 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 1 Nov 2023 10:31:40 +0100
 Subject: [PATCH] backport drm_gem_prime_handle_to_fd changes from 470.223.02
@@ -9,10 +9,10 @@ Subject: [PATCH] backport drm_gem_prime_handle_to_fd changes from 470.223.02
  2 files changed, 17 insertions(+)
 
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index cb51464..b299a16 100644
+index a183aa3..d943cb5 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -698,8 +698,23 @@ static struct drm_driver nv_drm_driver = {
+@@ -739,8 +739,23 @@ static struct drm_driver nv_drm_driver = {
      .ioctls                 = nv_drm_ioctls,
      .num_ioctls             = ARRAY_SIZE(nv_drm_ioctls),
  
@@ -34,16 +34,16 @@ index cb51464..b299a16 100644
 +#endif
 +
      .gem_prime_import       = nv_drm_gem_prime_import,
+     .gem_prime_import_sg_table = nv_drm_gem_prime_import_sg_table,
  
- #if defined(NV_DRM_DRIVER_HAS_GEM_PRIME_CALLBACKS)
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 937d44f..d9a72a3 100644
+index a5e2eed..28556cb 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -51,6 +51,8 @@ NV_CONFTEST_GENERIC_COMPILE_TESTS += drm_available
- NV_CONFTEST_GENERIC_COMPILE_TESTS += drm_atomic_available
+@@ -53,6 +53,8 @@ NV_CONFTEST_GENERIC_COMPILE_TESTS += drm_atomic_available
  NV_CONFTEST_GENERIC_COMPILE_TESTS += is_export_symbol_gpl_refcount_inc
  NV_CONFTEST_GENERIC_COMPILE_TESTS += is_export_symbol_gpl_refcount_dec_and_test
+ NV_CONFTEST_GENERIC_COMPILE_TESTS += drm_alpha_blending_available
 +NV_CONFTEST_GENERIC_COMPILE_TESTS += is_export_symbol_present_drm_gem_prime_fd_to_handle
 +NV_CONFTEST_GENERIC_COMPILE_TESTS += is_export_symbol_present_drm_gem_prime_handle_to_fd
  

@@ -42,7 +42,7 @@ Description: dump the generated conftest headers
  
  
  # Each of these headers is checked for presence with a test #include; a
-@@ -241,8 +255,9 @@ NV_HEADER_PRESENCE_PART = $(addprefix $(
+@@ -242,8 +256,9 @@ NV_HEADER_PRESENCE_PART = $(addprefix $(
  
  # Define a rule to check the header $(1).
  define NV_HEADER_PRESENCE_CHECK
@@ -53,7 +53,7 @@ Description: dump the generated conftest headers
  	@$$(NV_CONFTEST_CMD) test_kernel_header '$$(NV_CONFTEST_CFLAGS)' '$(1)' > $$@
  endef
  
-@@ -252,6 +267,8 @@ $(foreach header,$(NV_HEADER_PRESENCE_TE
+@@ -253,6 +268,8 @@ $(foreach header,$(NV_HEADER_PRESENCE_TE
  # Concatenate all of the parts into headers.h.
  $(obj)/conftest/headers.h: $(call NV_HEADER_PRESENCE_PART,$(NV_HEADER_PRESENCE_TESTS))
  	@cat $^ > $@
@@ -62,7 +62,7 @@ Description: dump the generated conftest headers
  
  clean-dirs := $(obj)/conftest
  
-@@ -272,7 +289,8 @@ BUILD_SANITY_CHECKS = \
+@@ -273,7 +290,8 @@ BUILD_SANITY_CHECKS = \
  
  .PHONY: $(BUILD_SANITY_CHECKS)
  

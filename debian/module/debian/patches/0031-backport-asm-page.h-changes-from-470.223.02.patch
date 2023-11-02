@@ -1,25 +1,30 @@
-From c14e15c865fcdb54ee75c159ffe0aff4ae0b380c Mon Sep 17 00:00:00 2001
+From 63909625486ceb4c716222afd8c1216a4d30a62e Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 1 Nov 2023 10:30:50 +0100
 Subject: [PATCH] backport asm/page.h changes from 470.223.02
 
 ---
- conftest.sh | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ Kbuild      |  1 +
+ conftest.sh | 12 ++++++++++++
+ 2 files changed, 13 insertions(+)
 
+diff --git a/Kbuild b/Kbuild
+index cdce88f..f977eaf 100644
+--- a/Kbuild
++++ b/Kbuild
+@@ -224,6 +224,7 @@ NV_HEADER_PRESENCE_TESTS = \
+  asm/opal-api.h \
+  sound/hdaudio.h \
+  asm/pgtable_types.h \
++ asm/page.h \
+  linux/dma-map-ops.h \
+  linux/stdarg.h \
+  linux/iosys-map.h \
 diff --git a/conftest.sh b/conftest.sh
-index 5ce67e9..8c39dbb 100755
+index e14c700..93c8f8a 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -147,6 +147,7 @@ test_headers() {
-     FILES_ARCH="$FILES_ARCH asm/barrier.h"
-     FILES_ARCH="$FILES_ARCH asm/opal-api.h"
-     FILES_ARCH="$FILES_ARCH asm/pgtable_types.h"
-+    FILES_ARCH="$FILES_ARCH asm/page.h"
- 
-     translate_and_find_header_files $HEADERS      $FILES
-     translate_and_find_header_files $HEADERS_ARCH $FILES_ARCH
-@@ -473,6 +474,9 @@ compile_test() {
+@@ -419,6 +419,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -29,7 +34,7 @@ index 5ce67e9..8c39dbb 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -495,6 +499,9 @@ compile_test() {
+@@ -441,6 +444,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -39,7 +44,7 @@ index 5ce67e9..8c39dbb 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -552,6 +559,9 @@ compile_test() {
+@@ -498,6 +504,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -49,7 +54,7 @@ index 5ce67e9..8c39dbb 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -579,6 +589,9 @@ compile_test() {
+@@ -525,6 +534,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif

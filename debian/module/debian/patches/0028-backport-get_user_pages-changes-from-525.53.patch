@@ -1,20 +1,28 @@
-From 8731b1878c009496fc235c23630f0c19f4719a6a Mon Sep 17 00:00:00 2001
+From 9a3b019ce1b05b0ee1c6feb2a85ee5f2684d41a3 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 17:18:58 +0200
-Subject: [PATCH 3/5] backport get_user_pages/pin_user_pages changes from
- 525.53
+Subject: [PATCH] backport get_user_pages changes from 525.53
 
 ---
- common/inc/nv-mm.h            | 160 ++++++++++++++++++----------------
- nvidia-drm/nvidia-drm-linux.c |   9 +-
- nvidia/os-mlock.c             |  10 +--
- 6 files changed, 194 insertions(+), 84 deletions(-)
+ common/inc/nv-mm.h            | 113 +++++++++++++++-------------------
+ nvidia-drm/nvidia-drm-linux.c |   4 +-
+ nvidia/os-mlock.c             |   3 +-
+ 3 files changed, 50 insertions(+), 70 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index c008d46..05700c9 100644
+index c008d46..43b6aa0 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
-@@ -47,51 +66,57 @@ typedef int vm_fault_t;
+@@ -29,6 +29,8 @@
+ typedef int vm_fault_t;
+ #endif
+ 
++#include <linux/mm.h>
++#include <linux/sched.h>
+ /* get_user_pages
+  *
+  * The 8-argument version of get_user_pages was deprecated by commit 
+@@ -47,38 +49,30 @@ typedef int vm_fault_t;
   *
   */
  
@@ -67,7 +75,7 @@ index c008d46..05700c9 100644
  
  /*
   * get_user_pages_remote() was added by commit 1e9877902dc7
-@@ -113,66 +138,55 @@ typedef int vm_fault_t;
+@@ -113,66 +107,55 @@ typedef int vm_fault_t;
   */
  
  #if defined(NV_GET_USER_PAGES_REMOTE_PRESENT)
@@ -167,7 +175,7 @@ index c008d46..05700c9 100644
  /*
   * The .virtual_address field was effectively renamed to .address, by these
 diff --git a/nvidia-drm/nvidia-drm-linux.c b/nvidia-drm/nvidia-drm-linux.c
-index a4c5aeb..1a197cb 100644
+index a4c5aeb..0cbaebf 100644
 --- a/nvidia-drm/nvidia-drm-linux.c
 +++ b/nvidia-drm/nvidia-drm-linux.c
 @@ -103,8 +103,6 @@ int nv_drm_lock_user_pages(unsigned long address,
@@ -189,25 +197,23 @@ index a4c5aeb..1a197cb 100644
      nv_mmap_read_unlock(mm);
  
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index f88daed..6a4b067 100644
+index f88daed..cbe8e83 100644
 --- a/nvidia/os-mlock.c
 +++ b/nvidia/os-mlock.c
-@@ -107,7 +107,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
+@@ -107,7 +107,6 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
      struct mm_struct *mm = current->mm;
      struct page **user_pages;
      NvU64 i, pinned;
 -    NvBool write = 1, force = 0;
-+    unsigned int gup_flags = 1 ? FOLL_WRITE : 0;
      int ret;
  
      if (!NV_MAY_SLEEP())
-@@ -127,8 +127,8 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
-     }
+@@ -128,7 +127,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
  
      nv_mmap_read_lock(mm);
      ret = NV_GET_USER_PAGES((unsigned long)address,
 -                            page_count, write, force, user_pages, NULL);
-+                            page_count, gup_flags, user_pages, NULL);
++                            page_count, FOLL_WRITE, user_pages, NULL);
      nv_mmap_read_unlock(mm);
      pinned = ret;
  

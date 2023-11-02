@@ -1,19 +1,18 @@
-From b2860b20771371a80c6d40db6721ea7ab08cbfaa Mon Sep 17 00:00:00 2001
+From b83afe4c6dfe96c08492fbcd0277eec0482bf6e0 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 14:17:05 +0200
-Subject: [PATCH 5/5] backport get_user_pages vmas parameter changes from
- 535.86.05
+Subject: [PATCH] backport get_user_pages changes from 535.86.05
 
 ---
- common/inc/nv-mm.h |  57 ++++++++---
- conftest.sh        | 241 +++++++++++++++++++++++++++++++++++++--------
- 2 files changed, 243 insertions(+), 55 deletions(-)
+ common/inc/nv-mm.h |  33 ++++++++---
+ conftest.sh        | 140 ++++++++++++++++++++++++++++++++++-----------
+ 2 files changed, 130 insertions(+), 43 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index 05700c9..9884535 100644
+index 43b6aa0..543eb46 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
-@@ -64,11 +73,18 @@ typedef int vm_fault_t;
+@@ -47,11 +47,18 @@ typedef int vm_fault_t;
   * commit 8e50b8b07f462ab4b91bc1491b1c91bd75e4ad40 which cherry-picked the
   * replacement of the write and force parameters with gup_flags
   *
@@ -33,7 +32,7 @@ index 05700c9..9884535 100644
      #define NV_GET_USER_PAGES(start, nr_pages, flags, pages, vmas) \
          get_user_pages(current, current->mm, start, nr_pages, flags, pages, vmas)
  #else
-@@ -81,13 +97,13 @@ typedef int vm_fault_t;
+@@ -64,13 +71,13 @@ typedef int vm_fault_t;
          int write = flags & FOLL_WRITE;
          int force = flags & FOLL_FORCE;
  
@@ -50,7 +49,7 @@ index 05700c9..9884535 100644
      }
  #endif // NV_GET_USER_PAGES_HAS_ARGS_FLAGS
  
-@@ -135,22 +158,30 @@ typedef int vm_fault_t;
+@@ -104,22 +111,30 @@ typedef int vm_fault_t;
   * commit 64019a2e467a ("mm/gup: remove task_struct pointer for
   * all gup code") in v5.9-rc1 (2020-08-11).
   *
@@ -84,7 +83,7 @@ index 05700c9..9884535 100644
          static inline long NV_GET_USER_PAGES_REMOTE(struct mm_struct *mm,
                                                      unsigned long start,
                                                      unsigned long nr_pages,
-@@ -167,7 +198,7 @@ typedef int vm_fault_t;
+@@ -136,7 +151,7 @@ typedef int vm_fault_t;
          }
      #endif // NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED
  #else
@@ -93,7 +92,7 @@ index 05700c9..9884535 100644
          static inline long NV_GET_USER_PAGES_REMOTE(struct mm_struct *mm,
                                                      unsigned long start,
                                                      unsigned long nr_pages,
-@@ -185,7 +216,7 @@ typedef int vm_fault_t;
+@@ -154,7 +169,7 @@ typedef int vm_fault_t;
      #else
          #define NV_GET_USER_PAGES_REMOTE(mm, start, nr_pages, flags, pages, vmas, locked) \
              get_user_pages(NULL, mm, start, nr_pages, flags, pages, vmas)
@@ -103,7 +102,7 @@ index 05700c9..9884535 100644
  
  /*
 diff --git a/conftest.sh b/conftest.sh
-index 2f8a0cb..373ff60 100755
+index 264ca33..47916e0 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -3006,6 +3006,10 @@ compile_test() {
@@ -209,10 +208,11 @@ index 2f8a0cb..373ff60 100755
              if [ -f conftest$$.o ]; then
 -                set_get_user_pages_defines "NV_GET_USER_PAGES_HAS_ARGS_TSK_FLAGS"
 +                set_get_user_pages_defines "NV_GET_USER_PAGES_HAS_ARGS_TSK_FLAGS_VMAS"
-+                rm -f conftest$$.o
-+                return
-+            fi
-+
+                 rm -f conftest$$.o
+                 return
+             fi
+ 
+-            set_get_user_pages_defines "NV_GET_USER_PAGES_HAS_ARGS_TSK_WRITE_FORCE"
 +            # Conftest #4: gup doesn't accept a task_struct and mm_struct as 
 +            # its first arguments. check if get_user_pages() does not take
 +            # vmas argument.
@@ -232,11 +232,10 @@ index 2f8a0cb..373ff60 100755
 +
 +            if [ -f conftest$$.o ]; then
 +                set_get_user_pages_defines "NV_GET_USER_PAGES_HAS_ARGS_FLAGS"
-                 rm -f conftest$$.o
-                 return
-             fi
- 
--            set_get_user_pages_defines "NV_GET_USER_PAGES_HAS_ARGS_TSK_WRITE_FORCE"
++                rm -f conftest$$.o
++                return
++            fi
++
 +            set_get_user_pages_defines "NV_GET_USER_PAGES_HAS_ARGS_TSK_WRITE_FORCE_VMAS"
  
              return
@@ -260,32 +259,32 @@ index 2f8a0cb..373ff60 100755
 -                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_WRITE_FORCE" | append_conftest "functions"
 +                if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_WRITE_FORCE_VMAS" ]; then
 +                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_WRITE_FORCE_VMAS" | append_conftest "functions"
-+                else
-+                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_WRITE_FORCE_VMAS" | append_conftest "functions"
-+                fi
-+
-+                if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_VMAS" ]; then
-+                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_VMAS" | append_conftest "functions"
                  else
 -                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_WRITE_FORCE" | append_conftest "functions"
-+                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_VMAS" | append_conftest "functions"
++                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_WRITE_FORCE_VMAS" | append_conftest "functions"
                  fi
  
 -                if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS" ]; then
 -                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS" | append_conftest "functions"
-+                if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_LOCKED_VMAS" ]; then
-+                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_LOCKED_VMAS" | append_conftest "functions"
++                if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_VMAS" ]; then
++                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_VMAS" | append_conftest "functions"
                  else
 -                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS" | append_conftest "functions"
-+                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_LOCKED_VMAS" | append_conftest "functions"
++                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_VMAS" | append_conftest "functions"
                  fi
  
 -                if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_LOCKED" ]; then
 -                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_LOCKED" | append_conftest "functions"
-+                if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED_VMAS" ]; then
-+                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED_VMAS" | append_conftest "functions"
++                if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_LOCKED_VMAS" ]; then
++                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_LOCKED_VMAS" | append_conftest "functions"
                  else
 -                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_LOCKED" | append_conftest "functions"
++                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_TSK_FLAGS_LOCKED_VMAS" | append_conftest "functions"
++                fi
++
++                if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED_VMAS" ]; then
++                    echo "#define NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED_VMAS" | append_conftest "functions"
++                else
 +                    echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED_VMAS" | append_conftest "functions"
                  fi
  

@@ -1,4 +1,4 @@
-From d66e9f7098860c888fa6bed0205439652faaf636 Mon Sep 17 00:00:00 2001
+From 87c62d518fd5885c9330cc12a5d5a81c1a644940 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 1 Nov 2023 10:30:50 +0100
 Subject: [PATCH] backport asm/page.h changes from 470.223.02
@@ -8,18 +8,18 @@ Subject: [PATCH] backport asm/page.h changes from 470.223.02
  1 file changed, 10 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index fd7806e..3cf8715 100755
+index 47916e0..0418ec0 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -181,6 +181,7 @@ test_headers() {
- 
-     FILES_ARCH="$FILES_ARCH asm/set_memory.h"
+@@ -145,6 +145,7 @@ test_headers() {
+     FILES_ARCH="$FILES_ARCH asm/powernv.h"
+     FILES_ARCH="$FILES_ARCH asm/tlbflush.h"
      FILES_ARCH="$FILES_ARCH asm/pgtable_types.h"
 +    FILES_ARCH="$FILES_ARCH asm/page.h"
  
      translate_and_find_header_files $HEADERS      $FILES
      translate_and_find_header_files $HEADERS_ARCH $FILES_ARCH
-@@ -431,6 +432,9 @@ compile_test() {
+@@ -436,6 +437,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -29,7 +29,7 @@ index fd7806e..3cf8715 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -451,6 +455,9 @@ compile_test() {
+@@ -457,6 +461,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -39,7 +39,7 @@ index fd7806e..3cf8715 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -471,6 +478,9 @@ compile_test() {
+@@ -513,6 +520,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif

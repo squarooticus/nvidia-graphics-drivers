@@ -1,4 +1,4 @@
-From 9a3b019ce1b05b0ee1c6feb2a85ee5f2684d41a3 Mon Sep 17 00:00:00 2001
+From ad46f7b21e276a71d5e57b580858eae4c7ab1adc Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 17:18:58 +0200
 Subject: [PATCH] backport get_user_pages changes from 525.53
@@ -175,10 +175,10 @@ index c008d46..43b6aa0 100644
  /*
   * The .virtual_address field was effectively renamed to .address, by these
 diff --git a/nvidia-drm/nvidia-drm-linux.c b/nvidia-drm/nvidia-drm-linux.c
-index a4c5aeb..0cbaebf 100644
+index f8fcde4..d584f21 100644
 --- a/nvidia-drm/nvidia-drm-linux.c
 +++ b/nvidia-drm/nvidia-drm-linux.c
-@@ -103,8 +103,6 @@ int nv_drm_lock_user_pages(unsigned long address,
+@@ -93,8 +93,6 @@ int nv_drm_lock_user_pages(unsigned long address,
  {
      struct mm_struct *mm = current->mm;
      struct page **user_pages;
@@ -187,7 +187,7 @@ index a4c5aeb..0cbaebf 100644
      int pages_pinned;
  
      user_pages = nv_drm_calloc(pages_count, sizeof(*user_pages));
-@@ -115,7 +113,7 @@ int nv_drm_lock_user_pages(unsigned long address,
+@@ -105,7 +103,7 @@ int nv_drm_lock_user_pages(unsigned long address,
  
      nv_mmap_read_lock(mm);
  
@@ -197,10 +197,10 @@ index a4c5aeb..0cbaebf 100644
      nv_mmap_read_unlock(mm);
  
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index f88daed..cbe8e83 100644
+index 19f87d9..e055c90 100644
 --- a/nvidia/os-mlock.c
 +++ b/nvidia/os-mlock.c
-@@ -107,7 +107,6 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
+@@ -96,7 +96,6 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
      struct mm_struct *mm = current->mm;
      struct page **user_pages;
      NvU64 i, pinned;
@@ -208,7 +208,7 @@ index f88daed..cbe8e83 100644
      int ret;
  
      if (!NV_MAY_SLEEP())
-@@ -128,7 +127,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
+@@ -117,7 +116,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
  
      nv_mmap_read_lock(mm);
      ret = NV_GET_USER_PAGES((unsigned long)address,

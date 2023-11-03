@@ -1,4 +1,4 @@
-From 66b4f92ee0aea6e980ae0ff1633469fc26620edc Mon Sep 17 00:00:00 2001
+From 7869e73e42f0ac26981aa0e0da1e766428803d97 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 17:18:58 +0200
 Subject: [PATCH] backport get_user_pages changes from 525.53 (uvm part)
@@ -34,10 +34,10 @@ index 3c09225..317b395 100644
  
      if (ret < 0)
 diff --git a/nvidia-uvm/uvm_ats_ibm.c b/nvidia-uvm/uvm_ats_ibm.c
-index d07be97..5f6ade3 100644
+index d698862..4fd1bd0 100644
 --- a/nvidia-uvm/uvm_ats_ibm.c
 +++ b/nvidia-uvm/uvm_ats_ibm.c
-@@ -458,8 +458,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
+@@ -476,8 +476,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
  {
      uvm_va_space_t *va_space = gpu_va_space->va_space;
      struct mm_struct *mm = va_space->va_space_mm.mm;
@@ -47,7 +47,7 @@ index d07be97..5f6ade3 100644
      struct page *page;
      char *mapping;
      int ret;
-@@ -470,7 +469,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
+@@ -488,7 +487,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
      uvm_assert_mmap_lock_locked(mm);
  
      // TODO: Bug 2103669: Service more than a single fault at a time

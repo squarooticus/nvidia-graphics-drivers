@@ -1,4 +1,4 @@
-From 0f6bb48af6e936d047430ac30dab2ad02455f7b6 Mon Sep 17 00:00:00 2001
+From 3a40f00d068262f8cadd7ce53a830615330ecd8f Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 14:17:05 +0200
 Subject: [PATCH] backport get_user_pages changes from 535.86.05
@@ -102,7 +102,7 @@ index c4efd11..d5290aa 100644
  
  /*
 diff --git a/conftest.sh b/conftest.sh
-index df45f06..04b17b0 100755
+index bee077f..668187e 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -2566,6 +2566,10 @@ compile_test() {

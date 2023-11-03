@@ -1,30 +1,25 @@
-From 63909625486ceb4c716222afd8c1216a4d30a62e Mon Sep 17 00:00:00 2001
+From f6d15e97939e0aca2b55659908e0d49977cb0b3b Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 1 Nov 2023 10:30:50 +0100
 Subject: [PATCH] backport asm/page.h changes from 470.223.02
 
 ---
- Kbuild      |  1 +
- conftest.sh | 12 ++++++++++++
- 2 files changed, 13 insertions(+)
+ conftest.sh | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/Kbuild b/Kbuild
-index cdce88f..f977eaf 100644
---- a/Kbuild
-+++ b/Kbuild
-@@ -224,6 +224,7 @@ NV_HEADER_PRESENCE_TESTS = \
-  asm/opal-api.h \
-  sound/hdaudio.h \
-  asm/pgtable_types.h \
-+ asm/page.h \
-  linux/dma-map-ops.h \
-  linux/stdarg.h \
-  linux/iosys-map.h \
 diff --git a/conftest.sh b/conftest.sh
-index e14c700..93c8f8a 100755
+index 668187e..f6b11c7 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -419,6 +419,9 @@ compile_test() {
+@@ -158,6 +158,7 @@ test_headers() {
+     FILES="$FILES asm/opal-api.h"
+     FILES="$FILES sound/hdaudio.h"
+     FILES="$FILES asm/pgtable_types.h"
++    FILES="$FILES asm/page.h"
+     FILES="$FILES linux/stringhash.h"
+     FILES="$FILES linux/dma-map-ops.h"
+     FILES="$FILES linux/stdarg.h"
+@@ -488,6 +489,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -34,7 +29,7 @@ index e14c700..93c8f8a 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -441,6 +444,9 @@ compile_test() {
+@@ -510,6 +514,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -44,7 +39,7 @@ index e14c700..93c8f8a 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -498,6 +504,9 @@ compile_test() {
+@@ -567,6 +574,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -54,7 +49,7 @@ index e14c700..93c8f8a 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -525,6 +534,9 @@ compile_test() {
+@@ -594,6 +604,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif

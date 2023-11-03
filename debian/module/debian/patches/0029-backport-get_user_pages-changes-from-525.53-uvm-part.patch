@@ -1,18 +1,18 @@
-From 1b3bfdef8338360eea6da077e73c34f0175decfd Mon Sep 17 00:00:00 2001
+From d3d12598840e733b697ddcc61147517d8556f9b0 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 17:18:58 +0200
 Subject: [PATCH] backport get_user_pages changes from 525.53 (uvm part)
 
 ---
- nvidia-uvm/nvidia-uvm.Kbuild       | 2 ++
- nvidia-uvm/uvm.c                   | 8 +++-----
+ nvidia-uvm/uvm.c                   | 4 +---
+ nvidia-uvm/uvm_ats_ibm.c           | 5 ++---
  nvidia-uvm/uvm_populate_pageable.c | 4 ++--
- nvidia-uvm/uvm_tools.c             | 4 ++--
- nvidia-uvm/uvm_va_space_mm.c       | 5 ++---
- 5 files changed, 11 insertions(+), 12 deletions(-)
+ nvidia-uvm/uvm_tools.c             | 2 +-
+ nvidia-uvm/uvm_va_space_mm.c       | 3 +--
+ 5 files changed, 7 insertions(+), 11 deletions(-)
 
 diff --git a/nvidia-uvm/uvm.c b/nvidia-uvm/uvm.c
-index 3c09225..4b05f7c 100644
+index 3c09225..317b395 100644
 --- a/nvidia-uvm/uvm.c
 +++ b/nvidia-uvm/uvm.c
 @@ -984,8 +984,6 @@ bool uvm_file_is_nvidia_uvm(struct file *filp)
@@ -33,11 +33,11 @@ index 3c09225..4b05f7c 100644
      nv_mmap_read_unlock(current->mm);
  
      if (ret < 0)
-diff --git a/nvidia-uvm/uvm8_ats_ibm.c b/nvidia-uvm/uvm8_ats_ibm.c
-index 5f98f6b..6cd90f8 100644
---- a/nvidia-uvm/uvm8_ats_ibm.c
-+++ b/nvidia-uvm/uvm8_ats_ibm.c
-@@ -460,8 +460,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
+diff --git a/nvidia-uvm/uvm_ats_ibm.c b/nvidia-uvm/uvm_ats_ibm.c
+index d07be97..5f6ade3 100644
+--- a/nvidia-uvm/uvm_ats_ibm.c
++++ b/nvidia-uvm/uvm_ats_ibm.c
+@@ -458,8 +458,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
  {
      uvm_va_space_t *va_space = gpu_va_space->va_space;
      struct mm_struct *mm = va_space->va_space_mm.mm;
@@ -47,7 +47,7 @@ index 5f98f6b..6cd90f8 100644
      struct page *page;
      char *mapping;
      int ret;
-@@ -472,7 +471,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
+@@ -470,7 +469,7 @@ NV_STATUS uvm_ats_ibm_service_fault(uvm_gpu_va_space_t *gpu_va_space,
      uvm_assert_mmap_lock_locked(mm);
  
      // TODO: Bug 2103669: Service more than a single fault at a time
@@ -57,7 +57,7 @@ index 5f98f6b..6cd90f8 100644
          return errno_to_nv_status(ret);
  
 diff --git a/nvidia-uvm/uvm_populate_pageable.c b/nvidia-uvm/uvm_populate_pageable.c
-index af83240..0de9d84 100644
+index af83240..4d5f887 100644
 --- a/nvidia-uvm/uvm_populate_pageable.c
 +++ b/nvidia-uvm/uvm_populate_pageable.c
 @@ -38,7 +38,7 @@ NV_STATUS uvm_populate_pageable_vma(struct vm_area_struct *vma,
@@ -79,7 +79,7 @@ index af83240..0de9d84 100644
      if (uvm_managed_vma)
          uvm_record_lock_mmap_lock_read(mm);
 diff --git a/nvidia-uvm/uvm_tools.c b/nvidia-uvm/uvm_tools.c
-index 5e4d112..8b31aba 100644
+index 5e4d112..eea2b08 100644
 --- a/nvidia-uvm/uvm_tools.c
 +++ b/nvidia-uvm/uvm_tools.c
 @@ -262,7 +262,7 @@ static NV_STATUS map_user_pages(NvU64 user_va, NvU64 size, void **addr, struct p
@@ -92,7 +92,7 @@ index 5e4d112..8b31aba 100644
      if (ret != num_pages) {
          status = NV_ERR_INVALID_ARGUMENT;
 diff --git a/nvidia-uvm/uvm_va_space_mm.c b/nvidia-uvm/uvm_va_space_mm.c
-index 2cf3900..fac0de9 100644
+index 2cf3900..fd481f2 100644
 --- a/nvidia-uvm/uvm_va_space_mm.c
 +++ b/nvidia-uvm/uvm_va_space_mm.c
 @@ -540,14 +540,13 @@ void uvm_va_space_mm_shutdown(uvm_va_space_t *va_space)

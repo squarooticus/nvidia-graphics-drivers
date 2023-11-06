@@ -1,3 +1,15 @@
+nvidia-graphics-drivers (525.147.05-1) UNRELEASED; urgency=medium
+
+  * New upstream production branch release 525.147.05 (2023-10-31).
+    * Fixed CVE-2023-31022.  (Closes: #1055136)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5491
+    - Fixed a bug which could cause some DisplayPort monitors to flicker.
+    - Fixed a bug that could cause monitors to flicker when the performance
+      state changes on Turing GPUs.
+    * Improved compatibility with recent Linux kernels.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 07 Nov 2023 00:09:04 +0100
+
 nvidia-graphics-drivers (525.125.06-3) unstable; urgency=medium
 
   * Backport drm_gem_prime_handle_to_fd changes from 470.223.02 to fix kernel

@@ -8,6 +8,9 @@ nvidia-graphics-drivers (525.147.05-1) UNRELEASED; urgency=medium
       state changes on Turing GPUs.
     * Improved compatibility with recent Linux kernels.
 
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
  -- Andreas Beckmann <anbe@debian.org>  Tue, 07 Nov 2023 00:09:04 +0100
 
 nvidia-graphics-drivers (525.125.06-3) unstable; urgency=medium

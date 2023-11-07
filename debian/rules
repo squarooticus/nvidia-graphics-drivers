@@ -309,7 +309,7 @@ pack-module-source:
 	$(RM) -r $(module_source_pkg)/usr/src/modules
 
 # only invoked manually
-kernel-source-tree: unpack-stamp
+kernel-source-tree: unpack-stamp $(AUTOGEN)
 	$(RM) -r $@
 	cp -a NVIDIA-Linux/kernel $@
 	cd $@ && QUILT_PATCHES=../debian/patches/module quilt --quiltrc /dev/null push -a || test $$? = 2

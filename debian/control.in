@@ -913,7 +913,7 @@ Depends:
  libglx-${nvidia-}0 (= ${binary:Version}),
  ${misc:Depends}
 Suggests:
- vulkan-utils,
+ vulkan-tools,
 Enhances:
  libvulkan1,
 Provides:
@@ -954,7 +954,7 @@ Depends:
  libgl1-${nvidia}-glx (= ${binary:Version}),
  ${misc:Depends}
 Suggests:
- vulkan-utils,
+ vulkan-tools,
 Enhances:
  libvulkan1,
 Provides:

@@ -1,4 +1,4 @@
-From 820340f6873403eb33fa3e6483949f549d3d05e5 Mon Sep 17 00:00:00 2001
+From b4f4335beaadb7af971999bd37a74200c0d91d16 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 11 Aug 2023 10:27:27 +0200
 Subject: [PATCH] backport get_user_pages changes from 418.30
@@ -9,10 +9,10 @@ Subject: [PATCH] backport get_user_pages changes from 418.30
  2 files changed, 32 insertions(+), 26 deletions(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index e14fc5a..1660ab5 100755
+index b1b83d0..9e3c2e5 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -1858,29 +1858,33 @@ compile_test() {
+@@ -1859,29 +1859,33 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_NODE_END_PFN_PRESENT" "" "functions"
          ;;
  
@@ -56,7 +56,7 @@ index e14fc5a..1660ab5 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              long get_user_pages(unsigned long start,
-@@ -1893,14 +1897,14 @@ compile_test() {
+@@ -1894,14 +1898,14 @@ compile_test() {
              }" > conftest$$.c
  
              $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
@@ -73,7 +73,7 @@ index e14fc5a..1660ab5 100755
              # Conftest #2: Check if get_user_pages has gup_flags instead of
              # write and force parameters. And that gup doesn't accept a
              # task_struct and mm_struct as its first arguments.
-@@ -1955,7 +1959,6 @@ compile_test() {
+@@ -1956,7 +1960,6 @@ compile_test() {
                  return
              fi
  
@@ -81,7 +81,7 @@ index e14fc5a..1660ab5 100755
              echo "#define NV_GET_USER_PAGES_HAS_WRITE_AND_FORCE_ARGS" | append_conftest "functions"
              echo "#define NV_GET_USER_PAGES_HAS_TASK_STRUCT" | append_conftest "functions"
  
-@@ -1967,16 +1970,18 @@ compile_test() {
+@@ -1968,16 +1971,18 @@ compile_test() {
              # Determine if the function get_user_pages_remote() is
              # present and has write/force/locked/tsk parameters.
              #
@@ -107,7 +107,7 @@ index e14fc5a..1660ab5 100755
              #
              # get_user_pages_remote() removed 'tsk' parameter by
              # commit 64019a2e467a ("mm/gup: remove task_struct pointer for
-@@ -1985,7 +1990,7 @@ compile_test() {
+@@ -1986,7 +1991,7 @@ compile_test() {
              # conftest #1: check if get_user_pages_remote() is available
              # return if not available.
              # Fall through to conftest #2 if it is present
@@ -116,7 +116,7 @@ index e14fc5a..1660ab5 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              void conftest_get_user_pages_remote(void) {
-@@ -2004,9 +2009,11 @@ compile_test() {
+@@ -2005,9 +2010,11 @@ compile_test() {
                  return
              fi
  

@@ -2720,7 +2720,7 @@ nvidia-graphics-drivers (304.37-1) unstable; urgency=low
       certain OpenGL applications such as Amnesia: The Dark Descent on GeForce
       6 and 7 GPUs.
   * New upstream release 295 series.
-    * CVE-2012-4225  (Closes: 684781)
+    * CVE-2012-4225  (Closes: #684781)
     - Implemented hotfix for a privilege escalation vulnerability reported on
       August 1, 2012.  For more details, see:
       https://nvidia.custhelp.com/app/answers/detail/a_id/3140

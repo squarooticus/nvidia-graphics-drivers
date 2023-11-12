@@ -134,6 +134,7 @@ nvidia-graphics-drivers (340.108-1~git4deb8jessie) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (340.108-2) UNRELEASED; urgency=medium
 
   * Revert backport of pin_user_pages changes.
+  * Backport drm/drm_device.h check needed by drm_device_has_pdev backport.
   * Backport drm_gem_prime_handle_to_fd changes from 470.223.02 to fix kernel
     module build for Linux 6.6.
 

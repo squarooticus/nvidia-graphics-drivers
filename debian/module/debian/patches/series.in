@@ -20,7 +20,7 @@ do-div-cast.patch
 0030-backport-get_user_pages-changes-from-535.86.05.patch
 0031-backport-asm-page.h-changes-from-470.223.02.patch
 0032-backport-drm_gem_prime_handle_to_fd-changes-from-470.patch
-0047-refuse-to-load-legacy-module-if-IBT-is-enabled.patch
+0033-refuse-to-load-legacy-module-if-IBT-is-enabled.patch
 
 # build system updates
 fragile-ARCH.patch

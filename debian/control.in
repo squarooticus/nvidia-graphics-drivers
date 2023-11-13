@@ -876,7 +876,7 @@ Recommends:
  lib${nvidia}-cbl (= ${binary:Version}) [amd64],
  lib${nvidia}-rtcore (= ${binary:Version}) [amd64],
 Suggests:
- vulkan-utils,
+ vulkan-tools,
 Enhances:
  libvulkan1,
 Provides:
@@ -931,7 +931,7 @@ Recommends:
  lib${nvidia}-rtcore (= ${binary:Version}) [amd64],
  nvidia-legacy-390xx-driver-libs-nonglvnd [i386],
 Suggests:
- vulkan-utils,
+ vulkan-tools,
 Enhances:
  libvulkan1,
 Provides:

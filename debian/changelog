@@ -43,10 +43,11 @@ nvidia-graphics-drivers (390.157-6+git) UNRELEASED; urgency=medium
   * nvidia-alternative: Access kmod config files over a versioned
     symlink (510.108.03-3).
   * Add versioned Provides: nvidia-kernel-dkms-any (515.65.01-1).
+  * Switch suggestion from obsolete vulkan-utils to vulkan-tools
+    (525.125.06-3).
   * New Brazilian Portuguese (pt_BR) debconf translations by Paulo Henrique de
     Lima Santana.
   * Updated Turkish (tr) debconf translations by Atila KOÇ.
-  * Switch suggestion from obsolete vulkan-utils to vulkan-tools.
   * Update lintian overrides.
   * Bump watch file version to 4.
   * Bump Standards-Version to 4.6.2. No changes needed.

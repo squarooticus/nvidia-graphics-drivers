@@ -1,4 +1,4 @@
-From 482c238246824854f9b732b514318a5cc736b712 Mon Sep 17 00:00:00 2001
+From f1ad641bff2c2fb2922045f8bc332c73b24fb554 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sat, 4 Nov 2023 00:44:56 +0100
 Subject: [PATCH] refuse to load legacy module if IBT is enabled
@@ -23,7 +23,7 @@ https://bugs.debian.org/1052069
  2 files changed, 14 insertions(+)
 
 diff --git a/nvidia-modeset/nvidia-modeset-linux.c b/nvidia-modeset/nvidia-modeset-linux.c
-index e98c748..5bed9dd 100644
+index f7f1def..ce219e7 100644
 --- a/nvidia-modeset/nvidia-modeset-linux.c
 +++ b/nvidia-modeset/nvidia-modeset-linux.c
 @@ -1205,6 +1205,13 @@ static int __init nvkms_init(void)
@@ -41,10 +41,10 @@ index e98c748..5bed9dd 100644
  
      if (ret != 0) {
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 4fa9c23..ad64e88 100644
+index 35a3802..b12330b 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -776,6 +776,13 @@ int __init nvidia_init_module(void)
+@@ -818,6 +818,13 @@ int __init nvidia_init_module(void)
      nv_state_t *nv = NV_STATE_PTR(&nv_ctl_device);
      nvidia_stack_t *sp = NULL;
  

@@ -1,4 +1,4 @@
-From f1ad641bff2c2fb2922045f8bc332c73b24fb554 Mon Sep 17 00:00:00 2001
+From b0296d05fea565b07844b85e8745525b4d05ac59 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sat, 4 Nov 2023 00:44:56 +0100
 Subject: [PATCH] refuse to load legacy module if IBT is enabled
@@ -23,10 +23,10 @@ https://bugs.debian.org/1052069
  2 files changed, 14 insertions(+)
 
 diff --git a/nvidia-modeset/nvidia-modeset-linux.c b/nvidia-modeset/nvidia-modeset-linux.c
-index f7f1def..ce219e7 100644
+index 99367bf..b0b5ded 100644
 --- a/nvidia-modeset/nvidia-modeset-linux.c
 +++ b/nvidia-modeset/nvidia-modeset-linux.c
-@@ -1205,6 +1205,13 @@ static int __init nvkms_init(void)
+@@ -1299,6 +1299,13 @@ static int __init nvkms_init(void)
  {
      int ret;
  
@@ -41,11 +41,11 @@ index f7f1def..ce219e7 100644
  
      if (ret != 0) {
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 35a3802..b12330b 100644
+index 96a8d37..48ceaf5 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -818,6 +818,13 @@ int __init nvidia_init_module(void)
-     nv_state_t *nv = NV_STATE_PTR(&nv_ctl_device);
+@@ -714,6 +714,13 @@ int __init nvidia_init_module(void)
+     NvU32 count;
      nvidia_stack_t *sp = NULL;
  
 +#ifdef CONFIG_X86_KERNEL_IBT
@@ -55,9 +55,9 @@ index 35a3802..b12330b 100644
 +    }
 +#endif
 +
-     if (nv_multiple_kernel_modules)
-     {
-         nv_printf(NV_DBG_INFO, "NVRM: nvidia module instance %d\n",
+     nv_user_map_init();
+     nv_memdbg_init();
+ 
 -- 
 2.20.1
 

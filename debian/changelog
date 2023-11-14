@@ -47,7 +47,7 @@ nvidia-graphics-drivers (460.106.00-13) UNRELEASED; urgency=medium
     module build for Linux 6.6.
   * Refuse to load module if IBT is enabled.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 03 Nov 2023 00:47:18 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 14 Nov 2023 17:03:30 +0100
 
 nvidia-graphics-drivers (460.106.00-12) UNRELEASED; urgency=medium
 

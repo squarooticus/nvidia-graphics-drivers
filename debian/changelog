@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (450.248.02-3+git) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (450.248.02-4+git) UNRELEASED; urgency=medium
 
   * Switch to dh-sequence-dkms (460.56-1).
   * Simplify dh_dkms usage (460.56-1).
@@ -49,6 +49,15 @@ nvidia-graphics-drivers (450.248.02-3+git) UNRELEASED; urgency=medium
   * Bump Standards-Version to 4.6.2. No changes needed.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Jun 2023 21:43:27 +0200
+
+nvidia-graphics-drivers (450.248.02-4) UNRELEASED; urgency=medium
+
+  * The Tesla 450 driver series has been declared as End-of-Life by
+    NVIDIA. No further updates fixing security issues, critical bugs, or
+    adding support for new Xorg or Linux releases will be issued.
+    https://docs.nvidia.com/datacenter/tesla/drivers/
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 14 Nov 2023 13:46:30 +0100
 
 nvidia-graphics-drivers (450.248.02-3) UNRELEASED; urgency=medium
 

@@ -4,7 +4,7 @@ nvidia-graphics-drivers (470.199.02-4) UNRELEASED; urgency=medium
   * Switch suggestion from obsolete vulkan-utils to vulkan-tools
     (525.125.06-3).  (Closes: #1055503)
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 14 Nov 2023 14:39:26 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 15 Nov 2023 09:41:22 +0100
 
 nvidia-graphics-drivers (470.199.02-3) UNRELEASED; urgency=medium
 

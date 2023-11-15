@@ -4,8 +4,6 @@ nvidia-graphics-drivers (525.125.06-3) UNRELEASED; urgency=medium
     module build for Linux 6.6.
   * Switch suggestion from obsolete vulkan-utils to vulkan-tools.
     (Closes: #1055503)
-  * nvidia-suspend-common: New package for the systemd power management
-    integration scripts.  (Closes: #1038006)
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 15 Nov 2023 11:44:12 +0100
 

@@ -1,11 +1,11 @@
-nvidia-graphics-drivers (525.125.06-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.125.06-3) unstable; urgency=medium
 
   * Backport drm_gem_prime_handle_to_fd changes from 470.223.02 to fix kernel
     module build for Linux 6.6.
   * Switch suggestion from obsolete vulkan-utils to vulkan-tools.
     (Closes: #1055503)
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 15 Nov 2023 11:44:12 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 15 Nov 2023 19:23:06 +0100
 
 nvidia-graphics-drivers (525.125.06-2) unstable; urgency=medium
 

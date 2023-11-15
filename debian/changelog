@@ -796,7 +796,7 @@ nvidia-graphics-drivers (470.182.03-2) UNRELEASED; urgency=medium
   * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
     module build for Linux 6.4.
   * Backport vm_area_struct_has_const_vm_flags changes from 470.199.02 to fix
-    kernel module build for Linux 6.3.
+    kernel module build for Linux 6.3.  (Closes: #1038004)
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 18 Jun 2023 14:02:19 +0200
 
@@ -1446,6 +1446,8 @@ nvidia-graphics-drivers (460.106.00-13) UNRELEASED; urgency=medium
   * Backport drm_gem_prime_handle_to_fd changes from 470.223.02 to fix kernel
     module build for Linux 6.6.
   * Refuse to load module if IBT is enabled.
+  * Switch suggestion from obsolete vulkan-utils to vulkan-tools
+    (525.125.06-3).
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 14 Nov 2023 17:03:30 +0100
 
@@ -1977,7 +1979,9 @@ nvidia-graphics-drivers (450.248.02-3) UNRELEASED; urgency=medium
   * Revert backport of pin_user_pages changes.
   * Backport drm_gem_prime_handle_to_fd changes from 470.223.02 to fix kernel
     module build for Linux 6.6.
-  * Refuse to load module if IBT is enabled.
+  * Refuse to load module if IBT is enabled.  (Closes: #1052069)
+  * Switch suggestion from obsolete vulkan-utils to vulkan-tools
+    (525.125.06-3).  (Closes: #1055503)
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 14 Nov 2023 09:51:10 +0100
 
@@ -3038,7 +3042,9 @@ nvidia-graphics-drivers (418.226.00-13) UNRELEASED; urgency=medium
   * Revert backport of pin_user_pages changes.
   * Backport drm_gem_prime_handle_to_fd changes from 470.223.02 to fix kernel
     module build for Linux 6.6.
-  * Refuse to load module if IBT is enabled.
+  * Refuse to load module if IBT is enabled.  (Closes: #1052069)
+  * Switch suggestion from obsolete vulkan-utils to vulkan-tools
+    (525.125.06-3).  (Closes: #1055503)
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 13 Nov 2023 13:27:57 +0100
 

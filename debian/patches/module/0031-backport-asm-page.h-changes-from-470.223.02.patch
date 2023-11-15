@@ -1,4 +1,4 @@
-From 4ae7c8bb91a8f3b41be97014ed09906edd899f53 Mon Sep 17 00:00:00 2001
+From 99b1601ad92797ead7544789a3c4244c76bc5dfe Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 1 Nov 2023 10:30:50 +0100
 Subject: [PATCH] backport asm/page.h changes from 470.223.02
@@ -9,10 +9,10 @@ Subject: [PATCH] backport asm/page.h changes from 470.223.02
  2 files changed, 13 insertions(+)
 
 diff --git a/Kbuild b/Kbuild
-index 7fb34af..a80da80 100644
+index de8e19d..4af63d5 100644
 --- a/Kbuild
 +++ b/Kbuild
-@@ -268,6 +268,7 @@ NV_HEADER_PRESENCE_TESTS = \
+@@ -273,6 +273,7 @@ NV_HEADER_PRESENCE_TESTS = \
   asm/opal-api.h \
   sound/hdaudio.h \
   asm/pgtable_types.h \
@@ -21,10 +21,10 @@ index 7fb34af..a80da80 100644
   linux/dma-map-ops.h \
   rdma/peer_mem.h \
 diff --git a/conftest.sh b/conftest.sh
-index 1cf9d71..51a39a7 100755
+index 2ad8a33..a740d2a 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -450,6 +450,9 @@ compile_test() {
+@@ -445,6 +445,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -34,7 +34,7 @@ index 1cf9d71..51a39a7 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -472,6 +475,9 @@ compile_test() {
+@@ -467,6 +470,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -44,7 +44,7 @@ index 1cf9d71..51a39a7 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -529,6 +535,9 @@ compile_test() {
+@@ -524,6 +530,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif
@@ -54,7 +54,7 @@ index 1cf9d71..51a39a7 100755
              #include <asm/set_memory.h>
              #else
              #include <asm/cacheflush.h>
-@@ -556,6 +565,9 @@ compile_test() {
+@@ -551,6 +560,9 @@ compile_test() {
              #if defined(NV_ASM_PGTABLE_TYPES_H_PRESENT)
              #include <asm/pgtable_types.h>
              #endif

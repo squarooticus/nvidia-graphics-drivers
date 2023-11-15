@@ -1,4 +1,4 @@
-From 184539d2a9618df47a89a26eb5bbf25642334c69 Mon Sep 17 00:00:00 2001
+From 2f726f0b979ab664b9d3390510aaa241c89ece54 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 1 Nov 2023 10:31:40 +0100
 Subject: [PATCH] backport drm_gem_prime_handle_to_fd changes from 470.223.02
@@ -9,10 +9,10 @@ Subject: [PATCH] backport drm_gem_prime_handle_to_fd changes from 470.223.02
  2 files changed, 17 insertions(+)
 
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 8756890..74f8583 100644
+index 1a3542a..6c68d82 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -855,8 +855,23 @@ static struct drm_driver nv_drm_driver = {
+@@ -1367,8 +1367,23 @@ static struct drm_driver nv_drm_driver = {
      .ioctls                 = nv_drm_ioctls,
      .num_ioctls             = ARRAY_SIZE(nv_drm_ioctls),
  
@@ -37,7 +37,7 @@ index 8756890..74f8583 100644
      .gem_prime_import_sg_table = nv_drm_gem_prime_import_sg_table,
  
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index a114b23..879c03f 100644
+index 1ef7e7b..a4ea2d4 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
 @@ -54,6 +54,8 @@ NV_CONFTEST_GENERIC_COMPILE_TESTS += drm_atomic_available

@@ -1,26 +1,17 @@
-From 5858598d5d8a465c28805a3bc572c81b8c97679f Mon Sep 17 00:00:00 2001
+From 575a721801eaa4231a2fcf3e6105f1d31f4c9155 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
-Date: Mon, 20 Jun 2022 10:14:54 +0200
-Subject: [PATCH] backport pci/dma changes for ppc64el
+Date: Thu, 2 Nov 2023 15:57:00 +0100
+Subject: [PATCH] backport pci/dma changes for ppc64el from 470.223.02
 
 ---
- nvidia/nv.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ nvidia/nv.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index a467943..83765b9 100644
+index dd57639..42778da 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -4455,7 +4455,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
-      * Otherwise, the DMA start address only needs to be set once, and it
-      * won't change afterward. Just return the cached value if asked again,
-      * to avoid the kernel printing redundant messages to the kernel
--     * log when we call pci_set_dma_mask().
-+     * log when we call dma_set_mask().
-      */
-     if ((nv_tce_bypass_mode == NV_TCE_BYPASS_MODE_DISABLE) ||
-         (nvl->tce_bypass_enabled))
-@@ -4505,19 +4505,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4570,19 +4570,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
       * as the starting address for all DMA mappings.
       */
      saved_dma_mask = pci_dev->dma_mask;
@@ -45,7 +36,7 @@ index a467943..83765b9 100644
  
      /*
       * From IBM: "For IODA2, native DMA bypass or KVM TCE-based implementation
-@@ -4549,7 +4549,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4614,7 +4614,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
           */
          nv_printf(NV_DBG_WARNINGS,
              "NVRM: DMA window limited by platform\n");
@@ -54,7 +45,7 @@ index a467943..83765b9 100644
          goto done;
      }
      else if ((dma_addr & saved_dma_mask) != 0)
-@@ -4568,7 +4568,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4633,7 +4633,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
               */
              nv_printf(NV_DBG_WARNINGS,
                  "NVRM: DMA window limited by memory size\n");

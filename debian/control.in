@@ -749,7 +749,7 @@ Depends:
 Recommends:
  lib${nvidia}-rtcore (= ${binary:Version}) [!i386 !ppc64el],
 Suggests:
- vulkan-utils,
+ vulkan-tools,
 Enhances:
  libvulkan1,
 Provides:

@@ -56,13 +56,6 @@ nvidia-cuda-mps-control
 nvidia-cuda-mps-control.1
 nvidia-cuda-mps-server
 
-# shipped in nvidia-suspend-common from src:nvidia-graphics-drivers-tesla
-systemd/system/nvidia-suspend.service
-systemd/system/nvidia-hibernate.service
-systemd/system/nvidia-resume.service
-systemd/system-sleep/nvidia
-systemd/nvidia-sleep.sh
-
 # not shipped
 
 nvidia-ngx-updater

@@ -21,8 +21,6 @@ nvidia-graphics-drivers (530.41.03-2) experimental; urgency=medium
   * Backport drm_driver_has_dumb_destroy changes from 525.116.03 to fix kernel
     module build for Linux 6.4.  (Closes: #1042081, #1041991)
   * libcuda1: Add Provides: libcuda-12.1-1.
-  * nvidia-suspend-common: New package for the systemd power management
-    integration scripts.  (Closes: #1038006)
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Aug 2023 17:29:39 +0200
 
@@ -77,16 +75,14 @@ nvidia-graphics-drivers (530.30.02-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 13 Mar 2023 23:48:29 +0100
 
-nvidia-graphics-drivers (525.125.06-3) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.125.06-3) unstable; urgency=medium
 
   * Backport drm_gem_prime_handle_to_fd changes from 470.223.02 to fix kernel
     module build for Linux 6.6.
   * Switch suggestion from obsolete vulkan-utils to vulkan-tools.
     (Closes: #1055503)
-  * nvidia-suspend-common: New package for the systemd power management
-    integration scripts.  (Closes: #1038006)
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 15 Nov 2023 11:44:12 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 15 Nov 2023 19:23:06 +0100
 
 nvidia-graphics-drivers (525.125.06-2) unstable; urgency=medium
 

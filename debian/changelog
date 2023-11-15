@@ -3,7 +3,7 @@ nvidia-graphics-drivers (525.125.06-3) UNRELEASED; urgency=medium
   * nvidia-suspend-common: New package for the systemd power management
     integration scripts.  (Closes: #1038006)
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 15 Nov 2023 16:18:59 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 15 Nov 2023 19:43:51 +0100
 
 nvidia-graphics-drivers (525.125.06-3) unstable; urgency=medium
 

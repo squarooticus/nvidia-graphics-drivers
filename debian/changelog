@@ -10,6 +10,7 @@ nvidia-graphics-drivers (535.104.05-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.
   * Update nv-readme.ids.
+  * Update symbols files.
   * Merge changes from 525.147.05-9.  (Closes: #1064194)
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 23:15:39 +0100

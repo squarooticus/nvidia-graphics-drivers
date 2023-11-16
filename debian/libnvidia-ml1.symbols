@@ -45,7 +45,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetComputeMode@Base 270
  nvmlDeviceGetComputeRunningProcesses@Base 285
  nvmlDeviceGetComputeRunningProcesses_v2@Base 450.66
-#MISSING: 535.86.10# nvmlDeviceGetComputeRunningProcesses_v3@Base 510
+ nvmlDeviceGetComputeRunningProcesses_v3@Base 510
  nvmlDeviceGetConfComputeGpuAttestationReport@Base 535
  nvmlDeviceGetConfComputeGpuCertificate@Base 535
  nvmlDeviceGetConfComputeMemSizeInfo@Base 535
@@ -96,7 +96,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetGpuOperationMode@Base 304.48
  nvmlDeviceGetGraphicsRunningProcesses@Base 346
  nvmlDeviceGetGraphicsRunningProcesses_v2@Base 450.66
-#MISSING: 535.86.10# nvmlDeviceGetGraphicsRunningProcesses_v3@Base 510
+ nvmlDeviceGetGraphicsRunningProcesses_v3@Base 510
  nvmlDeviceGetGridLicensableFeatures@Base 375.82
  nvmlDeviceGetGridLicensableFeatures_v2@Base 410
  nvmlDeviceGetGridLicensableFeatures_v3@Base 440
@@ -118,7 +118,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetJpgUtilization@Base 535
  nvmlDeviceGetMPSComputeRunningProcesses@Base 384.90
  nvmlDeviceGetMPSComputeRunningProcesses_v2@Base 470
-#MISSING: 535.86.10# nvmlDeviceGetMPSComputeRunningProcesses_v3@Base 510
+ nvmlDeviceGetMPSComputeRunningProcesses_v3@Base 510
  nvmlDeviceGetMaxClockInfo@Base 285
  nvmlDeviceGetMaxCustomerBoostClock@Base 361.42
  nvmlDeviceGetMaxMigDeviceCount@Base 450
@@ -175,6 +175,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetRetiredPagesPendingStatus@Base 319
  nvmlDeviceGetRetiredPages_v2@Base 410
  nvmlDeviceGetRowRemapperHistogram@Base 450
+ nvmlDeviceGetRunningProcessDetailList@Base 535.104
  nvmlDeviceGetSamples@Base 340
  nvmlDeviceGetSerial@Base 270
  nvmlDeviceGetSupportedClocksEventReasons@Base 535

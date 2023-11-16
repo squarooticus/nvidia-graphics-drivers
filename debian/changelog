@@ -1,6 +1,10 @@
-nvidia-graphics-drivers (535.98-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (535.104.05-1) UNRELEASED; urgency=medium
 
+  * New upstream LTS and Tesla branch release 535.104.05 (2023-08-22).
   * New upstream long term support branch release 535.98 (2023-08-08).
+    - Fixed an issue which caused the following error message to appear
+      spuriously when using SLI with the NVIDIA Open GPU Kernel Modules:
+      (EE) NVIDIA: Unable to disable FB size compare
     * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
@@ -8,7 +12,7 @@ nvidia-graphics-drivers (535.98-1) UNRELEASED; urgency=medium
   * Update nv-readme.ids.
   * Merge changes from 525.147.05-9.  (Closes: #1064194)
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 22:04:47 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 23:15:39 +0100
 
 nvidia-graphics-drivers (535.86.10-1) experimental; urgency=medium
 

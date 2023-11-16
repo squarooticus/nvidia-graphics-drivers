@@ -504,6 +504,25 @@ Description: NVIDIA binary OpenGL/GLX library (GLVND variant)${nvidia:VariantDes
  This metapackage depends on the NVIDIA binary OpenGL/GLX implementation using
  GLVND and the corresponding GLVND loader library.
 
+Package: lib${nvidia}-gpucomp
+Architecture: i386 amd64 ${arch:arm64} ${arch:ppc64el}
+Multi-Arch: same
+Pre-Depends:
+ ${misc:Pre-Depends}
+Depends:
+ ${shlibs:Depends}, ${misc:Depends}
+Provides:
+ libnvidia-gpucomp-${nvidia:Version},
+Conflicts:
+ libnvidia-gpucomp-${nvidia:Version},
+Description: NVIDIA binary GPU compiler library${nvidia:VariantDesc}
+ The NVIDIA binary driver provides optimized hardware acceleration of
+ OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
+ for graphics cards using NVIDIA chip sets.
+ .
+ This package contains the private GPU compiler runtime library
+ which is used by other driver components.
+
 Package: lib${nvidia}-glcore
 Architecture: i386 amd64 ${arch:arm64} ${arch:ppc64el}
 Multi-Arch: same

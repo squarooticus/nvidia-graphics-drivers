@@ -1,0 +1,2 @@
+libnvidia-gpucomp.so.#VERSION# libnvidia-gpucomp-#VERSION#, #PACKAGE# #MINVER#
+ nvGetCompilerInterface@Base 545

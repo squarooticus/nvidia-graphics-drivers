@@ -43,6 +43,9 @@ nvidia-graphics-drivers (545.23.06-1) UNRELEASED; urgency=medium
     - Removed libnvidia-vulkan-producer.so from the driver package. This
       helper library is no longer needed by the Wayland WSI.
 
+  [ Andreas Beckmann ]
+  * Refresh patches.  (Closes: #1064571)
+
  -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 10:44:21 +0100
 
 nvidia-graphics-drivers (535.113.01-1) unstable; urgency=medium

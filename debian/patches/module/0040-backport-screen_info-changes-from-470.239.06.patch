@@ -1,48 +1,25 @@
-From 3c85c4ed9618da46a1f6d208b809fe8fffd49d17 Mon Sep 17 00:00:00 2001
+From ad4042794e9985b1876e4869aff1beddadac11df Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 4 Mar 2024 22:48:44 +0100
 Subject: [PATCH] backport screen_info changes from 470.239.06
 
 ---
  common/inc/nv-linux.h | 2 ++
- conftest.sh           | 4 ++--
  nvidia/nvidia.Kbuild  | 1 +
  nvidia/os-interface.c | 5 ++++-
- 4 files changed, 9 insertions(+), 3 deletions(-)
+ 3 files changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index 74b217e..5d6677a 100644
+index 7a8ca20..b65083b 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -2063,4 +2063,6 @@ typedef enum
+@@ -2036,4 +2036,6 @@ typedef enum
  #include <linux/clk-provider.h>
  #endif
  
 +#define NV_CHECK_EXPORT_SYMBOL(symbol)  (NV_IS_EXPORT_SYMBOL_PRESENT_##symbol && \
 +                                         !NV_IS_EXPORT_SYMBOL_GPL_##symbol)
  #endif  /* _NV_LINUX_H_ */
-diff --git a/conftest.sh b/conftest.sh
-index 80d05cf..f55da42 100755
---- a/conftest.sh
-+++ b/conftest.sh
-@@ -316,7 +316,7 @@ export_symbol_present_conftest() {
-     SYMBOL="$1"
-     TAB='	'
- 
--    if grep -e "${TAB}${SYMBOL}${TAB}.*${TAB}EXPORT_SYMBOL.*\$" \
-+    if grep -e "${TAB}${SYMBOL}${TAB}.*${TAB}EXPORT_SYMBOL\(_GPL\)\?\s*\$" \
-                "$OUTPUT/Module.symvers" >/dev/null 2>&1; then
-         echo "#define NV_IS_EXPORT_SYMBOL_PRESENT_$SYMBOL 1" |
-             append_conftest "symbols"
-@@ -337,7 +337,7 @@ export_symbol_gpl_conftest() {
-     SYMBOL="$1"
-     TAB='	'
- 
--    if grep -e "${TAB}${SYMBOL}${TAB}.*${TAB}EXPORT_\(UNUSED_\)*SYMBOL_GPL\$" \
-+    if grep -e "${TAB}${SYMBOL}${TAB}.*${TAB}EXPORT_\(UNUSED_\)*SYMBOL_GPL\s*\$" \
-                "$OUTPUT/Module.symvers" >/dev/null 2>&1; then
-         echo "#define NV_IS_EXPORT_SYMBOL_GPL_$SYMBOL 1" |
-             append_conftest "symbols"
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
 index e868c6c..ae0e628 100644
 --- a/nvidia/nvidia.Kbuild
@@ -56,10 +33,10 @@ index e868c6c..ae0e628 100644
  NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_tegra_fuse_control_read
  NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_tegra_get_platform
 diff --git a/nvidia/os-interface.c b/nvidia/os-interface.c
-index 6d8b120..77b49e6 100644
+index 5a98859..b29f682 100644
 --- a/nvidia/os-interface.c
 +++ b/nvidia/os-interface.c
-@@ -1241,9 +1241,12 @@ void NV_API_CALL os_get_screen_info(
+@@ -1265,9 +1265,12 @@ void NV_API_CALL os_get_screen_info(
       * SYSFB_SIMPLEFB registers a dummy framebuffer which does not contain the
       * information required by os_get_screen_info(), therefore you need to
       * fall back onto the screen_info structure.

@@ -46,6 +46,7 @@ nvidia-graphics-drivers (545.23.06-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.  (Closes: #1064571)
   * Update nv-readme-open.ids.
+  * Update symbols files.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 10:44:21 +0100
 

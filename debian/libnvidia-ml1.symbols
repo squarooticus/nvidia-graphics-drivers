@@ -38,6 +38,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetBrand@Base 340
  nvmlDeviceGetBridgeChipInfo@Base 331.20
  nvmlDeviceGetBusType@Base 495
+ nvmlDeviceGetC2cModeInfoV@Base 545
  nvmlDeviceGetClkMonStatus@Base 470
  nvmlDeviceGetClock@Base 361.42
  nvmlDeviceGetClockInfo@Base 270

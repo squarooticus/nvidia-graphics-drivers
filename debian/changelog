@@ -1,3 +1,50 @@
+nvidia-graphics-drivers (545.23.06-1) UNRELEASED; urgency=medium
+
+  * New upstream beta 545.23.06 (2023-10-17).  (Closes: #1055422)
+    - Added experimental HDMI 10 bits per component support; enable by loading
+      nvidia-modeset with `hdmi_deepcolor=1`.
+    - Added support for the CTM, DEGAMMA_LUT, and GAMMA_LUT DRM-KMS CRTC
+      properties. These are used by features such as the "Night Light"
+      feature in GNOME and the "Night Color" feature in KDE, when they
+      are used as Wayland compositors.
+    - Added beta-quality support for GeForce and Workstation GPUs to open
+      kernel modules. Please see the "Open Linux Kernel Modules" chapter in
+      the README for details.
+    - Added initial experimental support for runtime D3 (RTD3) power
+      management on Desktop GPUs.  Please see the 'PCI-Express Runtime D3
+      (RTD3) Power Management' chapter in the README for more details.
+    - Added support for the EGL_ANDROID_native_fence_sync EGL extension and
+      the VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT and
+      VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT Vulkan external handle types
+      when the nvidia-drm kernel module is loaded with the modeset=1 parameter.
+    - Added experimental support for framebuffer consoles provided by
+      nvidia-drm. On kernels that implement drm_fbdev_generic_setup and
+      drm_aperture_remove_conflicting_pci_framebuffers, nvidia-drm will install
+      a framebuffer console when loaded with both `modeset=1` and `fbdev=1`
+      kernel module parameters. This will replace the Linux boot console driven
+      by a system framebuffer driver such as efifb or vesafb.
+      Note that when an nvidia-drm framebuffer console is enabled, unloading
+      nvidia-drm will cause the screen to turn off.
+    - Added support for virtual reality displays, such as the SteamVR platform,
+      on Wayland compositors that support DRM leasing. Support requires
+      xwayland version 22.1.0 and wayland-protocols version 1.22, or later.
+      Tested on sway, minimum version 1.7 with wlroots version 0.15, and also
+      on Kwin, minimum version 5.24.
+      Note: Before xwayland 23.2, there is a known issue with HDMI displays
+      where the headset will fail to start a second time after closing SteamVR.
+      This can be worked around by unplugging and replugging in the headset.
+    - Fixed a bug that prevented VRR (Variable Refresh Rate) from working
+      with Wayland.
+    - Added support to the NVIDIA VDPAU driver for running in Xwayland. Please
+      refer to the "Xwayland support in VDPAU" section of the README for
+      further details.
+    - Added libnvidia-gpucomp.so to the driver package.  This is a helper
+      library used for GPU shader compilation.
+    - Removed libnvidia-vulkan-producer.so from the driver package. This
+      helper library is no longer needed by the Wayland WSI.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 10:44:21 +0100
+
 nvidia-graphics-drivers (535.113.01-1) unstable; urgency=medium
 
   * New upstream long term support branch release 535.113.01 (2023-09-21).

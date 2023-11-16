@@ -4,6 +4,7 @@ nvidia-graphics-drivers (535.98-1) UNRELEASED; urgency=medium
     * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
+  * Refresh patches.
   * Merge changes from 525.147.05-8.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 22:04:47 +0100

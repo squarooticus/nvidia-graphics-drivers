@@ -1,4 +1,4 @@
-From 600f15eb738abd5defbec945884056ab5af9e680 Mon Sep 17 00:00:00 2001
+From 815ad9803a1380c19a00fe556f60f64a54b13160 Mon Sep 17 00:00:00 2001
 From: Ionen Wolkens <ionen@gentoo.org>
 Date: Thu, 1 Feb 2024 14:58:45 -0500
 Subject: [PATCH] fix build w/ kernel 6.1.76+6.6.15+6.7.3

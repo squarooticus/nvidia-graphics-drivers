@@ -1,12 +1,16 @@
-nvidia-graphics-drivers (535.86.10-2) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (535.98-1) UNRELEASED; urgency=medium
 
+  * New upstream long term support branch release 535.98 (2023-08-08).
+    * Improved compatibility with recent Linux kernels.
+
+  [ Andreas Beckmann ]
   * Merge changes from 525.147.05-8.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 02 Mar 2024 12:00:19 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 22:04:47 +0100
 
 nvidia-graphics-drivers (535.86.10-1) experimental; urgency=medium
 
-  * New upstream Tesla release 535.86.10 (2023-07-31).
+  * New upstream Tesla branch release 535.86.10 (2023-07-31).
 
   [ Andreas Beckmann ]
   * Update symbols files.
@@ -30,6 +34,7 @@ nvidia-graphics-drivers (535.86.05-1) experimental; urgency=medium
       Vulkan applications with sync-to-vblank enabled.
     - Fixed a video memory leak observed when turning off a connected
       monitor while using certain Wayland compositors.
+    * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
   * Refresh patches.
@@ -42,12 +47,13 @@ nvidia-graphics-drivers (535.86.05-1) experimental; urgency=medium
 
 nvidia-graphics-drivers (535.54.03-1) experimental; urgency=medium
 
-  * New upstream long term support branch release 535.54.03 (2023-06-14).
+  * New upstream LTS and Tesla branch release 535.54.03 (2023-06-14).
     - Fixed a bug that caused modesets to fail in some Wayland configurations.
     - Fixed a bug that caused head-mounted displays (HMDs) to display black
       after a modeset.
     - Fixed a bug that could cause image corruption when unbinding Vulkan
       sparse textures.
+    * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
   * Refresh patches.
@@ -83,6 +89,7 @@ nvidia-graphics-drivers (535.43.02-1) experimental; urgency=medium
     - Updated NV_CTRL_GPU_POWER_SOURCE NV-CONTROL API to report undersized
       power source.
     - Add support for version 4 of the linux-dmabuf wayland protocol.
+    * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
   * Update d/copyright with new NVIDIA Driver License Agreement.

@@ -116,6 +116,7 @@ libnvidia-ml.so.1 #PACKAGE# #MINVER# | libnvidia-ml.so.1 #MINVER#
  nvmlDeviceGetInforomVersion@Base 270
  nvmlDeviceGetIrqNum@Base 495
  nvmlDeviceGetJpgUtilization@Base 535
+ nvmlDeviceGetLastBBXFlushTime@Base 535.129
  nvmlDeviceGetMPSComputeRunningProcesses@Base 384.90
  nvmlDeviceGetMPSComputeRunningProcesses_v2@Base 470
  nvmlDeviceGetMPSComputeRunningProcesses_v3@Base 510

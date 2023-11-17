@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (535.113.01-1) UNRELEASED; urgency=medium
+
+  * New upstream long term support branch release 535.113.01 (2023-09-21).
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Nov 2023 10:14:07 +0100
+
 nvidia-graphics-drivers (535.104.12-2) experimental; urgency=medium
 
   * Backport drm_unlocked_ioctl_flag_present changes from 470.239.06 to fix

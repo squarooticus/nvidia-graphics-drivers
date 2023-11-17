@@ -1,4 +1,4 @@
-From 3e58f3b929fe1f153d3183494d4f5c96c973cc97 Mon Sep 17 00:00:00 2001
+From 0fb29d8a0aeb19168cc01ac86ea11fbb706c58c5 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 4 Mar 2024 13:50:23 +0100
 Subject: [PATCH] backport drm_unlocked_ioctl_flag_present changes from
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_unlocked_ioctl_flag_present changes from
  4 files changed, 47 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 8364cba..c1669b5 100755
+index 1f78933..80d05cf 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -6358,6 +6358,27 @@ compile_test() {
+@@ -6357,6 +6357,27 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_MMU_INTERVAL_NOTIFIER" "" "types"
          ;;
  

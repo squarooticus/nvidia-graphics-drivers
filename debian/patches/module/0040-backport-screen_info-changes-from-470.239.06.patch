@@ -1,4 +1,4 @@
-From 5c37f165b6a791fc9c5a786cf904ae0d2bea388c Mon Sep 17 00:00:00 2001
+From 3c85c4ed9618da46a1f6d208b809fe8fffd49d17 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 4 Mar 2024 22:48:44 +0100
 Subject: [PATCH] backport screen_info changes from 470.239.06
@@ -22,7 +22,7 @@ index 74b217e..5d6677a 100644
 +                                         !NV_IS_EXPORT_SYMBOL_GPL_##symbol)
  #endif  /* _NV_LINUX_H_ */
 diff --git a/conftest.sh b/conftest.sh
-index c1669b5..9df9f68 100755
+index 80d05cf..f55da42 100755
 --- a/conftest.sh
 +++ b/conftest.sh
 @@ -316,7 +316,7 @@ export_symbol_present_conftest() {
@@ -56,10 +56,10 @@ index e868c6c..ae0e628 100644
  NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_tegra_fuse_control_read
  NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_tegra_get_platform
 diff --git a/nvidia/os-interface.c b/nvidia/os-interface.c
-index 3e4a788..2371fc4 100644
+index 6d8b120..77b49e6 100644
 --- a/nvidia/os-interface.c
 +++ b/nvidia/os-interface.c
-@@ -1238,9 +1238,12 @@ void NV_API_CALL os_get_screen_info(
+@@ -1241,9 +1241,12 @@ void NV_API_CALL os_get_screen_info(
       * SYSFB_SIMPLEFB registers a dummy framebuffer which does not contain the
       * information required by os_get_screen_info(), therefore you need to
       * fall back onto the screen_info structure.

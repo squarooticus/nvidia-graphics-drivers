@@ -3,13 +3,6 @@ bashisms.patch
 
 # kernel support
 linux-2.6.34-dev_pm_info-runtime_auto.patch
-0010-backport-pci-dma-changes-for-ppc64el-from-470.223.02.patch
-0027-backport-get_user_pages-changes-from-520.56.06.patch
-0028-backport-get_user_pages-changes-from-525.53.patch
-0029-backport-get_user_pages-changes-from-525.53-uvm-part.patch
-0030-backport-get_user_pages-changes-from-535.86.05.patch
-0031-backport-asm-page.h-changes-from-470.223.02.patch
-0032-backport-drm_gem_prime_handle_to_fd-changes-from-470.patch
 0033-refuse-to-load-legacy-module-if-IBT-is-enabled.patch
 ppc64el.patch
 

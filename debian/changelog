@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (470.223.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.223.02-1) bullseye; urgency=medium
 
   * New upstream long term support branch release 470.223.02 (2023-10-31).
     * Fixed CVE-2023-31022.  (Closes: #1055136)
@@ -9,8 +9,9 @@ nvidia-graphics-drivers (470.223.02-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Refresh patches.
+  * Upload to bullseye.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 01 Nov 2023 10:04:04 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Nov 2023 17:38:12 +0100
 
 nvidia-graphics-drivers (470.199.02-4) UNRELEASED; urgency=medium
 

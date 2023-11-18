@@ -26,6 +26,8 @@ nvidia-graphics-drivers (535.43.02-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Update d/copyright with new NVIDIA Driver License Agreement.
+  * Backport nv_drm_gem_res_obj changes from 535.54.03 to fix kernel module
+    build for Linux <= 3.16.
   * Refresh patches.
   * Drop the libnvidia-compiler package.
   * libnvidia-pkcs11-openssl3: New package for the NVIDIA PKCS #11 library

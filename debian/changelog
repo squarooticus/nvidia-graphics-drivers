@@ -1,3 +1,17 @@
+nvidia-graphics-drivers (470.223.02-1) UNRELEASED; urgency=medium
+
+  * New upstream long term support branch release 470.223.02 (2023-10-31).
+    * Fixed CVE-2023-31022.  (Closes: #1055142)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5491
+    - Fixed a bug which caused incorrect reporting of presentation
+      times when using the VK_NV_present_barrier Vulkan extension.
+    * Improved compatibility with recent Linux kernels.
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 20 Nov 2023 11:43:36 +0100
+
 nvidia-graphics-drivers (470.223.02-1) bullseye; urgency=medium
 
   * New upstream long term support branch release 470.223.02 (2023-10-31).

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (525.147.05-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.147.05-1) unstable; urgency=medium
 
   * New upstream production branch release 525.147.05 (2023-10-31).
     * Fixed CVE-2023-31022.  (Closes: #1055136)
@@ -12,7 +12,7 @@ nvidia-graphics-drivers (525.147.05-1) UNRELEASED; urgency=medium
   * Refresh patches.
   * Update nv-readme.ids.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 07 Nov 2023 00:09:04 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 21 Nov 2023 02:33:52 +0100
 
 nvidia-graphics-drivers (525.125.06-3) unstable; urgency=medium
 

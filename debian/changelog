@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (535.43.02-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (535.43.02-1) experimental; urgency=medium
 
   * New upstream beta 535.43.02 (2023-05-30).  (Closes: #1053562)
     - Added support for the VK_EXT_memory_priority, and
@@ -36,8 +36,9 @@ nvidia-graphics-drivers (535.43.02-1) UNRELEASED; urgency=medium
   * Update symbols files.
   * libcuda1: Add Provides: libcuda-12.2-1.
   * Restrict watch file to releases from the 535.xx long term support branch.
+  * Upload to experimental.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 02 Aug 2023 18:49:16 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 21 Nov 2023 17:55:39 +0100
 
 nvidia-graphics-drivers (530.41.03-4) UNRELEASED; urgency=medium
 

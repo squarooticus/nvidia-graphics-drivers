@@ -1,3 +1,19 @@
+nvidia-graphics-drivers (525.147.05-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 525.147.05 (2023-10-31).
+    * Fixed CVE-2023-31022.  (Closes: #1055143)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5491
+    - Fixed a bug which could cause some DisplayPort monitors to flicker.
+    - Fixed a bug that could cause monitors to flicker when the performance
+      state changes on Turing GPUs.
+    * Improved compatibility with recent Linux kernels.
+
+  [ Andreas Beckmann ]
+  * Refresh patches.
+  * Update nv-readme.ids.
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 21 Nov 2023 11:06:32 +0100
+
 nvidia-graphics-drivers (525.147.05-1) unstable; urgency=medium
 
   * New upstream production branch release 525.147.05 (2023-10-31).

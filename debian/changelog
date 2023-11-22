@@ -1,3 +1,12 @@
+nvidia-graphics-drivers (450.248.02-4) UNRELEASED; urgency=medium
+
+  * The Tesla 450 driver series has been declared as End-of-Life by
+    NVIDIA. No further updates fixing security issues, critical bugs, or
+    adding support for new Xorg or Linux releases will be issued.
+    https://docs.nvidia.com/datacenter/tesla/drivers/
+
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 14 Nov 2023 13:46:30 +0100
+
 nvidia-graphics-drivers (450.248.02-3) UNRELEASED; urgency=medium
 
   * Revert backport of pin_user_pages changes.

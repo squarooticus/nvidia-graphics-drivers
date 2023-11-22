@@ -57,7 +57,7 @@ nvidia-graphics-drivers (450.248.02-4) UNRELEASED; urgency=medium
     adding support for new Xorg or Linux releases will be issued.
     https://docs.nvidia.com/datacenter/tesla/drivers/
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 14 Nov 2023 13:46:30 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 22 Nov 2023 14:13:01 +0100
 
 nvidia-graphics-drivers (450.248.02-3) UNRELEASED; urgency=medium
 

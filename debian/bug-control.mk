@@ -44,6 +44,7 @@ define PACKAGE_STATUS
 	nvidia-support
 	nvidia-kernel-common
 	nvidia-modprobe
+	nvidia-persistenced
 	xserver-xorg
 	xserver-xorg-core
 	xserver-xorg-legacy

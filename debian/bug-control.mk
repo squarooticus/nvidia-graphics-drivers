@@ -41,6 +41,7 @@ define PACKAGE_STATUS
 	libcuda1-any
 	libcuda.so.1
 	libnvidia-ml.so.1
+	nvidia-powerd
 	nvidia-settings
 	nvidia-xconfig
 	nvidia-support

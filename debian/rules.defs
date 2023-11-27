@@ -2,7 +2,6 @@
 #NVIDIA_LEGACY		 =
 WATCH_VERSION		 = $(NVIDIA_MAJOR)
 
-NVIDIA_SETTINGS		 = nvidia-settings (>= $(NVIDIA_MAJOR))
 NVIDIA_LEGACY_CHECK	 = nvidia-legacy-check (>= 310)
 
 DEB_VERSION_AFTER_jessie = 340.101-2~

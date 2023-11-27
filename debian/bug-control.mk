@@ -39,7 +39,7 @@ define PACKAGE_STATUS
 	libcuda1-any
 	libcuda.so.1
 	libnvidia-ml.so.1
-	nvidia-settings
+	nvidia-settings$(-variant)
 	nvidia-xconfig
 	nvidia-support
 	nvidia-kernel-common

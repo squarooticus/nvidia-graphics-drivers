@@ -841,7 +841,7 @@ Description: NVENC Video Encoding runtime library${nvidia:VariantDesc}
  This package contains the nvidia-encode runtime library.
 
 Package: libnvidia-fbc1
-Architecture: i386 amd64
+Architecture: i386 amd64 arm64
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}

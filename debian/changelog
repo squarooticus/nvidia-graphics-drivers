@@ -2,6 +2,7 @@ nvidia-graphics-drivers (525.147.05-4) UNRELEASED; urgency=medium
 
   * Build libnvidia-fbc1 for arm64, too.  (Closes: #1057078)
   * bug-control: Report information about more driver components.
+  * Do not yet recommend nvidia-suspend-common.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 01 Dec 2023 14:24:49 +0100
 

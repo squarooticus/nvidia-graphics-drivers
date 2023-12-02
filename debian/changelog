@@ -1295,7 +1295,7 @@ nvidia-graphics-drivers (450.248.02-2) UNRELEASED; urgency=medium
 nvidia-graphics-drivers (450.248.02-1) UNRELEASED; urgency=medium
 
   * New upstream Tesla release 450.248.02 (2023-06-26).
-    * Fixed CVE-2023-25515, CVE-2023-25516.
+    * Fixed CVE-2023-25515, CVE-2023-25516.  (Closes: #1039682)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5468
     * Improved compatibility with recent Linux kernels.
 

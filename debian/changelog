@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (525.147.05-4~deb12u1) bookworm; urgency=medium
+
+  * Rebuild for bookworm.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 03 Dec 2023 00:24:21 +0100
+
 nvidia-graphics-drivers (525.147.05-4) unstable; urgency=medium
 
   * Build libnvidia-fbc1 for arm64, too.  (Closes: #1057078)

@@ -1050,7 +1050,7 @@ Description: NVIDIA OpenGL-based Inband Frame Readback runtime library${nvidia:V
  This package contains the NvIFROpenGL runtime library.
 
 Package: lib${nvidia}-fbc1
-Architecture: i386 amd64
+Architecture: i386 amd64 ${arch:arm64}
 Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}

@@ -54,8 +54,8 @@ The branch structure in the GIT repository
     (340-jessie)        EoL   jessie              340
     340                 EoL   (stretch)           390, 340xx/main
     340xx/main          EoL   stretch,buster,sid
-    390                 EoL   stretch             390-buster
-    390-buster          EoL   (buster)            418, 390xx/main
+    (390-stretch)       EoL   stretch             390
+    390                 EoL   (buster)            418, 390xx/main
     390xx/main          EoL   buster,bullseye,sid
     418                 EoL   buster              418-bullseye
     418-bullseye        EoL   (bullseye)          450, 418-tesla

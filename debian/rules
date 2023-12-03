@@ -19,7 +19,7 @@ XORG_BOUND		?=
 LINUX_KMOD_VARIANT	?=
 LINUX_KMOD_TESTED	?=
 NVIDIA_LEGACY_CHECK	?=
-NVIDIA_SETTINGS		?= nvidia-settings$(-variant)
+NVIDIA_SETTINGS		?= nvidia-settings$(-variant) (>= $(NVIDIA_MAJOR))
 ARCH_CANDIDATES		?= amd64 i386 armhf arm64 ppc64el
 ARCH_LIST		?= amd64
 NO_DRIVER_ARCH_LIST	?=
@@ -332,6 +332,9 @@ endif
 
 override_dh_installchangelogs:
 	dh_installchangelogs debian/tmp/NVIDIA_Changelog
+
+override_dh_installsystemd:
+	dh_installsystemd --no-start --no-stop-on-upgrade --no-restart-after-upgrade
 
 override_dh_bugfiles:
 	dh_bugfiles -A

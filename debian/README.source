@@ -60,11 +60,10 @@ The branch structure in the GIT repository
     (418-buster)        EoL   buster              418
     418                 EoL   (bullseye)          450, tesla-418/main
     tesla-418/main      EoL   bullseye,sid        tesla-450/main
-    450                 EoL   (bullseye)          460-tesla, tesla-450/main
+    450                 EoL   (bullseye)          460, tesla-450/main
     tesla-450/main      EoL   (bullseye),(sid)    tesla-460/main, tesla-450/transition-470
     tesla-450/transition-470  bullseye,sid        tesla-460/transition-470
-    460                 EoL   (bullseye)          470, 460-tesla
-    460-tesla           EoL   (bullseye)          470-tesla, tesla-460/main
+    460                 EoL   (bullseye)          470-tesla, tesla-460/main
     tesla-460/main      EoL   (bullseye),(sid)    tesla-470/main, tesla-460/transition-470
     tesla-460/transition-470  bullseye,sid
     470                       bullseye            525, 470-tesla

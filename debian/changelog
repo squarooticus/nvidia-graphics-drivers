@@ -9,7 +9,7 @@ nvidia-graphics-drivers (515.105.01-1+git) UNRELEASED; urgency=medium
 
 nvidia-graphics-drivers (515.105.01-1) UNRELEASED; urgency=medium
 
-  * New upstream production branch release 515.105.01 (2023-03-30).
+  * New upstream Tesla release 515.105.01 (2023-03-30).
     * Fixed CVE-2023-0184, CVE-2023-0189, CVE-2023-0180, CVE-2023-0183,
       CVE-2023-0185, CVE-2023-0187, CVE-2023-0198, CVE-2023-0199,
       CVE-2023-0188, CVE-2023-0190, CVE-2023-0194, CVE-2023-0195,

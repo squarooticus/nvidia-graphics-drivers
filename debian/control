@@ -476,7 +476,6 @@ Depends:
 Suggests:
  libegl-${nvidia-}0 [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
  | libegl-nvidia-tesla-470-0 [i386 amd64 arm64 ppc64el]
- | libegl-nvidia-tesla-450-0 [i386 amd64 arm64 ppc64el]
  | libegl-nvidia-tesla-418-0 [i386 amd64 ppc64el]
  | libegl-nvidia-legacy-390xx0 [i386 amd64 armhf],
 Description: NVIDIA binary EGL driver - common files
@@ -546,7 +545,6 @@ Depends:
 Suggests:
  ${nvidia}-vulkan-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
  | nvidia-tesla-470-vulkan-icd [i386 amd64 arm64 ppc64el]
- | nvidia-tesla-450-vulkan-icd [i386 amd64 arm64 ppc64el]
  | nvidia-tesla-418-vulkan-icd [i386 amd64 ppc64el]
  | nvidia-legacy-390xx-vulkan-icd [i386 amd64],
 Conflicts:
@@ -958,7 +956,6 @@ Depends:
 Suggests:
  ${nvidia}-opencl-icd [i386 amd64 ${arch:arm64} ${arch:ppc64el}]
  | nvidia-tesla-470-opencl-icd [i386 amd64 arm64 ppc64el]
- | nvidia-tesla-450-opencl-icd [i386 amd64 arm64 ppc64el]
  | nvidia-tesla-418-opencl-icd [i386 amd64 ppc64el]
  | nvidia-legacy-390xx-opencl-icd [i386 amd64],
 Description: NVIDIA OpenCL driver - common files

@@ -230,7 +230,7 @@ Recommends:
  ${nvidia}-driver (>= ${nvidia:Version}),
  ${nvidia}-vdpau-driver (>= ${nvidia:Version}),
  ${nvidia:kmod:binary},
-# nvidia-suspend-common,
+ nvidia-suspend-common,
  ${nvidia-settings},
 Suggests:
  ${nvidia:kmod:source},
@@ -251,7 +251,7 @@ Description: NVIDIA binary Xorg driver${nvidia:VariantDesc}
 
 Package: nvidia-suspend-common
 Section: non-free/x11
-Architecture: #amd64 arm64 ppc64el
+Architecture: amd64 arm64 ppc64el
 Multi-Arch: foreign
 Depends:
  kbd,

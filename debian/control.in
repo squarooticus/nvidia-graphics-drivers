@@ -254,6 +254,7 @@ Section: non-free/x11
 Architecture: #amd64 arm64 ppc64el
 Multi-Arch: foreign
 Depends:
+ kbd,
  ${misc:Depends}
 Description: NVIDIA driver - systemd power management scripts
  This package provides the common files for the NVIDIA power management

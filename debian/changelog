@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (525.147.05-5) UNRELEASED; urgency=medium
+
+  * nvidia-suspend-common: Depend on kbd for chvt.  (Closes: #1058081)
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Dec 2023 00:02:11 +0100
+
 nvidia-graphics-drivers (525.147.05-4~deb12u1) bookworm; urgency=medium
 
   * Rebuild for bookworm.

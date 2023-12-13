@@ -230,7 +230,7 @@ Recommends:
  ${nvidia}-driver (>= ${nvidia:Version}),
  ${nvidia}-vdpau-driver (>= ${nvidia:Version}),
  ${nvidia:kmod:binary},
-# nvidia-suspend-common,
+ nvidia-suspend-common,
  ${nvidia-settings},
 Suggests:
  ${nvidia:kmod:source},
@@ -254,6 +254,7 @@ Section: non-free/x11
 Architecture: amd64 arm64 ppc64el
 Multi-Arch: foreign
 Depends:
+ kbd,
  ${misc:Depends}
 Description: NVIDIA driver - systemd power management scripts
  This package provides the common files for the NVIDIA power management
@@ -866,7 +867,7 @@ Description: NVIDIA Dynamic Boost (daemon)
 
 Package: nvidia-cuda-mps
 Section: non-free/utils
-Architecture: #amd64 ${arch:arm64} ${arch:ppc64el}
+Architecture: amd64 ${arch:arm64} ${arch:ppc64el}
 Depends:
  ${shlibs:Depends}, ${misc:Depends}
 Description: NVIDIA CUDA Multi Process Service (MPS)

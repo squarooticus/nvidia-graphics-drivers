@@ -1,5 +1,4 @@
-# If needed, set to the major part of the upstream version number.
-#NVIDIA_LEGACY		 =
+#NVIDIA_LEGACY		 = $(NVIDIA_MAJOR)
 WATCH_VERSION		 = $(NVIDIA_MAJOR)
 
 NVIDIA_LEGACY_CHECK	 = nvidia-legacy-check (>= 310)

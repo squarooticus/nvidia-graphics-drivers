@@ -712,7 +712,7 @@ Description: NVIDIA Dynamic Boost (daemon)
 
 Package: nvidia-cuda-mps
 Section: non-free/utils
-Architecture: amd64 arm64
+Architecture: amd64 arm64 ppc64el
 Depends:
  ${shlibs:Depends}, ${misc:Depends}
 Description: NVIDIA CUDA Multi Process Service (MPS)

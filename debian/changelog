@@ -3,6 +3,7 @@ nvidia-graphics-drivers (525.147.05-5) UNRELEASED; urgency=medium
   * Switch src:nvidia-graphics-drivers to the Tesla driver series.
   * Build for ppc64el.
   * Build all unversioned packages from src:nvidia-graphics-drivers.
+  * Enable nvidia-suspend-common.
   * nvidia-suspend-common: Depend on kbd for chvt.  (Closes: #1058081)
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Dec 2023 00:02:11 +0100

@@ -310,6 +310,7 @@ nvidia-graphics-drivers (470.223.02-3) UNRELEASED; urgency=medium
   * Switch src:nvidia-graphics-drivers to the Tesla 470 driver series.
   * Build for ppc64el.
   * Build all unversioned packages from src:nvidia-graphics-drivers.
+  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 12 Dec 2023 18:33:57 +0100
 

@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (418.226.00-13+git4deb11bullseye) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (418.226.00-14+git4deb11bullseye) UNRELEASED; urgency=medium
 
   * Build the nvidia-*-common packages for ppc64el (430.50-2).
   * nvidia-detect: Build for ppc64el (430.64-2).
@@ -6,6 +6,12 @@ nvidia-graphics-drivers (418.226.00-13+git4deb11bullseye) UNRELEASED; urgency=me
   * nvidia-detect.install: Use dh-exec for arch restrictions (440.100-2).
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 29 Oct 2021 15:58:47 +0200
+
+nvidia-graphics-drivers (418.226.00-14) UNRELEASED; urgency=medium
+
+  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 20 Jan 2024 02:28:08 +0100
 
 nvidia-graphics-drivers (418.226.00-13) UNRELEASED; urgency=medium
 

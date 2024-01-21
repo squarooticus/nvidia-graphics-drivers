@@ -5,6 +5,8 @@ nvidia-graphics-drivers (525.147.05-5) UNRELEASED; urgency=medium
   * Build all unversioned packages from src:nvidia-graphics-drivers.
   * Enable nvidia-suspend-common.
   * nvidia-suspend-common: Depend on kbd for chvt.  (Closes: #1058081)
+  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
+    (Closes: #1059590)
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 13 Dec 2023 00:02:11 +0100
 

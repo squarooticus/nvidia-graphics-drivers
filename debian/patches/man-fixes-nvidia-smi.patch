@@ -328,3 +328,14 @@ Forwarded: not-needed
  .PP 1
  
    * Added listing of compute running processes 
+--- a/NVIDIA-Linux/nvidia-cuda-mps-control.1
++++ b/NVIDIA-Linux/nvidia-cuda-mps-control.1
+@@ -130,7 +130,7 @@ Reports a snapshot of the current client
+ .TP
+ \fBset_default_client_priority\fR \fIpriority\fR
+ Set the client priority level that will be used for new clients. Priority values are only
+-considered as hints to the CUDA driver and can be ignored or overriden depending on platform.
++considered as hints to the CUDA driver and can be ignored or overridden depending on platform.
+ \fIpriority\fR follows a convention where smaller numbers are higher priorities, and the default
+ priority value is 0. The only other supported value for \fIpriority\fR is 1, which represents a
+ below-normal priority level.

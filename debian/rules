@@ -163,8 +163,9 @@ NVIDIA-Linux-ppc64el: NVIDIA-Linux-amd64
 	cp -al $</*.json* $@
 endif
 
-# Unpack all architectures, we may need files from all of them.
-unpack-stamp: $(patsubst %,NVIDIA-Linux-%,$(ARCH_LIST))
+# Always unpack amd64, we need files from them.
+unpack-stamp: NVIDIA-Linux-amd64
+unpack-stamp: NVIDIA-Linux-$(DEB_HOST_ARCH)
 	$(if $(filter $(DEB_HOST_ARCH),$(ARCH_LIST)),,$(error Architecture $(DEB_HOST_ARCH) unsupported.))
 	dh_testdir
 	$(RM) NVIDIA-Linux

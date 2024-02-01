@@ -4,6 +4,7 @@ bashisms.patch
 # kernel support
 linux-2.6.34-dev_pm_info-runtime_auto.patch
 0033-refuse-to-load-legacy-module-if-IBT-is-enabled.patch
+0034-fix-typos.patch
 ppc64el.patch
 
 # build system updates

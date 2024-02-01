@@ -1,4 +1,4 @@
-From f675338d04cd91948033c0cd0fe84b2fa833285c Mon Sep 17 00:00:00 2001
+From 62b4f377c5212c427a1de6254ac73b5092ee0f4d Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 31 Jan 2024 03:06:19 +0100
 Subject: [PATCH] fix typos
@@ -9,10 +9,10 @@ Subject: [PATCH] fix typos
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/nvidia-uvm/uvm.h b/nvidia-uvm/uvm.h
-index 090ef95..0822390 100644
+index 85c2a58..3401901 100644
 --- a/nvidia-uvm/uvm.h
 +++ b/nvidia-uvm/uvm.h
-@@ -1204,7 +1204,7 @@ NV_STATUS UvmCleanUpZombieResources(void);
+@@ -1201,7 +1201,7 @@ NV_STATUS UvmCleanUpZombieResources(void);
  // non-fault-capable HW engines.
  //
  // By default, all mappings to this VA range have read, write and atomic access

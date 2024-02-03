@@ -246,6 +246,41 @@ fi
 		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-tesla-470-driver" ] && [[ -n ${VERSIONS[470]} ]]; then
 			echo "Your card is also supported by the Tesla 470 drivers series."
 		fi
+	elif grep -q "trixie\|^13" /etc/debian_version
+	then
+		if [[ -n ${VERSIONS[999]} ]]; then
+			if [[ -n ${VERSIONS[470]} ]]; then
+				echo "Your card is supported by all driver versions."
+			else
+				echo "Your card is supported by the default drivers."
+			fi
+			PACKAGE="nvidia-driver"
+		elif [[ -n ${VERSIONS[470]} ]]; then
+			echo "Your card is supported by the Tesla 470 drivers series."
+			PACKAGE="nvidia-tesla-470-driver"
+		elif [[ -n ${VERSIONS[390]} ]]; then
+			echo "Your card is only supported by the 390 legacy drivers series, which is only available up to bullseye."
+		elif [[ -n ${VERSIONS[391]} ]]; then
+			echo "Your card is only supported by the 390 legacy drivers series on amd64, which is only available up to bullseye."
+		elif [[ -n ${VERSIONS[340]} ]]; then
+			echo "Your card is only supported by the 340 legacy drivers series, which is only available up to buster."
+		elif [[ -n ${VERSIONS[304]} ]]; then
+			echo "Uh oh. Your card is only supported by the 304 legacy drivers series, which is not in any current Debian suite."
+		elif [[ -n ${VERSIONS[173]} ]]; then
+			echo "Uh oh. Your card is only supported by the 173.14 legacy drivers series, which is not in any current Debian suite."
+		elif [[ -n ${VERSIONS[96]} ]]; then
+			echo "Uh oh. Your card is only supported by the 96.43 legacy drivers series, which is not in any current Debian suite."
+		elif [[ -n ${VERSIONS[71]} ]]; then
+			echo "Uh oh. Your card is only supported by the 71.86 legacy drivers series, which is not in any current Debian suite."
+		else
+			echo "Oops. Internal error 13 ($NVGA)"
+		fi
+		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-open-driver" ] && [[ -n ${VERSIONS[990]} ]]; then
+			echo "Your card is also supported by the NVIDIA Linux Open GPU Kernel Module."
+		fi
+		if [ -n "$PACKAGE" ] && [ "$PACKAGE" != "nvidia-tesla-470-driver" ] && [[ -n ${VERSIONS[470]} ]]; then
+			echo "Your card is also supported by the Tesla 470 drivers series."
+		fi
 	else
 		echo "Uh oh. Failed to identify your Debian suite.";
 	fi;

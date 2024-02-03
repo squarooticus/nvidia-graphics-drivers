@@ -183,7 +183,7 @@ nv-readme.ids: unpack-stamp
 		: "*** Supported PCI IDs have changed. See diff above. Aborting. ***"; \
 		exit 1 ; \
 	fi
-ifneq (,$(variant))
+ifneq (,$(variant:tesla=))
 	@set -e -x ; \
 	if ! cmp -s debian/detect/$(nvidia).ids $@ ; then \
 		diff -u debian/detect/$(nvidia).ids $@ || true ; \

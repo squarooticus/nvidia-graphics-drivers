@@ -17,7 +17,7 @@ ARCH_LIST		+= armhf
 ARCH_LIST		+= ppc64el
 NO_DRIVER_ARCH_LIST	 = i386 armhf
 ifeq (,$(TESLA_MAJOR))
-NO_DRIVER_ARCH_LIST	+= ppc64el
+NO_TARBALL_ARCH_LIST	 = ppc64el
 endif
 NO_VULKAN_ARCH_LIST	 = armhf
 

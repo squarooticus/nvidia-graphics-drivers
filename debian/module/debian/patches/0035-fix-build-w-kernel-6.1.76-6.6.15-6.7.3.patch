@@ -1,4 +1,4 @@
-From 23a263b2d39bf979a699387c0c69b8522d8aac57 Mon Sep 17 00:00:00 2001
+From ffa778845004e4e94827e32826bf311c464403e5 Mon Sep 17 00:00:00 2001
 From: Ionen Wolkens <ionen@gentoo.org>
 Date: Thu, 1 Feb 2024 14:58:45 -0500
 Subject: [PATCH] fix build w/ kernel 6.1.76+6.6.15+6.7.3
@@ -30,10 +30,10 @@ Origin: gentoo, https://github.com/gentoo/gentoo/blob/c64caf53/x11-drivers/nvidi
  3 files changed, 24 insertions(+), 3 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index cea6402..821c27b 100644
+index f8df9e3..d538b41 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -1954,4 +1954,25 @@ static inline void nv_mutex_destroy(struct mutex *lock)
+@@ -1988,4 +1988,25 @@ static inline void nv_mutex_destroy(struct mutex *lock)
  
  }
  
@@ -60,10 +60,10 @@ index cea6402..821c27b 100644
 +#endif
  #endif  /* _NV_LINUX_H_ */
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
-index 50da012..8d776ff 100644
+index 5926d3c..d2052c4 100644
 --- a/nvidia/nv-mmap.c
 +++ b/nvidia/nv-mmap.c
-@@ -534,7 +534,7 @@ int nvidia_mmap_helper(
+@@ -574,7 +574,7 @@ int nvidia_mmap_helper(
              // backing struct page. This is used to isolate P8 from P9.
              //
              if (!IS_REG_OFFSET(nv, access_start, access_len) &&
@@ -73,10 +73,10 @@ index 50da012..8d776ff 100644
                  ret = nvidia_mmap_numa(vma, mmap_context);
                  if (ret)
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index 092aa09..c5e73ed 100644
+index 61ba22c..f976fab 100644
 --- a/nvidia/os-mlock.c
 +++ b/nvidia/os-mlock.c
-@@ -101,7 +101,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,
+@@ -100,7 +100,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,
      for (i = 0; i < page_count; i++)
      {
          if ((nv_follow_pfn(vma, (start + (i * PAGE_SIZE)), &pfn) < 0) ||
@@ -85,7 +85,7 @@ index 092aa09..c5e73ed 100644
          {
              rmStatus = NV_ERR_INVALID_ADDRESS;
              break;
-@@ -175,7 +175,7 @@ NV_STATUS NV_API_CALL os_lookup_user_io_memory(
+@@ -174,7 +174,7 @@ NV_STATUS NV_API_CALL os_lookup_user_io_memory(
          goto done;
      }
  

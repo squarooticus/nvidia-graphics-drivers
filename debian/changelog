@@ -2,6 +2,7 @@ nvidia-graphics-drivers (470.223.02-4) UNRELEASED; urgency=medium
 
   * Apply pfn_valid patch from gentoo to fix kernel module build for
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.
+  * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Wed, 07 Feb 2024 21:14:29 +0100
 

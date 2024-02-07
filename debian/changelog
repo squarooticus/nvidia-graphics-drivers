@@ -1,3 +1,10 @@
+nvidia-graphics-drivers (460.106.00-14) UNRELEASED; urgency=medium
+
+  * Apply pfn_valid patch from gentoo to fix kernel module build for
+    Linux 6.1.76, 6.6.15, 6.7.3, 6.8.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 07 Feb 2024 04:12:22 +0100
+
 nvidia-graphics-drivers (460.106.00-13) UNRELEASED; urgency=medium
 
   * Revert backport of pin_user_pages changes.

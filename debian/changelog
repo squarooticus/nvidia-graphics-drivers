@@ -305,6 +305,14 @@ nvidia-graphics-drivers (495.44-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 05 Nov 2021 10:45:12 +0100
 
+nvidia-graphics-drivers (470.223.02-4) UNRELEASED; urgency=medium
+
+  * Apply pfn_valid patch from gentoo to fix kernel module build for
+    Linux 6.1.76, 6.6.15, 6.7.3, 6.8.
+  * Update lintian overrides.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 07 Feb 2024 21:14:29 +0100
+
 nvidia-graphics-drivers (470.223.02-3) UNRELEASED; urgency=medium
 
   * Switch src:nvidia-graphics-drivers to the Tesla 470 driver series.
@@ -312,7 +320,7 @@ nvidia-graphics-drivers (470.223.02-3) UNRELEASED; urgency=medium
   * Build all unversioned packages from src:nvidia-graphics-drivers.
   * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 12 Dec 2023 18:33:57 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 25 Jan 2024 19:48:07 +0100
 
 nvidia-graphics-drivers (470.223.02-2) UNRELEASED; urgency=medium
 
@@ -941,6 +949,13 @@ nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Apr 2021 18:48:53 +0200
+
+nvidia-graphics-drivers (460.106.00-14) UNRELEASED; urgency=medium
+
+  * Apply pfn_valid patch from gentoo to fix kernel module build for
+    Linux 6.1.76, 6.6.15, 6.7.3, 6.8.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 07 Feb 2024 04:12:22 +0100
 
 nvidia-graphics-drivers (460.106.00-13) UNRELEASED; urgency=medium
 

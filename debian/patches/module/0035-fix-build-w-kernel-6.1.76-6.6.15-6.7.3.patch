@@ -1,4 +1,4 @@
-From e95d5404a3ed975eba7a6ca1448f28b60d1e3f09 Mon Sep 17 00:00:00 2001
+From 3cc110fc5dd5884a997d35c9cdf9940373998cb5 Mon Sep 17 00:00:00 2001
 From: Ionen Wolkens <ionen@gentoo.org>
 Date: Thu, 1 Feb 2024 14:58:45 -0500
 Subject: [PATCH] fix build w/ kernel 6.1.76+6.6.15+6.7.3
@@ -30,10 +30,10 @@ Origin: gentoo, https://github.com/gentoo/gentoo/blob/c64caf53/x11-drivers/nvidi
  3 files changed, 24 insertions(+), 3 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index 0e9568f..31d2571 100644
+index 9f32e4e..ad40a8c 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -2055,4 +2055,25 @@ typedef enum
+@@ -1998,4 +1998,25 @@ typedef enum
  #include <linux/clk-provider.h>
  #endif
  
@@ -60,10 +60,10 @@ index 0e9568f..31d2571 100644
 +#endif
  #endif  /* _NV_LINUX_H_ */
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
-index 89d5aef..08ad83b 100644
+index da01e46..bda2661 100644
 --- a/nvidia/nv-mmap.c
 +++ b/nvidia/nv-mmap.c
-@@ -587,7 +587,7 @@ int nvidia_mmap_helper(
+@@ -575,7 +575,7 @@ int nvidia_mmap_helper(
              //
              if ((nv_get_numa_status(nvl) == NV_NUMA_STATUS_ONLINE) &&
                  !IS_REG_OFFSET(nv, access_start, access_len) &&
@@ -73,7 +73,7 @@ index 89d5aef..08ad83b 100644
                  ret = nvidia_mmap_numa(vma, mmap_context);
                  if (ret)
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index 2369bae..0de0b83 100644
+index e378245..0f0a93b 100644
 --- a/nvidia/os-mlock.c
 +++ b/nvidia/os-mlock.c
 @@ -113,7 +113,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,

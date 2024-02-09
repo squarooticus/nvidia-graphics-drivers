@@ -1,4 +1,4 @@
-From ffa778845004e4e94827e32826bf311c464403e5 Mon Sep 17 00:00:00 2001
+From 9ad143d179b2a269b4f62821436f749374cc804c Mon Sep 17 00:00:00 2001
 From: Ionen Wolkens <ionen@gentoo.org>
 Date: Thu, 1 Feb 2024 14:58:45 -0500
 Subject: [PATCH] fix build w/ kernel 6.1.76+6.6.15+6.7.3
@@ -30,12 +30,12 @@ Origin: gentoo, https://github.com/gentoo/gentoo/blob/c64caf53/x11-drivers/nvidi
  3 files changed, 24 insertions(+), 3 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index f8df9e3..d538b41 100644
+index 18dcf8d..03b5dd5 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -1988,4 +1988,25 @@ static inline void nv_mutex_destroy(struct mutex *lock)
- 
- }
+@@ -2110,4 +2110,25 @@ typedef enum
+ #include <linux/clk-provider.h>
+ #endif
  
 +#if defined(CONFIG_HAVE_ARCH_PFN_VALID) || LINUX_VERSION_CODE < KERNEL_VERSION(6,1,76)
 +#  define nv_pfn_valid pfn_valid
@@ -60,23 +60,23 @@ index f8df9e3..d538b41 100644
 +#endif
  #endif  /* _NV_LINUX_H_ */
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
-index 5926d3c..d2052c4 100644
+index 89d5aef..08ad83b 100644
 --- a/nvidia/nv-mmap.c
 +++ b/nvidia/nv-mmap.c
-@@ -574,7 +574,7 @@ int nvidia_mmap_helper(
-             // backing struct page. This is used to isolate P8 from P9.
+@@ -587,7 +587,7 @@ int nvidia_mmap_helper(
              //
-             if (!IS_REG_OFFSET(nv, access_start, access_len) &&
+             if ((nv_get_numa_status(nvl) == NV_NUMA_STATUS_ONLINE) &&
+                 !IS_REG_OFFSET(nv, access_start, access_len) &&
 -                (pfn_valid(PFN_DOWN(mmap_start))))
 +                (nv_pfn_valid(PFN_DOWN(mmap_start))))
              {
                  ret = nvidia_mmap_numa(vma, mmap_context);
                  if (ret)
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index 61ba22c..f976fab 100644
+index 2369bae..0de0b83 100644
 --- a/nvidia/os-mlock.c
 +++ b/nvidia/os-mlock.c
-@@ -100,7 +100,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,
+@@ -113,7 +113,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,
      for (i = 0; i < page_count; i++)
      {
          if ((nv_follow_pfn(vma, (start + (i * PAGE_SIZE)), &pfn) < 0) ||
@@ -85,7 +85,7 @@ index 61ba22c..f976fab 100644
          {
              rmStatus = NV_ERR_INVALID_ADDRESS;
              break;
-@@ -174,7 +174,7 @@ NV_STATUS NV_API_CALL os_lookup_user_io_memory(
+@@ -187,7 +187,7 @@ NV_STATUS NV_API_CALL os_lookup_user_io_memory(
          goto done;
      }
  

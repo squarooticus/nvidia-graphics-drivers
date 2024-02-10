@@ -3,6 +3,7 @@ nvidia-graphics-drivers (525.147.05-6) unstable; urgency=medium
   * Apply pfn_valid patch from gentoo to fix kernel module build for
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.  (Closes: #1063363, #1062932)
   * nvidia-detect: Tesla and regular driver packages have been merged.
+  * nvidia-detect: Add superficial autopkgtest for checking codename support.
   * Update lintian overrides.
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 09 Feb 2024 20:43:30 +0100

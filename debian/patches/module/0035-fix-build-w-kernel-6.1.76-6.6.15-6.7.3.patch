@@ -1,4 +1,4 @@
-From 3cc110fc5dd5884a997d35c9cdf9940373998cb5 Mon Sep 17 00:00:00 2001
+From f8c5a7c06f975ebae5b22d1e00c201ab47aabf0b Mon Sep 17 00:00:00 2001
 From: Ionen Wolkens <ionen@gentoo.org>
 Date: Thu, 1 Feb 2024 14:58:45 -0500
 Subject: [PATCH] fix build w/ kernel 6.1.76+6.6.15+6.7.3
@@ -30,10 +30,10 @@ Origin: gentoo, https://github.com/gentoo/gentoo/blob/c64caf53/x11-drivers/nvidi
  3 files changed, 24 insertions(+), 3 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index 9f32e4e..ad40a8c 100644
+index 2a4a756..f95e737 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -1998,4 +1998,25 @@ typedef enum
+@@ -2006,4 +2006,25 @@ typedef enum
  #include <linux/clk-provider.h>
  #endif
  
@@ -60,10 +60,10 @@ index 9f32e4e..ad40a8c 100644
 +#endif
  #endif  /* _NV_LINUX_H_ */
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
-index da01e46..bda2661 100644
+index 152b22a..20f06c5 100644
 --- a/nvidia/nv-mmap.c
 +++ b/nvidia/nv-mmap.c
-@@ -575,7 +575,7 @@ int nvidia_mmap_helper(
+@@ -582,7 +582,7 @@ int nvidia_mmap_helper(
              //
              if ((nv_get_numa_status(nvl) == NV_NUMA_STATUS_ONLINE) &&
                  !IS_REG_OFFSET(nv, access_start, access_len) &&

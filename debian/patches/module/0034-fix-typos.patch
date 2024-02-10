@@ -1,4 +1,4 @@
-From 1d1c9ee15215fe2a9e1e5a4b6939e3f0ab2efbf6 Mon Sep 17 00:00:00 2001
+From 5b840832514ab3025124493218d70bfa57470c9c Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Wed, 31 Jan 2024 03:06:19 +0100
 Subject: [PATCH] fix typos
@@ -8,10 +8,10 @@ Subject: [PATCH] fix typos
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/nvidia-uvm/uvm_perf_thrashing.c b/nvidia-uvm/uvm_perf_thrashing.c
-index 0aae181..8fecfdf 100644
+index a81d0fc..fdb0e68 100644
 --- a/nvidia-uvm/uvm_perf_thrashing.c
 +++ b/nvidia-uvm/uvm_perf_thrashing.c
-@@ -316,7 +316,7 @@ module_param(uvm_perf_thrashing_max_resets,    uint, S_IRUGO);
+@@ -318,7 +318,7 @@ module_param(uvm_perf_thrashing_max_resets,    uint, S_IRUGO);
  unsigned uvm_perf_map_remote_on_native_atomics_fault = 0;
  module_param(uvm_perf_map_remote_on_native_atomics_fault, uint, S_IRUGO);
  
@@ -20,7 +20,7 @@ index 0aae181..8fecfdf 100644
  // per VA-space.
  static bool g_uvm_perf_thrashing_enable;
  static unsigned g_uvm_perf_thrashing_threshold;
-@@ -562,7 +562,7 @@ static void va_space_thrashing_info_init_params(va_space_thrashing_info_t *va_sp
+@@ -566,7 +566,7 @@ static void va_space_thrashing_info_init_params(va_space_thrashing_info_t *va_sp
      va_space_thrashing->params.threshold     = g_uvm_perf_thrashing_threshold;
      va_space_thrashing->params.pin_threshold = g_uvm_perf_thrashing_pin_threshold;
  

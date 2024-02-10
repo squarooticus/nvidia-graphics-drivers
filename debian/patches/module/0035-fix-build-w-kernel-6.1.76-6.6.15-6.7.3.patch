@@ -1,4 +1,4 @@
-From f8c5a7c06f975ebae5b22d1e00c201ab47aabf0b Mon Sep 17 00:00:00 2001
+From 70d4d9baae3eb110fec67636389b142429dffeed Mon Sep 17 00:00:00 2001
 From: Ionen Wolkens <ionen@gentoo.org>
 Date: Thu, 1 Feb 2024 14:58:45 -0500
 Subject: [PATCH] fix build w/ kernel 6.1.76+6.6.15+6.7.3
@@ -30,10 +30,10 @@ Origin: gentoo, https://github.com/gentoo/gentoo/blob/c64caf53/x11-drivers/nvidi
  3 files changed, 24 insertions(+), 3 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index 2a4a756..f95e737 100644
+index c491b6d..8fba207 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -2006,4 +2006,25 @@ typedef enum
+@@ -2068,4 +2068,25 @@ typedef enum
  #include <linux/clk-provider.h>
  #endif
  

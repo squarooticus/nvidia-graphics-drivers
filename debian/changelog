@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (535.54.03-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (535.54.03-1) experimental; urgency=medium
 
   * New upstream long term support branch release 535.54.03 (2023-06-14).
     - Fixed a bug that caused modesets to fail in some Wayland configurations.
@@ -14,7 +14,7 @@ nvidia-graphics-drivers (535.54.03-1) UNRELEASED; urgency=medium
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.  (Closes: #1063363, #1062932)
   * Update symbols files.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Aug 2023 10:30:18 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 11 Feb 2024 01:49:17 +0100
 
 nvidia-graphics-drivers (535.43.02-1) experimental; urgency=medium
 

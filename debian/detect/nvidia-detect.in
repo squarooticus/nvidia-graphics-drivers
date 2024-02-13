@@ -30,6 +30,7 @@ shopt -s compat31 nocasematch 2>/dev/null || { echo "Error: this script only wor
 # last time the PCI IDs were updated
 LATEST="#VERSION#"
 PACKAGE=
+RET=1
 
 NV_DETECT()
 {
@@ -261,6 +262,7 @@ if [ -n "$PACKAGE" ]; then
 	echo "It is recommended to install the"
 	echo "    $PACKAGE"
 	echo "package."
+	RET=0
 fi
 
 }
@@ -296,7 +298,7 @@ else
 		PCIID=$(echo "$id" | sed -rn 's/^(10de)?:?([0-9a-fA-F]{4})$/10de\2/ip')
 		if [ -z "$PCIID" ]; then
 			echo "Error parsing PCI ID '$id'."
-			exit 1
+			exit 2
 		fi
 
 		echo "Checking driver support for PCI ID [$(echo $PCIID | sed -r 's/(....)(....)/\1:\2/')]"
@@ -304,3 +306,5 @@ else
 	done
 
 fi
+
+exit $RET

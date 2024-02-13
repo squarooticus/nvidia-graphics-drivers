@@ -1581,12 +1581,6 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
 
-nvidia-graphics-drivers (418.226.00-14) UNRELEASED; urgency=medium
-
-  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
-
- -- Andreas Beckmann <anbe@debian.org>  Sat, 20 Jan 2024 02:28:08 +0100
-
 nvidia-graphics-drivers (418.226.00-13) UNRELEASED; urgency=medium
 
   * Revert backport of pin_user_pages changes.

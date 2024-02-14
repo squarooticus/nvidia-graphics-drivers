@@ -1,3 +1,10 @@
+nvidia-graphics-drivers (525.147.05-7) UNRELEASED; urgency=medium
+
+  * nvidia-detect: Fix mismerge breaking Tesla 470 detection.
+  * Relax dh-dkms build-dependency, satisfied in stable.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 14 Feb 2024 12:46:50 +0100
+
 nvidia-graphics-drivers (525.147.05-6~deb12u1) bookworm; urgency=medium
 
   * Rebuild for bookworm.
@@ -1413,7 +1420,7 @@ nvidia-graphics-drivers (460.106.00-14) UNRELEASED; urgency=medium
   * Apply pfn_valid patch from gentoo to fix kernel module build for
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 07 Feb 2024 04:12:22 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 13 Feb 2024 14:49:02 +0100
 
 nvidia-graphics-drivers (460.106.00-13) UNRELEASED; urgency=medium
 
@@ -1559,6 +1566,7 @@ nvidia-graphics-drivers (460.106.00-1) UNRELEASED; urgency=medium
   * bug-script: Show the nvidia and glx alternatives (470.82.00-1).
   * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
     sufficient to activate a nvidia alternative (470.82.00-1).
+    (Closes: #996595)
   * Fix bashisms in upstream scripts (470.82.00-1).
   * Drop the unusable leftover non-GLVND libegl1-nvidia package
     (470.82.00-1).

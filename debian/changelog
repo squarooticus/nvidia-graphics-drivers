@@ -263,6 +263,22 @@ nvidia-graphics-drivers (510.85.02-2) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Sep 2022 18:31:11 +0200
 
+nvidia-graphics-drivers (510.85.02-1) UNRELEASED; urgency=medium
+
+  * Build the nvidia-powerd package, but ship the insecure nvidia-dbus.conf as
+    an example only.  (Closes: #1014283)
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 10 Aug 2022 19:00:36 +0200
+
+nvidia-graphics-drivers (510.85.02-1) UNRELEASED; urgency=medium
+
+  * New upstream Tesla release 510.85.02 (2022-08-02).
+    * Fixed CVE-2022-31607, CVE-2022-31608, CVE-2022-31615. (Closes: #1016621)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5383
+    * Improved compatibility with recent Linux kernels.
+
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 10 Aug 2022 07:24:37 +0200
+
 nvidia-graphics-drivers (510.85.02-1) experimental; urgency=medium
 
   * New upstream production branch release 510.85.02 (2022-08-02).
@@ -481,7 +497,7 @@ nvidia-graphics-drivers (470.223.02-4) UNRELEASED; urgency=medium
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.
   * Update lintian overrides.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 07 Feb 2024 21:14:29 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 08 Feb 2024 14:23:21 +0100
 
 nvidia-graphics-drivers (470.223.02-3) UNRELEASED; urgency=medium
 
@@ -1125,7 +1141,7 @@ nvidia-graphics-drivers (460.106.00-14) UNRELEASED; urgency=medium
   * Apply pfn_valid patch from gentoo to fix kernel module build for
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 07 Feb 2024 04:12:22 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 13 Feb 2024 14:49:02 +0100
 
 nvidia-graphics-drivers (460.106.00-13) UNRELEASED; urgency=medium
 
@@ -1271,6 +1287,7 @@ nvidia-graphics-drivers (460.106.00-1) UNRELEASED; urgency=medium
   * bug-script: Show the nvidia and glx alternatives (470.82.00-1).
   * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
     sufficient to activate a nvidia alternative (470.82.00-1).
+    (Closes: #996595)
   * Fix bashisms in upstream scripts (470.82.00-1).
   * Drop the unusable leftover non-GLVND libegl1-nvidia package
     (470.82.00-1).

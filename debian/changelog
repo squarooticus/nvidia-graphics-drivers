@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (525.147.05-7~deb12u1) bookworm; urgency=medium
+
+  * Rebuild for bookworm.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 15 Feb 2024 02:33:42 +0100
+
 nvidia-graphics-drivers (525.147.05-7) unstable; urgency=medium
 
   * nvidia-detect: Fix mismerge breaking Tesla 470 detection.

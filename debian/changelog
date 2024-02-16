@@ -19,6 +19,8 @@ nvidia-graphics-drivers (535.86.05-1) UNRELEASED; urgency=medium
   [ Andreas Beckmann ]
   * Refresh patches.
   * Update nv-readme.ids.
+  * Add nvidia-driver-full metapackage depending on all driver components and
+    libraries.  (Closes: #1063881)
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Aug 2023 18:23:13 +0200
 

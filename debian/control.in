@@ -69,6 +69,37 @@ Description: NVIDIA metapackage${nvidia:VariantDesc}
  .
  Building the kernel module has been tested up to Linux ${nvidia:kmod:tested:Linux}.
 
+Package: ${nvidia}-driver-full
+Section: non-free/x11
+Architecture: amd64 ${arch:arm64} ${arch:ppc64el}
+Depends:
+ ${nvidia}-driver (= ${binary:Version}),
+ libgles-${nvidia-}1 (= ${binary:Version}),
+ libgles-${nvidia-}2 (= ${binary:Version}),
+ lib${nvidia}-cfg1 (= ${binary:Version}),
+ lib${nvidia}-encode1 (= ${binary:Version}),
+ ${nvidia}-vulkan-icd (= ${binary:Version}),
+ lib${nvidia}-allocator1 (= ${binary:Version}),
+ lib${nvidia}-rtcore (= ${binary:Version}),
+ ${nvidia}-smi (= ${binary:Version}),
+ lib${nvidia-if-variant}cudadebugger1 (= ${binary:Version}),
+ lib${nvidia}-fbc1 (= ${binary:Version}),
+ lib${nvidia-if-variant}nvoptix1 (= ${binary:Version}) [amd64 ${arch:arm64}],
+ lib${nvidia}-opticalflow1 (= ${binary:Version}),
+ lib${nvidia}-ngx1 (= ${binary:Version}) [amd64],
+ lib${nvidia}-api1 (= ${binary:Version}),
+ ${nvidia}-opencl-icd (= ${binary:Version}),
+ nvidia-powerd (= ${binary:Version}) [amd64],
+ nvidia-cuda-mps (= ${binary:Version}),
+ nvidia-suspend-common (= ${binary:Version}),
+ nvidia-settings,
+ nvidia-persistenced,
+ ${misc:Depends}
+Description: NVIDIA metapackage (all components)${nvidia:VariantDesc}
+ This metapackage depends on all components of the NVIDIA binary driver and
+ libraries that provide optimized hardware acceleration of
+ OpenGL/GLX/EGL/GLES/Vulkan applications via a direct-rendering X Server.
+
 Package: ${nvidia}-alternative
 Architecture: i386 amd64 ${arch:arm64} ${arch:ppc64el}
 Multi-Arch: foreign

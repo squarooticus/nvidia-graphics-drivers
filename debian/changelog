@@ -1,6 +1,6 @@
 nvidia-graphics-drivers (530.41.03-4) UNRELEASED; urgency=medium
 
-  * Merge changes from 525.147.05-6.
+  * Merge changes from 525.147.05-7.
   * Apply pfn_valid patch from gentoo to fix kernel module build for
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.  (Closes: #1063363, #1062932)
   * Backport drm_gem_prime_handle_to_fd changes from 470.223.02 to fix kernel
@@ -76,6 +76,26 @@ nvidia-graphics-drivers (530.30.02-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Mon, 13 Mar 2023 23:48:29 +0100
+
+nvidia-graphics-drivers (525.147.05-7~deb12u1) bookworm; urgency=medium
+
+  * Rebuild for bookworm.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 15 Feb 2024 02:33:42 +0100
+
+nvidia-graphics-drivers (525.147.05-7) unstable; urgency=medium
+
+  * nvidia-detect: Fix mismerge breaking Tesla 470 detection.
+    (Closes: #1063910)
+  * Relax dh-dkms build-dependency, satisfied in stable.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 15 Feb 2024 00:55:07 +0100
+
+nvidia-graphics-drivers (525.147.05-6~deb12u1) bookworm; urgency=medium
+
+  * Rebuild for bookworm.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 11 Feb 2024 02:35:05 +0100
 
 nvidia-graphics-drivers (525.147.05-6) unstable; urgency=medium
 
@@ -1486,7 +1506,7 @@ nvidia-graphics-drivers (460.106.00-14) UNRELEASED; urgency=medium
   * Apply pfn_valid patch from gentoo to fix kernel module build for
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 07 Feb 2024 04:12:22 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 13 Feb 2024 14:49:02 +0100
 
 nvidia-graphics-drivers (460.106.00-13) UNRELEASED; urgency=medium
 
@@ -1632,6 +1652,7 @@ nvidia-graphics-drivers (460.106.00-1) UNRELEASED; urgency=medium
   * bug-script: Show the nvidia and glx alternatives (470.82.00-1).
   * nvidia-alternative: libnvidia-cfg.so.1 on its own is not
     sufficient to activate a nvidia alternative (470.82.00-1).
+    (Closes: #996595)
   * Fix bashisms in upstream scripts (470.82.00-1).
   * Drop the unusable leftover non-GLVND libegl1-nvidia package
     (470.82.00-1).

@@ -121,11 +121,11 @@ xorg_provides	 = xorg-driver-video
 
 deps_nvidia_kmod_binary	 = $${nvidia-kernel}-dkms (= $${binary:Version})                [$${nvidia:archlist:driver}] |
 deps_nvidia_kmod_binary	+= $${nvidia-kernel}-$${nvidia:Version}                         [$${nvidia:archlist:driver}] |
-deps_nvidia_kmod_binary	+= $${nvidia}-open-kernel-$${nvidia:Version}                    [$${nvidia:archlist:driver}] |
+#deps_nvidia_kmod_binary	+= $${nvidia}-open-kernel-$${nvidia:Version}                    [$${nvidia:archlist:driver}] |
 deps_nvidia_kmod_binary	+= nvidia-open-kernel-$${nvidia:Version}                        [$${nvidia:archlist:driver}] |
 deps_nvidia_kmod_source	 = $${nvidia-kernel}-dkms (>= $${nvidia:Version})               [$${nvidia:archlist:driver}] |
 deps_nvidia_kmod_source	+= $${nvidia-kernel}-source (>= $${nvidia:Version})             [$${nvidia:archlist:driver}] |
-deps_nvidia_kmod_source	+= $${nvidia}-open-kernel-source (>= $${nvidia:Version})        [$${nvidia:archlist:driver}] |
+#deps_nvidia_kmod_source	+= $${nvidia}-open-kernel-source (>= $${nvidia:Version})        [$${nvidia:archlist:driver}] |
 deps_nvidia_kmod_source	+= nvidia-open-kernel-source (>= $${nvidia:Version})            [$${nvidia:archlist:driver}] |
 
 

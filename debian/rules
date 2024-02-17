@@ -531,7 +531,7 @@ get-orig-source-pack/%: get-orig-source-files/%
 	    touch $(call get_tarball,$*) -r $(call get_origdir,$*).stamp
 	mv get-orig-source/$(call get_tarball,$*) .
 
-get-orig-source-files/empty: get-orig-source-prepare/empty $(foreach a,$(DRIVER_ARCH_LIST),get-orig-source-pack/$a)
+get-orig-source-files/empty: get-orig-source-prepare/empty $(foreach a,$(TARBALL_ARCH_LIST),get-orig-source-pack/$a)
 	touch get-orig-source/$(call get_origdir,empty).stamp -r $$(ls -tr $(foreach a,$(DRIVER_ARCH_LIST),$(call get_tarball,$a)) | tail -n 1)
 
 .PHONY: get-orig-source

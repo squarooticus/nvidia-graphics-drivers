@@ -1,11 +1,11 @@
-nvidia-graphics-drivers (535.86.10-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (535.86.10-1) experimental; urgency=medium
 
   * New upstream Tesla release 535.86.10 (2023-07-31).
 
   [ Andreas Beckmann ]
   * Update symbols files.
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 04 Aug 2023 22:31:30 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 19 Feb 2024 00:20:41 +0100
 
 nvidia-graphics-drivers (535.86.05-1) experimental; urgency=medium
 

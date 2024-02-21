@@ -1,10 +1,12 @@
-nvidia-graphics-drivers (470.223.02-2) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.223.02-2) bullseye; urgency=medium
 
   * Build libnvidia-fbc1 for arm64, too.  (Closes: #1057078)
   * bug-control: Report information about more driver components.
   * nvidia-detect: Drop support for Tesla 450 drivers (EoL).
+  * *-common: Drop alternative Suggests on EoL Tesla 450 packages that have
+    been turned into transitional packages.
 
- -- Andreas Beckmann <anbe@debian.org>  Wed, 29 Nov 2023 14:58:15 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Wed, 21 Feb 2024 09:55:22 +0100
 
 nvidia-graphics-drivers (470.223.02-1) bullseye; urgency=medium
 

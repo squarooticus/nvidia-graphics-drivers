@@ -14,6 +14,7 @@ bashisms.patch
 0032-backport-drm_gem_prime_handle_to_fd-changes-from-470.patch
 0033-refuse-to-load-legacy-module-if-IBT-is-enabled.patch
 ppc64el.patch
+0036-backport-pfn_valid-changes-in-nv-mmap.c-from-470.239.patch
 
 # build system updates
 fragile-ARCH.patch

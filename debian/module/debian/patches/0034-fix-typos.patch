@@ -1,0 +1,39 @@
+From 35faa0c2b295be0ee0d7413677268a0733b5c513 Mon Sep 17 00:00:00 2001
+From: Andreas Beckmann <anbe@debian.org>
+Date: Wed, 31 Jan 2024 03:06:19 +0100
+Subject: [PATCH] fix typos
+
+---
+ nvidia-uvm/uvm.h                 | 2 +-
+ nvidia-uvm/uvm8_perf_thrashing.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/nvidia-uvm/uvm.h b/nvidia-uvm/uvm.h
+index aeece2b..18edd5c 100644
+--- a/nvidia-uvm/uvm.h
++++ b/nvidia-uvm/uvm.h
+@@ -1166,7 +1166,7 @@ NV_STATUS UvmCleanUpZombieResources(void);
+ // non-fault-capable HW engines.
+ //
+ // By default, all mappings to this VA range have read, write and atomic access
+-// and are uncached. This behavior can be overriden for GPUs by explicitly
++// and are uncached. This behavior can be overridden for GPUs by explicitly
+ // specifying the mapping and caching attributes through this API. At most one
+ // GPU may cache the allocation, in which case no other processor should write
+ // to it. These GPUs must have been registered via UvmRegisterGpu. These GPUs
+diff --git a/nvidia-uvm/uvm8_perf_thrashing.c b/nvidia-uvm/uvm8_perf_thrashing.c
+index e831e8f..15b35c9 100644
+--- a/nvidia-uvm/uvm8_perf_thrashing.c
++++ b/nvidia-uvm/uvm8_perf_thrashing.c
+@@ -307,7 +307,7 @@ module_param(uvm_perf_thrashing_max_resets,    uint, S_IRUGO);
+ unsigned uvm_perf_map_remote_on_native_atomics_fault = 0;
+ module_param(uvm_perf_map_remote_on_native_atomics_fault, uint, S_IRUGO);
+ 
+-// Global post-processed values of the module parameters. They can be overriden
++// Global post-processed values of the module parameters. They can be overridden
+ // per VA-space.
+ static bool g_uvm_perf_thrashing_enable;
+ static unsigned g_uvm_perf_thrashing_threshold;
+-- 
+2.20.1
+

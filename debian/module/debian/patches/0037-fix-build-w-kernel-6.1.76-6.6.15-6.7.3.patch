@@ -21,13 +21,15 @@ pfn_valid implementation. However 5.15 and older branches are
 [4] https://github.com/NVIDIA/open-gpu-kernel-modules/issues/594
 [5] https://github.com/NVIDIA/open-gpu-kernel-modules/issues/594#issuecomment-1916197641
 
+The os-mlock.c changes from 470.239.06 are not backportable since they
+contain an API change of os_lookup_user_io_memory() which is used by the
+blob.
+
 Bug-Debian: https://bugs.debian.org/1062932
 Origin: gentoo, https://github.com/gentoo/gentoo/blob/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch
 ---
- common/inc/nv-linux.h | 21 +++++++++++++++++++++
- nvidia/nv-mmap.c      |  2 +-
- nvidia/os-mlock.c     |  4 ++--
- 3 files changed, 24 insertions(+), 3 deletions(-)
+ nvidia/os-mlock.c | 26 ++++++++++++++++++++++++--
+ 1 file changed, 24 insertions(+), 2 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
 index f8df9e3..d538b41 100644
@@ -38,7 +40,7 @@ index f8df9e3..d538b41 100644
  }
  
 +#if defined(CONFIG_HAVE_ARCH_PFN_VALID) || LINUX_VERSION_CODE < KERNEL_VERSION(6,1,76)
-+#  define nv_pfn_valid pfn_valid
++#define nv_pfn_valid pfn_valid
 +#else
 +/* pre-6.1.76 kernel pfn_valid version without GPL rcu_read_lock/unlock() */
 +static inline int nv_pfn_valid(unsigned long pfn)
@@ -59,19 +61,6 @@ index f8df9e3..d538b41 100644
 +}
 +#endif
  #endif  /* _NV_LINUX_H_ */
-diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
-index 5926d3c..d2052c4 100644
---- a/nvidia/nv-mmap.c
-+++ b/nvidia/nv-mmap.c
-@@ -574,7 +574,7 @@ int nvidia_mmap_helper(
-             // backing struct page. This is used to isolate P8 from P9.
-             //
-             if (!IS_REG_OFFSET(nv, access_start, access_len) &&
--                (pfn_valid(PFN_DOWN(mmap_start))))
-+                (nv_pfn_valid(PFN_DOWN(mmap_start))))
-             {
-                 ret = nvidia_mmap_numa(vma, mmap_context);
-                 if (ret)
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
 index 61ba22c..f976fab 100644
 --- a/nvidia/os-mlock.c

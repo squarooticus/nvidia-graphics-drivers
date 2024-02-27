@@ -1,4 +1,4 @@
-From ffa778845004e4e94827e32826bf311c464403e5 Mon Sep 17 00:00:00 2001
+From 081df0043d5b999c93b12d14688914bbe2e4047d Mon Sep 17 00:00:00 2001
 From: Ionen Wolkens <ionen@gentoo.org>
 Date: Thu, 1 Feb 2024 14:58:45 -0500
 Subject: [PATCH] fix build w/ kernel 6.1.76+6.6.15+6.7.3
@@ -31,12 +31,12 @@ Origin: gentoo, https://github.com/gentoo/gentoo/blob/c64caf53/x11-drivers/nvidi
  nvidia/os-mlock.c | 26 ++++++++++++++++++++++++--
  1 file changed, 24 insertions(+), 2 deletions(-)
 
-diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index f8df9e3..d538b41 100644
---- a/common/inc/nv-linux.h
-+++ b/common/inc/nv-linux.h
-@@ -1988,4 +1988,25 @@ static inline void nv_mutex_destroy(struct mutex *lock)
- 
+diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
+index 61ba22c..7029888 100644
+--- a/nvidia/os-mlock.c
++++ b/nvidia/os-mlock.c
+@@ -74,6 +74,28 @@ static NV_STATUS get_io_ptes(struct vm_area_struct *vma,
+     return NV_OK;
  }
  
 +#if defined(CONFIG_HAVE_ARCH_PFN_VALID) || LINUX_VERSION_CODE < KERNEL_VERSION(6,1,76)
@@ -60,12 +60,11 @@ index f8df9e3..d538b41 100644
 +        return early_section(ms) || pfn_section_valid(ms, pfn);
 +}
 +#endif
- #endif  /* _NV_LINUX_H_ */
-diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index 61ba22c..f976fab 100644
---- a/nvidia/os-mlock.c
-+++ b/nvidia/os-mlock.c
-@@ -100,7 +100,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,
++
+ /*!
+  * @brief Pins user IO pages that have been mapped to the user processes virtual
+  *        address space with remap_pfn_range.
+@@ -100,7 +122,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,
      for (i = 0; i < page_count; i++)
      {
          if ((nv_follow_pfn(vma, (start + (i * PAGE_SIZE)), &pfn) < 0) ||
@@ -74,7 +73,7 @@ index 61ba22c..f976fab 100644
          {
              rmStatus = NV_ERR_INVALID_ADDRESS;
              break;
-@@ -174,7 +174,7 @@ NV_STATUS NV_API_CALL os_lookup_user_io_memory(
+@@ -174,7 +196,7 @@ NV_STATUS NV_API_CALL os_lookup_user_io_memory(
          goto done;
      }
  

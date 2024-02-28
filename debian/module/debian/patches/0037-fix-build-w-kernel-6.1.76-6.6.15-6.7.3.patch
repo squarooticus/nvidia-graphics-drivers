@@ -32,10 +32,10 @@ Origin: gentoo, https://github.com/gentoo/gentoo/blob/c64caf53/x11-drivers/nvidi
  1 file changed, 24 insertions(+), 2 deletions(-)
 
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index 092aa09..0530415 100644
+index 61ba22c..7029888 100644
 --- a/nvidia/os-mlock.c
 +++ b/nvidia/os-mlock.c
-@@ -75,6 +75,28 @@ static NV_STATUS get_io_ptes(struct vm_area_struct *vma,
+@@ -74,6 +74,28 @@ static NV_STATUS get_io_ptes(struct vm_area_struct *vma,
      return NV_OK;
  }
  

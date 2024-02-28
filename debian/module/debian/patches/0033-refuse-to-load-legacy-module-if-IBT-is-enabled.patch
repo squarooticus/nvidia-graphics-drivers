@@ -1,4 +1,4 @@
-From f9c27f7bbb2d22022a373aa6b4451a72979e4145 Mon Sep 17 00:00:00 2001
+From 0c23ddf4bbcd60dd70544b5cadd3bcb4772f45b6 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sat, 4 Nov 2023 00:44:56 +0100
 Subject: [PATCH] refuse to load legacy module if IBT is enabled
@@ -23,10 +23,10 @@ https://bugs.debian.org/1052069
  2 files changed, 14 insertions(+)
 
 diff --git a/nvidia-modeset/nvidia-modeset-linux.c b/nvidia-modeset/nvidia-modeset-linux.c
-index 07ac165..692a257 100644
+index 16321cb..19e880f 100644
 --- a/nvidia-modeset/nvidia-modeset-linux.c
 +++ b/nvidia-modeset/nvidia-modeset-linux.c
-@@ -1499,6 +1499,13 @@ static int __init nvkms_init(void)
+@@ -1639,6 +1639,13 @@ static int __init nvkms_init(void)
  {
      int ret;
  
@@ -41,12 +41,12 @@ index 07ac165..692a257 100644
  
      ret = nvkms_alloc_rm();
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index ab1f905..fe326d5 100644
+index 5fa50cc..04ca2f8 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -670,6 +670,13 @@ int __init nvidia_init_module(void)
-     NvU32 count;
+@@ -777,6 +777,13 @@ int __init nvidia_init_module(void)
      nvidia_stack_t *sp = NULL;
+     const NvBool is_nvswitch_present = os_is_nvswitch_present();
  
 +#ifdef CONFIG_X86_KERNEL_IBT
 +    if (cpu_feature_enabled(X86_FEATURE_IBT)) {

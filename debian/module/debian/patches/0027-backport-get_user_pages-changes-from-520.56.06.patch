@@ -1,7 +1,7 @@
-From c9713e29ddbf382d7ef4cee34ee36329950f2e04 Mon Sep 17 00:00:00 2001
+From d14bd107368e198d7dd4a7beaf2b8b2526ba6524 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 18:45:02 +0200
-Subject: [PATCH 1/4] backport get_user_pages changes from 520.56.06
+Subject: [PATCH] backport get_user_pages changes from 520.56.06
 
 ---
  common/inc/nv-mm.h | 101 +++++++++++++--------------------
@@ -9,7 +9,7 @@ Subject: [PATCH 1/4] backport get_user_pages changes from 520.56.06
  2 files changed, 145 insertions(+), 92 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index 46d09ca..a93079b 100644
+index 8717286..a344e02 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
 @@ -47,55 +47,37 @@ typedef int vm_fault_t;
@@ -143,10 +143,10 @@ index 46d09ca..a93079b 100644
      #else
          #include <linux/mm.h>
 diff --git a/conftest.sh b/conftest.sh
-index f4b2168..bee077f 100755
+index 14c684b..cac8403 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2569,10 +2569,41 @@ compile_test() {
+@@ -2502,10 +2502,41 @@ compile_test() {
              # linux-4.4.168 cherry-picked commit 768ae309a961 without
              # c12d2da56d0e which is covered in Conftest #3.
              #
@@ -189,7 +189,7 @@ index f4b2168..bee077f 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              long get_user_pages(unsigned long start,
-@@ -2587,8 +2618,7 @@ compile_test() {
+@@ -2520,8 +2551,7 @@ compile_test() {
              $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
              rm -f conftest$$.c
              if [ -f conftest$$.o ]; then
@@ -199,7 +199,7 @@ index f4b2168..bee077f 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -2613,8 +2643,7 @@ compile_test() {
+@@ -2546,8 +2576,7 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -209,7 +209,7 @@ index f4b2168..bee077f 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -2641,14 +2670,12 @@ compile_test() {
+@@ -2574,14 +2603,12 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -226,7 +226,7 @@ index f4b2168..bee077f 100755
  
              return
          ;;
-@@ -2675,10 +2702,47 @@ compile_test() {
+@@ -2608,10 +2635,47 @@ compile_test() {
              # commit 64019a2e467a ("mm/gup: remove task_struct pointer for
              # all gup code") in v5.9-rc1 (2020-08-11).
              #
@@ -275,7 +275,7 @@ index f4b2168..bee077f 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              void conftest_get_user_pages_remote(void) {
-@@ -2689,10 +2753,7 @@ compile_test() {
+@@ -2622,10 +2686,7 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -287,7 +287,7 @@ index f4b2168..bee077f 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -2702,7 +2763,6 @@ compile_test() {
+@@ -2635,7 +2696,6 @@ compile_test() {
              # force arguments. Return if these arguments are present
              # Fall through to conftest #3 if these args are absent.
              #
@@ -295,7 +295,7 @@ index f4b2168..bee077f 100755
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
              long get_user_pages_remote(struct task_struct *tsk,
-@@ -2720,18 +2780,40 @@ compile_test() {
+@@ -2653,18 +2713,40 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -342,7 +342,7 @@ index f4b2168..bee077f 100755
              # if these args are absent.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -2751,14 +2833,13 @@ compile_test() {
+@@ -2684,14 +2766,13 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -359,7 +359,7 @@ index f4b2168..bee077f 100755
              # tsk argument.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -2777,13 +2858,8 @@ compile_test() {
+@@ -2710,13 +2791,8 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then

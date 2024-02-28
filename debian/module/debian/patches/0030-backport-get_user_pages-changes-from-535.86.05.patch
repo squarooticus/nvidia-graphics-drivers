@@ -1,4 +1,4 @@
-From 3a40f00d068262f8cadd7ce53a830615330ecd8f Mon Sep 17 00:00:00 2001
+From 7c7e41ea5f5e514bb9835a64af849a48f1321f6f Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 14:17:05 +0200
 Subject: [PATCH] backport get_user_pages changes from 535.86.05
@@ -9,7 +9,7 @@ Subject: [PATCH] backport get_user_pages changes from 535.86.05
  2 files changed, 130 insertions(+), 43 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index c4efd11..d5290aa 100644
+index e3dd0ad..5ddada6 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
 @@ -47,11 +47,18 @@ typedef int vm_fault_t;
@@ -102,10 +102,10 @@ index c4efd11..d5290aa 100644
  
  /*
 diff --git a/conftest.sh b/conftest.sh
-index bee077f..668187e 100755
+index cac8403..2d1a3c7 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -2566,6 +2566,10 @@ compile_test() {
+@@ -2499,6 +2499,10 @@ compile_test() {
              # commit 768ae309a961 ("mm: replace get_user_pages() write/force
              # parameters with gup_flags") in v4.9 (2016-10-13)
              #
@@ -116,7 +116,7 @@ index bee077f..668187e 100755
              # linux-4.4.168 cherry-picked commit 768ae309a961 without
              # c12d2da56d0e which is covered in Conftest #3.
              #
-@@ -2575,22 +2579,28 @@ compile_test() {
+@@ -2508,22 +2512,28 @@ compile_test() {
              # passing conftest's
              #
              set_get_user_pages_defines () {
@@ -154,7 +154,7 @@ index bee077f..668187e 100755
                  fi
  
                  if [ "$1" = "NV_GET_USER_PAGES_HAS_ARGS_FLAGS" ]; then
-@@ -2598,6 +2608,7 @@ compile_test() {
+@@ -2531,6 +2541,7 @@ compile_test() {
                  else
                      echo "#undef NV_GET_USER_PAGES_HAS_ARGS_FLAGS" | append_conftest "functions"
                  fi
@@ -162,7 +162,7 @@ index bee077f..668187e 100755
              }
  
              # Conftest #1: Check if get_user_pages accepts 6 arguments.
-@@ -2618,14 +2629,15 @@ compile_test() {
+@@ -2551,14 +2562,15 @@ compile_test() {
              $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
              rm -f conftest$$.c
              if [ -f conftest$$.o ]; then
@@ -180,7 +180,7 @@ index bee077f..668187e 100755
              # Return if available.
              # Fall through to conftest #3 on failure.
  
-@@ -2643,16 +2655,17 @@ compile_test() {
+@@ -2576,16 +2588,17 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -202,7 +202,7 @@ index bee077f..668187e 100755
  
              echo "$CONFTEST_PREAMBLE
              #include <linux/mm.h>
-@@ -2670,12 +2683,35 @@ compile_test() {
+@@ -2603,12 +2616,35 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -240,7 +240,7 @@ index bee077f..668187e 100755
  
              return
          ;;
-@@ -2702,6 +2738,10 @@ compile_test() {
+@@ -2635,6 +2671,10 @@ compile_test() {
              # commit 64019a2e467a ("mm/gup: remove task_struct pointer for
              # all gup code") in v5.9-rc1 (2020-08-11).
              #
@@ -251,7 +251,7 @@ index bee077f..668187e 100755
  
              #
              # This function sets the NV_GET_USER_PAGES_REMOTE_* macros as per
-@@ -2714,22 +2754,28 @@ compile_test() {
+@@ -2647,22 +2687,28 @@ compile_test() {
                      echo "#define NV_GET_USER_PAGES_REMOTE_PRESENT" | append_conftest "functions"
                  fi
  
@@ -289,7 +289,7 @@ index bee077f..668187e 100755
                  fi
  
                  if [ "$1" = "NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED" ]; then
-@@ -2737,6 +2783,7 @@ compile_test() {
+@@ -2670,6 +2716,7 @@ compile_test() {
                  else
                      echo "#undef NV_GET_USER_PAGES_REMOTE_HAS_ARGS_FLAGS_LOCKED" | append_conftest "functions"
                  fi
@@ -297,7 +297,7 @@ index bee077f..668187e 100755
              }
  
              # conftest #1: check if get_user_pages_remote() is available
-@@ -2759,8 +2806,8 @@ compile_test() {
+@@ -2692,8 +2739,8 @@ compile_test() {
              fi
  
              #
@@ -308,7 +308,7 @@ index bee077f..668187e 100755
              # Fall through to conftest #3 if these args are absent.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -2780,14 +2827,14 @@ compile_test() {
+@@ -2713,14 +2760,14 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -326,7 +326,7 @@ index bee077f..668187e 100755
              # Fall through to conftest #4 if these args are absent.
              #
              echo "$CONFTEST_PREAMBLE
-@@ -2806,13 +2853,14 @@ compile_test() {
+@@ -2739,13 +2786,14 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -343,7 +343,7 @@ index bee077f..668187e 100755
              # Return if these arguments are present. Fall through to conftest #5
              # if these args are absent.
              #
-@@ -2833,7 +2881,7 @@ compile_test() {
+@@ -2766,7 +2814,7 @@ compile_test() {
              rm -f conftest$$.c
  
              if [ -f conftest$$.o ]; then
@@ -352,7 +352,7 @@ index bee077f..668187e 100755
                  rm -f conftest$$.o
                  return
              fi
-@@ -2857,10 +2905,34 @@ compile_test() {
+@@ -2790,10 +2838,34 @@ compile_test() {
              $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
              rm -f conftest$$.c
  

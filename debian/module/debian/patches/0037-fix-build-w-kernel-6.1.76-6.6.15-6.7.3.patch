@@ -1,4 +1,4 @@
-From 9ad143d179b2a269b4f62821436f749374cc804c Mon Sep 17 00:00:00 2001
+From 600f15eb738abd5defbec945884056ab5af9e680 Mon Sep 17 00:00:00 2001
 From: Ionen Wolkens <ionen@gentoo.org>
 Date: Thu, 1 Feb 2024 14:58:45 -0500
 Subject: [PATCH] fix build w/ kernel 6.1.76+6.6.15+6.7.3
@@ -32,10 +32,10 @@ Origin: gentoo, https://github.com/gentoo/gentoo/blob/c64caf53/x11-drivers/nvidi
  1 file changed, 24 insertions(+), 2 deletions(-)
 
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index 61ba22c..7029888 100644
+index 2369bae..470f527 100644
 --- a/nvidia/os-mlock.c
 +++ b/nvidia/os-mlock.c
-@@ -74,6 +74,28 @@ static NV_STATUS get_io_ptes(struct vm_area_struct *vma,
+@@ -87,6 +87,28 @@ static NV_STATUS get_io_ptes(struct vm_area_struct *vma,
      return NV_OK;
  }
  
@@ -64,7 +64,7 @@ index 61ba22c..7029888 100644
  /*!
   * @brief Pins user IO pages that have been mapped to the user processes virtual
   *        address space with remap_pfn_range.
-@@ -101,7 +123,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,
+@@ -113,7 +135,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,
      for (i = 0; i < page_count; i++)
      {
          if ((nv_follow_pfn(vma, (start + (i * PAGE_SIZE)), &pfn) < 0) ||
@@ -73,7 +73,7 @@ index 61ba22c..7029888 100644
          {
              rmStatus = NV_ERR_INVALID_ADDRESS;
              break;
-@@ -187,7 +187,7 @@ NV_STATUS NV_API_CALL os_lookup_user_io_memory(
+@@ -187,7 +209,7 @@ NV_STATUS NV_API_CALL os_lookup_user_io_memory(
          goto done;
      }
  

@@ -1,4 +1,4 @@
-From 67cb1b30a0949c26f61908b71833ddb02fef3479 Mon Sep 17 00:00:00 2001
+From 1c1007d50746fdf5b320c37da91e92ae3cf4c0d7 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 17:18:58 +0200
 Subject: [PATCH] backport get_user_pages changes from 525.53
@@ -10,7 +10,7 @@ Subject: [PATCH] backport get_user_pages changes from 525.53
  3 files changed, 51 insertions(+), 70 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index a93079b..c4efd11 100644
+index a344e02..e3dd0ad 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
 @@ -29,6 +29,8 @@
@@ -175,10 +175,10 @@ index a93079b..c4efd11 100644
  /*
   * The .virtual_address field was effectively renamed to .address, by these
 diff --git a/nvidia-drm/nvidia-drm-linux.c b/nvidia-drm/nvidia-drm-linux.c
-index f8fcde4..d584f21 100644
+index 3a23ef8..94e463e 100644
 --- a/nvidia-drm/nvidia-drm-linux.c
 +++ b/nvidia-drm/nvidia-drm-linux.c
-@@ -93,8 +93,6 @@ int nv_drm_lock_user_pages(unsigned long address,
+@@ -103,8 +103,6 @@ int nv_drm_lock_user_pages(unsigned long address,
  {
      struct mm_struct *mm = current->mm;
      struct page **user_pages;
@@ -187,7 +187,7 @@ index f8fcde4..d584f21 100644
      int pages_pinned;
  
      user_pages = nv_drm_calloc(pages_count, sizeof(*user_pages));
-@@ -105,7 +103,7 @@ int nv_drm_lock_user_pages(unsigned long address,
+@@ -115,7 +113,7 @@ int nv_drm_lock_user_pages(unsigned long address,
  
      nv_mmap_read_lock(mm);
  
@@ -197,10 +197,10 @@ index f8fcde4..d584f21 100644
      nv_mmap_read_unlock(mm);
  
 diff --git a/nvidia/os-mlock.c b/nvidia/os-mlock.c
-index a23995c..092aa09 100644
+index 2369bae..63f1139 100644
 --- a/nvidia/os-mlock.c
 +++ b/nvidia/os-mlock.c
-@@ -210,7 +210,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
+@@ -222,7 +222,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
      struct mm_struct *mm = current->mm;
      struct page **user_pages;
      NvU64 i, pinned;
@@ -209,7 +209,7 @@ index a23995c..092aa09 100644
      int ret;
  
      if (!NV_MAY_SLEEP())
-@@ -231,7 +231,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
+@@ -243,7 +243,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
  
      nv_mmap_read_lock(mm);
      ret = NV_GET_USER_PAGES((unsigned long)address,

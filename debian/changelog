@@ -1,3 +1,12 @@
+nvidia-graphics-drivers (450.248.02-5) UNRELEASED; urgency=medium
+
+  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
+  * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
+  * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
+    (Cf. #1064194)
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 01 Mar 2024 12:20:43 +0100
+
 nvidia-graphics-drivers (450.248.02-4) UNRELEASED; urgency=medium
 
   * The Tesla 450 driver series has been declared as End-of-Life by
@@ -1073,6 +1082,9 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 nvidia-graphics-drivers (418.226.00-14) UNRELEASED; urgency=medium
 
   * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
+  * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
+  * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
+    (Cf. #1064194)
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 20 Jan 2024 02:28:08 +0100
 

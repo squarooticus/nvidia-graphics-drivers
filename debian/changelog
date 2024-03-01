@@ -10,6 +10,7 @@ nvidia-graphics-drivers (418.226.00-14+git4deb11bullseye) UNRELEASED; urgency=me
 nvidia-graphics-drivers (418.226.00-14) UNRELEASED; urgency=medium
 
   * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
+  * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 20 Jan 2024 02:28:08 +0100
 

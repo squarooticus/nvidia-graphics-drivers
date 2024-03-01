@@ -200,6 +200,7 @@ Depends:
 Recommends:
  ${nvidia}-driver (>= ${nvidia:Version}),
  ${nvidia}-vdpau-driver (>= ${nvidia:Version}),
+ ${nvidia}-vulkan-icd (>= ${nvidia:Version}),
  ${nvidia:kmod:binary},
  ${nvidia-settings},
 Suggests:
@@ -436,6 +437,7 @@ Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
 Depends:
+ lib${nvidia}-glvkspirv (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Provides:
  libnvidia-glcore-${nvidia:Version},
@@ -603,6 +605,7 @@ Multi-Arch: same
 Pre-Depends:
  ${misc:Pre-Depends}
 Depends:
+ lib${nvidia}-glvkspirv (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Provides:
  libnvidia-eglcore-${nvidia:Version},
@@ -719,7 +722,6 @@ Depends:
  nvidia-vulkan-common,
  libvulkan1 (>= 1.0.42),
  libglx-${nvidia-}0 (= ${binary:Version}),
- lib${nvidia}-glvkspirv (= ${binary:Version}),
  ${misc:Depends}
 Recommends:
  lib${nvidia}-cbl (= ${binary:Version}) [!i386 !ppc64el],

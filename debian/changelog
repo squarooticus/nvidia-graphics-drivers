@@ -1,7 +1,16 @@
+nvidia-graphics-drivers (460.106.00-15) UNRELEASED; urgency=medium
+
+  * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
+  * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
+    (Cf. #1064194)
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 01 Mar 2024 12:27:48 +0100
+
 nvidia-graphics-drivers (460.106.00-14) UNRELEASED; urgency=medium
 
   * Apply pfn_valid patch from gentoo to fix kernel module build for
     Linux 6.1.76, 6.6.15, 6.7.3, 6.8.
+  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 13 Feb 2024 14:49:02 +0100
 
@@ -508,6 +517,15 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Sep 2020 21:52:54 +0200
+
+nvidia-graphics-drivers (450.248.02-5) UNRELEASED; urgency=medium
+
+  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
+  * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
+  * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
+    (Cf. #1064194)
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 01 Mar 2024 12:20:43 +0100
 
 nvidia-graphics-drivers (450.248.02-4) UNRELEASED; urgency=medium
 
@@ -1580,6 +1598,15 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
+
+nvidia-graphics-drivers (418.226.00-14) UNRELEASED; urgency=medium
+
+  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
+  * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
+  * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
+    (Cf. #1064194)
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 20 Jan 2024 02:28:08 +0100
 
 nvidia-graphics-drivers (418.226.00-13) UNRELEASED; urgency=medium
 

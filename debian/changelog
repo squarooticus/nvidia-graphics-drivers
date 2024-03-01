@@ -11,6 +11,8 @@ nvidia-graphics-drivers (418.226.00-14) UNRELEASED; urgency=medium
 
   * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
   * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
+  * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
+    (Cf. #1064194)
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 20 Jan 2024 02:28:08 +0100
 

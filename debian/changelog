@@ -1,12 +1,15 @@
-nvidia-graphics-drivers (470.239.06-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (470.239.06-1) bullseye; urgency=medium
 
   * New upstream long term support branch release 470.239.06 (2024-02-22).
+    * Fixed CVE-2024-0074, CVE-2024-0078, CVE-2022-42265.  (Closes: #1064983)
+      https://nvidia.custhelp.com/app/answers/detail/a_id/5520
     * Improved compatibility with recent Linux kernels.
 
   [ Andreas Beckmann ]
   * Refresh patches.
+  * Upload to bullseye.
 
- -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Feb 2024 06:38:41 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 01 Mar 2024 23:48:27 +0100
 
 nvidia-graphics-drivers (470.223.02-4) UNRELEASED; urgency=medium
 

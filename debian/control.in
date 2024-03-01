@@ -929,6 +929,7 @@ Architecture: amd64 ${arch:arm64} ${arch:ppc64el}
 Multi-Arch: same
 Depends:
  ${nvidia}-alternative (= ${binary:Version}),
+ ${libcuda1} (= ${binary:Version}),
  ${shlibs:Depends}, ${misc:Depends}
 Homepage: https://www.nvidia.com/CUDA
 Description: NVIDIA CUDA Debugger Library${nvidia:VariantDesc}

@@ -1,4 +1,4 @@
-From f6367098c578aa187cfe9c0f647d5e2dce5c5c98 Mon Sep 17 00:00:00 2001
+From 2fb00255beb9914609a824c5eafd8b743af5a0b7 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 27 Jun 2023 22:26:21 +0200
 Subject: [PATCH] backport vm_area_struct_has_const_vm_flags changes from
@@ -15,10 +15,10 @@ Subject: [PATCH] backport vm_area_struct_has_const_vm_flags changes from
  7 files changed, 53 insertions(+), 10 deletions(-)
 
 diff --git a/common/inc/nv-mm.h b/common/inc/nv-mm.h
-index 0b70f30..8717286 100644
+index 21ad97c..a344e02 100644
 --- a/common/inc/nv-mm.h
 +++ b/common/inc/nv-mm.h
-@@ -270,4 +270,26 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)
+@@ -247,4 +247,26 @@ static inline struct rw_semaphore *nv_mmap_get_lock(struct mm_struct *mm)
  #endif
  }
  
@@ -46,10 +46,10 @@ index 0b70f30..8717286 100644
 +
  #endif // __NV_MM_H__
 diff --git a/conftest.sh b/conftest.sh
-index 8d84085..4bde229 100755
+index 5e8ad31..c170940 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -5327,6 +5327,25 @@ compile_test() {
+@@ -5411,6 +5411,25 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_CONNECTOR_HAS_OVERRIDE_EDID" "" "types"
          ;;
  
@@ -76,7 +76,7 @@ index 8d84085..4bde229 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia-drm/nvidia-drm-gem-user-memory.c b/nvidia-drm/nvidia-drm-gem-user-memory.c
-index 8824daa..6de9dd9 100644
+index e554adc..e8fb196 100644
 --- a/nvidia-drm/nvidia-drm-gem-user-memory.c
 +++ b/nvidia-drm/nvidia-drm-gem-user-memory.c
 @@ -92,9 +92,9 @@ static int __nv_drm_gem_user_memory_mmap(struct nv_drm_gem_object *nv_gem,
@@ -115,10 +115,10 @@ index 6e1c3dc..3ac45de 100644
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
 +NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
-index 85f6fae..89d5aef 100644
+index 07a02e6..2079bd0 100644
 --- a/nvidia/nv-mmap.c
 +++ b/nvidia/nv-mmap.c
-@@ -460,7 +460,7 @@ static int nvidia_mmap_numa(
+@@ -443,7 +443,7 @@ static int nvidia_mmap_numa(
      }
  
      // Needed for the linux kernel for mapping compound pages
@@ -127,7 +127,7 @@ index 85f6fae..89d5aef 100644
  
      for (i = 0, addr = mmap_context->page_array[0]; i < pages;
           addr = mmap_context->page_array[++i], start += PAGE_SIZE)
-@@ -608,7 +608,7 @@ int nvidia_mmap_helper(
+@@ -577,7 +577,7 @@ int nvidia_mmap_helper(
          }
          up(&nvl->mmap_lock);
  
@@ -136,7 +136,7 @@ index 85f6fae..89d5aef 100644
      }
      else
      {
-@@ -675,15 +675,15 @@ int nvidia_mmap_helper(
+@@ -644,15 +644,15 @@ int nvidia_mmap_helper(
  
          NV_PRINT_AT(NV_DBG_MEMINFO, at);
  
@@ -157,10 +157,10 @@ index 85f6fae..89d5aef 100644
  
      vma->vm_ops = &nv_vm_ops;
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 6ca6aba..394683c 100644
+index 3d3b481..b2ec798 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -246,6 +246,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += pci_dev_has_ats_enabled
+@@ -247,6 +247,7 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += mt_device_gre
  NV_CONFTEST_TYPE_COMPILE_TESTS += remove_memory_has_nid_arg
  NV_CONFTEST_TYPE_COMPILE_TESTS += add_memory_driver_managed_has_mhp_flags_arg
  NV_CONFTEST_TYPE_COMPILE_TESTS += num_registered_fb

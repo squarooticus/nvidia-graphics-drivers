@@ -1,4 +1,4 @@
-From 63b892122de4645fb1a6e0c0abf8eaa0088dc31a Mon Sep 17 00:00:00 2001
+From 560c7c3024e6195e3a28a4187e9f0d78490708b8 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Thu, 2 Nov 2023 15:57:00 +0100
 Subject: [PATCH] backport pci/dma changes for ppc64el from 470.223.02
@@ -8,10 +8,10 @@ Subject: [PATCH] backport pci/dma changes for ppc64el from 470.223.02
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/nvidia/nv.c b/nvidia/nv.c
-index 84ce79e..52dc3b0 100644
+index b104dfe..e362baa 100644
 --- a/nvidia/nv.c
 +++ b/nvidia/nv.c
-@@ -4580,19 +4580,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
+@@ -4495,19 +4495,19 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
       * as the starting address for all DMA mappings.
       */
      saved_dma_mask = pci_dev->dma_mask;

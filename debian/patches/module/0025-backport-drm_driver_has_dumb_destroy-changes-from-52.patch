@@ -1,4 +1,4 @@
-From 1c7979c101ad76faa918031cf5e3add0021cb088 Mon Sep 17 00:00:00 2001
+From 84fa87798783fabb2e2f8879a7a5eacb42961015 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Fri, 16 Jun 2023 16:33:58 +0200
 Subject: [PATCH] backport drm_driver_has_dumb_destroy changes from 525.116.03
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_driver_has_dumb_destroy changes from 525.116.03
  5 files changed, 31 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 4bde229..12535fe 100755
+index c170940..020f3f9 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -5346,6 +5346,30 @@ compile_test() {
+@@ -5430,6 +5430,30 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_VM_AREA_STRUCT_HAS_CONST_VM_FLAGS" "" "types"
          ;;
  
@@ -61,10 +61,10 @@ index 218983a..081d831 100644
  }
  
 diff --git a/nvidia-drm/nvidia-drm-gem-nvkms-memory.c b/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
-index 8d20c85..60da004 100644
+index b0e87d1..9a71a17 100644
 --- a/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
 +++ b/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
-@@ -579,11 +579,13 @@ int nv_drm_dumb_map_offset(struct drm_file *file,
+@@ -583,11 +583,13 @@ int nv_drm_dumb_map_offset(struct drm_file *file,
      return ret;
  }
  

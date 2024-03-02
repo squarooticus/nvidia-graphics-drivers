@@ -1,4 +1,4 @@
-From 1c1007d50746fdf5b320c37da91e92ae3cf4c0d7 Mon Sep 17 00:00:00 2001
+From 621b7ea45a758f00d5d49d54684d6a46b9875d17 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 6 Aug 2023 17:18:58 +0200
 Subject: [PATCH] backport get_user_pages changes from 525.53
@@ -175,10 +175,10 @@ index a344e02..e3dd0ad 100644
  /*
   * The .virtual_address field was effectively renamed to .address, by these
 diff --git a/nvidia-drm/nvidia-drm-linux.c b/nvidia-drm/nvidia-drm-linux.c
-index 3a23ef8..94e463e 100644
+index f8fcde4..d584f21 100644
 --- a/nvidia-drm/nvidia-drm-linux.c
 +++ b/nvidia-drm/nvidia-drm-linux.c
-@@ -103,8 +103,6 @@ int nv_drm_lock_user_pages(unsigned long address,
+@@ -93,8 +93,6 @@ int nv_drm_lock_user_pages(unsigned long address,
  {
      struct mm_struct *mm = current->mm;
      struct page **user_pages;
@@ -187,7 +187,7 @@ index 3a23ef8..94e463e 100644
      int pages_pinned;
  
      user_pages = nv_drm_calloc(pages_count, sizeof(*user_pages));
-@@ -115,7 +113,7 @@ int nv_drm_lock_user_pages(unsigned long address,
+@@ -105,7 +103,7 @@ int nv_drm_lock_user_pages(unsigned long address,
  
      nv_mmap_read_lock(mm);
  

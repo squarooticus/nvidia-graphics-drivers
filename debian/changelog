@@ -1,10 +1,10 @@
-nvidia-graphics-drivers (525.147.05-8) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (525.147.05-8) unstable; urgency=medium
 
   * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
   * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
     (Cf. #1064194)
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 02 Mar 2024 10:24:36 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 02 Mar 2024 10:59:35 +0100
 
 nvidia-graphics-drivers (525.147.05-7~deb12u1) bookworm; urgency=medium
 

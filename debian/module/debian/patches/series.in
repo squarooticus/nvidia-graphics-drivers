@@ -2,7 +2,7 @@ cc_version_check-gcc5.patch
 bashisms.patch
 
 # kernel support
-linux-2.6.34-dev_pm_info-runtime_auto.patch
+0001-some-power-management-features-were-not-yet-in-Linux.patch
 0010-backport-pci-dma-changes-for-ppc64el-from-470.223.02.patch
 0022-backport-drm_connector_has_override_edid-changes-fro.patch
 0023-backport-vm_area_struct_has_const_vm_flags-changes-f.patch

@@ -1,4 +1,4 @@
-From d7da0bf470d586f4f696a99f834fd69d19e19996 Mon Sep 17 00:00:00 2001
+From 4f4735eb78629d772a4870aaf3f272a281ef4d5c Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Sun, 25 Feb 2024 09:38:15 +0100
 Subject: [PATCH] backport pfn_valid changes in nv-mmap.c from 470.239.06
@@ -8,7 +8,7 @@ Subject: [PATCH] backport pfn_valid changes in nv-mmap.c from 470.239.06
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
-index 2079bd0..c1ad2b0 100644
+index da01e46..1365cea 100644
 --- a/nvidia/nv-mmap.c
 +++ b/nvidia/nv-mmap.c
 @@ -25,6 +25,7 @@
@@ -19,7 +19,7 @@ index 2079bd0..c1ad2b0 100644
  #include "nv_speculation_barrier.h"
  
  /*
-@@ -551,12 +552,9 @@ int nvidia_mmap_helper(
+@@ -570,12 +571,9 @@ int nvidia_mmap_helper(
              //
              // This path is similar to the sysmem mapping code.
              // TODO: Refactor is needed as part of bug#2001704.

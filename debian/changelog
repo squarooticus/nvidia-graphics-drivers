@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (535.104.12-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (535.104.12-1) experimental; urgency=medium
 
   * New upstream Tesla branch release 535.104.12 (2023-09-25).
   * New upstream LTS and Tesla branch release 535.104.05 (2023-08-22).
@@ -14,7 +14,7 @@ nvidia-graphics-drivers (535.104.12-1) UNRELEASED; urgency=medium
   * Update symbols files.
   * Merge changes from 525.147.05-9.  (Closes: #1064194)
 
- -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Nov 2023 09:56:43 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 03 Mar 2024 20:26:12 +0100
 
 nvidia-graphics-drivers (535.86.10-1) experimental; urgency=medium
 

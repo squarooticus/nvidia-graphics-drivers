@@ -4649,7 +4649,7 @@ nvidia-graphics-drivers (313.18-2) experimental; urgency=low
 
 nvidia-graphics-drivers (313.18-1) experimental; urgency=low
 
-  * New upstream release 313.18 (2013-01-15).
+  * New upstream short lived branch release 313.18 (2013-01-15).
     - Added support in NV-CONTROL and in nvidia-settings for changing the
       Double Precision performance boost mode on supported GPUs.
     - Fixed several OpenGL driver bugs related to stencil-only framebuffer
@@ -4757,7 +4757,7 @@ nvidia-graphics-drivers (310.40-1) UNRELEASED; urgency=low
 
 nvidia-graphics-drivers (310.19-1) experimental; urgency=low
 
-  * New upstream release 310.19 (2012-11-13).
+  * New upstream long lived branch release 310.19 (2012-11-13).
   * Merge changes from 304.64-4.
   * Drop kernel-3.7.patch, fixed upstream.
   * Fix debian/module/debian/kernel-version to cope with $KSRC/linux/version.h
@@ -5667,7 +5667,7 @@ nvidia-graphics-drivers (302.17-2) unstable; urgency=low
 
 nvidia-graphics-drivers (302.17-1) experimental; urgency=low
 
-  * New upstream release 302.17 (2012-06-15).
+  * New upstream short lived branch release 302.17 (2012-06-15).
     - Made nvidiaXineramaInfoOrder consistent with the RRSetOutputPrimary
       and RRGetOutputPrimary RandR requests: changes to either
       nvidiaXineramaInfoOrder or RandR OutputPrimary will be reflected in

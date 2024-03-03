@@ -152,7 +152,7 @@ nvidia-graphics-drivers (460.106.00-2) UNRELEASED; urgency=medium
 
 nvidia-graphics-drivers (460.106.00-1) UNRELEASED; urgency=medium
 
-  * New upstream Tesla release 460.106.00 (2021-10-26).
+  * New upstream Tesla branch release 460.106.00 (2021-10-26).
 
   [ Andreas Beckmann ]
   * bug-script: Show the nvidia and glx alternatives (470.82.00-1).
@@ -181,7 +181,7 @@ nvidia-graphics-drivers (460.91.03-2) UNRELEASED; urgency=medium
 
 nvidia-graphics-drivers (460.91.03-1) unstable; urgency=medium
 
-  * New upstream production branch release 460.91.03 (2021-07-20).
+  * New upstream production and Tesla branch release 460.91.03 (2021-07-20).
     * Fixed CVE-2021-1093, CVE-2021-1094, CVE-2021-1095.  (Closes: #991351)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5211
     - Added support for the following GPUs: GeForce RTX 3070 Ti, CMP 50HX.
@@ -233,7 +233,7 @@ nvidia-graphics-drivers (460.80-1) unstable; urgency=medium
 
 nvidia-graphics-drivers (460.73.01-1) unstable; urgency=medium
 
-  * New upstream production branch release 460.73.01 (2021-04-14).
+  * New upstream production and Tesla branch release 460.73.01 (2021-04-14).
     * Fixed CVE-2021-1076, CVE-2021-1077.  (Closes: #987216)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5172
     - Added support for the following GPUs: A10, A10G, A30, PG506-232,
@@ -321,7 +321,7 @@ nvidia-graphics-drivers (460.32.03-2) unstable; urgency=medium
 
 nvidia-graphics-drivers (460.32.03-1) unstable; urgency=medium
 
-  * New upstream production branch release 460.32.03 (2021-01-07).
+  * New upstream production and Tesla branch release 460.32.03 (2021-01-07).
     * Fixed CVE-2021-1052, CVE-2021-1053, CVE-2021-1056.  (Closes: #979670)
       https://nvidia.custhelp.com/app/answers/detail/a_id/5142
     - Added a new "NoInterlacedModes" token to the NVIDIA X driver's

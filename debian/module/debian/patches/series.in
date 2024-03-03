@@ -3,7 +3,6 @@ bashisms.patch
 
 # kernel support
 0001-some-power-management-features-were-not-yet-in-Linux.patch
-0026-add-missing-includes-to-fix-module-build-for-ppc64el.patch
 0033-refuse-to-load-legacy-module-if-IBT-is-enabled.patch
 0034-fix-typos.patch
 

@@ -2203,7 +2203,8 @@ nvidia-graphics-drivers (355.11-2) experimental; urgency=medium
 
 nvidia-graphics-drivers (355.11-1) experimental; urgency=medium
 
-  * New upstream release 355.11 (2015-08-31). (Closes: #804547)
+  * New upstream short lived branch release 355.11 (2015-08-31).
+    (Closes: #804547)
     - Fixed a bug that could cause GPU exceptions when using glReadPixels()
       on the depth or stencil buffers of multisample windows while resizing
       or moving the windows.
@@ -2515,7 +2516,8 @@ nvidia-graphics-drivers (352.41-1) experimental; urgency=medium
 
 nvidia-graphics-drivers (352.30-1) experimental; urgency=medium
 
-  * New upstream release 352.30 (2015-07-28). (Closes: #794075)
+  * New upstream long lived branch release 352.30 (2015-07-28).
+    (Closes: #794075)
     - Fixed a bug that caused poor video post-processing performance
       in VDPAU when operating on a large number of video streams
       simultaneously.
@@ -2549,7 +2551,8 @@ nvidia-graphics-drivers (352.21-2) experimental; urgency=medium
 
 nvidia-graphics-drivers (352.21-1) experimental; urgency=medium
 
-  * New upstream release 352.21 (2015-06-15). (Closes: #793079)
+  * New upstream long lived branch release 352.21 (2015-06-15).
+    (Closes: #793079)
     - Fixed a bug that caused the kernel to report errors when unmapping
       DMA allocations on kernels with CONFIG_DEBUG_DMA_API enabled.
     - Added GLX Protocol support for the following OpenGL extensions:
@@ -2611,7 +2614,7 @@ nvidia-graphics-drivers (349.16-2) unstable; urgency=medium
 
 nvidia-graphics-drivers (349.16-1) unstable; urgency=low
 
-  * New upstream short-lived branch release 349.16 (2015-04-14).
+  * New upstream short lived branch release 349.16 (2015-04-14).
   * New upstream beta 349.12 (2015-03-25).
     - Added support for G-SYNC monitors when used together with non-G-SYNC
       monitors.  When G-SYNC is enabled, non-G-SYNC monitors will display with
@@ -2651,14 +2654,14 @@ nvidia-graphics-drivers (349.16-1) unstable; urgency=low
 
 nvidia-graphics-drivers (346.96-1) unstable; urgency=low
 
-  * New upstream release 346.96 (2015-09-01).  (Closes: #811349)
+  * New upstream long lived branch release 346.96 (2015-09-01).  (Closes: #811349)
     * Fixed CVE-2015-5950: Memory corruption due to an unsanitized pointer.
       https://nvidia.custhelp.com/app/answers/detail/a_id/3763
       (Closes: #800566)
     - Added support for the following GPU: Tesla K80.
-  * New upstream release 346.87 (2015-07-21).
+  * New upstream long lived branch release 346.87 (2015-07-21).
     - Added support for the following GPU: GeForce 910M.
-  * New upstream release 346.82 (2015-06-23).
+  * New upstream long lived branch release 346.82 (2015-06-23).
     - Added support for the following GPUs: Tesla K40t, GeForce 720A,
       GeForce 920A, GeForce 930A, GeForce 940A, GeForce GTX 950A,
       GeForce GTX 980 Ti.
@@ -2678,7 +2681,7 @@ nvidia-graphics-drivers (346.96-1) unstable; urgency=low
 
 nvidia-graphics-drivers (346.72-1) experimental; urgency=medium
 
-  * New upstream release 346.72 (2015-05-12).
+  * New upstream long lived branch release 346.72 (2015-05-12).
     - Added support for the following GPU: GeForce GPU.
     - Fixed a bug causing loss of stereo synchronization in certain Quadro
       Sync framelock configurations.
@@ -2701,7 +2704,7 @@ nvidia-graphics-drivers (346.72-1) experimental; urgency=medium
 
 nvidia-graphics-drivers (346.59-1) experimental; urgency=medium
 
-  * New upstream release 346.59 (2015-04-07).  (Closes: #775742)
+  * New upstream long lived branch release 346.59 (2015-04-07).  (Closes: #775742)
     - Fixed a bug that caused corruption when switching display modes in some
       applications that use transform feedback.
     - Added support for the following GPUs: Quadro K1200, Quadro M6000,
@@ -2711,7 +2714,7 @@ nvidia-graphics-drivers (346.59-1) experimental; urgency=medium
       attachments cleared using glClearTexImage().
     - Fixed a bug that artificially limited the maximum pixel clock on
       displays in some SLI Mosaic configurations.
-  * New upstream release 346.47 (2015-02-24).
+  * New upstream long lived branch release 346.47 (2015-02-24).
     - Fixed a bug that could cause quad-buffered stereo applications to
       crash when disabling displays.
     - Fixed a bug that could cause rendering corruption in GLX clients using
@@ -2725,7 +2728,7 @@ nvidia-graphics-drivers (346.59-1) experimental; urgency=medium
       GeForce GTX 960, GeForce GTX 965M.
     - Fixed a bug that caused DisplayPort audio to stop working after monitors
       are hotplugged.
-  * New upstream release 346.35 (2015-01-16).
+  * New upstream long lived branch release 346.35 (2015-01-16).
     - Added support for the following GPUs: GeForce 800A, GeForce 800M.
     - Updated the NVIDIA X driver to reject frame packed interlaced HDMI 3D
       modes during mode validation. These modes were being validated by the

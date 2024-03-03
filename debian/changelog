@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (525.147.05-9) unstable; urgency=medium
+
+  * Packaging sync.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 03 Mar 2024 15:51:19 +0100
+
 nvidia-graphics-drivers (525.147.05-8) unstable; urgency=medium
 
   * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.

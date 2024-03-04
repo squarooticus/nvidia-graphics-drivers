@@ -17,6 +17,7 @@ bashisms.patch
 0034-fix-typos.patch
 0035-backport-nv_request_msix_irq-fixes-from-470.239.06.patch
 0036-backport-pfn_valid-changes-in-nv-mmap.c-from-470.239.patch
+0038-backport-drm_unlocked_ioctl_flag_present-changes-fro.patch
 
 # build system updates
 fragile-ARCH.patch

@@ -1,4 +1,4 @@
-From 20b07eda8f43c7dd352b32b3f12e79eb92e2e934 Mon Sep 17 00:00:00 2001
+From de62e1be601d414867e7fe7e2881a5712249346e Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 4 Mar 2024 13:50:23 +0100
 Subject: [PATCH] backport drm_unlocked_ioctl_flag_present changes from
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_unlocked_ioctl_flag_present changes from
  4 files changed, 47 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 0418ec0..05fc047 100755
+index 8c39dbb..766b4de 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4886,6 +4886,27 @@ compile_test() {
+@@ -4397,6 +4397,27 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_DRIVER_HAS_DUMB_DESTROY" "" "types"
          ;;
  
@@ -44,10 +44,10 @@ index 0418ec0..05fc047 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index c0cc77a..286d704 100644
+index b299a16..c8b0fd7 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -672,9 +672,21 @@ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
+@@ -670,9 +670,21 @@ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
                        DRM_RENDER_ALLOW|DRM_UNLOCKED),
  #endif
  
@@ -94,11 +94,11 @@ index 831737d..8467cc7 100644
  
  #endif /* __NVIDIA_DRM_HELPER_H__ */
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 2a8148f..47d60fe 100644
+index d9a72a3..6076de1 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -109,3 +109,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_reserve_fences
- NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fences_arg
+@@ -108,3 +108,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_device_has_pdev
+ NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_has_dumb_destroy
 +NV_CONFTEST_TYPE_COMPILE_TESTS += drm_unlocked_ioctl_flag_present

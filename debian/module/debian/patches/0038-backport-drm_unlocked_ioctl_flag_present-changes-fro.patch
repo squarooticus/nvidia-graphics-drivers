@@ -1,4 +1,4 @@
-From de62e1be601d414867e7fe7e2881a5712249346e Mon Sep 17 00:00:00 2001
+From 0602c598d29cdea10cdc2ae1c9326ffdeada6e21 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 4 Mar 2024 13:50:23 +0100
 Subject: [PATCH] backport drm_unlocked_ioctl_flag_present changes from
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_unlocked_ioctl_flag_present changes from
  4 files changed, 47 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 8c39dbb..766b4de 100755
+index 93c8f8a..c07ba37 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4397,6 +4397,27 @@ compile_test() {
+@@ -4632,6 +4632,27 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_DRIVER_HAS_DUMB_DESTROY" "" "types"
          ;;
  
@@ -44,10 +44,10 @@ index 8c39dbb..766b4de 100755
          # specifying the relevant upstream Linux kernel commit.
          #
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index b299a16..c8b0fd7 100644
+index d943cb5..87bbb68 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -670,9 +670,21 @@ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
+@@ -708,9 +708,21 @@ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
                        DRM_RENDER_ALLOW|DRM_UNLOCKED),
  #endif
  
@@ -70,10 +70,10 @@ index b299a16..c8b0fd7 100644
      DRM_IOCTL_DEF_DRV(NVIDIA_GET_CRTC_CRC32,
                        nv_drm_get_crtc_crc32_ioctl,
 diff --git a/nvidia-drm/nvidia-drm-helper.h b/nvidia-drm/nvidia-drm-helper.h
-index 831737d..8467cc7 100644
+index 102e6e3..980b11a 100644
 --- a/nvidia-drm/nvidia-drm-helper.h
 +++ b/nvidia-drm/nvidia-drm-helper.h
-@@ -436,6 +436,19 @@ void nv_drm_connector_list_iter_end(struct drm_connector_list_iter *iter)
+@@ -460,6 +460,19 @@ static inline int nv_drm_format_num_planes(uint32_t format)
  
  #endif /* defined(NV_DRM_ATOMIC_MODESET_AVAILABLE) */
  
@@ -94,12 +94,12 @@ index 831737d..8467cc7 100644
  
  #endif /* __NVIDIA_DRM_HELPER_H__ */
 diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index d9a72a3..6076de1 100644
+index 28556cb..cb013af 100644
 --- a/nvidia-drm/nvidia-drm.Kbuild
 +++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -108,3 +108,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += drm_device_has_pdev
- NV_CONFTEST_TYPE_COMPILE_TESTS += dma_resv_add_fence
+@@ -112,3 +112,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fenc
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
+ NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
  NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_has_dumb_destroy
 +NV_CONFTEST_TYPE_COMPILE_TESTS += drm_unlocked_ioctl_flag_present
 -- 

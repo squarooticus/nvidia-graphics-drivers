@@ -36,6 +36,7 @@ bashisms.patch
 0033-refuse-to-load-legacy-module-if-IBT-is-enabled.patch
 0034-fix-typos.patch
 0035-backport-nv_request_msix_irq-fixes-from-470.239.06.patch
+0038-backport-drm_unlocked_ioctl_flag_present-changes-fro.patch
 
 # build system updates
 fragile-ARCH.patch

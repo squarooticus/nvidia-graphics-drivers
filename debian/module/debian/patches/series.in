@@ -38,6 +38,9 @@ bashisms.patch
 0035-backport-nv_request_msix_irq-fixes-from-470.239.06.patch
 0036-backport-pfn_valid-changes-in-nv-mmap.c-from-470.239.patch
 0037-fix-build-w-kernel-6.1.76-6.6.15-6.7.3.patch
+0038-backport-drm_unlocked_ioctl_flag_present-changes-fro.patch
+0039-backport-screen_info-changes-from-470.182.03.patch
+0040-backport-screen_info-changes-from-470.239.06.patch
 
 # build system updates
 fragile-ARCH.patch

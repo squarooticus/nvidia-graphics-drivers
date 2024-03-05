@@ -1,17 +1,38 @@
-From b408aa0190113c584ebddb58337b368b3adb43fe Mon Sep 17 00:00:00 2001
+From 9fdf6ac9666320f986c6e35eae5ae5dbaf184b9c Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 5 Mar 2024 05:42:16 +0100
 Subject: [PATCH] backport screen_info changes from 470.182.03
 
 ---
+ nvidia/nvidia.Kbuild  |  2 +-
  nvidia/os-interface.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ 2 files changed, 15 insertions(+), 1 deletion(-)
 
+diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
+index 91f1516..65b86be 100644
+--- a/nvidia/nvidia.Kbuild
++++ b/nvidia/nvidia.Kbuild
+@@ -176,7 +176,6 @@ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present___close_fd
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_close_fd
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_get_unused_fd
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_get_unused_fd_flags
+-NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_screen_info
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_nvhost_get_default_device
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_nvhost_syncpt_unit_interface_get_byte_offset
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_nvhost_syncpt_unit_interface_get_aperture
+@@ -186,6 +185,7 @@ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_tegra_dce_client_ip
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_dram_clk_to_mc_clk
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_get_dram_num_channels
+ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_tegra_dram_types
++NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_screen_info
+ 
+ NV_CONFTEST_TYPE_COMPILE_TESTS += acpi_op_remove
+ NV_CONFTEST_TYPE_COMPILE_TESTS += outer_flush_all
 diff --git a/nvidia/os-interface.c b/nvidia/os-interface.c
-index b6990f5..f6ead53 100644
+index 95cf0e1..6c38f0f 100644
 --- a/nvidia/os-interface.c
 +++ b/nvidia/os-interface.c
-@@ -1253,6 +1253,20 @@ void NV_API_CALL os_get_screen_info(
+@@ -1119,6 +1119,20 @@ void NV_API_CALL os_get_screen_info(
      NvU16 *pFbPitch
  )
  {

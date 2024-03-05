@@ -1,4 +1,4 @@
-From fc1a69bb1ec1fcc8872b17a9496883ebce81995e Mon Sep 17 00:00:00 2001
+From bd7832fe08d5dc32ec6aa6a460a07bfb267b9e49 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 4 Mar 2024 22:48:44 +0100
 Subject: [PATCH] backport screen_info changes from 470.239.06
@@ -11,21 +11,21 @@ Subject: [PATCH] backport screen_info changes from 470.239.06
  4 files changed, 9 insertions(+), 3 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index cea6402..73b1087 100644
+index 18dcf8d..0f556d3 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -1954,4 +1954,6 @@ static inline void nv_mutex_destroy(struct mutex *lock)
- 
- }
+@@ -2110,4 +2110,6 @@ typedef enum
+ #include <linux/clk-provider.h>
+ #endif
  
 +#define NV_CHECK_EXPORT_SYMBOL(symbol)  (NV_IS_EXPORT_SYMBOL_PRESENT_##symbol && \
 +                                         !NV_IS_EXPORT_SYMBOL_GPL_##symbol)
  #endif  /* _NV_LINUX_H_ */
 diff --git a/conftest.sh b/conftest.sh
-index 0720e15..1ddbf32 100755
+index be30ecd..e57a549 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -383,7 +383,7 @@ export_symbol_present_conftest() {
+@@ -320,7 +320,7 @@ export_symbol_present_conftest() {
      SYMBOL="$1"
      TAB='	'
  
@@ -34,7 +34,7 @@ index 0720e15..1ddbf32 100755
                 "$OUTPUT/Module.symvers" >/dev/null 2>&1; then
          echo "#define NV_IS_EXPORT_SYMBOL_PRESENT_$SYMBOL 1" |
              append_conftest "symbols"
-@@ -404,7 +404,7 @@ export_symbol_gpl_conftest() {
+@@ -341,7 +341,7 @@ export_symbol_gpl_conftest() {
      SYMBOL="$1"
      TAB='	'
  
@@ -44,22 +44,22 @@ index 0720e15..1ddbf32 100755
          echo "#define NV_IS_EXPORT_SYMBOL_GPL_$SYMBOL 1" |
              append_conftest "symbols"
 diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
-index 65b86be..3153cf1 100644
+index 63a4813..364a6c1 100644
 --- a/nvidia/nvidia.Kbuild
 +++ b/nvidia/nvidia.Kbuild
-@@ -186,6 +186,7 @@ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_dram_clk_to_mc_clk
+@@ -207,6 +207,7 @@ NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_dram_clk_to_mc_clk
  NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_get_dram_num_channels
  NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_tegra_dram_types
  NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_present_screen_info
 +NV_CONFTEST_SYMBOL_COMPILE_TESTS += is_export_symbol_gpl_screen_info
  
- NV_CONFTEST_TYPE_COMPILE_TESTS += acpi_op_remove
- NV_CONFTEST_TYPE_COMPILE_TESTS += outer_flush_all
+ NV_CONFTEST_TYPE_COMPILE_TESTS += file_operations
+ NV_CONFTEST_TYPE_COMPILE_TESTS += file_inode
 diff --git a/nvidia/os-interface.c b/nvidia/os-interface.c
-index 6c38f0f..5443616 100644
+index c92c5cb..bb71a7a 100644
 --- a/nvidia/os-interface.c
 +++ b/nvidia/os-interface.c
-@@ -1131,9 +1131,12 @@ void NV_API_CALL os_get_screen_info(
+@@ -1152,9 +1152,12 @@ void NV_API_CALL os_get_screen_info(
       * SYSFB_SIMPLEFB registers a dummy framebuffer which does not contain the
       * information required by os_get_screen_info(), therefore you need to
       * fall back onto the screen_info structure.
@@ -70,9 +70,9 @@ index 6c38f0f..5443616 100644
  
 -#if NV_IS_EXPORT_SYMBOL_PRESENT_screen_info
 +#if NV_CHECK_EXPORT_SYMBOL(screen_info)
-     //
-     // If there is not a framebuffer console, return 0 size.
-     //
+     /*
+      * If there is not a framebuffer console, return 0 size.
+      *
 -- 
 2.20.1
 

@@ -1,4 +1,4 @@
-From b7fcf90a044de77837e3e1d531337d6fa59cbebf Mon Sep 17 00:00:00 2001
+From ab7229917c96d80b660d8e523af6883c1dae1cd2 Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Tue, 5 Mar 2024 05:42:16 +0100
 Subject: [PATCH] backport screen_info changes from 470.182.03
@@ -8,10 +8,10 @@ Subject: [PATCH] backport screen_info changes from 470.182.03
  1 file changed, 18 insertions(+), 2 deletions(-)
 
 diff --git a/nvidia/os-interface.c b/nvidia/os-interface.c
-index 60fb930..c92c5cb 100644
+index 470ca53..3ed5943 100644
 --- a/nvidia/os-interface.c
 +++ b/nvidia/os-interface.c
-@@ -1134,11 +1134,27 @@ void NV_API_CALL os_get_screen_info(
+@@ -1131,11 +1131,27 @@ void NV_API_CALL os_get_screen_info(
                  *pFbHeight = registered_fb[i]->var.yres;
                  *pFbDepth = registered_fb[i]->var.bits_per_pixel;
                  *pFbPitch = registered_fb[i]->fix.line_length;

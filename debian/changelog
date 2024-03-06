@@ -1159,6 +1159,18 @@ nvidia-graphics-drivers (465.24.02-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 27 Apr 2021 18:48:53 +0200
 
+nvidia-graphics-drivers (460.106.00-15) UNRELEASED; urgency=medium
+
+  * Backport drm_unlocked_ioctl_flag_present changes from 470.239.06 to fix
+    kernel module build for Linux 6.8.
+  * Backport screen_info changes from 470.182.03 and 470.239.06 to fix kernel
+    module build for Linux 6.7 on arm64.
+  * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
+  * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
+    (Cf. #1064194)
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 01 Mar 2024 12:27:48 +0100
+
 nvidia-graphics-drivers (460.106.00-14) UNRELEASED; urgency=medium
 
   * Apply pfn_valid patch from gentoo to fix kernel module build for
@@ -1670,6 +1682,19 @@ nvidia-graphics-drivers (455.23.04-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 24 Sep 2020 21:52:54 +0200
+
+nvidia-graphics-drivers (450.248.02-5) UNRELEASED; urgency=medium
+
+  * Backport drm_unlocked_ioctl_flag_present changes from 470.239.06 to fix
+    kernel module build for Linux 6.8.
+  * Backport screen_info changes from 470.182.03 and 470.239.06 to fix kernel
+    module build for Linux 6.7 on arm64.
+  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
+  * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
+  * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
+    (Cf. #1064194)
+
+ -- Andreas Beckmann <anbe@debian.org>  Fri, 01 Mar 2024 12:20:43 +0100
 
 nvidia-graphics-drivers (450.248.02-4) UNRELEASED; urgency=medium
 
@@ -2743,6 +2768,17 @@ nvidia-graphics-drivers (430.14-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Sat, 25 May 2019 13:49:09 +0200
 
+nvidia-graphics-drivers (418.226.00-14) UNRELEASED; urgency=medium
+
+  * Backport drm_unlocked_ioctl_flag_present changes from 470.239.06 to fix
+    kernel module build for Linux 6.8.
+  * New Romanian (ro) debconf translations by Remus-Gabriel Chelu.
+  * xserver-xorg-video-nvidia: Recommend nvidia-vulkan-icd.
+  * Move the libnvidia-glvkspirv dependency to libnvidia-(e)glcore.
+    (Cf. #1064194)
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 20 Jan 2024 02:28:08 +0100
+
 nvidia-graphics-drivers (418.226.00-13) UNRELEASED; urgency=medium
 
   * Revert backport of pin_user_pages changes.
@@ -3635,6 +3671,13 @@ nvidia-graphics-drivers (396.18-1) experimental; urgency=medium
   * Upload to experimental.
 
  -- Andreas Beckmann <anbe@debian.org>  Sun, 22 Apr 2018 13:59:45 +0200
+
+nvidia-graphics-drivers (390.157-7) UNRELEASED; urgency=medium
+
+  * Backport drm_unlocked_ioctl_flag_present changes from 470.239.06 to fix
+    kernel module build for Linux 6.8.
+
+ -- Andreas Beckmann <anbe@debian.org>  Mon, 04 Mar 2024 22:05:12 +0100
 
 nvidia-graphics-drivers (390.157-6) UNRELEASED; urgency=medium
 

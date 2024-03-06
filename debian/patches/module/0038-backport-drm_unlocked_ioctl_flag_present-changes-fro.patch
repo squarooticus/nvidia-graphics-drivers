@@ -1,4 +1,4 @@
-From 8dc35c79b44cd8be7521c9184c5afb9747e14cbd Mon Sep 17 00:00:00 2001
+From 2755672c54f7ccea14f1fb4b94d8d1e6fd87430b Mon Sep 17 00:00:00 2001
 From: Andreas Beckmann <anbe@debian.org>
 Date: Mon, 4 Mar 2024 13:50:23 +0100
 Subject: [PATCH] backport drm_unlocked_ioctl_flag_present changes from
@@ -12,10 +12,10 @@ Subject: [PATCH] backport drm_unlocked_ioctl_flag_present changes from
  4 files changed, 47 insertions(+)
 
 diff --git a/conftest.sh b/conftest.sh
-index 79ea79b..be30ecd 100755
+index cca2312..4743441 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -5448,6 +5448,27 @@ compile_test() {
+@@ -5530,6 +5530,27 @@ compile_test() {
              compile_check_conftest "$CODE" "NV_DRM_DRIVER_HAS_DUMB_DESTROY" "" "types"
          ;;
  

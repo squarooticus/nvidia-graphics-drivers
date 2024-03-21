@@ -48,6 +48,7 @@ nvidia-graphics-drivers (545.23.06-1) UNRELEASED; urgency=medium
   * Update nv-readme-open.ids.
   * Update symbols files.
   * libnvidia-gpucomp: New package for the NVIDIA GPU compiler library.
+  * libcuda1: Add Provides: libcuda-12.3-1.
 
  -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 10:44:21 +0100
 

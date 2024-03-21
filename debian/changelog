@@ -4,6 +4,7 @@ nvidia-graphics-drivers (535.113.01-1) UNRELEASED; urgency=medium
 
   [ Andreas Beckmann ]
   * Refresh patches.
+  * Update package descriptions.  (Closes: #1013462)
 
  -- Andreas Beckmann <anbe@debian.org>  Fri, 17 Nov 2023 10:14:07 +0100
 

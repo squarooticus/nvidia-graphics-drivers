@@ -344,7 +344,8 @@ Description: NVIDIA binary OpenGL/GLX configuration library${nvidia:VariantDesc}
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
  .
- This package contains the libnvidia-cfg.so.1 runtime library.
+ This package contains the private libnvidia-cfg runtime library
+ which is used by other driver components.
 
 Package: nvidia-driver-libs
 Architecture: i386 amd64 arm64 ppc64el
@@ -977,7 +978,8 @@ Description: NVIDIA allocator runtime library${nvidia:VariantDesc}
  OpenGL/GLX/EGL/GLES applications via a direct-rendering X Server
  for graphics cards using NVIDIA chip sets.
  .
- This package contains the private nvidia-allocator runtime library.
+ This package contains the private nvidia-allocator runtime library
+ which is used by other driver components.
 
 Package: libnvidia-ngx1
 Architecture: amd64

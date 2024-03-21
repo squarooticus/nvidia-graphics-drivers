@@ -133,7 +133,7 @@ nvidia-graphics-drivers (535.43.02-1) experimental; urgency=medium
 
  -- Andreas Beckmann <anbe@debian.org>  Tue, 21 Nov 2023 17:55:39 +0100
 
-nvidia-graphics-drivers (530.41.03-4) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (530.41.03-4) unstable; urgency=medium
 
   * Merge changes from 525.147.05-10.
   * Backport drm_unlocked_ioctl_flag_present changes from 470.239.06 to fix
@@ -145,8 +145,9 @@ nvidia-graphics-drivers (530.41.03-4) UNRELEASED; urgency=medium
   * Backport drm_gem_prime_handle_to_fd changes from 470.223.02 to fix kernel
     module build for Linux 6.6.
   * Restrict watch file to releases from the 530.xx new feature branch.
+  * Upload to unstable.
 
- -- Andreas Beckmann <anbe@debian.org>  Sat, 28 Oct 2023 19:39:53 +0200
+ -- Andreas Beckmann <anbe@debian.org>  Tue, 19 Mar 2024 21:02:39 +0100
 
 nvidia-graphics-drivers (530.41.03-3) experimental; urgency=medium
 

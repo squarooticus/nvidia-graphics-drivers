@@ -1,4 +1,4 @@
-nvidia-graphics-drivers (545.23.06-1) UNRELEASED; urgency=medium
+nvidia-graphics-drivers (545.23.06-1) experimental; urgency=medium
 
   * New upstream beta 545.23.06 (2023-10-17).  (Closes: #1055422)
     - Added experimental HDMI 10 bits per component support; enable by loading
@@ -50,8 +50,9 @@ nvidia-graphics-drivers (545.23.06-1) UNRELEASED; urgency=medium
   * libnvidia-gpucomp: New package for the NVIDIA GPU compiler library.
   * libcuda1: Add Provides: libcuda-12.3-1.
   * Update lintian overrides.
+  * Upload to experimental.
 
- -- Andreas Beckmann <anbe@debian.org>  Thu, 16 Nov 2023 10:44:21 +0100
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 28 Mar 2024 18:03:18 +0100
 
 nvidia-graphics-drivers (535.113.01-1) unstable; urgency=medium
 

@@ -12,23 +12,10 @@ pkg-history.txt
 # installed by dh_installchangelogs
 NVIDIA_Changelog
 
-# built from src:nvidia-modprobe
-nvidia-modprobe
-nvidia-modprobe.1
-
 # built from src:nvidia-persistenced
 nvidia-persistenced
 nvidia-persistenced-init.tar.bz2
 nvidia-persistenced.1
-
-# built from src:nvidia-settings*
-nvidia-settings
-nvidia-settings.1
-nvidia-settings.desktop
-nvidia-settings.png
-libnvidia-gtk2.so.#VERSION#
-libnvidia-gtk3.so.#VERSION#
-libnvidia-wayland-client.so.#VERSION#
 
 # built from src:nvidia-xconfig
 nvidia-xconfig

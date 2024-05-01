@@ -13,10 +13,12 @@ Description: use KBUILD_CFLAGS and (KBUILD_)LDFLAGS
 
 --- a/Kbuild
 +++ b/Kbuild
-@@ -160,6 +160,12 @@ NV_CONFTEST_CMD := /bin/sh $(NV_CONFTEST
- NV_CFLAGS_FROM_CONFTEST := $(shell $(NV_CONFTEST_CMD) build_cflags)
+@@ -170,8 +170,14 @@ NV_CFLAGS_FROM_CONFTEST := $(shell $(NV_CONFTEST_CMD) build_cflags)
  
  NV_CONFTEST_CFLAGS = $(NV_CFLAGS_FROM_CONFTEST) $(EXTRA_CFLAGS) -fno-pie
+ NV_CONFTEST_CFLAGS += $(call cc-disable-warning,pointer-sign)
+ NV_CONFTEST_CFLAGS += $(call cc-option,-fshort-wchar,)
+ NV_CONFTEST_CFLAGS += -Wno-error
 +NV_CONFTEST_CFLAGS += \
 +	$(patsubst -DARM64_ASM_ARCH=%,-DARM64_ASM_ARCH="%",\
 +	$(filter-out -Werror% $(GCC_PLUGINS_CFLAGS),\

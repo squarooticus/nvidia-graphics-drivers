@@ -1,0 +1,2 @@
+nvidia-modprobe		usr/bin
+nvidia-modprobe.1		usr/lib/#PRIVATE#/

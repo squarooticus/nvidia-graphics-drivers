@@ -1,3 +1,9 @@
+nvidia-graphics-drivers (550.78-1krose1) UNRELEASED; urgency=medium
+
+  * Custom 550 package
+
+ -- Kyle Rose <krose@krose.org>  Tue, 30 Apr 2024 17:07:05 -0400
+
 nvidia-graphics-drivers (545.23.06-1) experimental; urgency=medium
 
   * New upstream beta 545.23.06 (2023-10-17).  (Closes: #1055422)

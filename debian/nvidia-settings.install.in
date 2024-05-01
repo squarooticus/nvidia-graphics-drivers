@@ -1,0 +1,7 @@
+nvidia-settings			usr/lib/#PRIVATE#/
+nvidia-settings.1		usr/lib/#PRIVATE#/
+nvidia-settings.desktop		usr/lib/#PRIVATE#/
+nvidia-settings.png		usr/share/icons/hicolor/128x128/apps/
+libnvidia-gtk2.so.#VERSION#			usr/lib/
+libnvidia-gtk3.so.#VERSION#			usr/lib/
+libnvidia-wayland-client.so.#VERSION#			usr/lib/
